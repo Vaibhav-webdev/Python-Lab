@@ -1,0 +1,241 @@
+"use client";
+
+import { useState, useEffect, useRef, useCallback } from "react";
+import LandingScreen from '@/app/components/interview/LandingScreen';
+import InterviewSession from "../components/interview/InterviewSession";
+import ResultsScreen from "../components/interview/ResultsScreen";
+import { pickRandomQuestions } from "../../lib/interview-questions.js";
+
+// export const metadata = {
+//   title: "JavaScript Mock Interview | Real-Time Coding Interview Practice",
+//   description:
+//     "Prepare for JavaScript developer interviews with real-time mock interviews on ScriptCrush. Solve randomly generated bug-fixing challenges under a timer, improve debugging skills, and practice coding like a real frontend interview.",
+
+//   keywords: [
+//     "JavaScript mock interview",
+//     "JavaScript interview practice",
+//     "JavaScript interview questions",
+//     "JavaScript coding interview",
+//     "Frontend interview practice",
+//     "Frontend developer interview",
+//     "JavaScript debugging",
+//     "JavaScript bug fixing",
+//     "Coding interview simulator",
+//     "Programming interview",
+//     "JavaScript coding challenges",
+//     "JavaScript assessment",
+//     "JavaScript online practice",
+//     "Technical interview preparation",
+//     "JavaScript developer interview",
+//     "ScriptCrush interview",
+//   ],
+
+//   alternates: {
+//     canonical: "/interview",
+//   },
+
+//   robots: {
+//     index: true,
+//     follow: true,
+//     nocache: false,
+//     googleBot: {
+//       index: true,
+//       follow: true,
+//       "max-image-preview": "large",
+//       "max-snippet": -1,
+//       "max-video-preview": -1,
+//     },
+//   },
+
+//   applicationName: "ScriptCrush",
+
+//   category: "Education",
+
+//   classification: "Programming Education",
+
+//   authors: [
+//     {
+//       name: "ScriptCrush",
+//     },
+//   ],
+
+//   creator: "ScriptCrush",
+
+//   publisher: "ScriptCrush",
+
+//   referrer: "origin-when-cross-origin",
+
+//   openGraph: {
+//     title: "JavaScript Mock Interview | ScriptCrush",
+//     description:
+//       "Practice real JavaScript mock interviews with timed bug-fixing challenges. Improve debugging skills, coding speed, and interview confidence.",
+
+//     url: "/interview",
+
+//     siteName: "ScriptCrush",
+
+//     locale: "en_US",
+
+//     type: "website",
+
+//     images: [
+//       {
+//         url: "/og/interview.png",
+//         width: 1200,
+//         height: 630,
+//         alt: "ScriptCrush JavaScript Mock Interview",
+//       },
+//     ],
+//   },
+
+//   twitter: {
+//     card: "summary_large_image",
+
+//     title: "JavaScript Mock Interview | ScriptCrush",
+
+//     description:
+//       "Solve real JavaScript debugging challenges in a timed mock interview and prepare for frontend developer interviews.",
+
+//     creator: "@scriptcrush",
+
+//     images: ["/og/interview.png"],
+//   },
+// };
+
+// ─── Screen states ─────────────────────────────────────────────────────────────
+const SCREEN = {
+  LANDING: "landing",
+  SESSION: "session",
+  RESULTS: "results",
+};
+
+export default function InterviewPage() {
+  const [screen, setScreen] = useState(SCREEN.LANDING);
+
+  // Questions picked at start-time
+  const [questions, setQuestions] = useState([]);
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  // Timer (counts down from totalTime)
+  const [totalTime, setTotalTime] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const timerRef = useRef(null);
+
+  // Per-question results: { [questionId]: { solved, skipped, timeSpent } }
+  const [completedData, setCompletedData] = useState({});
+  const questionStartRef = useRef(null); // epoch ms when current question started
+
+  // ── Start interview ──────────────────────────────────────────────────────────
+  const handleStart = useCallback(() => {
+    const picked = pickRandomQuestions();
+    const total = picked.reduce((s, q) => s + q.timeLimit, 0);
+
+    setQuestions(picked);
+    setCurrentIdx(0);
+    setTotalTime(total);
+    setTimeLeft(total);
+    setCompletedData({});
+    questionStartRef.current = Date.now();
+    setScreen(SCREEN.SESSION);
+  }, []);
+
+  // ── Timer tick ───────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (screen !== SCREEN.SESSION) return;
+
+    timerRef.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timerRef.current);
+          // Time's up — go to results
+          setScreen(SCREEN.RESULTS);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timerRef.current);
+  }, [screen]);
+
+  // ── Record a question result ─────────────────────────────────────────────────
+  const recordResult = useCallback((questionId, data) => {
+    const elapsed = Math.round((Date.now() - (questionStartRef.current ?? Date.now())) / 1000);
+    setCompletedData((prev) => ({
+      ...prev,
+      [questionId]: { ...data, timeSpent: elapsed },
+    }));
+  }, []);
+
+  // ── Next question ────────────────────────────────────────────────────────────
+  const handleNext = useCallback(() => {
+    questionStartRef.current = Date.now();
+    setCurrentIdx((prev) => {
+      const next = prev + 1;
+      if (next >= questions.length) {
+        clearInterval(timerRef.current);
+        setScreen(SCREEN.RESULTS);
+        return prev;
+      }
+      return next;
+    });
+  }, [questions.length]);
+
+  // ── Skip question ────────────────────────────────────────────────────────────
+  const handleSkip = useCallback(() => {
+    questionStartRef.current = Date.now();
+    setCurrentIdx((prev) => {
+      const next = prev + 1;
+      if (next >= questions.length) {
+        clearInterval(timerRef.current);
+        setScreen(SCREEN.RESULTS);
+        return prev;
+      }
+      return next;
+    });
+  }, [questions.length]);
+
+  // ── Reset (try again) ────────────────────────────────────────────────────────
+  const handleReset = useCallback(() => {
+    clearInterval(timerRef.current);
+    setScreen(SCREEN.LANDING);
+  }, []);
+
+  // ── Derived values ───────────────────────────────────────────────────────────
+  const timeUsed = totalTime - timeLeft;
+
+  // ── Render ───────────────────────────────────────────────────────────────────
+  if (screen === SCREEN.LANDING) {
+    return <LandingScreen onStart={handleStart} />;
+  }
+
+  if (screen === SCREEN.SESSION && questions.length > 0) {
+    return (
+      <InterviewSession
+        questions={questions}
+        currentIdx={currentIdx}
+        timeLeft={timeLeft}
+        totalTime={totalTime}
+        onNext={handleNext}
+        onSkip={handleSkip}
+        recordResult={recordResult}
+      />
+    );
+  }
+
+  if (screen === SCREEN.RESULTS) {
+    return (
+      <ResultsScreen
+        results={{
+          completedData,
+          questionsData: questions,
+          totalTime,
+          timeUsed,
+        }}
+        onReset={handleReset}
+      />
+    );
+  }
+
+  return null;
+}
