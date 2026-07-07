@@ -24,7 +24,7 @@ export default function TestPanel({
           <button
             onClick={onCheck}
             className="px-3 py-1 text-xs font-semibold rounded-md
-              bg-yellow-600 hover:bg-yellow-500 cursor-pointer text-white
+              bg-white hover:bg-gray-300 cursor-pointer text-black
               transition-colors duration-150 active:scale-95"
           >
             Check
@@ -39,9 +39,7 @@ export default function TestPanel({
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             onClick={onNext}
             className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md
-              bg-gradient-to-r from-purple-600 to-blue-600
-              hover:from-purple-500 hover:to-blue-500
-              text-white transition-all duration-150 active:scale-95"
+              bg-white text-black transition-all duration-150 active:scale-95"
           >
             {isLastQuestion ? (
               <>

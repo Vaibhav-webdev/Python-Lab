@@ -1,15 +1,15 @@
 export const metadata = {
   title: "Mock Next.js Interview — Fix 3 Bugs in Real Time",
   description:
-    "Practice a real-time Next.js, React, and JavaScript mock interview with randomly generated bug-fixing challenges. Solve timed coding problems, improve debugging skills, and prepare for frontend developer interviews.",
+    "Practice a real-time Next.js, React, and Python mock interview with randomly generated bug-fixing challenges. Solve timed coding problems, improve debugging skills, and prepare for frontend developer interviews.",
   keywords: [
-  "JavaScript interview",
-  "JavaScript interview questions",
+  "Python interview",
+  "Python interview questions",
   "Mock interview",
   "React interview",
   "Coding interview",
   "Bug fixing challenge",
-  "JavaScript debugging",
+  "Python debugging",
   "Programming interview practice",
   "Coding assessment",
 ],

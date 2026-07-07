@@ -30,18 +30,16 @@ export default function ResultsScreen({ results, onReset }) {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-[#0f0c06] overflow-hidden px-4 py-12">
+    <div className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden px-4 py-12">
       {/* Ambient glow */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
       >
-        <div
-          className="w-[480px] h-[480px] rounded-full opacity-20"
+        <div className="w-[480px] h-[480px] rounded-full opacity-30"
           style={{
-            background:
-              "radial-gradient(ellipse at center, #fbbf24 0%, #f97316 50%, transparent 72%)", // Updated colors
-            filter: "blur(80px)",
+            background: "radial-gradient(ellipse at center, #ffffff 0%, #ffffff 35%, transparent 72%)",
+            filter: "blur(90px)",
           }}
         />
       </div>
@@ -53,10 +51,10 @@ export default function ResultsScreen({ results, onReset }) {
           animate={{ scale: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.05 }}
           className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6
-            bg-gradient-to-br from-yellow-500/25 to-orange-600/25
-            border border-amber-500/30"
+            bg-gradient-to-br from-white/70 to-white/60
+            border border-white/80"
         >
-          <Trophy size={34} className="text-amber-400" />
+          <Trophy size={34} className="text-white" />
         </motion.div>
 
         {/* Heading */}
@@ -102,7 +100,7 @@ export default function ResultsScreen({ results, onReset }) {
                 key={q.id}
                 variants={cardVariants}
                 className="flex items-center justify-between text-left
-                  bg-yellow-300/10 border border-yellow-800/40 rounded-xl px-5 py-4"
+                  bg-white/10 border border-white/30 rounded-xl px-5 py-4"
               >
                 {/* Left: index + title + meta */}
                 <div className="flex-1 min-w-0">
@@ -121,7 +119,7 @@ export default function ResultsScreen({ results, onReset }) {
                     >
                       {diff.label}
                     </span>
-                    <span className="text-slate-600 text-xs flex items-center gap-1">
+                    <span className="text-slate-400 text-xs flex items-center gap-1">
                       <Clock size={10} />
                       {Math.floor(q.timeLimit / 60)} min
                     </span>
@@ -141,7 +139,7 @@ export default function ResultsScreen({ results, onReset }) {
                       {formatTime(result.timeSpent)}
                     </motion.div>
                   ) : (
-                    <div className="flex items-center gap-1.5 text-slate-500 text-sm font-medium">
+                    <div className="flex items-center gap-1.5 text-slate-400 text-sm font-medium">
                       <SkipForward size={13} />
                       Skipped
                     </div>
@@ -161,11 +159,8 @@ export default function ResultsScreen({ results, onReset }) {
         >
           <button
             onClick={onReset}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white
-              bg-gradient-to-r from-yellow-600 to-orange-600
-              hover:from-yellow-500 hover:to-orange-500
-              transition-all duration-200 active:scale-[0.97]
-              shadow-lg shadow-yellow-900/30 cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm 
+              bg-white text-black transition-all duration-200 active:scale-[0.97] shadow-lg shadow-yellow-900/30 cursor-pointer"
           >
             <RotateCcw size={15} />
             Try again

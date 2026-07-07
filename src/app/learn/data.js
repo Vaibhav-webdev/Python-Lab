@@ -66,1258 +66,2040 @@ export const DIFFICULTY_MAP = {
 export const learningTopics = [
   {
     "id": "01",
-    "slug": "intro-js-architecture",
-    "title": "Introduction to JavaScript",
+    "slug": "python-syntax-fundamentals",
+    "title": "Python Syntax Fundamentals",
     "icon": "BookOpen",
-    "overview": "Understand the core nature of JS, its history, how engines compile code, and the foundational paradigm it follows.",
-    "explanation": "## What is JavaScript?\n\nJavaScript is a high-level, dynamic, multi-paradigm programming language. Initially created to make web pages interactive, it has evolved into a universal language capable of running on servers (Node.js), desktops (Electron), and even embedded systems.\n\n## ECMAScript: The Standard\n\nJavaScript is an implementation of the ECMAScript (ES) specification. The TC39 committee governs this spec. When you hear \"ES6\" or \"ES2015\", it refers to a specific version of this specification that introduced massive upgrades like `let`, `const`, arrow functions, and classes.\n\n## How JavaScript Engines Work\n\nEngines like Google V8 (Chrome/Node.js), SpiderMonkey (Firefox), and JavaScriptCore (Safari) don't just 'read' your code. They use a Just-In-Time (JIT) compilation process:\n1. **Parsing:** Reads code and creates an Abstract Syntax Tree (AST).\n2. **Interpretation:** Quickly converts AST to byte code and runs it (fast startup).\n3. **Profiling & Compilation:** Identifies 'hot' code (run frequently) and compiles it to highly optimized machine code (fast execution).\n\n## Single-Threaded Nature\n\nJavaScript has a single call stack. It can only execute one piece of code at a time. It handles concurrency not via multiple threads, but via an Event Loop and asynchronous callbacks (which we will cover later).\n\n## Key Takeaway\n\nUnderstanding that JS is compiled just-in-time and runs on a single thread is crucial. It explains why long-running synchronous operations block the entire program, paving the way for understanding async patterns later.",
+    "overview": "Understand Python's minimalistic syntax philosophy, print output, commenting styles, indentation rules, and reserved keywords.",
+    "explanation": "## The print() Function\n\nPython's primary output mechanism. Unlike many languages, it's a built-in function, not a statement.\n\n```python \n# Basic output\nprint('Hello, World!')\nprint(42)\nprint(3.14)\n\n# Multiple arguments (space-separated)\nprint('Name:', 'John', 'Age:', 25)\n\n# Custom separator and end\nprint('A', 'B', 'C', sep='-')   # A-B-C\nprint('Hello', end=' ')          # No newline\nprint('World')                   # Hello World\n\n# f-strings inside print\nname = 'Python'\nprint(f'Learning {name}!')      # Learning Python!\n```\n\n## Comments\n\n```python \n# This is a single-line comment\n\n'''\nThis is a\nmulti-line comment\n(or docstring)\n'''\n\n\"\"\"\nAnother multi-line\ncomment style\n\"\"\"\n```\n\n**Note:** Multi-line strings technically create string objects. Python ignores them if not assigned to a variable, making them work as comments.\n\n## Indentation (The Core Rule)\n\nPython uses **whitespace indentation** to define code blocks — NOT curly braces `{}`.\n\n```python \n# ✅ Correct indentation (4 spaces — PEP 8 standard)\nif True:\n    print('This is indented')\n    if True:\n        print('Nested indentation')\n\n# ❌ WRONG — will throw IndentationError\nif True:\nprint('Missing indent!')\n\n# ❌ WRONG — mixed tabs and spaces\nif True:\n\tprint('Tab here')\n    print('Space here')  # TabError!\n```\n\n**Critical rules:**\n- Use **4 spaces** per level (PEP 8 standard)\n- **NEVER** mix tabs and spaces\n- All statements in a block must have the **same** indentation\n- First line of a block cannot be empty (unlike some languages)\n\n## Keywords\n\nPython has **35+ reserved words** that cannot be used as identifiers:\n\n```python \nimport keyword\nprint(keyword.kwlist)\n# ['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await',\n#  'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except',\n#  'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is',\n#  'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return',\n#  'try', 'while', 'with', 'yield']\n\nprint(keyword.iskeyword('if'))    # True\nprint(keyword.iskeyword('hello')) # False\n```\n\n## Python's Philosophy\n\n```python \nimport this\n# Prints 'The Zen of Python' — 19 guiding principles\n```",
     "keyRules": [
-      "ECMAScript (ES) is the standard specification; JavaScript is the implementation",
-      "V8 uses JIT compilation: Parsing -> Bytecode -> Optimized Machine Code",
-      "JavaScript is single-threaded with a single call stack",
-      "It supports Object-Oriented, Functional, and Procedural paradigms"
+      "Python uses 4-space indentation to define blocks — never mix tabs and spaces",
+      "print() is a function in Python 3 — use parentheses, always",
+      "Multi-line comments are technically unassigned string literals — they still create string objects",
+      "Keywords are case-sensitive: True/False/None are keywords, true/false/null are NOT",
+      "PEP 8 is Python's style guide — follow it for readable, professional code"
     ],
-    "task": "Write a script that logs your environment's JS engine info and uses typeof to check the data type of a number, a string, and a boolean.",
-    "hint": "Use console.log() to print the values and typeof operator to check their types.",
+    "task": "Create a program that prints your name, age, and favorite language using print() with custom separators. Then print Python's keyword list count. Finally, write a properly indented if/else block that prints 'Pythonic!' if a variable is set to True.",
+    "hint": "Use print('Name', 'Age', 'Lang', sep=' | ') for custom separator. Use len(keyword.kwlist) for keyword count. Remember 4-space indent inside if block.",
     "learnings": [
-      { "title": "ECMAScript Specifications", "desc": "Understanding the TC39 process, stage proposals, and how features become standard." },
-      { "title": "Engine Internals (V8)", "desc": "Deep dive into Ignition (interpreter) and TurboFan (optimizing compiler)." },
-      { "title": "JIT vs AOT Compilation", "desc": "Comparing Just-In-Time (JS) with Ahead-Of-Time (C++/Rust) compilation models." }
+      { "title": "print() function", "desc": "Outputting data to standard console using Python's built-in print utility with separators and end parameters." },
+      { "title": "Comments", "desc": "Writing single-line (#) and multi-line (triple-quoted) inline documentation notes ignored by the interpreter." },
+      { "title": "Indentation", "desc": "Understanding Python's whitespace-based block scoping system replacing traditional curly braces." },
+      { "title": "Keywords", "desc": "Reviewing all 35+ reserved words like if, else, for, while, class, def that cannot be used as identifiers." }
     ],
-    "starterCode": `// Task: Log the environment info and check types\n\n// 1. Log a string describing the execution environment\n\n\n// 2. Define a number, a string, and a boolean\n\n\n// 3. Log the typeof each variable\n`,
-    "solutionCode": `// Task: Log the environment info and check types\n\n// 1. Log a string describing the execution environment\nconsole.log("Running in a JavaScript Engine environment.");\n\n// 2. Define a number, a string, and a boolean\nconst age = 25;\nconst name = "JavaScript";\nconst isActive = true;\n\n// 3. Log the typeof each variable\nconsole.log(typeof age);      // "number"\nconsole.log(typeof name);     // "string"\nconsole.log(typeof isActive); // "boolean"`,
-    "exampleCode": `// 🧠 JavaScript Engine Flow Example\n\n// 1. This code is parsed into an AST\nfunction calculateSum(a, b) {\n  return a + b;\n}\n\n// 2. Initially interpreted as bytecode (fast to start)\nlet result = calculateSum(5, 10);\nconsole.log("Sum:", result);\n\n// 3. If called repeatedly, V8's TurboFan compiler\n// will optimize this function into raw machine code.\nfor (let i = 0; i < 10000; i++) {\n  calculateSum(i, i + 1);\n}`,
+    "starterCode": "# Task: Python Syntax Fundamentals\n\n# 1. Print your name, age, and favorite language with '|' as separator\n\n# 2. Print the total count of Python keywords\n\n# 3. Create a variable 'is_awesome' set to True\n#    Write an if/else block (properly indented!)\n#    If True → print 'Pythonic!'\n#    If False → print 'Not yet...'",
+    "solutionCode": "# Task: Python Syntax Fundamentals\n\n# 1. Print with custom separator\nprint('John Doe', '25', 'Python', sep=' | ')\n# Output: John Doe | 25 | Python\n\n# 2. Keyword count\nimport keyword\nprint(f'Total Python keywords: {len(keyword.kwlist)}')\n# Output: Total Python keywords: 35\n\n# 3. Indented if/else block\nis_awesome = True\nif is_awesome:\n    print('Pythonic!')\nelse:\n    print('Not yet...')\n# Output: Pythonic!",
+    "exampleCode": "# 🧠 Advanced Syntax Patterns\n\n# Multi-line print with triple quotes\nprint('''\n╔══════════════════╗\n║  PYTHON ROCKS!   ║\n╚══════════════════╝\n''')\n\n# print() returns None — can be used in expressions\nresult = print('Hello')  # Prints 'Hello'\nprint(result)             # Prints 'None'\n\n# String multiplication for patterns\nprint('-' * 40)\nprint('  REPORT'.center(40))\nprint('-' * 40)\n\n# Suppress newline for progress bar effect\nimport time\nfor i in range(10):\n    print('█', end='', flush=True)\n    time.sleep(0.2)\nprint()  # New line at end\n\n# __name__ guard — module vs script\nif __name__ == '__main__':\n    print('This file was run directly')\n\n# Using keyword module programmatically\nimport keyword\nfor kw in keyword.kwlist:\n    print(f'{kw:>10}', end='  ')\n    if keyword.kwlist.index(kw) % 5 == 4:\n        print()",
     "tests": [
-      { "id": "t1", "description": "Should use console.log", "check": "code => /console\\.log\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should use the typeof operator", "check": "code => /typeof\\s+/.test(code)" },
-      { "id": "t3", "description": "Should define a number variable", "check": "code => /const\\s+\\w+\\s*=\\s*\\d+/.test(code) || /let\\s+\\w+\\s*=\\s*\\d+/.test(code)" },
-      { "id": "t4", "description": "Should define a string variable", "check": "code => /=\\s*[\"'].*[\"']/.test(code)" }
+      { "id": "t1", "description": "Should use print() with sep parameter", "check": "code => /print\\s*\\(.*sep\\s*=/.test(code)" },
+      { "id": "t2", "description": "Should import keyword module", "check": "code => /import\\s+keyword/.test(code)" },
+      { "id": "t3", "description": "Should use len() to count keywords", "check": "code => /len\\s*\\(\\s*keyword\\.kwlist/.test(code)" },
+      { "id": "t4", "description": "Should have if/else with proper indentation (4 spaces)", "check": "code => /if\\s+is_awesome.*:\\n    /.test(code)" },
+      { "id": "t5", "description": "Should print 'Pythonic!'", "check": "code => /print\\s*\\(\\s*['\\\"]Pythonic!['\\\"]/.test(code)" }
     ]
   },
   {
     "id": "02",
-    "slug": "variables-memory-scope",
-    "title": "Variables & Memory Allocation",
+    "slug": "python-variables-data-types",
+    "title": "Variables & Data Types",
     "icon": "Variable",
-    "overview": "Master data declarations, modern keywords, scoping rules, and how the engine hoists variables in memory.",
-    "explanation": "## The Problem with `var`\n\nHistorically, JavaScript only had `var`. It is **function-scoped**, meaning if you declare it inside an `if` block or a `for` loop, it leaks out and is accessible in the entire function. This leads to unexpected bugs and polluted global scopes.\n\n## The Modern Fix: `let` and `const`\n\nES6 introduced `let` and `const`, which are **block-scoped**. They are strictly confined to the nearest set of curly braces `{}`. \n- Use `const` when the variable reference will not change (arrays and objects included—just don't reassign the variable).\n- Use `let` when the variable reference *will* change (like a loop counter).\n\n## Hoisting Mechanism\n\nAll variables (`var`, `let`, `const`) are 'hoisted' to the top of their scope during the compilation phase. However, how they behave differs:\n- **`var`**: Hoisted and initialized with `undefined`. You can use it before declaration (bad practice).\n- **`let` / `const`**: Hoisted but **not initialized**. Accessing them before the declaration line throws a `ReferenceError`. This 'dead zone' between the scope start and the declaration line is called the **Temporal Dead Zone (TDZ)**.\n\n## Memory Allocation\n\nPrimitives (String, Number, Boolean, etc.) are stored directly in the 'Stack' memory where the variable lives. Non-primitives (Objects, Arrays) are stored in the 'Heap', and the variable in the Stack holds a pointer (reference) to that Heap memory.",
+    "overview": "Master Python's dynamic typing system, variable assignment rules, and all core primitive data categories.",
+    "explanation": "## Dynamic Typing\n\nPython is **dynamically typed** — you don't declare types, the interpreter infers them at runtime.\n\n```python \n# No type declaration needed\nx = 42          # Python knows this is int\nname = 'Alice'  # Python knows this is str\npi = 3.14       # Python knows this is float\n\n# Type can change at runtime (reassignment)\nx = 'now a string'  # Perfectly valid!\n\n# Check types\nprint(type(x))       # <class 'str'>\nprint(type(pi))      # <class 'float'>\nprint(type(True))    # <class 'bool'>\nprint(type(None))    # <class 'NoneType'>\n```\n\n## Variable Naming Rules\n\n```python \n# ✅ Valid names\nage = 25\n_first_name = 'John'\nnum2 = 10\nprivateVar = True\nMAX_SIZE = 100\n\n# ❌ INVALID names\n# 2nd_place = 5     # Cannot start with number\n# my-var = 10       # No hyphens (interpreted as minus)\n# class = 'A'       # Cannot use keyword\n# my name = 'John'  # No spaces\n```\n\n**Conventions (PEP 8):**\n- `snake_case` for variables and functions\n- `UPPER_SNAKE_CASE` for constants\n- `_leading_underscore` for internal/private\n- `__dunder__` for magic methods\n\n## int — Arbitrary Precision\n\n```python \nx = 42\nbig = 999999999999999999999999999999999999999999999\nprint(type(big))  # <class 'int'> — NO overflow!\n\n# Different number bases\nbinary = 0b1010    # 10 in decimal\noctal = 0o17       # 15 in decimal\nhex_val = 0xFF     # 255 in decimal\n\n# Underscore separators for readability (Python 3.6+)\nmillion = 1_000_000\ncredit_card = 4000_1234_5678_9010\n```\n\n## float — Double Precision\n\n```python \npi = 3.14159\nscientific = 2.5e4    # 25000.0\nnegative = -0.001\n\n# ⚠️ Floating point precision issue\nprint(0.1 + 0.2)       # 0.30000000000000004\nprint(0.1 + 0.2 == 0.3) # False!\n\n# Solution: use round() or decimal module\nprint(round(0.1 + 0.2, 1))  # 0.3\n\n# Special values\nprint(float('inf'))    # infinity\nprint(float('-inf'))   # -infinity\nprint(float('nan'))    # Not a Number\n```\n\n## str — Unicode Strings\n\n```python \n# Different quote styles\nsingle = 'hello'\ndouble = \"world\"\nmulti = '''line1\nline2'''\n\n# Escape sequences\nprint('Hello\\nWorld')   # Newline\nprint('Tab\\there')      # Tab\nprint('Quote: \\'hi\\'')  # Escaped quote\nprint(r'Raw\\nString')   # Raw string — no escape processing\n\n# str is IMMUTABLE\ns = 'hello'\n# s[0] = 'H'  # TypeError! Cannot change individual characters\ns = 'Hello'   # This creates a NEW string object\n```\n\n## bool — Int Subclass\n\n```python \na = True\nb = False\n\n# bool is a subclass of int!\nprint(True + True)     # 2\nprint(isinstance(True, int))  # True\nprint(False == 0)      # True\nprint(True == 1)       # True\n\n# But they are DIFFERENT objects\nprint(True is 1)       # False\nprint(type(True))      # <class 'bool'>\n```\n\n## None — The Null Sentinel\n\n```python \nx = None\nprint(type(x))  # <class 'NoneType'>\n\n# None is a SINGLETON — only one None object exists\na = None\nb = None\nprint(a is b)   # True (same object in memory)\n\n# Common use: default/unset state\ndef find_user(id):\n    if id not in database:\n        return None\n    return database[id]\n\n# Check for None\nif result is None:    # ✅ Preferred\n    print('Not found')\nif result == None:    # ⚠️ Works but not recommended\n    print('Not found')\nif not result:        # ⚠️ Dangerous! Also catches 0, '', [], False\n    print('Not found')\n```",
     "keyRules": [
-      "Avoid var in modern JS; prefer let and const",
-      "let and const are block-scoped (confined to {})",
-      "var is function-scoped (leaks out of if/for blocks)",
-      "let/const are hoisted but exist in the Temporal Dead Zone (TDZ) until declaration",
-      "Primitives go to Stack, Objects/Arrays go to Heap (via reference)"
+      "Python is dynamically typed — no type declarations needed, but use type hints for clarity",
+      "int has arbitrary precision in Python — no overflow, no 32/64-bit limits",
+      "float has precision issues (0.1 + 0.2 ≠ 0.3) — use round() or decimal module for exact math",
+      "str is immutable — you cannot change individual characters, every operation creates a new string",
+      "Always use 'is None' to check for None — '== None' works but 'not x' also catches 0, '', [], False",
+      "bool is a subclass of int — True==1 and False==0, but True is not 1 (different identity)"
     ],
-    "task": "Demonstrate the difference between var and let inside an if block. Try to log both outside the block to show how var leaks but let throws a TDZ error (comment out the let error to keep script running).",
-    "hint": "Create an if(true) block. Declare a variable with var and another with let. Log them outside the block.",
+    "task": "Create variables of each type: int (a 10-digit number with underscores), float (a scientific notation number), str (using both quote styles), bool, and None. Print each variable with its type using f-strings. Then demonstrate the 0.1 + 0.2 precision issue and fix it with round(). Finally, prove that None is a singleton using 'is'.",
+    "hint": "Use type() to get the type. Use f'{var} → {type(var)}' for clean output. Use round(0.1 + 0.2, 1) for the fix. Use 'a = None; b = None; print(a is b)' for singleton proof.",
     "learnings": [
-      { "title": "Stack vs Heap Memory", "desc": "How primitives are copied by value and objects are copied by reference." },
-      { "title": "Temporal Dead Zone Deep Dive", "desc": "Why TDZ exists and how it prevents accessing variables before initialization." },
-      { "title": "Variable Shadowing", "desc": "Declaring a variable in an inner scope with the same name as an outer scope." }
+      { "title": "int type", "desc": "Storing whole number integers of arbitrary precision without overflow limitations." },
+      { "title": "float type", "desc": "Handling double-precision floating-point decimal numbers and IEEE 754 representation quirks." },
+      { "title": "str type", "desc": "Managing immutable sequences of Unicode characters enclosed in single, double, or triple quotes." },
+      { "title": "bool type", "desc": "Working with True and False constants that subclass the integer type internally." },
+      { "title": "None type", "desc": "Representing the absence of a value using Python's singular null-like sentinel object." }
     ],
-    "starterCode": `// Task: Demonstrate var leaking vs let block scope\n\nfunction checkScope() {\n  if (true) {\n    var varVariable = "I am var";\n    let letVariable = "I am let";\n  }\n\n  // 1. Try logging varVariable (this will work)\n  \n\n  // 2. Try logging letVariable (this will throw ReferenceError)\n  // Comment it out after testing so the script finishes\n  \n}\n\ncheckScope();`,
-    "solutionCode": `// Task: Demonstrate var leaking vs let block scope\n\nfunction checkScope() {\n  if (true) {\n    var varVariable = "I am var";\n    let letVariable = "I am let";\n  }\n\n  // 1. Try logging varVariable (this will work)\n  console.log("Outside block:", varVariable); // Works! var leaked.\n\n  // 2. Try logging letVariable (this will throw ReferenceError)\n  // Comment it out after testing so the script finishes\n  // console.log(letVariable); // ReferenceError: letVariable is not defined\n}\n\ncheckScope();`,
-    "exampleCode": `// 🧠 Hoisting & TDZ in Action\n\n// --- VAR HOISTING ---\nconsole.log(myVar); // undefined (hoisted, initialized to undefined)\nvar myVar = 10;\n\n// --- LET/CONST TDZ ---\n// console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization\nlet myLet = 20;\n\n// --- BLOCK SCOPING ---\nlet x = 10;\n{\n  let x = 20; // Completely separate variable (shadows outer x)\n console.log("Inside block:", x); // 20\n}\nconsole.log("Outside block:", x); // 10\n\n// --- CONST RULES ---\nconst PI = 3.14;\n// PI = 3.15; // TypeError: Assignment to constant variable.\n\n// Note: const objects/arrays CAN be mutated internally!\nconst user = { name: "Ali" };\nuser.name = "Hamza"; // This is ALLOWED (mutating heap memory)\n// user = {}; // This is FORBIDDEN (reassigning stack reference)`,
+    "starterCode": "# Task: Variables & Data Types\n\n# 1. Create one variable of each type:\n#    - int: use underscore separators (e.g., 1_000_000)\n#    - float: use scientific notation (e.g., 2.5e4)\n#    - str: try both single and double quotes\n#    - bool: set to True or False\n#    - None\n\n# 2. Print each variable with its type using f-strings\n\n# 3. Demonstrate the 0.1 + 0.2 precision issue\n#    Show the raw result, then fix with round()\n\n# 4. Prove None is a singleton using 'is'",
+    "solutionCode": "# Task: Variables & Data Types\n\n# 1. Create variables\nmy_int = 9_999_999_999\nmy_float = 2.5e4\nmy_str_single = 'Python'\nmy_str_double = \"Awesome\"\nmy_bool = True\nmy_none = None\n\n# 2. Print with types\nprint(f'{my_int} → {type(my_int)}')\nprint(f'{my_float} → {type(my_float)}')\nprint(f'{my_str_single} → {type(my_str_single)}')\nprint(f'{my_str_double} → {type(my_str_double)}')\nprint(f'{my_bool} → {type(my_bool)}')\nprint(f'{my_none} → {type(my_none)}')\n\n# 3. Float precision issue\nraw = 0.1 + 0.2\nfixed = round(0.1 + 0.2, 1)\nprint(f'\\nRaw: 0.1 + 0.2 = {raw}')\nprint(f'Fixed: round(0.1 + 0.2, 1) = {fixed}')\n\n# 4. None singleton proof\na = None\nb = None\nprint(f'\\na is b: {a is b}')  # True",
+    "exampleCode": "# 🧠 Advanced Type Patterns\n\n# Multiple assignment\na, b, c = 1, 2.0, 'three'\nx = y = z = 0  # All point to same object\n\n# Swap without temp\na, b = b, a\n\n# Type checking patterns\nif isinstance(x, (int, float)):\n    print('Numeric type')\n\n# Chained comparisons (Pythonic!)\nage = 25\nif 18 <= age <= 65:\n    print('Working age')\n\n# Decimal for precise math\nfrom decimal import Decimal, getcontext\ngetcontext().prec = 6\na = Decimal('0.1')\nb = Decimal('0.2')\nprint(a + b)  # 0.3 (exact!)\n\n# String immutability proof\ns = 'hello'\nprint(id(s))\ns = s + ' world'\nprint(id(s))  # Different ID — new object!\n\n# Boolean trickiness\nprint(bool(''))    # False\nprint(bool(' '))   # True (non-empty!)\nprint(bool([]))    # False\nprint(bool([0]))   # True (non-empty list!)\nprint(bool(0.0))   # False\nprint(bool(-1))    # True (non-zero!)",
     "tests": [
-      { "id": "t1", "description": "Should use the var keyword", "check": "code => /var\\s+\\w+/.test(code)" },
-      { "id": "t2", "description": "Should use the let keyword", "check": "code => /let\\s+\\w+/.test(code)" },
-      { "id": "t3", "description": "Should have an if block", "check": "code => /if\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should log the var variable outside the block", "check": "code => /console\\.log\\s*\\(.*varVariable/.test(code)" }
+      { "id": "t1", "description": "Should create an int with underscore separators", "check": "code => /\\d+_\\d+/.test(code)" },
+      { "id": "t2", "description": "Should create a float with scientific notation", "check": "code => /\\d+\\.\\d*e[+-]?\\d+/.test(code)" },
+      { "id": "t3", "description": "Should use type() function", "check": "code => /type\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should demonstrate 0.1 + 0.2 precision issue", "check": "code => /0\\.1\\s*\\+\\s*0\\.2/.test(code)" },
+      { "id": "t5", "description": "Should use round() to fix precision", "check": "code => /round\\s*\\(\\s*0\\.1\\s*\\+\\s*0\\.2/.test(code)" },
+      { "id": "t6", "description": "Should use 'is' to prove None singleton", "check": "code => /None.*is.*None|is\\s+None/.test(code)" }
     ]
   },
   {
     "id": "03",
-    "slug": "data-types-foundations",
-    "title": "Data Types Foundations",
-    "icon": "Binary",
-    "overview": "Deep dive into primitive and non-primitive value categories, understanding how JavaScript represents data under the hood.",
-    "explanation": "## The 8 Data Types\n\nJavaScript has exactly 8 data types. 7 are **Primitives** (immutable, copied by value) and 1 is **Non-Primitive** (mutable, copied by reference).\n\n### The 7 Primitives:\n1. **String**: Text sequence (`\"Hello\"`, `'World'`, `` `Template` ``)\n2. **Number**: 64-bit double-precision floats. Includes `Infinity`, `-Infinity`, and `NaN`.\n3. **BigInt**: For integers larger than `Number.MAX_SAFE_INTEGER` (e.g., `9007199254740991n`)\n4. **Boolean**: Logical entity (`true` or `false`)\n5. **Undefined**: Default value for uninitialized variables.\n6. **Null**: Intentional absence of any object value.\n7. **Symbol**: Guaranteed unique identifier (e.g., `Symbol('id')`)\n\n### The 1 Non-Primitive:\n8. **Object**: Collections of properties (includes Arrays, Functions, Dates, Maps, Sets—everything else is an object).\n\n## The `typeof` Quirk\n\n`typeof null` returns `\"object\"`. This is a famous historical bug in JavaScript from its first implementation that was never fixed to maintain backward compatibility.\n\n## Mutability\n\nIf you change a primitive, JS creates a new value in memory. If you change a property of an object, JS modifies the existing memory in the Heap.",
+    "slug": "python-type-conversion",
+    "title": "Type Conversion & Casting",
+    "icon": "Shuffle",
+    "overview": "Explicitly transform values between incompatible data types using Python's constructor functions.",
+    "explanation": "## Why Type Conversion?\n\nPython doesn't auto-convert between incompatible types in most operations:\n\n```python \n# This WORKS (numeric promotion)\nresult = 5 + 2.5    # int + float → float (7.5)\n\n# This FAILS (incompatible types)\n# result = '5' + 2  # TypeError! Can't add str and int\n\n# Solution: explicit conversion\nresult = int('5') + 2  # 7 ✅\n```\n\n## int() Conversion\n\n```python \n# From float (truncates, does NOT round)\nprint(int(3.9))     # 3 (not 4!)\nprint(int(-2.7))    # -2\n\n# From string (must be valid integer format)\nprint(int('42'))    # 42\nprint(int('  42  ')) # 42 (whitespace allowed)\n# print(int('3.14')) # ValueError!\n# print(int('abc'))  # ValueError!\n\n# From boolean\nprint(int(True))    # 1\nprint(int(False))   # 0\n\n# From other bases\nprint(int('1010', 2))   # 10 (binary)\nprint(int('FF', 16))    # 255 (hexadecimal)\nprint(int('17', 8))     # 15 (octal)\n```\n\n## str() Conversion\n\n```python \n# From any object\nprint(str(42))        # '42'\nprint(str(3.14))      # '3.14'\nprint(str(True))      # 'True' (not '1'!)\nprint(str(None))      # 'None'\nprint(str([1,2,3]))   # '[1, 2, 3]'\n\n# For custom formatting, use f-strings instead\nx = 3.14159\nprint(str(x))           # '3.14159'\nprint(f'{x:.2f}')       # '3.14' (formatted!)\n```\n\n## float() Conversion\n\n```python \n# From int\nprint(float(10))     # 10.0\n\n# From string\nprint(float('3.14'))    # 3.14\nprint(float('  -2.5 ')) # -2.5 (whitespace & sign allowed)\nprint(float('inf'))     # inf\nprint(float('nan'))     # nan\n\n# Special strings\nprint(float('1e3'))   # 1000.0\n\n# From boolean\nprint(float(True))   # 1.0\nprint(float(False))  # 0.0\n\n# Edge cases\n# print(float('3.14.15')) # ValueError!\n# print(float('abc'))     # ValueError!\n```\n\n## bool() Conversion — Truthiness\n\n**This is CRITICAL** — almost everything is True in Python:\n\n```python \n# Falsy values (only these!)\nprint(bool(False))   # False\nprint(bool(None))    # False\nprint(bool(0))       # False\nprint(bool(0.0))     # False\nprint(bool(''))      # False (empty string)\nprint(bool([]))      # False (empty list)\nprint(bool(()))      # False (empty tuple)\nprint(bool({}))      # False (empty dict)\nprint(bool(set()))   # False (empty set)\nprint(bool(range(0)))# False (empty range)\n\n# EVERYTHING else is True!\nprint(bool(1))       # True\nprint(bool(-1))      # True (any non-zero!)\nprint(bool(' '))     # True (space is non-empty!)\nprint(bool([0]))     # True (non-empty list!)\nprint(bool('False')) # True (it's a non-empty string!)\n```\n\n## Practical Patterns\n\n```python \n# Safe user input conversion\nage = int(input('Enter age: '))  # May crash!\n\n# Safer version\ntry:\n    age = int(input('Enter age: '))\nexcept ValueError:\n    print('Invalid number!')\n    age = 0\n\n# Chained conversion\nresult = float(int('42'))  # int → float: 42.0\n\n# Conditional conversion\ndef to_int(value, default=0):\n    try:\n        return int(value)\n    except (ValueError, TypeError):\n        return default\n```",
     "keyRules": [
-      "There are 7 primitive types and 1 object type",
-      "Primitives are immutable and copied by value",
-      "Objects (including Arrays/Functions) are mutable and copied by reference",
-      "typeof null returns 'object' (historical bug)",
-      "BigInt is created by appending 'n' to an integer (e.g., 10n)"
+      "int() truncates floats (int(3.9) = 3) — it does NOT round, use round() for rounding",
+      "int() can parse strings with whitespace but NOT strings with decimals ('3.14' fails)",
+      "int('1010', 2) converts from binary — second arg is the base (2, 8, 10, 16)",
+      "bool('False') is True — it's a non-empty string! Only empty string '' is False",
+      "bool([0]) is True — non-empty container! Only [] is False regardless of contents",
+      "Always wrap input conversion in try/except — users will enter garbage"
     ],
-    "task": "Create a variable for each of the 7 primitive data types and use typeof to log their types. Also, specifically demonstrate the typeof null bug.",
-    "hint": "Declare a string, number, bigint, boolean, undefined, null, and symbol. Log them with typeof.",
+    "task": "Create a function `safe_convert(value, target_type)` that safely converts a value to 'int', 'float', or 'str'. Return None if conversion fails. Test it with: safe_convert('42', 'int'), safe_convert('abc', 'int'), safe_convert('3.14', 'float'), safe_convert('[1,2,3]', 'str'). Also create a truthiness checker that labels values as 'Truthy' or 'Falsy' for: 0, '', 'hello', [], [0], None, False, 'False'.",
+    "hint": "Use a dict mapping type names to constructors: {'int': int, 'float': float, 'str': str}. Wrap in try/except. For truthiness: use 'Truthy' if bool(val) else 'Falsy'.",
     "learnings": [
-      { "title": "Primitive Immutability", "desc": "Why string methods return new strings instead of modifying the original." },
-      { "title": "NaN is a Number", "desc": "Understanding why typeof NaN === 'number' and how to reliably check for NaN using Number.isNaN()." },
-      { "title": "Symbol Use Cases", "desc": "Using Symbols as hidden object keys to avoid property collisions." }
+      { "title": "int() conversion", "desc": "Casting floats, strings with numeric content, and booleans into integer representations." },
+      { "title": "str() conversion", "desc": "Converting any Python object into its human-readable string representation format." },
+      { "title": "float() conversion", "desc": "Parsing numeric strings and integer values into decimal floating-point numbers." },
+      { "title": "bool() conversion", "desc": "Evaluating truthiness of values—empty collections and zeros become False, others become True." }
     ],
-    "starterCode": `// Task: Log the type of all 7 primitives\n\n// 1. String\n\n// 2. Number\n\n// 3. BigInt\n\n// 4. Boolean\n\n// 5. Undefined\n\n// 6. Null (Demonstrate the bug here)\n\n// 7. Symbol\n`,
-    "solutionCode": `// Task: Log the type of all 7 primitives\n\n// 1. String\nconst str = "Hello";\nconsole.log(typeof str); // "string"\n\n// 2. Number\nconst num = 42;\nconsole.log(typeof num); // "number"\n\n// 3. BigInt\nconst big = 9007199254740991n;\nconsole.log(typeof big); // "bigint"\n\n// 4. Boolean\nconst bool = false;\nconsole.log(typeof bool); // "boolean"\n\n// 5. Undefined\nlet und;\nconsole.log(typeof und); // "undefined"\n\n// 6. Null (Demonstrate the bug here)\nconst nul = null;\nconsole.log(typeof nul); // "object" (The famous JS bug!)\n\n// 7. Symbol\nconst sym = Symbol("id");\nconsole.log(typeof sym); // "symbol"`,
-    "exampleCode": `// 🧠 Primitives vs References\n\n// Primitives are copied by VALUE\nlet a = 10;\nlet b = a; // b gets a copy of the value 10\nb = 20;\nconsole.log(a); // 10 (a is unaffected)\n\n// Objects are copied by REFERENCE\nlet objA = { name: "Ali" };\nlet objB = objA; // objB gets the memory ADDRESS of objA\nobjB.name = "Hamza";\nconsole.log(objA.name); // "Hamza" (objA is affected!)\n\n// --- NaN Quirks ---\nconsole.log(typeof NaN);        // "number"\nconsole.log(NaN === NaN);       // false (NaN is not equal to itself!)\nconsole.log(Number.isNaN(NaN)); // true (The correct way to check)`,
+    "starterCode": "# Task: Type Conversion & Casting\n\n# 1. Create safe_convert(value, target_type) function\n#    - target_type can be 'int', 'float', or 'str'\n#    - Return converted value or None on failure\n\n# 2. Test safe_convert with:\n#    - safe_convert('42', 'int')\n#    - safe_convert('abc', 'int')\n#    - safe_convert('3.14', 'float')\n#    - safe_convert('[1,2,3]', 'str')\n\n# 3. Create a truthiness checker\n#    Test these values: 0, '', 'hello', [], [0], None, False, 'False'\n#    Print each value and whether it's 'Truthy' or 'Falsy'",
+    "solutionCode": "# Task: Type Conversion & Casting\n\n# 1. safe_convert function\ndef safe_convert(value, target_type):\n    converters = {\n        'int': int,\n        'float': float,\n        'str': str\n    }\n    try:\n        return converters[target_type](value)\n    except (ValueError, TypeError, KeyError):\n        return None\n\n# 2. Test safe_convert\nprint(safe_convert('42', 'int'))      # 42\nprint(safe_convert('abc', 'int'))     # None\nprint(safe_convert('3.14', 'float'))  # 3.14\nprint(safe_convert('[1,2,3]', 'str')) # '[1,2,3]'\n\n# 3. Truthiness checker\ntest_values = [0, '', 'hello', [], [0], None, False, 'False']\nprint('\\n--- Truthiness Check ---')\nfor val in test_values:\n    label = 'Truthy' if bool(val) else 'Falsy'\n    print(f'{repr(val):>10} → {label}')",
+    "exampleCode": "# 🧠 Advanced Conversion Patterns\n\n# Base conversion helper\ndef convert_base(num, base):\n    digits = '0123456789ABCDEF'\n    if num == 0:\n        return '0'\n    result = ''\n    while num > 0:\n        result = digits[num % base] + result\n        num //= base\n    return result\n\nprint(convert_base(255, 2))   # 11111111\nprint(convert_base(255, 16))  # FF\n\n# Recursive safe conversion\ndef deep_convert(obj, target_type):\n    \"\"\"Convert nested structures\"\"\"\n    if isinstance(obj, list):\n        return [deep_convert(item, target_type) for item in obj]\n    try:\n        return target_type(obj)\n    except (ValueError, TypeError):\n        return obj\n\nprint(deep_convert(['1', '2.5', 'abc'], int))  # [1, 2, 'abc']\n\n# Type coercion in operations\nprint('3' * 3)     # '333' (str repetition)\nprint(3 * '3')     # '333' (int * str)\n# print('3' + 3)   # TypeError!\n\n# ord() and chr() — char ↔ int\nprint(ord('A'))    # 65\nprint(chr(65))     # 'A'\nprint(chr(ord('A') + 1))  # 'B'\n\n# eval() — dangerous but powerful converter\n# NEVER use with untrusted input!\nresult = eval('2 + 3 * 4')  # 14\nprint(result)\n\n# ast.literal_eval() — SAFE alternative\nimport ast\nprint(ast.literal_eval('[1, 2, 3]'))  # [1, 2, 3] (actual list!)\nprint(ast.literal_eval('{\"a\": 1}'))  # {'a': 1} (actual dict!)",
     "tests": [
-      { "id": "t1", "description": "Should define a BigInt variable", "check": "code => /\\d+n/.test(code)" },
-      { "id": "t2", "description": "Should define a Symbol variable", "check": "code => /Symbol\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should define a null variable", "check": "code => /null/.test(code)" },
-      { "id": "t4", "description": "Should log typeof for all variables", "check": "code => (code.match(/typeof\\s+/g) || []).length >= 7" }
+      { "id": "t1", "description": "Should define safe_convert function", "check": "code => /def\\s+safe_convert/.test(code)" },
+      { "id": "t2", "description": "Should use try/except for error handling", "check": "code => /try\\s*:/.test(code)" },
+      { "id": "t3", "description": "Should test with 'abc' string for int conversion", "check": "code => /safe_convert\\s*\\(\\s*['\\\"]abc['\\\"]/.test(code)" },
+      { "id": "t4", "description": "Should use bool() for truthiness check", "check": "code => /bool\\s*\\(/.test(code)" },
+      { "id": "t5", "description": "Should test 'False' string for truthiness", "check": "code => /['\\\"]False['\\\"]/.test(code)" },
+      { "id": "t6", "description": "Should print 'Truthy' or 'Falsy' labels", "check": "code => /Truthy.*Falsy|Falsy.*Truthy/.test(code)" }
     ]
   },
   {
     "id": "04",
-    "slug": "operators-expressions",
+    "slug": "python-operators-expressions",
     "title": "Operators & Expressions",
     "icon": "Calculator",
-    "overview": "Utilize mathematics, logic gates, and modern short-circuit operators to build complex evaluations safely.",
-    "explanation": "## Arithmetic & Assignment\n\nStandard math operators (`+`, `-`, `*`, `/`, `%`, `**`) combined with assignment (`=`, `+=`, `-=`).\n*Note:* The `%` (modulo) operator returns the remainder, heavily used for wrapping numbers (like array indexes or angles).\n\n## Comparison Operators\n\nAlways use **Strict Equality (`===`)**. It checks both value AND type.\n**Loose Equality (`==`)** performs type coercion before comparing, leading to unpredictable results (e.g., `\"5\" == 5` is `true`, `null == undefined` is `true`).\n\n## Logical Operators & Short-Circuiting\n\n- `&&` (AND): Returns the first **falsy** value. If all are truthy, returns the last value.\n- `||` (OR): Returns the first **truthy** value. If all are falsy, returns the last value.\n\n## Modern Safe Operators (ES2020)\n\n- **Nullish Coalescing (`??`)**: Returns the right side ONLY if the left side is exactly `null` or `undefined`. Unlike `||`, it treats `0` and `\"\"` as valid values.\n- **Optional Chaining (`?.`)**: Safely accesses deeply nested object properties. If a link in the chain is `null` or `undefined`, it short-circuits and returns `undefined` instead of throwing an error.\n\n## Ternary Operator\n\n`condition ? exprIfTrue : exprIfFalse`. The only operator that takes three operands. Keep it simple; don't nest ternaries.",
+    "overview": "Utilize arithmetic, logical, comparison, and Python-specific operator categories for data evaluation.",
+    "explanation": "## Arithmetic Operators\n\n```python \na, b = 17, 5\n\nprint(a + b)    # 22   Addition\nprint(a - b)    # 12   Subtraction\nprint(a * b)    # 85   Multiplication\nprint(a / b)    # 3.4  Division (ALWAYS float)\nprint(a // b)   # 3    Floor division\nprint(a % b)    # 2    Modulus (remainder)\nprint(a ** b)   # 1419857  Exponentiation\n\n# Division always returns float!\nprint(10 / 2)   # 5.0 (not 5)\nprint(10 // 2)  # 5  (use // for int division)\n\n# Negative floor division (tricky!)\nprint(-7 // 2)  # -4 (floors toward negative infinity)\nprint(-7 % 3)   # 2  (result has sign of divisor)\n```\n\n## Comparison Operators\n\n```python \nx, y = 10, 20\n\nprint(x == y)   # False  Equal\nprint(x != y)   # True   Not equal\nprint(x < y)    # True   Less than\nprint(x > y)    # False  Greater than\nprint(x <= y)   # True   Less or equal\nprint(x >= y)   # False  Greater or equal\n\n# Chained comparisons (Pythonic!)\nage = 25\nprint(18 <= age <= 65)     # True\nprint(0 < x < 100 < y)     # True\n# Equivalent to: (0 < x) and (x < 100) and (100 < y)\n```\n\n## Logical Operators\n\n```python \na, b = True, False\n\nprint(a and b)   # False (both must be True)\nprint(a or b)    # True  (at least one True)\nprint(not a)     # False (negation)\n\n# Short-circuit evaluation\nprint(0 and print('never'))   # 0 (print never runs!)\nprint(1 or print('never'))    # 1 (print never runs!)\nprint(0 or print('runs'))     # prints 'runs' then None\n\n# Returns the VALUE, not just True/False\nprint(1 and 2)      # 2\nprint(0 and 2)      # 0\nprint(0 or 'hello') # 'hello'\nprint('' or 'default') # 'default'\n```\n\n## Assignment Operators\n\n```python \nx = 10\nx += 5   # x = x + 5  → 15\nx -= 3   # x = x - 3  → 12\nx *= 2   # x = x * 2  → 24\nx /= 4   # x = x / 4  → 6.0\nx //= 2  # x = x // 2 → 3.0\nx **= 3  # x = x ** 3 → 27.0\nx %= 5   # x = x % 5  → 2.0\n```\n\n## Bitwise Operators\n\n```python \na, b = 12, 10  # 1100, 1010\n\nprint(a & b)   # 8   (1000)  AND\nprint(a | b)   # 14  (1110)  OR\nprint(a ^ b)   # 6   (0110)  XOR\nprint(~a)      # -13         NOT (two's complement)\nprint(a << 2)  # 48  (110000) Left shift\nprint(a >> 1)  # 6   (110)    Right shift\n\n# Practical: check if number is even/odd\nprint(12 & 1)  # 0 → even\nprint(13 & 1)  # 1 → odd\n\n# Swap without temp\na, b = 10, 20\na = a ^ b\nb = a ^ b\na = a ^ b\nprint(a, b)  # 20, 10\n```\n\n## Membership Operators\n\n```python \n# in / not in — test containment\nprint('h' in 'hello')       # True\nprint('x' not in 'hello')   # True\n\nnums = [1, 2, 3, 4, 5]\nprint(3 in nums)            # True\nprint(6 not in nums)        # True\n\nprint('name' in {'name': 'John', 'age': 25})  # True (checks keys)\n```\n\n## Identity Operators\n\n```python \n# is / is not — check if SAME object in memory\na = [1, 2, 3]\nb = [1, 2, 3]\nc = a\n\nprint(a == b)   # True  (same values)\nprint(a is b)   # False (different objects!)\nprint(a is c)   # True  (same object)\n\n# Always use 'is' for None, True, False\nx = None\nprint(x is None)    # ✅ Correct\nprint(x == None)    # ⚠️ Works but not PEP 8 recommended\n\n# String interning\na = 'hello'\nb = 'hello'\nprint(a is b)  # True (small strings are interned)\n\na = 'a very long string that probably wont be interned'\nb = 'a very long string that probably wont be interned'\nprint(a is b)  # Might be False",
     "keyRules": [
-      "Always use === instead of ==",
-      "|| returns the first truthy value, && returns the first falsy value",
-      "?? only checks for null/undefined (treats 0 and '' as valid)",
-      "?. prevents 'Cannot read property of undefined' errors",
-      "Do not nest ternary operators"
+      "Division (/) ALWAYS returns float — use // for integer division",
+      "Negative floor division floors toward negative infinity: -7 // 2 = -4 (not -3)",
+      "Logical operators return VALUES, not booleans: 0 or 'hello' returns 'hello'",
+      "Short-circuit evaluation: 'and' stops at first falsy, 'or' stops at first truthy",
+      "Use 'is' for identity (None, True, False) — use '==' for value equality",
+      "Chained comparisons (18 <= age <= 65) are evaluated correctly and Pythonically"
     ],
-    "task": "Create an object representing a user configuration. Use optional chaining to safely read a nested property, and use ?? to provide a fallback if the value is null or undefined. Compare ?? with || to show the difference when the value is 0.",
-    "hint": "Create an object like `config.theme.fontSize`. Set it to 0. Use `||` and `??` to fallback to 16, and log the difference.",
+    "task": "Create a function `classify_number(n)` that returns a dictionary with: 'even' (bool), 'positive' (bool), 'divisible_by_3' (bool), 'power_of_2' (bool), 'binary' (string of binary digits). Use bitwise & for even check, // and % for divisibility, and bit manipulation for power of 2 check (n & (n-1) == 0). Test with n=16, n=7, n=-4, n=0.",
+    "hint": "Even: n & 1 == 0. Positive: n > 0. Div by 3: n % 3 == 0. Power of 2: n > 0 and n & (n-1) == 0. Binary: use bin(n) or manual conversion. Handle edge case n=0 for power_of_2.",
     "learnings": [
-      { "title": "Short-Circuit Evaluation Logic", "desc": "How && and || decide which value to return without evaluating the rest." },
-      { "title": "Bitwise Operators", "desc": "Using &, |, ^, ~ for low-level binary manipulations and fast math." },
-      { "title": "Comma Operator", "desc": "Evaluating multiple expressions and returning the last one." }
+      { "title": "Arithmetic Operators", "desc": "Performing addition, subtraction, multiplication, division, floor division, modulus, and exponentiation." },
+      { "title": "Comparison Operators", "desc": "Evaluating equality, inequality, greater-than, less-than, and chained comparisons." },
+      { "title": "Logical Operators", "desc": "Combining conditions using and, or, and not keywords with short-circuit evaluation behavior." },
+      { "title": "Assignment Operators", "desc": "Updating variables using +=, -=, *=, /=, //=, **=, and %= compound assignment shorthand." },
+      { "title": "Bitwise Operators", "desc": "Manipulating binary digits using AND, OR, XOR, NOT, left shift, and right shift." },
+      { "title": "Membership Operators", "desc": "Testing containment within sequences using 'in' and 'not in'." },
+      { "title": "Identity Operators", "desc": "Comparing memory addresses using 'is' and 'is not'." }
     ],
-    "starterCode": `// Task: Demonstrate ?? vs || and Optional Chaining\n\nconst config = {\n  theme: {\n    // fontSize is intentionally missing or 0\n    fontSize: 0 \n  }\n};\n\n// 1. Safely get fontSize using optional chaining\n\n\n// 2. Use || to fallback to 16 (Notice the bug with 0)\n\n\n// 3. Use ?? to fallback to 16 (Correct behavior with 0)\n`,
-    "solutionCode": `// Task: Demonstrate ?? vs || and Optional Chaining\n\nconst config = {\n  theme: {\n    // fontSize is intentionally missing or 0\n    fontSize: 0 \n  }\n};\n\n// 1. Safely get fontSize using optional chaining\nconst size = config?.theme?.fontSize;\n\n// 2. Use || to fallback to 16 (Notice the bug with 0)\nconst sizeOr = size || 16; \nconsole.log("With ||:", sizeOr); // 16 (Incorrectly treats 0 as false)\n\n// 3. Use ?? to fallback to 16 (Correct behavior with 0)\nconst sizeNullish = size ?? 16; \nconsole.log("With ??:", sizeNullish); // 0 (Correctly keeps 0)`,
-    "exampleCode": `// 🧠 Advanced Operator Magic\n\n// --- Logical Assignment Operators ---\nlet x = 10;\nx ||= 20; // x = x || 20 (assigns if falsy)\nx &&= 5;  // x = x && 5  (assigns if truthy)\nx ??= 99; // x = x ?? 99  (assigns if null/undefined)\n\n// --- Optional Chaining with Function Calls ---\nconst user = { name: "Ali" };\nconst id = user.getId?.(); // Returns undefined, doesn't crash\n\n// --- Ternary vs Short Circuit ---\n// Bad (nesting):\n// const val = a ? b ? c : d : e;\n\n// Good (early returns / variables):\nconst age = 20;\nconst status = age >= 18 ? "Adult" : "Minor";`,
+    "starterCode": "# Task: Operators & Expressions\n\n# 1. Create classify_number(n) function\n#    Returns dict with:\n#    - 'even': bool (use bitwise &)\n#    - 'positive': bool\n#    - 'divisible_by_3': bool (use %)\n#    - 'power_of_2': bool (use n & (n-1) == 0 trick)\n#    - 'binary': binary string\n\n# 2. Test with: 16, 7, -4, 0\n#    Print each result nicely formatted\n\n# Edge case: 0 is even and divisible by 3,\n# but NOT a power of 2!",
+    "solutionCode": "# Task: Operators & Expressions\n\n# 1. classify_number function\ndef classify_number(n):\n    return {\n        'even': n & 1 == 0,\n        'positive': n > 0,\n        'divisible_by_3': n % 3 == 0,\n        'power_of_2': n > 0 and (n & (n - 1)) == 0,\n        'binary': bin(n)\n    }\n\n# 2. Test with multiple values\ntest_nums = [16, 7, -4, 0]\n\nfor n in test_nums:\n    result = classify_number(n)\n    print(f'\\nNumber: {n}')\n    for key, val in result.items():\n        print(f'  {key:>15}: {val}')",
+    "exampleCode": "# 🧠 Advanced Operator Patterns\n\n# Ternary (conditional expression)\nstatus = 'Adult' if age >= 18 else 'Minor'\n\n# Walrus operator (Python 3.8+)\nif (n := len(data)) > 10:\n    print(f'Too many items: {n}')\n\n# Bit manipulation tricks\n# Check if n is even: n & 1 == 0\n# Get last k bits: n & ((1 << k) - 1)\n# Set kth bit: n | (1 << k)\n# Clear kth bit: n & ~(1 << k)\n# Toggle kth bit: n ^ (1 << k)\n\n# Count set bits (Brian Kernighan's algorithm)\ndef count_bits(n):\n    count = 0\n    while n:\n        n &= n - 1  # Clear lowest set bit\n        count += 1\n    return count\n\nprint(count_bits(13))  # 3 (1101 has 3 ones)\n\n# Short-circuit for default values\nname = user_name or 'Anonymous'\nconfig = settings.get('timeout') or 30\n\n# Chained comparison for range check\n# Instead of: if x >= 0 and x <= 100:\nif 0 <= x <= 100:\n    print('In range')\n\n# Operator precedence reminder\n# ** > ~ > *,/,//,% > +,- > <<,>> > & > ^ > | > ==,!=,>,< > not > and > or\nresult = 2 + 3 * 4 ** 2  # 2 + 3*16 = 2 + 48 = 50",
     "tests": [
-      { "id": "t1", "description": "Should use optional chaining operator", "check": "code => /\\?\\./.test(code)" },
-      { "id": "t2", "description": "Should use nullish coalescing operator", "check": "code => /\\?\\?/.test(code)" },
-      { "id": "t3", "description": "Should use logical OR operator", "check": "code => /\\|\\|/.test(code)" },
-      { "id": "t4", "description": "Should have an object with nested properties", "check": "code => /\\{\\s*[\\w]+\\s*:\\s*\\{/.test(code)" }
+      { "id": "t1", "description": "Should define classify_number function", "check": "code => /def\\s+classify_number/.test(code)" },
+      { "id": "t2", "description": "Should use bitwise & for even check", "check": "code => /\\&\\s*1\\s*==\\s*0/.test(code)" },
+      { "id": "t3", "description": "Should use n & (n-1) for power of 2", "check": "code => /n\\s*&\\s*\\(\\s*n\\s*-\\s*1\\s*\\)/.test(code)" },
+      { "id": "t4", "description": "Should use modulo for divisibility check", "check": "code => /%\\s*3\\s*==\\s*0/.test(code)" },
+      { "id": "t5", "description": "Should handle edge case n=0", "check": "code => /\\b0\\b/.test(code)" },
+      { "id": "t6", "description": "Should use bin() for binary conversion", "check": "code => /bin\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "05",
-    "slug": "type-coercion-mechanics",
-    "title": "Type Conversion & Coercion",
-    "icon": "Shuffle",
-    "overview": "Understand implicit engine adjustments and forced explicit type casting to avoid hidden bugs.",
-    "explanation": "## What is Coercion?\n\nType coercion is the automatic or manual conversion of values from one data type to another (e.g., String to Number).\n\n## Implicit Coercion (The Danger Zone)\n\nJavaScript automatically coerces types when operators encounter mismatched types.\n- **The `+` Trap**: If EITHER operand is a string, `+` does string concatenation. `\"5\" + 5` becomes `\"55\"`.\n- **The `-` Trick**: The `-` operator ONLY works with numbers. `\"5\" - 1` becomes `4` (JS implicitly converts \"5\" to 5).\n- **Boolean Coercion**: In logical contexts (if, &&, ||), JS coerces values to booleans based on **Truthy/Falsy** rules.\n\n## Truthy vs Falsy Values\n\nThere are exactly **7 falsy values** in JS:\n`false`, `0`, `-0`, `0n` (BigInt), `\"\"` (empty string), `null`, `undefined`, `NaN`.\n**Everything else is truthy** (including `\"0\"`, `[]` empty arrays, `{}` empty objects).\n\n## Explicit Conversion (The Safe Way)\n\nNever rely on implicit coercion for business logic. Use built-in wrappers:\n- `Number(\"42\")` -> `42` (Returns `NaN` if invalid)\n- `String(42)` -> `\"42\"`\n- `Boolean(1)` -> `true`\n- `parseInt(\"42px\", 10)` -> `42` (Parses from start until non-numeric char)",
+    "slug": "python-input-output",
+    "title": "Input & Output Operations",
+    "icon": "Monitor",
+    "overview": "Capture user input at runtime and format output strings using modern Python techniques.",
+    "explanation": "## input() Function\n\n```python \n# Basic usage — ALWAYS returns a string!\nname = input('Enter your name: ')\nprint(f'Hello, {name}!')\n\n# Need a number? Convert it!\nage = int(input('Enter age: '))\nheight = float(input('Enter height in meters: '))\n\n# Multiple inputs on one line\n# User types: John 25\nname, age = input('Name and age: ').split()\n\n# With specific separator\n# User types: John,25,Engineer\nname, age, role = input('Enter (comma-separated): ').split(',')\n\n# Map to types directly\n# User types: 10 20 30\nnums = list(map(int, input('Numbers: ').split()))\nprint(sum(nums))  # 60\n```\n\n**Critical:** `input()` ALWAYS returns `str`. If you need any other type, you MUST convert.\n\n## f-strings (Python 3.6+) — THE Standard\n\n```python \nname = 'Alice'\nage = 30\npi = 3.14159\n\n# Basic interpolation\nprint(f'Name: {name}, Age: {age}')\n\n# Expressions inside {}\nprint(f'Next year: {age + 1}')\nprint(f'Double pi: {pi * 2}')\n\n# Format specs\nprint(f'Pi: {pi:.2f}')         # 3.14\nprint(f'Pi: {pi:.4f}')         # 3.1416\nprint(f'Pi: {pi:10.2f}')       # '      3.14' (width 10)\nprint(f'Number: {42:05d}')     # '00042' (zero-padded)\nprint(f'Hex: {255:x}')         # 'ff'\nprint(f'Binary: {10:b}')       # '1010'\nprint(f'Percent: {0.85:%}')     # '85.000000%'\nprint(f'Percent: {0.85:.1%}')   # '85.0%'\n\n# Alignment\nprint(f'{\"Left\":<20}')    # 'Left                '\nprint(f'{\"Center\":^20}')   # '       Center        '\nprint(f'{\"Right\":>20}')    # '               Right'\n\n# Thousand separators\nprint(f'{1000000:,}')       # '1,000,000'\nprint(f'{1000000:_}')       # '1_000_000'\n\n# Calling methods inside f-strings\nprint(f'{name.upper()}')    # 'ALICE'\nprint(f'{\"hello world\".title()}')  # 'Hello World'\n\n# Nested f-strings (Python 3.12+)\n# width = 10\n# print(f'{\"hi\":{width}}')\n\n# Debugging with = (Python 3.8+)\nx = 42\nprint(f'{x=}')         # 'x=42'\nprint(f'{x + 1=}')     # 'x + 1=43'\nprint(f'{name=!r}')    # \"name='Alice'\" (repr format)\n```\n\n## format() Method\n\n```python \n# Positional\nprint('{} loves {}'.format('Alice', 'Python'))\nprint('{0} loves {1}, {0} loves {1}'.format('Alice', 'Python'))\n\n# Named\nprint('{name} is {age}'.format(name='Alice', age=30))\n\n# With format specs\nprint('{:.2f}'.format(3.14159))    # '3.14'\nprint('{:05d}'.format(42))         # '00042'\n```\n\n## % Formatting (Legacy)\n\n```python \nname = 'Alice'\nage = 30\n\nprint('Name: %s, Age: %d' % (name, age))\nprint('Pi: %.2f' % 3.14159)\nprint('%05d' % 42)  # '00042'\n\n# Dictionary style\nprint('%(name)s is %(age)d' % {'name': 'Alice', 'age': 30})\n```\n\n**Use f-strings unless maintaining legacy code.**",
     "keyRules": [
-      "+ with a string triggers concatenation, not addition",
-      "-, *, / automatically convert strings to numbers",
-      "There are exactly 7 falsy values (false, 0, NaN, '', null, undefined, 0n)",
-      "Empty arrays [] and objects {} are truthy!",
-      "Always use Number(), String(), Boolean() for explicit casting"
+      "input() ALWAYS returns str — convert explicitly with int(), float(), etc.",
+      "Use f-strings for all new code — they're fastest, most readable, and most powerful",
+      "f'{x=}' debugging syntax (Python 3.8+) prints both variable name and value",
+      "Format specs: {value:width.precision type} — e.g., {pi:10.2f} for width-10 with 2 decimals",
+      "For multiple numeric inputs: list(map(int, input().split())) is the standard pattern",
+      "Use !r inside f-strings to get repr() output instead of str()"
     ],
-    "task": "Create a function `analyzeType(value)` that explicitly converts the input to a Number, String, and Boolean, and returns an object logging these conversions. Then test it with a truthy value (e.g., \"Hello\") and a falsy value (e.g., \"\" or 0).",
-    "hint": "Use the Number(), String(), and Boolean() wrapper functions inside your function and return them as an object.",
+    "task": "Create a simple calculator program: take two numbers and an operator (+, -, *, /) as input. Print the result formatted to 4 decimal places if it's a float, or as an integer if the result is whole. Handle division by zero gracefully. Use f-strings with conditional format specs.",
+    "hint": "Use input().split() to get all three values. Convert numbers to float. Check if result is whole: result == int(result). Use f'{result:.4f}' for float, f'{int(result)}' for whole. Check divisor != 0 before dividing.",
     "learnings": [
-      { "title": "ToPrimitive & ToNumber Abstract Operations", "desc": "The internal ECMA spec algorithms JS uses to decide how to coerce objects." },
-      { "title": "Loose Equality Coercion Algorithm", "desc": "Step-by-step what happens when you use == between different types." },
-      { "title": "Edge Cases with +", "desc": "Why [] + [] is \"\" and {} + [] is 0." }
+      { "title": "input() function", "desc": "Reading keyboard entries as strings from standard input with optional prompt messages." },
+      { "title": "f-strings", "desc": "Embedding expressions directly inside string literals using curly brace syntax." },
+      { "title": "format() method", "desc": "Using positional and named placeholders for advanced string template building." },
+      { "title": "% formatting", "desc": "Legacy C-style string interpolation for backward compatibility." }
     ],
-    "starterCode": `// Task: Create an explicit type converter function\n\nfunction analyzeType(value) {\n  // Return an object with num, str, and bool conversions\n  \n}\n\n// Test with a truthy value\nconsole.log(analyzeType("Hello"));\n\n// Test with a falsy value\nconsole.log(analyzeType(0));`,
-    "solutionCode": `// Task: Create an explicit type converter function\n\nfunction analyzeType(value) {\n  // Return an object with num, str, and bool conversions\n  return {\n    original: value,\n    toNumber: Number(value),\n    toString: String(value),\n    toBoolean: Boolean(value)\n  };\n}\n\n// Test with a truthy value\nconsole.log(analyzeType("Hello")); \n// { original: 'Hello', toNumber: NaN, toString: 'Hello', toBoolean: true }\n\n// Test with a falsy value\nconsole.log(analyzeType(0));\n// { original: 0, toNumber: 0, toString: '0', toBoolean: false }`,
-    "exampleCode": `// 🧠 Coercion Quirks & Rules\n\n// --- Implicit Coercion ---\nconsole.log(\"5\" + 3);     // "53" (String concat)\nconsole.log(\"5\" - 3);     // 2 (Math subtraction)\nconsole.log(true + 2);    // 3 (true becomes 1)\nconsole.log(false + 2);   // 2 (false becomes 0)\n\n// --- The Falsy Traps ---\nif ("") console.log("1"); // Won't run\nif (0) console.log("2");  // Won't run\nif ([]) console.log("3"); // RUNS! [] is truthy\nif ({}) console.log("4"); // RUNS! {} is truthy\n\n// --- Explicit Parsing ---\nconsole.log(parseInt("42px", 10)); // 42\nconsole.log(parseFloat("3.14abc")); // 3.14\nconsole.log(Number(""));            // 0\nconsole.log(Number(" "));           // 0\nconsole.log(Number(null));          // 0 (Weird!)\nconsole.log(Number(undefined));     // NaN`,
+    "starterCode": "# Task: Simple Calculator with Formatted Output\n\n# 1. Take input: two numbers and an operator\n#    Example input: \"10 5 +\" or \"7.5 2.5 /\"\n\n# 2. Convert inputs to appropriate types\n\n# 3. Perform the operation\n#    Handle division by zero!\n\n# 4. Format the result:\n#    - If result is a whole number → print as int\n#    - If result has decimals → print with 4 decimal places\n\n# 5. Print using f-strings nicely",
+    "solutionCode": "# Task: Simple Calculator with Formatted Output\n\n# 1. Take input\nuser_input = input('Enter (num1 num2 operator): ')\nparts = user_input.split()\n\nif len(parts) != 3:\n    print('Invalid input! Use: num1 num2 operator')\nelse:\n    # 2. Convert types\n    num1 = float(parts[0])\n    num2 = float(parts[1])\n    op = parts[2]\n\n    # 3. Perform operation\n    if op == '+':\n        result = num1 + num2\n    elif op == '-':\n        result = num1 - num2\n    elif op == '*':\n        result = num1 * num2\n    elif op == '/':\n        if num2 == 0:\n            print('Error: Division by zero!')\n            result = None\n        else:\n            result = num1 / num2\n    else:\n        print(f'Unknown operator: {op}')\n        result = None\n\n    # 4. Format and print\n    if result is not None:\n        if result == int(result):\n            print(f'{num1:g} {op} {num2:g} = {int(result)}')\n        else:\n            print(f'{num1:g} {op} {num2:g} = {result:.4f}')",
+    "exampleCode": "# 🧠 Advanced I/O Patterns\n\n# Safe input with validation\ndef get_number(prompt, min_val=None, max_val=None):\n    while True:\n        try:\n            value = float(input(prompt))\n            if min_val and value < min_val:\n                print(f'Minimum is {min_val}')\n                continue\n            if max_val and value > max_val:\n                print(f'Maximum is {max_val}')\n                continue\n            return value\n        except ValueError:\n            print('Enter a valid number!')\n\nage = get_number('Age: ', 0, 150)\n\n# Table formatting with f-strings\nprint(f'{\"Name\":<15} {\"Score\":>8} {\"Grade\":>6}')\nprint('-' * 31)\nstudents = [('Alice', 92.5, 'A'), ('Bob', 85.0, 'B'), ('Charlie', 78.3, 'C')]\nfor name, score, grade in students:\n    print(f'{name:<15} {score:>8.1f} {grade:>6}')\n\n# Progress bar in console\nimport time\nfor i in range(101):\n    bar = '█' * (i // 2) + '░' * (50 - i // 2)\n    print(f'\\r|{bar}| {i:3d}%', end='', flush=True)\n    time.sleep(0.03)\nprint()\n\n# Rich text formatting tricks\nprint(f'{\"IMPORTANT\":*^40}')\n# *************IMPORTANT**************\n\nprint(f'Error: {\"file not found\"!r}')\n# Error: 'file not found'\n\n# Number to words (simple)\ndef format_currency(amount):\n    return f'₹{amount:,.2f}'\n\nprint(format_currency(1234567.89))  # ₹12,34,567.89",
     "tests": [
-      { "id": "t1", "description": "Should define analyzeType function", "check": "code => /function\\s+analyzeType/.test(code) || /const\\s+analyzeType\\s*=/.test(code)" },
-      { "id": "t2", "description": "Should use Number() for conversion", "check": "code => /Number\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should use String() for conversion", "check": "code => /String\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should use Boolean() for conversion", "check": "code => /Boolean\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should return an object with the conversions", "check": "code => /return\\s*\\{/.test(code)" }
+      { "id": "t1", "description": "Should use input() to get user data", "check": "code => /input\\s*\\(/.test(code)" },
+      { "id": "t2", "description": "Should convert input to float", "check": "code => /float\\s*\\(/.test(code)" },
+      { "id": "t3", "description": "Should check for division by zero", "check": "code => /==\\s*0|zero/.test(code)" },
+      { "id": "t4", "description": "Should use f-string with .4f format spec", "check": "code => /:\\.4f/.test(code)" },
+      { "id": "t5", "description": "Should handle whole number result differently", "check": "code => /int\\s*\\(\\s*result\\s*\\)|result\\s*==\\s*int/.test(code)" },
+      { "id": "t6", "description": "Should use if/elif for operator selection", "check": "code => /elif/.test(code)" }
     ]
   },
   {
     "id": "06",
-    "slug": "cli-io-primitives",
-    "title": "Input & Output Primitives",
-    "icon": "Monitor",
-    "overview": "Manage standard CLI runtime logs, process arguments, and advanced terminal output formatting using core console methods.",
-    "explanation": "## Standard Output in JS\n\nIn JavaScript, the primary way to interact with the runtime environment is through the `console` object. While browsers provide `alert()` or `prompt()`, pure JavaScript (like Node.js) relies entirely on `console` methods for standard I/O.\n\n## Core Console Methods\n\n- **`console.log()`**: Standard output for general telemetry and debugging.\n- **`console.error()`**: Prints to the standard error stream (`stderr`). Useful for logging failures separately from standard output.\n- **`console.warn()`**: Outputs a warning message (typically styled with yellow text in terminals).\n- **`console.table()`**: Takes an array or object and prints it as a beautifully formatted ASCII table in the terminal. Extremely useful for inspecting data structures.\n- **`console.time()` & `console.timeEnd()`**: Starts and stops a high-resolution timer to measure how long a block of code takes to execute.\n\n## CLI Input via `process.argv`\n\nSince we don't have browser `prompt()`, the standard way to pass input to a vanilla JS script running in a terminal is via command-line arguments. \n\nThe `process.argv` property returns an array where:\n- Element 0: The path to the Node executable\n- Element 1: The path to the script file\n- Elements 2+: The actual arguments passed by the user\n\nWe use `.slice(2)` to extract just the user-provided arguments.",
+    "slug": "python-conditional-statements",
+    "title": "Conditional Statements",
+    "icon": "GitFork",
+    "overview": "Direct execution logic using if, else, elif branching structures and nested decision trees.",
+    "explanation": "## if Statement\n\n```python \nage = 20\n\nif age >= 18:\n    print('You are an adult')\n\n# One-liner (only for simple cases)\nif age >= 18: print('Adult')\n```\n\n## if / else\n\n```python \nage = 15\n\nif age >= 18:\n    print('Adult')\nelse:\n    print('Minor')\n\n# One-liner (ternary / conditional expression)\nstatus = 'Adult' if age >= 18 else 'Minor'\nprint(status)  # 'Minor'\n```\n\n## if / elif / else\n\n```python \nscore = 85\n\nif score >= 90:\n    grade = 'A'\nelif score >= 80:\n    grade = 'B'\nelif score >= 70:\n    grade = 'C'\nelif score >= 60:\n    grade = 'D'\nelse:\n    grade = 'F'\n\nprint(f'Grade: {grade}')  # 'B'\n```\n\n**Key points:**\n- Only ONE block executes (first match wins)\n- `elif` is short for 'else if'\n- The `else` block is optional\n- Order matters — put most specific conditions first!\n\n## Nested Conditions\n\n```python \nage = 25\nhas_license = True\n\nif age >= 18:\n    if has_license:\n        print('Can drive')\n    else:\n        print('Needs license')\nelse:\n    print('Too young to drive')\n\n# Better: flatten with 'and'\nif age >= 18 and has_license:\n    print('Can drive')\nelif age >= 18:\n    print('Needs license')\nelse:\n    print('Too young')\n```\n\n## Truthiness in Conditions\n\n```python \n# These are all VALID conditions\nname = 'Alice'\nif name:                    # Truthy (non-empty string)\n    print(f'Hello {name}')\n\nitems = []\nif not items:               # Falsy (empty list)\n    print('Cart is empty')\n\nvalue = 0\nif value is not None:       # Check for None specifically\n    print(f'Value: {value}')\n\n# Dangerous: 0, '', [], None, False all evaluate to False\nx = 0\nif x:           # This is False!\n    print('Won\\'t print')\n\nif x is not None:  # This correctly distinguishes 0 from None\n    print(f'Value is {x}')  # This prints!\n```\n\n## Common Patterns\n\n```python \n# Early return pattern (guard clauses)\ndef process(data):\n    if data is None:\n        return None\n    if len(data) == 0:\n        return []\n    # Main logic here\n    return [x * 2 for x in data]\n\n# Match-case (Python 3.10+)\ncommand = 'start'\nmatch command:\n    case 'start':\n        print('Starting...')\n    case 'stop':\n        print('Stopping...')\n    case 'pause' | 'resume':\n        print('Toggling...')\n    case _:\n        print('Unknown command')\n```",
     "keyRules": [
-      "Use console.log() for standard output and console.error() for failures",
-      "console.table() is the best way to visualize arrays/objects in CLI",
-      "Use console.time() and console.timeEnd() to benchmark performance",
-      "process.argv contains execution paths in indexes 0 and 1, user args start at index 2",
-      "Use process.argv.slice(2) to get an array of actual user inputs"
+      "elif checks are mutually exclusive — only the FIRST matching block runs",
+      "Order matters: put most specific/restrictive conditions BEFORE general ones",
+      "Use 'and' to flatten nested ifs when possible — improves readability",
+      "Use 'is None' / 'is not None' instead of == None or not x (avoids 0/''/[] confusion)",
+      "Ternary expression: value_if_true IF condition ELSE value_if_false — note the order!",
+      "Match-case (Python 3.10+) is cleaner than long if/elif chains for single-value checks"
     ],
-    "task": "Read a name from process.argv (fallback to 'Guest'). Greet the user. Then, define an array of user objects and log it using console.table. Finally, use console.time/timeEnd to measure a loop of 1 million iterations.",
-    "hint": "Extract args using process.argv.slice(2)[0]. Create the array, pass it to console.table(). Wrap a for loop in console.time('loop') and console.timeEnd('loop').",
+    "task": "Create a function `calculate_bmi(weight_kg, height_m)` that calculates BMI and returns a tuple: (bmi_value, category). Categories: Underweight (<18.5), Normal (18.5-24.9), Overweight (25-29.9), Obese (≥30). Format BMI to 1 decimal place. Also create a function `get_discount(price, customer_type)` where customer_type is 'student', 'senior', 'regular' — student gets 20%, senior 15%, regular 0%. Return discounted price.",
+    "hint": "BMI = weight / (height ** 2). Use if/elif/else for categories. For discount, use a dict mapping types to percentages: {'student': 0.20, 'senior': 0.15, 'regular': 0}. Return round(price * (1 - discount), 2).",
     "learnings": [
-      { "title": "Standard Streams (stdin, stdout, stderr)", "desc": "Understanding how data flows into and out of a process at the OS level." },
-      { "title": "Console Grouping", "desc": "Using console.group() and console.groupEnd() to indent nested logs." },
-      { "title": "String Substitutions", "desc": "Using %s, %d, and %o placeholders in console.log()." }
+      { "title": "if statement", "desc": "Executing a code block only when a specified boolean condition evaluates to True." },
+      { "title": "else clause", "desc": "Providing a fallback execution path when the preceding if condition fails." },
+      { "title": "elif ladder", "desc": "Chaining multiple mutually exclusive conditional checks sequentially after an initial if." },
+      { "title": "Nested conditions", "desc": "Placing conditional blocks inside other conditional blocks for multi-layered decision logic." }
     ],
-    "starterCode": `// Task: CLI I/O and Benchmarking\n\n// 1. Get name from CLI args, fallback to "Guest"\nconst name = undefined; // Extract from process.argv here\n\n// 2. Greet the user\n\n\n// 3. Define an array of objects and log with console.table\n\n\n// 4. Benchmark a loop of 1,000,000 iterations\n`,
-    "solutionCode": `// Task: CLI I/O and Benchmarking\n\n// 1. Get name from CLI args, fallback to "Guest"\nconst name = process.argv.slice(2)[0] || "Guest";\n\n// 2. Greet the user\nconsole.log(\`Hello, \${name}! Welcome to the CLI.\`);\n\n// 3. Define an array of objects and log with console.table\nconst users = [\n  { id: 1, name: "Ali", role: "Admin" },\n  { id: 2, name: "Bob", role: "User" },\n  { id: 3, name: "Charlie", role: "User" }\n];\nconsole.table(users);\n\n// 4. Benchmark a loop of 1,000,000 iterations\nconsole.time("loop_benchmark");\nfor (let i = 0; i < 1000000; i++) {\n  // Empty loop for benchmarking purposes\n}\nconsole.timeEnd("loop_benchmark");`,
-    "exampleCode": `// 🧠 Advanced Console & Process Tricks\n\n// --- String Substitutions ---\nconsole.log("Name: %s, Age: %d", "Ali", 25);\nconsole.log("Object: %o", { key: "value" });\n\n// --- Grouping ---\nconsole.group("User Details");\nconsole.log("Name: Ali");\nconsole.log("Age: 25");\nconsole.groupEnd();\n\n// --- Error & Warn Streams ---\nconsole.warn("This is a warning!");\nconsole.error("This is an error!");\n\n// --- Process Arguments ---\n// Run: node script.js --port 3000 --env prod\nconst args = process.argv.slice(2);\n// args = ['--port', '3000', '--env', 'prod']`,
+    "starterCode": "# Task: Conditional Statements\n\n# 1. Create calculate_bmi(weight_kg, height_m)\n#    Returns (bmi_rounded, category_string)\n#    Categories: Underweight, Normal, Overweight, Obese\n\n# 2. Create get_discount(price, customer_type)\n#    student → 20% off\n#    senior  → 15% off\n#    regular → no discount\n#    Return discounted price rounded to 2 decimals\n\n# 3. Test both functions\n#    BMI: 70kg, 1.75m\n#    Discount: 500, 'student'",
+    "solutionCode": "# Task: Conditional Statements\n\n# 1. BMI Calculator\ndef calculate_bmi(weight_kg, height_m):\n    bmi = weight_kg / (height_m ** 2)\n    bmi = round(bmi, 1)\n\n    if bmi < 18.5:\n        category = 'Underweight'\n    elif bmi < 25:\n        category = 'Normal'\n    elif bmi < 30:\n        category = 'Overweight'\n    else:\n        category = 'Obese'\n\n    return (bmi, category)\n\n# 2. Discount Calculator\ndef get_discount(price, customer_type):\n    discounts = {\n        'student': 0.20,\n        'senior': 0.15,\n        'regular': 0\n    }\n    discount = discounts.get(customer_type, 0)\n    return round(price * (1 - discount), 2)\n\n# 3. Test\nbmi, cat = calculate_bmi(70, 1.75)\nprint(f'BMI: {bmi} → {cat}')\n# BMI: 22.9 → Normal\n\nfinal_price = get_discount(500, 'student')\nprint(f'Discounted price: ₹{final_price}')\n# Discounted price: ₹400.0",
+    "exampleCode": "# 🧠 Advanced Conditional Patterns\n\n# Match-case with patterns (Python 3.10+)\ndef classify_point(point):\n    match point:\n        case (0, 0):\n            return 'Origin'\n        case (x, 0):\n            return f'On X-axis at {x}'\n        case (0, y):\n            return f'On Y-axis at {y}'\n        case (x, y) if x == y:\n            return f'On y=x line at ({x},{y})'\n        case (x, y):\n            return f'At ({x},{y})'\n\nprint(classify_point((5, 5)))  # On y=x line at (5,5)\n\n# Nested ternary (use sparingly!)\nage = 25\nlabel = 'child' if age < 13 else 'teen' if age < 20 else 'adult' if age < 60 else 'senior'\nprint(label)  # 'adult'\n\n# Dictionary dispatch (alternative to if/elif)\noperations = {\n    '+': lambda a, b: a + b,\n    '-': lambda a, b: a - b,\n    '*': lambda a, b: a * b,\n    '/': lambda a, b: a / b if b != 0 else None\n}\n\nop = '*'\nresult = operations.get(op, lambda a, b: None)(5, 3)\nprint(result)  # 15\n\n# Guard clause pattern\ndef process_order(order):\n    if not order:\n        return {'error': 'No order'}\n    if order.get('items') is None:\n        return {'error': 'No items'}\n    if len(order['items']) == 0:\n        return {'error': 'Empty cart'}\n\n    total = sum(item['price'] * item['qty'] for item in order['items'])\n    return {'success': True, 'total': total}\n\n# Chained comparison for range\nx = 50\nif 0 <= x < 25:\n    print('Low')\nelif 25 <= x < 75:\n    print('Medium')  # This runs\nelse:\n    print('High')",
     "tests": [
-      { "id": "t1", "description": "Should use process.argv", "check": "code => /process\\.argv/.test(code)" },
-      { "id": "t2", "description": "Should use .slice(2) on argv", "check": "code => /process\\.argv\\.slice\\s*\\(\\s*2\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should use console.table", "check": "code => /console\\.table\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should use console.time and timeEnd", "check": "code => /console\\.time\\s*\\(/.test(code) && /console\\.timeEnd\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should have a fallback value for the name", "check": "code => /\\|\\|\\s*[\"']Guest[\"']/.test(code)" }
+      { "id": "t1", "description": "Should define calculate_bmi function", "check": "code => /def\\s+calculate_bmi/.test(code)" },
+      { "id": "t2", "description": "Should use BMI formula weight / height^2", "check": "code => /weight.*\\/.*\\*\\*\\s*2|height\\s*\\*\\*\\s*2/.test(code)" },
+      { "id": "t3", "description": "Should use elif for BMI categories", "check": "code => /elif/.test(code)" },
+      { "id": "t4", "description": "Should define get_discount function", "check": "code => /def\\s+get_discount/.test(code)" },
+      { "id": "t5", "description": "Should use dict or if/elif for discount mapping", "check": "code => /discounts\\s*=\\s*\\{|elif.*discount/.test(code)" },
+      { "id": "t6", "description": "Should test with specific values", "check": "code => /70.*1\\.75|500.*student/.test(code)" }
     ]
   },
   {
     "id": "07",
-    "slug": "conditions-logical-paths",
-    "title": "Conditions & Logical Paths",
-    "icon": "GitFork",
-    "overview": "Direct execution logic using structural evaluation paths, branching code based on dynamic values.",
-    "explanation": "## Controlling Program Flow\n\nConditions allow your program to make decisions. Instead of executing every line top-to-bottom, you can create branches that only run when specific criteria are met.\n\n## `if / else if / else`\nThe most flexible form of conditionals. JavaScript evaluates the condition in parentheses. If it's truthy, the block executes. You can chain multiple conditions using `else if`.\n\n## The `switch` Statement\n\nA cleaner alternative when you are comparing a SINGLE value against multiple exact matches (not ranges, not complex logical evaluations).\n\n**How it works:**\n1. It evaluates the expression in `switch(expression)`.\n2. It looks for a `case` that strictly matches (`===`) the result.\n3. If found, it executes that block.\n4. **Crucial:** It uses \"fall-through\". If you don't write `break;` at the end of a case, it will continue executing the NEXT case's code even if the values don't match.\n\n## Nested Conditions\n\nYou can put `if` statements inside other `if` statements. While sometimes necessary, deep nesting makes code hard to read. It's often better to use early returns (guard clauses) or logical operators (`&&`, `||`) to flatten the structure.",
+    "slug": "python-loops-iteration-control",
+    "title": "Loops & Iteration Control",
+    "icon": "Repeat",
+    "overview": "Automate repetitive execution using for loops, while loops, and flow manipulation keywords.",
+    "explanation": "## for Loop\n\n```python \n# Iterate over a list\nfruits = ['apple', 'banana', 'cherry']\nfor fruit in fruits:\n    print(fruit)\n\n# Iterate over a string\nfor char in 'Python':\n    print(char)\n\n# range() — most common with for\nfor i in range(5):        # 0, 1, 2, 3, 4\n    print(i)\n\nfor i in range(2, 8):     # 2, 3, 4, 5, 6, 7\n    print(i)\n\nfor i in range(0, 20, 3): # 0, 3, 6, 9, 12, 15, 18\n    print(i)\n\n# Reverse range\nfor i in range(5, 0, -1): # 5, 4, 3, 2, 1\n    print(i)\n\n# enumerate — get index + value\nfor i, fruit in enumerate(fruits):\n    print(f'{i}: {fruit}')\n\n# zip — iterate parallel sequences\nnames = ['Alice', 'Bob']\nages = [25, 30]\nfor name, age in zip(names, ages):\n    print(f'{name} is {age}')\n```\n\n## while Loop\n\n```python \n# Basic while\ncount = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\n# While with condition\npassword = ''\nwhile password != 'secret':\n    password = input('Enter password: ')\nprint('Access granted!')\n\n# Infinite loop with break\nwhile True:\n    command = input('Command (q to quit): ')\n    if command == 'q':\n        break\n    print(f'Running: {command}')\n```\n\n## break — Exit Loop Immediately\n\n```python \n# Find first even number\nnums = [1, 3, 5, 4, 6, 8]\nfor n in nums:\n    if n % 2 == 0:\n        print(f'First even: {n}')\n        break\n# Output: First even: 4\n\n# break only exits the INNERMOST loop\nfor i in range(3):\n    for j in range(3):\n        if j == 1:\n            break  # Only breaks inner loop!\n        print(f'{i},{j}')\n# Output: 0,0  1,0  2,0\n```\n\n## continue — Skip to Next Iteration\n\n```python \n# Print only odd numbers\nfor i in range(10):\n    if i % 2 == 0:\n        continue  # Skip even numbers\n    print(i)\n# Output: 1, 3, 5, 7, 9\n\n# Skip invalid data\nnums = [1, -1, 2, -2, 3, None, 4]\nfor n in nums:\n    if n is None or n < 0:\n        continue\n    print(n)\n# Output: 1, 2, 3, 4\n```\n\n## pass — Do Nothing Placeholder\n\n```python \n# Empty block placeholder\nfor i in range(5):\n    pass  # TODO: implement later\n\n# In class/function stubs\nclass MyError(Exception):\n    pass  # Will add custom logic later\n\ndef todo_function():\n    pass  # Placeholder\n\n# Minimal if/else structure\nx = 10\nif x > 5:\n    print('Big')\nelse:\n    pass  # Explicitly do nothing\n```\n\n## for / else & while / else\n\n```python \n# else runs ONLY if loop completes without break\nfor n in range(2, 10):\n    for i in range(2, n):\n        if n % i == 0:\n            break\n    else:\n        print(f'{n} is prime')\n# Output: 2, 3, 5, 7 are prime\n\n# Search pattern\nnames = ['Alice', 'Bob', 'Charlie']\nfor name in names:\n    if name == 'David':\n        print('Found David!')\n        break\nelse:\n    print('David not found!')  # This runs\n```",
     "keyRules": [
-      "Use if/else for complex logic or range checks (e.g., > 90)",
-      "Use switch for strict equality matches against a single value",
-      "ALWAYS use 'break;' inside switch cases to prevent fall-through",
-      "Avoid deeply nested if statements; use early returns instead"
+      "for iterates over ANY iterable — lists, strings, dicts, ranges, files, generators",
+      "range(stop) starts at 0, range(start, stop, step) gives full control — stop is EXCLUSIVE",
+      "break exits only the INNERMOST loop — use a flag or refactor for outer loop breaks",
+      "continue skips remaining code in CURRENT iteration only — doesn't exit the loop",
+      "pass does absolutely nothing — it's a syntactic placeholder for empty blocks",
+      "for/else and while/else: the else block runs ONLY if the loop didn't hit a break"
     ],
-    "task": "Create two functions: 1) `getGrade(score)` using if/else if to return 'A', 'B', 'C', or 'F'. 2) `getDayType(day)` using a switch statement to return 'Weekend', 'Weekday', or 'Invalid'.",
-    "hint": "In getGrade, check highest scores first (e.g., if score >= 90). In getDayType, group Saturday/Sunday for Weekend, Monday-Friday for Weekday, and default for Invalid.",
+    "task": "Create a function `find_prime_factors(n)` that returns a list of all prime factors of n (with repetition). Use a while loop to divide by each factor. Create another function `fizzbuzz(n)` that returns a list where: multiples of 3 → 'Fizz', multiples of 5 → 'Buzz', both → 'FizzBuzz', others → the number itself. Use for loop with continue/elif logic.",
+    "hint": "Prime factors: start with d=2, while n>1: if n%d==0: append d, n//=d, else: d+=1. FizzBuzz: check %15 first (both), then %3, then %5, else keep number. Use continue to skip after first match.",
     "learnings": [
-      { "title": "Guard Clauses", "desc": "Flattening nested if/else structures by returning early." },
-      { "title": "Switch Fall-Through Intentionally", "desc": "Omitting break to group multiple cases to execute the same logic." },
-      { "title": "Ternary Operator Nesting", "desc": "Why nesting ternaries is bad practice and how to avoid it." }
+      { "title": "for loop", "desc": "Iterating over sequences like lists, strings, tuples, and ranges using element-based traversal." },
+      { "title": "while loop", "desc": "Repeating execution as long as a boolean condition remains True with manual counter management." },
+      { "title": "break keyword", "desc": "Terminating the nearest enclosing loop immediately and exiting to the outer scope." },
+      { "title": "continue keyword", "desc": "Skipping the remaining statements of the current iteration and jumping to the next cycle." },
+      { "title": "pass keyword", "desc": "Inserting a null operation placeholder to prevent syntax errors in empty code blocks." }
     ],
-    "starterCode": `// Task: Implement If/Else and Switch logic\n\nfunction getGrade(score) {\n  // Return 'A' for >= 90, 'B' for >= 80, 'C' for >= 70, 'F' otherwise\n  \n}\n\nfunction getDayType(day) {\n  // Use switch to return 'Weekend', 'Weekday', or 'Invalid'\n  \n}\n\n// Test cases\nconsole.log(getGrade(95)); // Expect "A"\nconsole.log(getGrade(85)); // Expect "B"\nconsole.log(getDayType("Saturday")); // Expect "Weekend"\nconsole.log(getDayType("Tuesday")); // Expect "Weekday"\nconsole.log(getDayType("Funday")); // Expect "Invalid"`,
-    "solutionCode": `// Task: Implement If/Else and Switch logic\n\nfunction getGrade(score) {\n  // Return 'A' for >= 90, 'B' for >= 80, 'C' for >= 70, 'F' otherwise\n  if (score >= 90) {\n    return "A";\n  } else if (score >= 80) {\n    return "B";\n  } else if (score >= 70) {\n    return "C";\n  } else {\n    return "F";\n  }\n}\n\nfunction getDayType(day) {\n  // Use switch to return 'Weekend', 'Weekday', or 'Invalid'\n  switch (day) {\n    case "Saturday":\n    case "Sunday":\n      return "Weekend";\n    case "Monday":\n    case "Tuesday":\n    case "Wednesday":\n    case "Thursday":\n    case "Friday":\n      return "Weekday";\n    default:\n      return "Invalid";\n  }\n}\n\n// Test cases\nconsole.log(getGrade(95)); // Expect "A"\nconsole.log(getGrade(85)); // Expect "B"\nconsole.log(getDayType("Saturday")); // Expect "Weekend"\nconsole.log(getDayType("Tuesday")); // Expect "Weekday"\nconsole.log(getDayType("Funday")); // Expect "Invalid"`,
-    "exampleCode": `// 🧠 Flattening Nested Ifs (Guard Clauses)\n\n// BAD (Nested):\nfunction processUser(user) {\n  if (user) {\n    if (user.isActive) {\n      if (user.role === "admin") {\n        return "Admin Access";\n      }\n    }\n  }\n  return "No Access";\n}\n\n// GOOD (Guard Clauses):\nfunction processUserClean(user) {\n  if (!user) return "No Access";\n  if (!user.isActive) return "No Access";\n  if (user.role !== "admin") return "No Access";\n  \n  return "Admin Access";\n}`,
+    "starterCode": "# Task: Loops & Iteration Control\n\n# 1. Create find_prime_factors(n)\n#    Returns list of prime factors (with repetition)\n#    Example: 84 → [2, 2, 3, 7]\n#    Use while loop\n\n# 2. Create fizzbuzz(n)\n#    Returns list of FizzBuzz values from 1 to n\n#    3 → 'Fizz', 5 → 'Buzz', 15 → 'FizzBuzz', else → number\n#    Use for loop\n\n# 3. Test both\n#    Prime factors of 84\n#    FizzBuzz from 1 to 20",
+    "solutionCode": "# Task: Loops & Iteration Control\n\n# 1. Prime factors using while loop\ndef find_prime_factors(n):\n    factors = []\n    d = 2\n    while n > 1:\n        if n % d == 0:\n            factors.append(d)\n            n //= d\n        else:\n            d += 1\n    return factors\n\n# 2. FizzBuzz using for loop\ndef fizzbuzz(n):\n    result = []\n    for i in range(1, n + 1):\n        if i % 15 == 0:\n            result.append('FizzBuzz')\n        elif i % 3 == 0:\n            result.append('Fizz')\n        elif i % 5 == 0:\n            result.append('Buzz')\n        else:\n            result.append(i)\n    return result\n\n# 3. Test\nprint(f'Prime factors of 84: {find_prime_factors(84)}')\n# Prime factors of 84: [2, 2, 3, 7]\n\nprint(f'FizzBuzz 1-20: {fizzbuzz(20)}')\n# [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz',\n#  11, 'Fizz', 13, 14, 'FizzBuzz', 16, 17, 'Fizz', 19, 'Buzz']",
+    "exampleCode": "# 🧠 Advanced Loop Patterns\n\n# Nested loop break with flag\nfound = False\nfor i in range(100):\n    for j in range(100):\n        if i * j == 506:\n            found = True\n            break\n    if found:\n        break\nprint(f'Found: {i} * {j} = 506')  # 22 * 23\n\n# for/else for search validation\ndef has_prime(nums):\n    for n in nums:\n        if n > 1 and all(n % i != 0 for i in range(2, int(n**0.5)+1)):\n            return True\n    else:\n        return False  # No break occurred = no prime found\n\n# While loop with multiple exit conditions\nwhile True:\n    line = input('> ')\n    if not line:        # Empty input\n        break\n    if line == 'quit':  # Explicit quit\n        break\n    print(f'You said: {line}')\n\n# Iteration with index modification (be careful!)\nnums = [1, 2, 3, 4, 5]\nfor i in range(len(nums)):\n    if nums[i] % 2 == 0:\n        nums[i] *= 10  # Modifying in-place is OK\nprint(nums)  # [1, 20, 3, 40, 5]\n\n# enumerate with start offset\nfor i, val in enumerate(['a','b','c'], start=1):\n    print(f'{i}: {val}')\n\n# Loop over dict items\nperson = {'name': 'Alice', 'age': 25}\nfor key, value in person.items():\n    print(f'{key}: {value}')",
     "tests": [
-      { "id": "t1", "description": "Should have an if/else if structure", "check": "code => /else\\s+if/.test(code)" },
-      { "id": "t2", "description": "Should have a switch statement", "check": "code => /switch\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should use 'break' or implicit return in switch", "check": "code => /break;/.test(code) || /case.*return/.test(code)" },
-      { "id": "t4", "description": "Should handle a default case in switch", "check": "code => /default\\s*:/.test(code)" },
-      { "id": "t5", "description": "Should group Saturday and Sunday in switch", "check": "code => /case\\s*\"Saturday\"/.test(code) && /case\\s*\"Sunday\"/.test(code)" }
+      { "id": "t1", "description": "Should define find_prime_factors function", "check": "code => /def\\s+find_prime_factors/.test(code)" },
+      { "id": "t2", "description": "Should use while loop for prime factors", "check": "code => /while\\s+n\\s*>\\s*1|while\\s*n\\s*>=/.test(code)" },
+      { "id": "t3", "description": "Should use //= for integer division in factorization", "check": "code => /\\/\\/\\s*=/.test(code)" },
+      { "id": "t4", "description": "Should define fizzbuzz function", "check": "code => /def\\s+fizzbuzz/.test(code)" },
+      { "id": "t5", "description": "Should check %15 first for FizzBuzz", "check": "code => /%\\s*15\\s*==\\s*0|%\\s*3.*%\\s*5/.test(code)" },
+      { "id": "t6", "description": "Should test with 84 and 20", "check": "code => /84/.test(code) && /20/.test(code)" }
     ]
   },
   {
     "id": "08",
-    "slug": "loops-iterations",
-    "title": "Loops & Iterations",
-    "icon": "Repeat",
-    "overview": "Automate repetitive tasks using standard and specialized loop structures for arrays and objects.",
-    "explanation": "## Why Loops?\n\nLoops allow you to execute a block of code multiple times without rewriting it. JavaScript provides several loop constructs, each suited for specific data structures.\n\n## Standard Loops\n- **`for`**: The classic loop. Best when you know exactly how many times you want to iterate, or when you need access to the index.\n- **`while`**: Runs as long as a condition is true. Best when the number of iterations is unknown.\n- **`do...while`**: Always executes the block AT LEAST ONCE, then checks the condition. Useful for input validation (though less common in pure JS than UI-based languages).\n\n## Specialized Iterators\n- **`for...of`**: Designed for **iterable objects** (Arrays, Strings, Maps, Sets). It gives you the VALUES directly. This is the modern, safest way to loop over arrays.\n- **`for...in`**: Designed for **enumerable properties of objects**. It gives you the KEYS (strings). \n\n### The `for...in` Trap\n**Never use `for...in` to loop over an Array.** It loops over all enumerable properties, including inherited prototype methods (like `Array.prototype.forEach` if someone modified it) and it returns string keys ('0', '1', '2') instead of numbers, which can cause weird type coercion bugs.",
+    "slug": "python-pattern-printing",
+    "title": "Pattern Printing Problems",
+    "icon": "Grid3X3",
+    "overview": "Build logic skills by constructing star, number, and character patterns using nested loops.",
+    "explanation": "## Core Concept: Nested Loops\n\nPatterns are built with two loops:\n- **Outer loop** → controls ROWS\n- **Inner loop** → controls COLUMNS (what prints on each row)\n\n```python \n# Basic square pattern\nn = 5\nfor i in range(n):          # Rows\n    for j in range(n):      # Columns\n        print('*', end=' ')\n    print()  # New line after each row\n\n# * * * * *\n# * * * * *\n# * * * * *\n# * * * * *\n# * * * * *\n```\n\n## Right-Angled Triangle\n\n```python \nn = 5\nfor i in range(1, n + 1):\n    for j in range(i):\n        print('*', end=' ')\n    print()\n\n# *\n# * *\n# * * *\n# * * * *\n# * * * * *\n\n# Using string multiplication (simpler!)\nfor i in range(1, n + 1):\n    print('* ' * i)\n```\n\n## Inverted Triangle\n\n```python \nn = 5\nfor i in range(n, 0, -1):\n    print('* ' * i)\n\n# * * * * *\n# * * * *\n# * * *\n# * *\n# *\n```\n\n## Pyramid (Full Triangle)\n\n```python \nn = 5\nfor i in range(1, n + 1):\n    spaces = '  ' * (n - i)\n    stars = '* ' * i\n    print(spaces + stars)\n\n#         *\n#       * *\n#     * * *\n#   * * * *\n# * * * * *\n```\n\n## Diamond Pattern\n\n```python \nn = 5\n# Upper half\nfor i in range(1, n + 1):\n    print('  ' * (n - i) + '* ' * i)\n\n# Lower half\nfor i in range(n - 1, 0, -1):\n    print('  ' * (n - i) + '* ' * i)\n```\n\n## Number Patterns\n\n```python \n# Floyd's Triangle\nn = 5\nnum = 1\nfor i in range(1, n + 1):\n    for j in range(i):\n        print(f'{num:3}', end='')\n        num += 1\n    print()\n\n#   1\n#   2  3\n#   4  5  6\n#   7  8  9 10\n#  11 12 13 14 15\n\n# Number triangle\nn = 5\nfor i in range(1, n + 1):\n    for j in range(1, i + 1):\n        print(j, end=' ')\n    print()\n\n# 1\n# 1 2\n# 1 2 3\n# 1 2 3 4\n# 1 2 3 4 5\n\n# Binary triangle\nfor i in range(1, n + 1):\n    for j in range(i):\n        print(j % 2, end=' ')\n    print()\n\n# 0\n# 0 1\n# 0 1 0\n# 0 1 0 1\n# 0 1 0 1 0\n```\n\n## Character Patterns\n\n```python \n# Alphabet triangle\nn = 5\nfor i in range(1, n + 1):\n    ch = 65  # ASCII for 'A'\n    for j in range(i):\n        print(chr(ch), end=' ')\n        ch += 1\n    print()\n\n# A\n# A B\n# A B C\n# A B C D\n# A B C D E\n\n# Repeated character triangle\nfor i in range(1, n + 1):\n    print((chr(64 + i) + ' ') * i)\n\n# A\n# B B\n# C C C\n# D D D D\n# E E E E E\n```\n\n## Hollow Patterns\n\n```python \n# Hollow square\nn = 5\nfor i in range(n):\n    for j in range(n):\n        if i == 0 or i == n-1 or j == 0 or j == n-1:\n            print('*', end=' ')\n        else:\n            print(' ', end=' ')\n    print()\n\n# * * * * *\n# *       *\n# *       *\n# *       *\n# * * * * *\n```\n\n## Key Formula Summary\n\n| Pattern | Spaces | Stars | Formula |\n|---------|--------|-------|---------|\n| Right triangle | 0 | i | `* ` * i |\n| Inverted | 0 | n-i+1 | `* ` * (n-i+1) |\n| Pyramid | n-i | i | `'  '*(n-i) + '* '*i` |\n| Diamond | abs(n-i) | n-abs(n-i) | Varies |",
     "keyRules": [
-      "Use 'for' when you need the numeric index",
-      "Use 'for...of' to iterate over Arrays, Strings, or Maps (gives values)",
-      "Use 'for...in' ONLY for plain Objects to get keys",
-      "NEVER use 'for...in' on Arrays",
-      "Use 'while' when the number of iterations is dynamic/unknown"
+      "Outer loop = rows, inner loop = columns — always think in this 2D grid",
+      "String multiplication ('* ' * i) is cleaner than nested loops for simple patterns",
+      "For pyramid: spaces decrease (n-i) while stars increase (i) — they must sum to n",
+      "Hollow patterns: print star ONLY on first/last row OR first/last column",
+      "Use chr(65) for 'A', chr(97) for 'a' — increment for next character",
+      "Use f'{num:width}' or end=' ' to maintain alignment in number patterns"
     ],
-    "task": "Create an array of colors and an object representing a car. Use 'for...of' to print the array values. Use 'for...in' to print the object keys and values. Finally, use a 'while' loop to count down from 3 to 1.",
-    "hint": "Loop through the array with `for (const color of colors)`. Loop through the object with `for (const key in car)`. Set a counter to 3 for the while loop.",
+    "task": "Create a function `print_pattern(n, type)` that prints different patterns based on type: 'triangle' (right-angled), 'pyramid', 'diamond', 'hollow_square'. Each function should use nested loops (not just string multiplication). Also create `number_triangle(n)` that prints Floyd's triangle with proper spacing alignment.",
+    "hint": "Triangle: outer 1 to n, inner 1 to i. Pyramid: spaces = n-i, stars = i. Diamond: upper 1 to n, lower n-1 to 1. Hollow: check i==0 or i==n-1 or j==0 or j==n-1. Floyd: use a counter variable, format with f'{num:4}'.",
     "learnings": [
-      { "title": "Iterable Protocols", "desc": "How objects become iterable by defining a [Symbol.iterator] method." },
-      { "title": "Loop Performance", "desc": "Micro-benchmarks of for vs for...of vs while in modern V8 engines." },
-      { "title": "Breaking and Continuing", "desc": "Controlling loop flow (covered in detail in the next topic)." }
+      { "title": "Star patterns", "desc": "Printing pyramids, inverted triangles, diamonds, and hollow shapes using nested for loops." },
+      { "title": "Number patterns", "desc": "Generating Floyd's triangle, Pascal's triangle, and sequential number grids." },
+      { "title": "Character patterns", "desc": "Creating alphabetical pyramids and repeating letter sequences using chr() and ord()." },
+      { "title": "Complex patterns", "desc": "Combining spaces and symbols to build advanced symmetric and asymmetric multi-line designs." }
     ],
-    "starterCode": `// Task: Demonstrate for...of, for...in, and while\n\nconst colors = ["Red", "Green", "Blue"];\nconst car = { brand: "Toyota", model: "Corolla", year: 2020 };\n\n// 1. Loop through colors using for...of\n\n\n// 2. Loop through car properties using for...in\n\n\n// 3. Count down from 3 to 1 using while\n`,
-    "solutionCode": `// Task: Demonstrate for...of, for...in, and while\n\nconst colors = ["Red", "Green", "Blue"];\nconst car = { brand: "Toyota", model: "Corolla", year: 2020 };\n\n// 1. Loop through colors using for...of\nconsole.log("--- Colors ---");\nfor (const color of colors) {\n  console.log(color);\n}\n\n// 2. Loop through car properties using for...in\nconsole.log("--- Car Specs ---");\nfor (const key in car) {\n  console.log(\`\${key}: \${car[key]}\`);\n}\n\n// 3. Count down from 3 to 1 using while\nconsole.log("--- Countdown ---");\nlet count = 3;\nwhile (count > 0) {\n  console.log(count);\n  count--;\n}`,
-    "exampleCode": `// 🧠 The for...in Array Trap\n\nconst arr = ["a", "b", "c"];\narr.customProp = "Oops!";\n\n// BAD: for...in loops over custom properties and uses string keys\nfor (const key in arr) {\n  console.log(typeof key); // "string" (not number!)\n  console.log(key);        // "0", "1", "2", "customProp"\n}\n\n// GOOD: for...of only loops over iterable values\nfor (const val of arr) {\n  console.log(val); // "a", "b", "c"\n}`,
+    "starterCode": "# Task: Pattern Printing Problems\n\n# 1. Create print_pattern(n, pattern_type)\n#    Types: 'triangle', 'pyramid', 'diamond', 'hollow_square'\n#    Use nested for loops (not just string multiplication)\n\n# 2. Create number_triangle(n)\n#    Print Floyd's triangle with aligned numbers\n\n# 3. Test all patterns with n=5\n#    print_pattern(5, 'triangle')\n#    print_pattern(5, 'pyramid')\n#    print_pattern(5, 'diamond')\n#    print_pattern(5, 'hollow_square')\n#    number_triangle(5)",
+    "solutionCode": "# Task: Pattern Printing Problems\n\n# 1. Pattern printer\ndef print_pattern(n, pattern_type):\n    print(f'\\n=== {pattern_type.upper()} (n={n}) ===')\n\n    if pattern_type == 'triangle':\n        for i in range(1, n + 1):\n            for j in range(i):\n                print('*', end=' ')\n            print()\n\n    elif pattern_type == 'pyramid':\n        for i in range(1, n + 1):\n            for j in range(n - i):\n                print(' ', end=' ')\n            for j in range(i):\n                print('*', end=' ')\n            print()\n\n    elif pattern_type == 'diamond':\n        for i in range(1, n + 1):\n            for j in range(n - i):\n                print(' ', end=' ')\n            for j in range(i):\n                print('*', end=' ')\n            print()\n        for i in range(n - 1, 0, -1):\n            for j in range(n - i):\n                print(' ', end=' ')\n            for j in range(i):\n                print('*', end=' ')\n            print()\n\n    elif pattern_type == 'hollow_square':\n        for i in range(n):\n            for j in range(n):\n                if i == 0 or i == n-1 or j == 0 or j == n-1:\n                    print('*', end=' ')\n                else:\n                    print(' ', end=' ')\n            print()\n\n# 2. Floyd's Triangle\ndef number_triangle(n):\n    print(f'\\n=== FLOYD\\'S TRIANGLE (n={n}) ===')\n    num = 1\n    for i in range(1, n + 1):\n        for j in range(i):\n            print(f'{num:4}', end='')\n            num += 1\n        print()\n\n# 3. Test all\nprint_pattern(5, 'triangle')\nprint_pattern(5, 'pyramid')\nprint_pattern(5, 'diamond')\nprint_pattern(5, 'hollow_square')\nnumber_triangle(5)",
+    "exampleCode": "# 🧠 Advanced Pattern Techniques\n\n# Parametric pattern with custom char\ndef custom_pyramid(n, char='*', direction='up'):\n    if direction == 'up':\n        for i in range(1, n + 1):\n            print(' ' * (n - i) + (char + ' ') * i)\n    else:\n        for i in range(n, 0, -1):\n            print(' ' * (n - i) + (char + ' ') * i)\n\ncustom_pyramid(5, '#')\ncustom_pyramid(5, '@', 'down')\n\n# Pascal's Triangle\ndef pascal(n):\n    row = [1]\n    for i in range(n):\n        print('   ' * (n - i - 1), end='')\n        for num in row:\n            print(f'{num:6}', end='')\n        print()\n        row = [x + y for x, y in zip([0] + row, row + [0])]\n\npascal(6)\n\n# Butterfly pattern\ndef butterfly(n):\n    # Upper half\n    for i in range(1, n + 1):\n        print('* ' * i + '  ' * (2*(n-i)) + '* ' * i)\n    # Lower half\n    for i in range(n, 0, -1):\n        print('* ' * i + '  ' * (2*(n-i)) + '* ' * i)\n\nbutterfly(4)\n\n# Number spiral pattern\ndef number_spiral(n):\n    matrix = [[0]*n for _ in range(n)]\n    num = 1\n    top, bottom, left, right = 0, n-1, 0, n-1\n    while top <= bottom and left <= right:\n        for j in range(left, right+1):\n            matrix[top][j] = num; num += 1\n        top += 1\n        for i in range(top, bottom+1):\n            matrix[i][right] = num; num += 1\n        right -= 1\n        for j in range(right, left-1, -1):\n            matrix[bottom][j] = num; num += 1\n        bottom -= 1\n        for i in range(bottom, top-1, -1):\n            matrix[i][left] = num; num += 1\n        left += 1\n    for row in matrix:\n        print(' '.join(f'{x:3}' for x in row))\n\nnumber_spiral(5)",
     "tests": [
-      { "id": "t1", "description": "Should use for...of loop", "check": "code => /for\\s*\\(\\s*const\\s+\\w+\\s+of\\s+/.test(code)" },
-      { "id": "t2", "description": "Should use for...in loop", "check": "code => /for\\s*\\(\\s*const\\s+\\w+\\s+in\\s+/.test(code)" },
-      { "id": "t3", "description": "Should use a while loop", "check": "code => /while\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should access object value using bracket notation in for...in", "check": "code => /car\\[key\\]/.test(code) || /\\w+\\[\\w+\\]/.test(code)" },
-      { "id": "t5", "description": "Should decrement a counter in the while loop", "check": "code => /\\w+--/.test(code) || /--\\w+/.test(code)" }
+      { "id": "t1", "description": "Should define print_pattern function", "check": "code => /def\\s+print_pattern/.test(code)" },
+      { "id": "t2", "description": "Should use nested for loops", "check": "code => /for\\s+\\w+\\s+in\\s+range.*:\\n.*for\\s+\\w+\\s+in\\s+range/.test(code)" },
+      { "id": "t3", "description": "Should handle 'pyramid' type", "check": "code => /pyramid/.test(code)" },
+      { "id": "t4", "description": "Should handle 'hollow_square' with boundary checks", "check": "code => /hollow_square|i\\s*==\\s*0|i\\s*==\\s*n/.test(code)" },
+      { "id": "t5", "description": "Should define number_triangle for Floyd's triangle", "check": "code => /def\\s+number_triangle/.test(code)" },
+      { "id": "t6", "description": "Should use number formatting for alignment", "check": "code => /:\\d+/.test(code)" }
     ]
   },
-  {
+    {
     "id": "09",
-    "slug": "control-keywords",
-    "title": "Control Keywords",
-    "icon": "CornerDownLeft",
-    "overview": "Manipulate loop iterations and function execution instantly using break, continue, and return.",
-    "explanation": "## Altering Default Flow\n\nBy default, loops run to completion and functions run to their final closing brace. Control keywords let you short-circuit this default behavior.\n\n## `break`\nCompletely terminates the loop or switch statement immediately. Execution continues on the line *after* the loop. \n*Use case:* Searching an array. Once you find the item you are looking for, there is no need to keep checking the rest of the array. `break` saves CPU cycles.\n\n## `continue`\nSkips the remaining code inside the current iteration and jumps straight to the next iteration of the loop.\n*Use case:* Filtering out unwanted values. If you encounter an invalid item, `continue` skips it without you having to wrap the entire loop body in a massive `if/else` block.\n\n## `return`\nImmediately exits the *entire function*, optionally passing a value back to the caller. If used inside a loop, it doesn't just break the loop—it kills the whole function.\n*Use case:* Guard clauses (early returns). If parameters are invalid, `return` immediately instead of wrapping all your logic in an `if` block.\n\n## Order of Operations\n\nThese keywords only affect their immediate enclosing block. If you have a nested loop, `break` only breaks out of the inner loop, not the outer one (unless you use labeled statements, which are rarely used).",
+    "slug": "python-strings-deep-dive",
+    "title": "Strings Deep Dive",
+    "icon": "Type",
+    "overview": "Master string indexing, slicing, built-in methods, formatting techniques, and common string algorithms.",
+    "explanation": "## String Basics\n\nStrings are IMMUTABLE sequences of Unicode characters.\n\n```python \ns = 'Hello, World!'\nprint(len(s))       # 13\n\n# Indexing\n#  P  Y  T  H  O  N\n#  0  1  2  3  4  5   (positive)\n# -6 -5 -4 -3 -2 -1   (negative)\nprint(s[0])    # 'P'\nprint(s[-1])   # '!'\n\n# Slicing: s[start:stop:step]\nprint(s[0:3])    # 'Hel'\nprint(s[::-1])   # '!dlroW ,olleH' (reversed)\nprint(s[::2])    # 'Hlo ol!'\n```\n\n## Split & Join\n\n```python \ntext = 'Python is awesome'\nwords = text.split()       # ['Python', 'is', 'awesome']\ncsv = 'a,b,c,d'\nparts = csv.split(',')     # ['a', 'b', 'c', 'd']\n\n# Join (called on the SEPARATOR string)\nresult = ' '.join(words)   # 'Python is awesome'\nresult = '-'.join(parts)   # 'a-b-c-d'\npath = '/'.join(['home', 'user', 'file.txt']) # 'home/user/file.txt'\n```\n\n## Search & Count Methods\n\n```python \ns = 'Hello, World!'\n\nprint(s.find('World'))     # 7 (-1 if not found)\nprint(s.index('World'))    # 7 (ValueError if not found)\nprint(s.count('l'))        # 3\n\nprint(s.startswith('Hello'))  # True\nprint(s.endswith('!'))        # True\n\n# Character type checks\nprint('123'.isdigit())      # True\nprint('abc'.isalpha())      # True\nprint('abc123'.isalnum())   # True\n```\n\n## Transform Methods\n\n```python \ns = '  Hello, World!  '\n\nprint(s.strip())          # 'Hello, World!'\nprint(s.upper())          # '  HELLO, WORLD!  '\nprint(s.lower())          # '  hello, world!  '\nprint(s.replace('World', 'Python')) # '  Hello, Python!  '\n```\n\n## String Algorithms\n\n```python \n# Palindrome check\ndef is_palindrome(s):\n    s = s.lower().replace(' ', '')\n    return s == s[::-1]\n\nprint(is_palindrome('racecar'))  # True\nprint(is_palindrome('A man a plan a canal Panama'))  # True\n\n# Anagram check\ndef is_anagram(s1, s2):\n    return sorted(s1.replace(' ', '').lower()) == sorted(s2.replace(' ', '').lower())\n\nprint(is_anagram('listen', 'silent'))  # True\n\n# Reverse words in a string\ndef reverse_words(s):\n    return ' '.join(s.split()[::-1])\n\nprint(reverse_words('Hello World Python'))  # 'Python World Hello'\n```",
     "keyRules": [
-      "break terminates the entire loop immediately",
-      "continue skips the rest of the current iteration and moves to the next",
-      "return exits the entire function, not just the loop",
-      "Use break when searching to stop once found",
-      "Use continue to skip unwanted items cleanly"
+      "Strings are IMMUTABLE — every method like replace() or upper() returns a NEW string, it doesn't modify the original",
+      "Slicing [start:stop:step] — stop is EXCLUSIVE, step can be negative for reversing",
+      "split() without args splits on ANY whitespace and removes empty strings; split(' ') splits only on single spaces",
+      "join() is called on the SEPARATOR string, not the list: ' '.join(list)",
+      "find() returns -1 if not found (safe), index() raises ValueError (use when you know it exists)",
+      "For palindrome checks, always normalize first: lowercase and remove spaces/punctuation"
     ],
-    "task": "Write a function `findFirstMultiple(arr, divisor)` that loops through an array and uses 'break' to return the first number divisible by the divisor. Write another function `logOdds(arr)` that uses 'continue' to skip even numbers and only log odd ones.",
-    "hint": "In findFirstMultiple, use `if (num % divisor === 0) { break/return; }`. In logOdds, use `if (num % 2 === 0) { continue; }`.",
+    "task": "Create three string utility functions: 1) `is_palindrome(s)` — check if a string is a palindrome (ignore case and spaces). 2) `count_vowels(s)` — return total count of a,e,i,o,u (case-insensitive). 3) `compress_string(s)` — compress consecutive characters (e.g., 'aaabbbcc' → 'a3b3c2', 'abcd' → 'a1b1c1d1').",
+    "hint": "Palindrome: normalize with s.lower().replace(' ', '') then compare to s[::-1]. Vowels: use a set {'a','e','i','o','u'} and a loop. Compress: loop through string, keep a count, when char changes, append previous char + count to result.",
     "learnings": [
-      { "title": "Labeled Statements", "desc": "Using outerLoop: and break outerLoop; to break out of nested loops." },
-      { "title": "Return vs Break inside Loops", "desc": "How return inside a loop stops the function entirely, which can cause bugs if you intended to just skip an iteration." }
+      { "title": "Indexing", "desc": "Accessing individual characters using zero-based positive and negative index positions." },
+      { "title": "Slicing", "desc": "Extracting substrings using start:stop:step syntax with positive and negative stride values." },
+      { "title": "String methods", "desc": "Using upper(), lower(), strip(), split(), join(), replace(), find(), count(), and 40+ built-in methods." },
+      { "title": "String algorithms", "desc": "Solving palindrome checks, anagram detection, reverse operations, and substring search problems." }
     ],
-    "starterCode": "// Task: Demonstrate break and continue\n\nfunction findFirstMultiple(arr, divisor) {\n  // Loop through arr, return the first number divisible by divisor\n  // Hint: Use break or return when found\n}\n\nfunction logOdds(arr) {\n  // Loop through arr, use continue to skip even numbers\n  // Log only the odd numbers\n}\n\n// Tests\nconsole.log(findFirstMultiple([4, 5, 10, 12], 5)); // Expect 5\nconsole.log(logOdds([1, 2, 3, 4, 5])); // Expect to log 1, 3, 5",
-    "solutionCode": "// Task: Demonstrate break and continue\n\nfunction findFirstMultiple(arr, divisor) {\n  for (let i = 0; i < arr.length; i++) {\n    if (arr[i] % divisor === 0) {\n      return arr[i]; // Returns immediately, ending the function\n    }\n  }\n  return null; // Fallback if none found\n}\n\nfunction logOdds(arr) {\n  for (let i = 0; i < arr.length; i++) {\n    if (arr[i] % 2 === 0) {\n      continue; // Skips the console.log below and moves to next iteration\n    }\n    console.log(arr[i]);\n  }\n}\n\n// Tests\nconsole.log(\"Found:\", findFirstMultiple([4, 5, 10, 12], 5)); // 5\nconsole.log(\"Odds:\");\nlogOdds([1, 2, 3, 4, 5]); // Logs 1, 3, 5",
-    "exampleCode": "// 🧠 Advanced Control Flow\n\n// --- Labeled Break for Nested Loops ---\nouterLoop: for (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 3; j++) {\n    if (i === 1 && j === 1) {\n      console.log(`Breaking out at i=\${i}, j=\${j}`);\n      break outerLoop; // Breaks BOTH loops\n    }\n  }\n}\n\n// --- Return inside a Loop (Be Careful) ---\nfunction hasOddNumber(arr) {\n  arr.forEach(num => {\n    if (num % 2 !== 0) {\n      return true; // ⚠️ BUG: This only returns from the forEach callback, not the function!\n    }\n  });\n  return false;\n}",
+    "starterCode": "# Task: Strings Deep Dive\n\n# 1. is_palindrome(s) — ignore case and spaces\n\n# 2. count_vowels(s) — count a,e,i,o,u (case-insensitive)\n\n# 3. compress_string(s) — 'aaabbbcc' → 'a3b3c2'\n\n# 4. Test all functions:\n#    is_palindrome('A man a plan a canal Panama')\n#    count_vowels('Hello World Python')\n#    compress_string('aaabbbcc')\n#    compress_string('abcd')",
+    "solutionCode": "# Task: Strings Deep Dive\n\n# 1. Palindrome checker\ndef is_palindrome(s):\n    normalized = s.lower().replace(' ', '')\n    return normalized == normalized[::-1]\n\n# 2. Vowel counter\ndef count_vowels(s):\n    vowels = set('aeiou')\n    return sum(1 for char in s.lower() if char in vowels)\n\n# 3. String compressor\ndef compress_string(s):\n    if not s:\n        return ''\n    result = []\n    count = 1\n    for i in range(1, len(s)):\n        if s[i] == s[i - 1]:\n            count += 1\n        else:\n            result.append(f'{s[i-1]}{count}')\n            count = 1\n    result.append(f'{s[-1]}{count}')  # Don't forget last group!\n    return ''.join(result)\n\n# 4. Test\nprint(is_palindrome('A man a plan a canal Panama'))  # True\nprint(f'Vowels: {count_vowels(\"Hello World Python\")}')  # Vowels: 4\nprint(compress_string('aaabbbcc'))  # a3b3c2\nprint(compress_string('abcd'))       # a1b1c1d1",
+    "exampleCode": "# 🧠 Advanced String Techniques\n\n# Validate alphanumeric (leet code style)\ndef is_palindrome_clean(s):\n    cleaned = [c.lower() for c in s if c.isalnum()]\n    return cleaned == cleaned[::-1]\n\nprint(is_palindrome_clean('A man, a plan, a canal: Panama'))\n\n# Find first unique character\ndef first_unique(s):\n    from collections import Counter\n    counts = Counter(s)\n    for char in s:\n        if counts[char] == 1:\n            return char\n    return None\n\nprint(first_unique('swiss'))  # 'w'\n\n# String formatting as a table\n数据 = [('Alice', 92), ('Bob', 85), ('Charlie', 78)]\nprint(f'{\"Name\":<10} {\"Score\":>5}')\nprint('-' * 17)\nfor name, score in 数据:\n    print(f'{name:<10} {score:>5}')\n\n# Reverse words but keep order\nsentence = 'Hello   World   Python'\nwords = sentence.split()  # Handles multiple spaces!\nreversed_sentence = ' '.join(reversed(words))\nprint(reversed_sentence)  # 'Python World Hello'\n\n# Check if two strings are one edit away\ndef one_edit_away(s1, s2):\n    if abs(len(s1) - len(s2)) > 1:\n        return False\n    i, j = 0, 0\n    found_diff = False\n    while i < len(s1) and j < len(s2):\n        if s1[i] != s2[j]:\n            if found_diff:\n                return False\n            found_diff = True\n            if len(s1) > len(s2):\n                i += 1\n            elif len(s1) < len(s2):\n                j += 1\n        i += 1\n        j += 1\n    return True\n\nprint(one_edit_away('pale', 'ple'))   # True\nprint(one_edit_away('pale', 'bale'))  # True",
     "tests": [
-      { "id": "t1", "description": "Should use 'return' to exit the first function early", "check": "code => /return\\s+arr\\[i\\]/.test(code)" },
-      { "id": "t2", "description": "Should use 'continue' in the second function", "check": "code => /continue;/.test(code)" },
-      { "id": "t3", "description": "Should check for even numbers using modulo 2", "check": "code => /%\\s*2\\s*===\\s*0/.test(code)" },
-      { "id": "t4", "description": "Should check for divisibility using modulo", "check": "code => /%\\s*divisor\\s*===\\s*0/.test(code)" }
+      { "id": "t1", "description": "Should define is_palindrome function", "check": "code => /def\\s+is_palindrome/.test(code)" },
+      { "id": "t2", "description": "Should normalize string (lower and replace spaces)", "check": "code => /\\.lower\\(\\).*\\.replace\\(|\\.replace\\(.*\\.lower\\(/.test(code)" },
+      { "id": "t3", "description": "Should use slicing [::-1] for reversal", "check": "code => /\\[\\s*::-1\\s*\\]/.test(code)" },
+      { "id": "t4", "description": "Should define count_vowels function", "check": "code => /def\\s+count_vowels/.test(code)" },
+      { "id": "t5", "description": "Should define compress_string function", "check": "code => /def\\s+compress_string/.test(code)" },
+      { "id": "t6", "description": "Should use loop with index for compression logic", "check": "code => /for\\s+\\w+\\s+in\\s+range\\(.*len\\(/.test(code)" }
     ]
   },
   {
     "id": "10",
-    "slug": "functions-foundations",
-    "title": "Functions Foundations",
-    "icon": "Code2",
-    "overview": "Master baseline declarations, syntax setups, and passing functions as data via callbacks.",
-    "explanation": "## What is a Function?\n\nA function is a reusable block of code designed to perform a specific task. Functions are fundamental because they allow you to write DRY (Don't Repeat Yourself) code, encapsulate logic, and create scopes.\n\n## Declaration vs Expression\n\n1. **Function Declaration:** `function greet() {}`\n   - Fully hoisted. You can call it before it's defined in the file.\n   \n2. **Function Expression:** `const greet = function() {}`\n   - NOT hoisted (the variable is hoisted, but assigned `undefined` until the code executes that line).\n   - You can create anonymous functions or named function expressions.\n\n## Arrow Functions (ES6)\n\nSyntax: `const greet = () => {}` or `const add = (a, b) => a + b;`\n- Shorter syntax.\n- **Lexical `this` binding:** They do not have their own `this` context; they inherit `this` from the parent scope. (Crucial for objects/methods, though less relevant right now since we aren't doing DOM/OOP yet).\n- If the body is a single expression, the curly braces and `return` keyword are implicit.\n\n## Callbacks\n\nIn JavaScript, functions are \"first-class citizens.\" This means they can be assigned to variables, stored in arrays, and passed as arguments into other functions. \nA function passed into another function is called a **callback**.",
+    "slug": "python-lists-comprehensive-guide",
+    "title": "Lists Comprehensive Guide",
+    "icon": "List",
+    "overview": "Create, manipulate, and transform ordered mutable sequences using Python's most versatile data structure.",
+    "explanation": "## Creating Lists\n\n```python \n# Literal syntax\nfruits = ['apple', 'banana', 'cherry']\nnums = [1, 2, 3, 4, 5]\nmixed = [1, 'hello', True, 3.14, None]\n\n# Constructor\nempty = list()\nfrom_str = list('Python')  # ['P', 'y', 't', 'h', 'o', 'n']\n\n# Repetition\nzeros = [0] * 5  # [0, 0, 0, 0, 0]\n\n# Nested (2D)\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n```\n\n## Accessing & Slicing\n\n```python \nnums = [10, 20, 30, 40, 50]\n\nprint(nums[0])     # 10\nprint(nums[-1])    # 50\nprint(nums[1:4])   # [20, 30, 40]\nprint(nums[::2])   # [10, 30, 50]\n\n# Slicing creates a SHALLOW COPY\nslice_copy = nums[:]\nslice_copy[0] = 99\nprint(nums)        # [10, 20, 30, 40, 50] (unchanged!)\n\n# 2D access\nmatrix = [[1, 2, 3], [4, 5, 6]]\nprint(matrix[0][1])  # 2\n```\n\n## Adding Elements\n\n```python \nnums = [1, 2, 3]\n\nnums.append(4)       # [1, 2, 3, 4] (adds ONE item)\nnums.extend([5, 6])  # [1, 2, 3, 4, 5, 6] (merges iterable)\nnums.insert(0, 0)     # [0, 1, 2, 3, 4, 5, 6] (at index)\n\n# ⚠️ Common mistake\nnums.append([7, 8])  # [0, 1, 2, 3, 4, 5, 6, [7, 8]] (nested!)\nnums.extend([7, 8])  # Correct way to add multiple elements\n\n# Concatenation (creates NEW list)\nnew = nums + [9, 10]\n```\n\n## Removing Elements\n\n```python \nnums = [1, 2, 3, 2, 4, 2]\n\nnums.remove(2)    # Removes FIRST occurrence → [1, 3, 2, 4, 2]\nlast = nums.pop() # Removes & returns LAST → returns 2, list is [1, 3, 2, 4]\nat = nums.pop(1)  # Removes & returns AT INDEX → returns 3, list is [1, 2, 4]\ndel nums[0]      # Deletes by index/slice → [2, 4]\nnums.clear()      # Empties list → []\n\n# Safe removal\nif 99 in nums:\n    nums.remove(99)  # Avoids ValueError\n```\n\n## Sorting\n\n```python \nnums = [3, 1, 4, 1, 5, 9]\n\n# sort() — IN-PLACE (modifies original, returns None)\nnums.sort()\nprint(nums)  # [1, 1, 3, 4, 5, 9]\n\nnums.sort(reverse=True)\nprint(nums)  # [9, 5, 4, 3, 1, 1]\n\n# sorted() — RETURNS NEW LIST (original unchanged)\noriginal = [3, 1, 4]\nnew_list = sorted(original)\nprint(original)  # [3, 1, 4] (unchanged!)\nprint(new_list)  # [1, 3, 4]\n\n# Sort by key\nwords = ['banana', 'apple', 'Cherry']\nwords.sort(key=str.lower)  # Case-insensitive: ['apple', 'banana', 'Cherry']\n\nstudents = [{'name': 'Bob', 'age': 25}, {'name': 'Alice', 'age': 22}]\nstudents.sort(key=lambda s: s['age'])  # Sort by age\n```\n\n## List Comprehension\n\n```python \n# Syntax: [expression for item in iterable if condition]\nsquares = [x**2 for x in range(10)]\nevens = [x for x in range(20) if x % 2 == 0]\n\n# Nested comprehension (flattening)\nmatrix = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in matrix for num in row]  # [1, 2, 3, 4, 5, 6]\n\n# With transformation\nwords = ['hello', 'world']\nupper = [w.upper() for w in words]  # ['HELLO', 'WORLD']\n\n# Dict comprehension from list\nnums = [1, 2, 3, 4]\nsquared_dict = {n: n**2 for n in nums}  # {1: 1, 2: 4, 3: 9, 4: 16}\n```",
     "keyRules": [
-      "Declarations are fully hoisted; expressions are not",
-      "Arrow functions have implicit returns for single expressions",
-      "Arrow functions do not have their own 'this' context",
-      "Functions can be passed as arguments (callbacks)",
-      "Always use parentheses () for arrow functions returning object literals: () => ({})"
+      "Lists are MUTABLE — they can be changed in place, unlike strings and tuples",
+      "append() adds ONE element (even if it's a list), extend() unpacks and adds multiple elements",
+      "pop() removes and returns an element; remove() searches by value and removes first match",
+      "sort() modifies in-place and returns None; sorted() returns a new list and leaves original unchanged",
+      "Slicing (list[:]) creates a SHALLOW COPY — nested lists inside are still referenced",
+      "List comprehensions are faster and more Pythonic than equivalent for-loop + append patterns"
     ],
-    "task": "Create a standard function declaration `add(a, b)`, a function expression `subtract(a, b)`, and an arrow function `multiply(a, b)`. Then create a higher-order function `calculate(a, b, operationFn)` that takes two numbers and a callback function to execute.",
-    "hint": "Define the three math functions. Define calculate to simply call `operationFn(a, b)` and return the result. Test it by passing `multiply` as the callback.",
+    "task": "Create three list utility functions: 1) `flatten(nested_list)` — flatten a 2D list using comprehension. 2) `remove_duplicates(lst)` — remove duplicates while preserving order. 3) `transpose(matrix)` — transpose a 2D matrix (rows become columns). Test with sample 2D data.",
+    "hint": "Flatten: `[item for row in nested for item in row]`. Remove dups: use a `seen = set()` and a list comprehension with a side-effect check `if x not in seen and not seen.add(x)`. Transpose: use `zip(*matrix)` and convert tuples back to lists.",
     "learnings": [
-      { "title": "First-Class Citizens", "desc": "Treating functions as values—assigning to vars, passing to funcs, returning from funcs." },
-      { "title": "IIFE (Immediately Invoked Function Expression)", "desc": "Creating and executing a function instantly: (function(){ })();" },
-      { "title": "Function Hoisting Quirks", "desc": "Why calling a function expression before its definition throws a TypeError." }
+      { "title": "Creating lists", "desc": "Initializing lists using square brackets, list() constructor, and multiplication repetition." },
+      { "title": "append & extend", "desc": "Adding single elements to the end or merging another iterable's contents into the list." },
+      { "title": "insert & remove", "desc": "Placing elements at specific indices and deleting the first occurrence of a target value." },
+      { "title": "pop & del", "desc": "Extracting elements by index or deleting slices and specific positions entirely." },
+      { "title": "sort & reverse", "desc": "Reordering elements in-place using sort() with key parameters and reversing list direction." },
+      { "title": "Nested lists", "desc": "Creating 2D and multi-dimensional lists for matrix and grid-based data representations." },
+      { "title": "List comprehension", "desc": "Building new lists concisely using inline for loops with optional conditional filters." }
     ],
-    "starterCode": `// Task: Declarations, Expressions, Arrows, and Callbacks\n\n// 1. Function Declaration\n\n// 2. Function Expression\n\n// 3. Arrow Function\n\n// 4. Higher-Order Function that accepts a callback\n\n\n// Tests\nconsole.log(calculate(10, 5, add));      // Expect 15\nconsole.log(calculate(10, 5, subtract)); // Expect 5\nconsole.log(calculate(10, 5, multiply)); // Expect 50",
-    "solutionCode": "// Task: Declarations, Expressions, Arrows, and Callbacks\n\n// 1. Function Declaration\nfunction add(a, b) {\n  return a + b;\n}\n\n// 2. Function Expression\nconst subtract = function(a, b) {\n  return a - b;\n};\n\n// 3. Arrow Function\nconst multiply = (a, b) => a * b;\n\n// 4. Higher-Order Function that accepts a callback\nconst calculate = (a, b, operationFn) => {\n  return operationFn(a, b);\n};\n\n// Tests\nconsole.log(calculate(10, 5, add));      // Expect 15\nconsole.log(calculate(10, 5, subtract)); // Expect 5\nconsole.log(calculate(10, 5, multiply)); // Expect 50",
-    "exampleCode": "// 🧠 Function Nuances\n\n// --- Implicit vs Explicit Return ---\n// Implicit (no braces needed)\nconst double = x => x * 2;\n\n// Explicit (braces required if multiple lines)\nconst processUser = user => {\n  user.name = user.name.toUpperCase();\n  return user;\n};\n\n// Arrow returning an Object (PITFALL!)\n// WRONG: const getUser = () => { name: \"Ali\" }; // Returns undefined\n// RIGHT:\nconst getUser = () => ({ name: "Ali" });\n\n// --- Callbacks in the wild ---\nconst numbers = [1, 2, 3];\nnumbers.forEach(function(num) { // Anonymous function as callback\n  console.log(num * 2);\n});`,
+    "starterCode": "# Task: Lists Comprehensive Guide\n\n# 1. flatten(nested_list) → flat 1D list\n#    Use list comprehension\n\n# 2. remove_duplicates(lst) → list with unique items, order preserved\n#    Do NOT use set() directly (loses order)\n\n# 3. transpose(matrix) → 2D list with rows/columns swapped\n#    Use zip()\n\n# 4. Test all:\n#    nested = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n#    dupes = [1, 3, 2, 1, 4, 3, 5]\n#    matrix = [[1, 2, 3], [4, 5, 6]]",
+    "solutionCode": "# Task: Lists Comprehensive Guide\n\n# 1. Flatten using comprehension\ndef flatten(nested_list):\n    return [item for row in nested_list for item in row]\n\n# 2. Remove duplicates preserving order\ndef remove_duplicates(lst):\n    seen = set()\n    return [x for x in lst if not (x in seen or seen.add(x))]\n\n# 3. Transpose matrix\ndef transpose(matrix):\n    return [list(row) for row in zip(*matrix)]\n\n# 4. Test\nnested = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nprint(f'Flattened: {flatten(nested)}')\n# Flattened: [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\ndupes = [1, 3, 2, 1, 4, 3, 5]\nprint(f'Unique: {remove_duplicates(dupes)}')\n# Unique: [1, 3, 2, 4, 5]\n\nmatrix = [[1, 2, 3], [4, 5, 6]]\nprint(f'Transposed: {transpose(matrix)}')\n# Transposed: [[1, 4], [2, 5], [3, 6]]",
+    "exampleCode": "# 🧠 Advanced List Patterns\n\n# Shallow vs Deep copy\nimport copy\na = [[1, 2], [3, 4]]\nb = a[:]           # Shallow copy (inner lists are shared)\nc = copy.deepcopy(a) # Deep copy (completely independent)\nb[0][0] = 99\nprint(a[0][0])  # 99 (changed! because b shares inner lists)\nprint(c[0][0])  # 1 (safe)\n\n# Chunk a list into sizes\ndef chunk(lst, size):\n    return [lst[i:i+size] for i in range(0, len(lst), size)]\n\nprint(chunk([1,2,3,4,5,6,7], 3))  # [[1,2,3], [4,5,6], [7]]\n\n# Rotate a list\ndef rotate(lst, k):\n    k = k % len(lst)\n    return lst[-k:] + lst[:-k]\n\nprint(rotate([1,2,3,4,5], 2))  # [4, 5, 1, 2, 3]\n\n# Merge sorted lists\ndef merge_sorted(a, b):\n    result = []\n    i = j = 0\n    while i < len(a) and j < len(b):\n        if a[i] < b[j]:\n            result.append(a[i]); i += 1\n        else:\n            result.append(b[j]); j += 1\n    result.extend(a[i:])\n    result.extend(b[j:])\n    return result\n\nprint(merge_sorted([1,3,5], [2,4,6]))  # [1,2,3,4,5,6]\n\n# Matrix operations\ndef matrix_add(m1, m2):\n    return [[m1[i][j] + m2[i][j] for j in range(len(m1[0]))] for i in range(len(m1))]\n\n# Enumerate with lists\nfor i, val in enumerate(['a', 'b', 'c'], start=1):\n    print(f'{i}: {val}')",
     "tests": [
-      { "id": "t1", "description": "Should have a function declaration", "check": "code => /function\\s+add\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should have a function expression assigned to const", "check": "code => /const\\s+subtract\\s*=\\s*function/.test(code)" },
-      { "id": "t3", "description": "Should have an arrow function", "check": "code => /const\\s+multiply\\s*=\\s*\\(.*\\)\\s*=>/.test(code)" },
-      { "id": "t4", "description": "calculate function must accept a function as 3rd parameter", "check": "code => /calculate\\s*\\(\\s*\\w+\\s*,\\s*\\w+\\s*,\\s*\\w+Fn\\s*\\)/.test(code) || /calculate\\s*\\(.*operation/.test(code)" },
-      { "id": "t5", "description": "Must invoke the callback function inside calculate", "check": "code => /operationFn\\s*\\(/.test(code) || /\\w+Fn\\s*\\(\\s*\\w+\\s*,\\s*\\w+\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should define flatten function", "check": "code => /def\\s+flatten/.test(code)" },
+      { "id": "t2", "description": "Should use nested list comprehension for flatten", "check": "code => /for\\s+\\w+\\s+in\\s*\\w+\\s+for\\s+\\w+\\s+in\\s*\\w+/.test(code)" },
+      { "id": "t3", "description": "Should define remove_duplicates function", "check": "code => /def\\s+remove_duplicates/.test(code)" },
+      { "id": "t4", "description": "Should use a set for O(1) duplicate lookup", "check": "code => /seen\\s*=\\s*set\\(\\)/.test(code)" },
+      { "id": "t5", "description": "Should define transpose function", "check": "code => /def\\s+transpose/.test(code)" },
+      { "id": "t6", "description": "Should use zip(*matrix) for transpose", "check": "code => /zip\\s*\\(\\s*\\*/.test(code)" }
     ]
   },
   {
     "id": "11",
-    "slug": "advanced-functions-design",
-    "title": "Advanced Functions Design",
-    "icon": "Cpu",
-    "overview": "Transition into professional-grade declarative patterns, closures, and recursive problem solving.",
-    "explanation": "## Higher-Order Functions (HOFs)\n\nA function is considered a \"Higher-Order Function\" if it does one of two things (or both):\n1. Takes another function as an argument (e.g., `Array.prototype.map`).\n2. Returns a function from within its body.\n\nHOFs are the backbone of functional programming in JavaScript.\n\n## Closures & Lexical Scope\n\nA **closure** is formed when a function is created inside another function. The inner function \"closes over\" (remembers) the variables of its outer function, even AFTER the outer function has finished executing and its execution context is destroyed.\n\n*Why does this matter?* It allows for **data privacy**. You can create variables that cannot be accessed from the outside world, only through the specific inner functions you expose.\n\n## Pure Functions & IIFE\n\n- **Pure Function:** Given the same inputs, always returns the same output, and causes no side effects (doesn't modify external variables). They make code predictable and easy to test.\n- **IIFE (Immediately Invoked Function Expression):** `(function() { ... })()`. A function that runs exactly once the moment it is defined. Historically used to create scoped variables before `let`/`const` existed.\n\n## Recursion\n\nA function that calls itself until it hits a **base case** (a condition to stop). Used for tree traversal, deep cloning, or solving mathematical sequences like factorials.",
+    "slug": "python-tuples-immutability",
+    "title": "Tuples & Immutability",
+    "icon": "Lock",
+    "overview": "Work with ordered, immutable sequences ideal for fixed collections and hashable data requirements.",
+    "explanation": "## Creating Tuples\n\n```python \n# Literal syntax (parentheses are optional but recommended)\ncoords = (10, 20)\nsingle = (42,)    # ⚠️ Comma is REQUIRED for single element!\nnot_tuple = (42)  # This is just an int in parentheses\nempty = ()\n\n# From other iterables\nfrom_list = tuple([1, 2, 3])  # (1, 2, 3)\nfrom_str = tuple('Python')     # ('P', 'y', 't', 'h', 'o', 'n')\n```\n\n## Tuple Operations\n\n```python \nt = (10, 20, 30, 20, 40)\n\n# Indexing & Slicing (same as lists)\nprint(t[0])     # 10\nprint(t[-1])    # 40\nprint(t[1:3])   # (20, 30)\n\n# Membership\nprint(20 in t)  # True\n\n# Count & Index\nprint(t.count(20))  # 2\nprint(t.index(30))  # 2\n\n# Concatenation & Repetition (creates NEW tuples)\nnew_t = t + (50, 60)\nrep_t = (0,) * 3  # (0, 0, 0)\n```\n\n## Immutability\n\n```python \nt = (1, 2, [3, 4])\n\n# t[0] = 99  # TypeError! 'tuple' object does not support item assignment\n\n# ⚠️ BUT if a tuple contains a MUTABLE object, that inner object CAN change!\nt[2][0] = 99\nprint(t)  # (1, 2, [99, 4]) — Tuple still points to the same list object\n```\n\n## Tuple Unpacking\n\n```python \n# Basic unpacking\nx, y, z = (10, 20, 30)\n\n# Swap variables (Pythonic!)\na, b = 10, 20\na, b = b, a  # a=20, b=10\n\n# Extended unpacking (* operator)\nfirst, *rest = (1, 2, 3, 4, 5)\nprint(first) # 1\nprint(rest)  # [2, 3, 4, 5] (becomes a list!)\n\n*middle, last = (1, 2, 3, 4, 5)\nfirst, *middle, last = (1, 2, 3, 4, 5)\n\n# Nested unpacking\n(a, b), (c, d) = (1, 2), (3, 4)\n```\n\n## Why Tuples?\n\n```python \n# 1. Dictionary keys (must be hashable/immutable)\nlocations = {\n    (35.68, 139.69): 'Tokyo',\n    (40.71, -74.00): 'New York'\n}\n\n# 2. Function return values (multiple returns are actually tuples)\ndef min_max(lst):\n    return min(lst), max(lst)\n\nresult = min_max([3, 1, 4, 1, 5])\nprint(type(result))  # <class 'tuple'>\n\n# 3. Slight performance & memory advantage over lists\nimport sys\nprint(sys.getsizeof([1,2,3]))  # 88 bytes\nprint(sys.getsizeof((1,2,3)))  # 72 bytes\n```",
     "keyRules": [
-      "Closures allow inner functions to remember outer scope variables",
-      "Use closures to create private variables and encapsulation",
-      "Pure functions must not mutate external state or rely on external changing data",
-      "Recursive functions MUST have a base case to prevent infinite call stack errors",
-      "IIFEs run immediately and create their own scope"
+      "Single element tuple REQUIRES a trailing comma: (42,) — (42) is just an integer",
+      "Tuples are immutable, but if they contain mutable objects (like lists), those inner objects CAN be changed",
+      "Tuple unpacking is one of Python's most powerful features — use * to capture remaining elements",
+      "Tuples can be used as dictionary keys because they are hashable (as long as all their elements are hashable)",
+      "When a function returns multiple values, Python packs them into a tuple automatically"
     ],
-    "task": "Create a function `createCounter(initialValue)` that returns an object with two methods: `increment()` and `getCount()`. Use a closure so the count variable is private and cannot be modified directly from the outside.",
-    "hint": "Inside createCounter, declare `let count = initialValue`. Return an object containing `increment: () => count++` and `getCount: () => count`. The inner functions form a closure over `count`.",
+    "task": "Create a function `swap_values(a, b)` that returns the swapped values as a tuple. Create a function `get_stats(numbers)` that takes a list and returns a tuple of `(min, max, sum, average)`. Use tuple unpacking to extract and print the results. Finally, demonstrate that a tuple can be a dict key by creating a coordinate mapping.",
+    "hint": "Swap: `return b, a`. Stats: use built-in `min()`, `max()`, `sum()`, and `sum()/len(numbers)`. Dict key: `map[(x, y)] = 'Location'`. Unpacking: `mn, mx, sm, avg = get_stats(nums)`.",
     "learnings": [
-      { "title": "Factory Functions", "desc": "Using closures to create multiple independent instances of state." },
-      { "title": "Memoization", "desc": "Using closures to cache expensive function results." },
-      { "title": "Recursion vs Iteration", "desc": "When to use recursion (e.g., deep nested objects) vs standard loops (better performance)." }
+      { "title": "Creating tuples", "desc": "Instantiating tuples using parentheses, comma separation, and the tuple() constructor." },
+      { "title": "Tuple operations", "desc": "Indexing, slicing, concatenation, repetition, and membership testing on tuple elements." },
+      { "title": "Immutability benefits", "desc": "Understanding why tuples are faster, memory-efficient, and usable as dictionary keys." },
+      { "title": "Tuple unpacking", "desc": "Assigning tuple elements to multiple variables in a single assignment statement." },
+      { "title": "Single element tuples", "desc": "Creating one-item tuples correctly using trailing comma syntax to avoid type confusion." }
     ],
-    "starterCode": "// Task: Create a closure-based private counter\n\nfunction createCounter(initialValue) {\n  // 1. Create a private variable\n  \n  // 2. Return an object with methods that access the private variable\n  \n}\n\nconst myCounter = createCounter(0);\nmyCounter.increment();\nmyCounter.increment();\nconsole.log(myCounter.getCount()); // Expect 2\n\n// Prove it's private:\nconsole.log(myCounter.count); // Expect undefined",
-    "solutionCode": "// Task: Create a closure-based private counter\n\nfunction createCounter(initialValue) {\n  // 1. Create a private variable\n  let count = initialValue;\n\n  // 2. Return an object with methods that access the private variable\n  return {\n    increment: () => ++count,\n    getCount: () => count\n  };\n}\n\nconst myCounter = createCounter(0);\nmyCounter.increment();\nmyCounter.increment();\nconsole.log(myCounter.getCount()); // Expect 2\n\n// Prove it's private:\nconsole.log(myCounter.count); // Expect undefined",
-    "exampleCode": "// 🧠 Advanced Patterns\n\n// --- IIFE ---\nconst result = (function() {\n  const secret = \"I am hidden\";\n  return secret.toUpperCase();\n})();\n// console.log(secret); // ReferenceError!\n\n// --- Pure Function ---\nfunction addPure(a, b) {\n  return a + b; // Always same output for same inputs, no side effects\n}\n\n// --- Recursive Factorial ---\nfunction factorial(n) {\n  if (n <= 1) return 1; // Base case!\n  return n * factorial(n - 1); // Recursive call\n}\nconsole.log(factorial(5)); // 120",
+    "starterCode": "# Task: Tuples & Immutability\n\n# 1. swap_values(a, b) → returns (b, a)\n\n# 2. get_stats(numbers) → returns (min, max, sum, average)\n\n# 3. Test get_stats with [10, 20, 30, 40, 50]\n#    Use tuple unpacking to print each value\n\n# 4. Create a dict using tuple coordinates as keys\n#    e.g., (10.0, 20.0) -> 'Point A'",
+    "solutionCode": "# Task: Tuples & Immutability\n\n# 1. Swap values\ndef swap_values(a, b):\n    return b, a\n\nx, y = swap_values(10, 20)\nprint(f'Swapped: x={x}, y={y}')  # x=20, y=10\n\n# 2. Get stats\ndef get_stats(numbers):\n    return (min(numbers), max(numbers), sum(numbers), sum(numbers) / len(numbers))\n\n# 3. Test with unpacking\nnums = [10, 20, 30, 40, 50]\nmn, mx, sm, avg = get_stats(nums)\nprint(f'Min: {mn}, Max: {mx}, Sum: {sm}, Avg: {avg}')\n\n# 4. Tuple as dict key\nlocations = {\n    (10.0, 20.0): 'Point A',\n    (35.68, 139.69): 'Tokyo'\n}\nprint(f'Coordinate (10.0, 20.0) is: {locations[(10.0, 20.0)]}')",
+    "exampleCode": "# 🧠 Advanced Tuple Patterns\n\n# Namedtuples (better than plain tuples for readability)\nfrom collections import namedtuple\nPoint = namedtuple('Point', ['x', 'y'])\np = Point(10, 20)\nprint(p.x, p.y)  # 10 20\n\n# Unpacking in loops\npairs = [(1, 'a'), (2, 'b'), (3, 'c')]\nfor num, letter in pairs:\n    print(f'{num}: {letter}')\n\n# *args is actually a tuple!\ndef show_args(*args):\n    print(type(args))  # <class 'tuple'>\n    print(args)\n\nshow_args(1, 2, 3)  # (1, 2, 3)\n\n# Returning multiple formats\ndef divide(a, b):\n    if b == 0:\n        return (False, 'Cannot divide by zero')\n    return (True, a / b)\n\nsuccess, result = divide(10, 3)\nif success:\n    print(f'Result: {result}')\n\n# Ignoring values with _\n_, y, _ = (10, 20, 30)  # Only care about y\n\n# Tuple comprehension? No, use generator + tuple()\nsquares = tuple(x**2 for x in range(5))  # (0, 1, 4, 9, 16)",
     "tests": [
-      { "id": "t1", "description": "Should declare a variable using let or const inside the factory", "check": "code => /function createCounter[\\s\\S]*?let\\s+count|const\\s+count/.test(code)" },
-      { "id": "t2", "description": "Should return an object literal", "check": "code => /return\\s*\\{/.test(code)" },
-      { "id": "t3", "description": "Returned object should have an increment method", "check": "code => /increment\\s*:/.test(code)" },
-      { "id": "t4", "description": "increment method should mutate the outer variable", "check": "code => /\\+\\+count|count\\+\\+/.test(code)" },
-      { "id": "t5", "description": "Returned object should have a getCount method", "check": "code => /getCount\\s*:/.test(code)" }
+      { "id": "t1", "description": "Should define swap_values returning tuple", "check": "code => /def\\s+swap_values.*:/.test(code) && /return\\s+b\\s*,\\s*a/.test(code)" },
+      { "id": "t2", "description": "Should define get_stats function", "check": "code => /def\\s+get_stats/.test(code)" },
+      { "id": "t3", "description": "Should use min, max, sum built-ins", "check": "code => /min\\s*\\(/.test(code) && /max\\s*\\(/.test(code) && /sum\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should use tuple unpacking for results", "check": "code => /mn\\s*,\\s*mx\\s*,\\s*sm|\\w+\\s*,\\s*\\w+\\s*,\\s*\\w+\\s*,\\s*\\w+\\s*=/.test(code)" },
+      { "id": "t5", "description": "Should use tuple as dictionary key", "check": "code => /\\{\\s*\\(/.test(code) || /\\[\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "12",
-    "slug": "execution-context-mechanics",
-    "title": "Execution Context Mechanics",
-    "icon": "Layers",
-    "overview": "Study how the JS engine reads code, allocates memory, and builds the scope chain using practical tracing.",
-    "explanation": "## What is an Execution Context?\n\nWhenever JavaScript runs a function or global script, it wraps it in an \"Execution Context\" (EC). You can think of it as an invisible box that holds the variables, the `this` binding, and a reference to its outer environment.\n\n## The Two Phases\n\nEvery EC is created in two phases:\n1. **Memory Creation Phase:** The engine scans the code for `var`, `let`, `const`, and `function` declarations. It allocates memory for them. `var` is initialized to `undefined`, while `let/const` remain uninitialized (TDZ). Function declarations are fully stored in memory.\n2. **Execution Phase:** The engine executes the code line-by-line, assigning actual values to variables and running function calls.\n\n## The Call Stack\n\nJavaScript is single-threaded and uses a Call Stack (Last-In, First-Out) to manage Execution Contexts.\n- When a script runs, a **Global EC** is pushed.\n- When a function is called, a new **Function EC** is pushed on top.\n- When the function finishes, its EC is popped off, and control returns to the EC below it.\n\n## The Scope Chain\n\nWhen code tries to access a variable, the engine looks:\n1. In the current local scope.\n2. In the outer (parent) scope.\n3. In the next outer scope... all the way up to the Global scope.\nIf it reaches Global scope and still can't find it, it throws a `ReferenceError`.",
+    "slug": "python-sets-set-operations",
+    "title": "Sets & Set Operations",
+    "icon": "CircleDot",
+    "overview": "Leverage unordered collections of unique elements for mathematical set operations and duplicate removal.",
+    "explanation": "## Creating Sets\n\n```python \n# From literals (curly braces)\nfruits = {'apple', 'banana', 'cherry'}\n\n# From constructor\nnums = set([1, 2, 2, 3, 3, 3])  # {1, 2, 3} (duplicates removed!)\n\n# Empty set (MUST use set())\nempty = set()\n# empty = {}  # ❌ This creates an EMPTY DICT!\n\n# From strings\nchars = set('hello')  # {'h', 'e', 'l', 'o'} (unordered, no duplicate 'l')\n```\n\n## Modifying Sets\n\n```python \ns = {1, 2, 3}\n\ns.add(4)        # {1, 2, 3, 4}\ns.add(2)        # {1, 2, 3, 4} (no change, already exists)\n\ns.update([5, 6])  # {1, 2, 3, 4, 5, 6}\n\ns.remove(3)     # {1, 2, 4, 5, 6} (KeyError if not found!)\ns.discard(99)   # No error if not found (safe!)\n\npopped = s.pop() # Removes & returns a RANDOM element\ns.clear()       # Empties the set\n```\n\n## Mathematical Operations\n\n```python \na = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\n# Union (all elements from both)\nprint(a | b)          # {1, 2, 3, 4, 5, 6}\nprint(a.union(b))     # Same\n\n# Intersection (common elements)\nprint(a & b)          # {3, 4}\nprint(a.intersection(b)) # Same\n\n# Difference (in a but NOT in b)\nprint(a - b)          # {1, 2}\nprint(a.difference(b)) # Same\n\n# Symmetric Difference (in either, but NOT in both)\nprint(a ^ b)          # {1, 2, 5, 6}\nprint(a.symmetric_difference(b)) # Same\n\n# Subset & Superset\nprint({1, 2} <= a)    # True (subset)\nprint(a >= {1, 2})    # True (superset)\nprint(a == {1,2,3,4}) # True (equal)\n```\n\n## Frozen Sets\n\n```python \n# Immutable set — can be used as dict key or inside another set\nfs = frozenset([1, 2, 3])\n# fs.add(4)  # AttributeError!\n\n# Valid dict key\ncoords = {frozenset([1, 2]): 'Pair 1-2'}\n\n# Valid set element\nnested = {frozenset([1, 2]), frozenset([3, 4])}\n```",
     "keyRules": [
-      "Var is hoisted and initialized to 'undefined'; let/const are hoisted but uninitialized (TDZ)",
-      "Function declarations are fully hoisted with their body",
-      "The Call Stack operates on a Last-In, First-Out (LIFO) basis",
-      "Variable lookup follows the Scope Chain from local to global",
-      "console.trace() visually prints the current Call Stack"
+      "Empty set MUST be created with set() — {} creates an empty dictionary",
+      "Sets are UNORDERED — don't rely on indexing or slicing (they don't support it)",
+      "remove() raises KeyError if element missing; discard() does NOT raise an error",
+      "Use | for union, & for intersection, - for difference, ^ for symmetric difference",
+      "frozenset is the immutable version — use it when you need a set as a dictionary key"
     ],
-    "task": "Create three nested functions: `outer()`, `middle()`, and `inner()`. Declare a variable in `outer` and access it in `inner` to prove the Scope Chain. Inside `inner()`, call `console.trace()` to print the actual Call Stack to the terminal.",
-    "hint": "Define `outer()` which defines `var outerVar = 'I am outer'`. Define `middle()` inside it. Define `inner()` inside `middle()`. In `inner`, log `outerVar` and run `console.trace()`. Call `outer()` at the end.",
+    "task": "Create a function `analyze_sets(a, b)` that accepts two lists, converts them to sets, and returns a dictionary containing the counts of: 'union', 'intersection', 'only_in_a', 'only_in_b'. Create another function `remove_duplicates_keep_order(lst)` that removes duplicates while preserving insertion order (HINT: use a set to track seen items, but build a list for output).",
+    "hint": "Analyze: convert lists to sets, use `len(a | b)`, `len(a & b)`, `len(a - b)`, `len(b - a)`. Order-preserving dedup: `seen = set()`, loop through list, `if item not in seen: add to seen and append to result`.",
     "learnings": [
-      { "title": "Variable Environment vs Lexical Environment", "desc": "How the engine separates var declarations from let/const internally." },
-      { "title": "Block Scope Contexts", "desc": "How let/const inside an if-statement create a new environment in the scope chain." },
-      { "title": "Stack Overflow", "desc": "What happens when infinite recursion pushes too many contexts onto the call stack." }
+      { "title": "Creating sets", "desc": "Initializing sets using curly braces with values and the set() constructor from iterables." },
+      { "title": "Set methods", "desc": "Using add(), remove(), discard(), pop(), and clear() for element management." },
+      { "title": "Set operations", "desc": "Performing union (|), intersection (&), difference (-), and symmetric difference (^)." },
+      { "title": "Subset & Superset", "desc": "Checking containment relationships using issubset(), issuperset(), and isdisjoint()." },
+      { "title": "Frozen sets", "desc": "Creating immutable hashable sets usable as dictionary keys and set elements." }
     ],
-    "starterCode": "// Task: Demonstrate Scope Chain and Call Stack\n\nfunction outer() {\n  // 1. Declare a variable here\n  \n  function middle() {\n    function inner() {\n      // 2. Access outer's variable here (proves scope chain)\n      \n      // 3. Print the Call Stack\n      \n    }\n    inner();\n  }\n  middle();\n}\n\n// 4. Execute outer\n",
-    "solutionCode": "// Task: Demonstrate Scope Chain and Call Stack\n\nfunction outer() {\n  // 1. Declare a variable here\n  const outerVar = \"I am outer\";\n  \n  function middle() {\n    function inner() {\n      // 2. Access outer's variable here (proves scope chain)\n      console.log(\"Accessing:\", outerVar);\n      \n      // 3. Print the Call Stack\n      console.trace(\"Call Stack Trace:\");\n    }\n    inner();\n  }\n  middle();\n}\n\n// 4. Execute outer\nouter();",
-    "exampleCode": "// 🧠 Execution Context in Action\n\n// --- Hoisting Demo ---\nconsole.log(myVar); // undefined (Memory phase set it)\n// console.log(myLet); // ReferenceError (TDZ)\nvar myVar = 10;\nlet myLet = 20;\n\nconsole.log(greet()); // \"Hello\" (Function fully hoisted)\nfunction greet() { return \"Hello\"; }\n\n// --- Scope Chain Lookup ---\nlet globalVar = \"Global\";\nfunction level1() {\n  let l1Var = \"Level 1\";\n  function level2() {\n    let l2Var = \"Level 2\";\n    console.log(globalVar, l1Var, l2Var); // All accessible!\n  }\n  level2();\n}\nlevel1();",
+    "starterCode": "# Task: Sets & Set Operations\n\n# 1. analyze_sets(list_a, list_b) → dict of counts\n#    Keys: 'union', 'intersection', 'only_in_a', 'only_in_b'\n\n# 2. remove_duplicates_keep_order(lst) → list\n#    Use a set for O(1) lookups, but return a list\n\n# 3. Test both:\n#    a = [1, 2, 2, 3, 4, 5]\n#    b = [4, 5, 5, 6, 7]\n#    dupes = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]",
+    "solutionCode": "# Task: Sets & Set Operations\n\n# 1. Analyze sets\ndef analyze_sets(list_a, list_b):\n    set_a = set(list_a)\n    set_b = set(list_b)\n    return {\n        'union': len(set_a | set_b),\n        'intersection': len(set_a & set_b),\n        'only_in_a': len(set_a - set_b),\n        'only_in_b': len(set_b - set_a)\n    }\n\n# 2. Order-preserving deduplication\ndef remove_duplicates_keep_order(lst):\n    seen = set()\n    result = []\n    for item in lst:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n\n# 3. Test\na = [1, 2, 2, 3, 4, 5]\nb = [4, 5, 5, 6, 7]\nprint(f'Analysis: {analyze_sets(a, b)}')\n# Analysis: {'union': 7, 'intersection': 2, 'only_in_a': 3, 'only_in_b': 2}\n\ndupes = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]\nprint(f'Unique ordered: {remove_duplicates_keep_order(dupes)}')\n# Unique ordered: [3, 1, 4, 5, 9, 2, 6]",
+    "exampleCode": "# 🧠 Advanced Set Patterns\n\n# Find common items across multiple lists\ndef common_elements(*lists):\n    if not lists: return set()\n    return set(lists[0]).intersection(*lists[1:])\n\nprint(common_elements([1,2,3], [2,3,4], [0,2,5]))  # {2}\n\n# Set comprehension\nnums = range(20)\nevens_sq = {x**2 for x in nums if x % 2 == 0}\nprint(evens_sq)  # {0, 4, 16, 36, 64, 100, 144, 196, 256, 324}\n\n# Remove items from list using set difference\nitems = ['a', 'b', 'c', 'd', 'e']\nto_remove = {'b', 'd'}\nfiltered = [x for x in items if x not in to_remove]\n\n# Symmetric difference to find changes\nold_state = {'read', 'write'}\nnew_state = {'write', 'execute'}\nadded = new_state - old_state   # {'execute'}\nremoved = old_state - new_state # {'read'}\nprint(f'Added: {added}, Removed: {removed}')\n\n# Membership testing is O(1) in sets, O(n) in lists\nbig_set = set(range(100000))\nbig_list = list(range(100000))\n\nimport time\nstart = time.time()\nprint(99999 in big_set)  # Near instant\nprint(f'Set lookup: {time.time()-start:.6f}s')\n\nstart = time.time()\nprint(99999 in big_list) # Noticeably slower\nprint(f'List lookup: {time.time()-start:.6f}s')",
     "tests": [
-      { "id": "t1", "description": "Should define three nested functions", "check": "code => /function\\s+outer/.test(code) && /function\\s+middle/.test(code) && /function\\s+inner/.test(code)" },
-      { "id": "t2", "description": "Should declare a variable in the outer function", "check": "code => /function\\s+outer[\\s\\S]*?(let|const|var)\\s+\\w+/.test(code)" },
-      { "id": "t3", "description": "Should log the outer variable inside the inner function", "check": "code => /function\\s+inner[\\s\\S]*?console\\.log.*outerVar/.test(code)" },
-      { "id": "t4", "description": "Should use console.trace()", "check": "code => /console\\.trace\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should invoke the outer function at the end", "check": "code => /outer\\s*\\(\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should define analyze_sets function", "check": "code => /def\\s+analyze_sets/.test(code)" },
+      { "id": "t2", "description": "Should convert inputs to sets", "check": "code => /set\\s*\\(/.test(code)" },
+      { "id": "t3", "description": "Should use set operators (&, |, -)", "check": "code => /\\||&|\\-/.test(code)" },
+      { "id": "t4", "description": "Should define remove_duplicates_keep_order", "check": "code => /def\\s+remove_duplicates_keep_order/.test(code)" },
+      { "id": "t5", "description": "Should use a set for seen items tracking", "check": "code => /seen\\s*=\\s*set\\(\\)/.test(code)" },
+      { "id": "t6", "description": "Should append to a list to preserve order", "check": "code => /result\\.append|\\.append\\s*\\(\\s*item/.test(code)" }
     ]
   },
   {
     "id": "13",
-    "slug": "arrays-basics",
-    "title": "Arrays Basics",
-    "icon": "List",
-    "overview": "Create, index, and modify sequential memory collections efficiently using standard bracket notation.",
-    "explanation": "## What is an Array?\n\nAn array is an ordered list of values. Unlike many languages where arrays are strictly fixed-size blocks of identical memory types, JavaScript arrays are dynamic, can hold mixed data types, and are technically special objects under the hood.\n\n## Creating Arrays\n- **Array Literal:** `const arr = [1, 2, 3];` (Preferred, faster)\n- **Array Constructor:** `const arr = new Array(3);` (Avoid for creating values, as `new Array(3)` creates an empty array of length 3, but `new Array(3, 4)` creates `[3, 4]`—too confusing).\n\n## Accessing Elements\nArrays are **zero-indexed**. The first element is at `arr[0]`, the second at `arr[1]`, and the last at `arr[arr.length - 1]`.\nIf you try to access an index that doesn't exist, JavaScript does NOT throw an error; it returns `undefined`.\n\n## Modifying Elements\nBecause arrays are mutable, you can change a value by directly assigning to an index: `arr[0] = 99;`.\nYou can even add an element to the end by assigning to an index equal to the length: `arr[arr.length] = 'new';` (though `push()` is better).",
+    "slug": "python-dictionaries-mastery",
+    "title": "Dictionaries Mastery",
+    "icon": "BookMarked",
+    "overview": "Store and retrieve key-value pairs efficiently using Python's powerful hash-map implementation.",
+    "explanation": "## Creating Dictionaries\n\n```python \n# Literal syntax\nperson = {\n    'name': 'Alice',\n    'age': 30,\n    'city': 'New York'\n}\n\n# Constructor\nempty = dict()\nfrom_pairs = dict([('a', 1), ('b', 2)])  # {'a': 1, 'b': 2}\nfrom_kwargs = dict(name='Bob', age=25)   # {'name': 'Bob', 'age': 25}\n\n# fromkeys (all keys get same value)\nkeys = ['a', 'b', 'c']\nd = dict.fromkeys(keys, 0)  # {'a': 0, 'b': 0, 'c': 0}\n```\n\n## Accessing Values\n\n```python \nd = {'x': 10, 'y': 20}\n\n# Square brackets (KeyError if missing!)\nprint(d['x'])  # 10\n# print(d['z'])  # KeyError!\n\n# get() method (Returns None or default if missing)\nprint(d.get('y'))      # 20\nprint(d.get('z'))      # None\nprint(d.get('z', 99))  # 99\n\n# setdefault (Get value, or INSERT if missing)\nval = d.setdefault('z', 99)\n# d is now {'x': 10, 'y': 20, 'z': 99}\n```\n\n## Modifying Dictionaries\n\n```python \nd = {'a': 1, 'b': 2}\n\n# Add / Update\nd['c'] = 3       # Add new\nd['a'] = 100     # Update existing\n\nd.update({'d': 4, 'a': 200})  # Update multiple\n\n# Delete\ndel d['b']       # Deletes key 'b' (KeyError if missing)\nval = d.pop('c')  # Removes 'c' and returns 3\nval = d.pop('z', None) # Safe pop with default\nd.clear()        # Empty the dict\n```\n\n## Iteration Methods\n\n```python \nd = {'name': 'Alice', 'age': 30, 'city': 'NYC'}\n\n# Keys (default iteration)\nfor key in d:\n    print(key)\nfor key in d.keys():\n    print(key)\n\n# Values\nfor val in d.values():\n    print(val)\n\n# Key-Value Pairs (most common!)\nfor key, val in d.items():\n    print(f'{key}: {val}')\n```\n\n## Dictionary Comprehension\n\n```python \n# Basic\nsquares = {x: x**2 for x in range(5)}\n# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}\n\n# With condition\nevens = {x: x**2 for x in range(10) if x % 2 == 0}\n\n# Transform existing dict\nprices = {'apple': 1.2, 'banana': 0.5}\ntaxed = {k: round(v * 1.1, 2) for k, v in prices.items()}\n\n# Invert dict (values must be unique!)\noriginal = {'a': 1, 'b': 2}\ninverted = {v: k for k, v in original.items()}\n```\n\n## Nested Dictionaries\n\n```python \nusers = {\n    'u1': {'name': 'Alice', 'role': 'admin'},\n    'u2': {'name': 'Bob', 'role': 'user'}\n}\nprint(users['u1']['name'])  # Alice\n```",
     "keyRules": [
-      "Always use literal notation [] to create arrays",
-      "Arrays are zero-indexed; the last element is at arr.length - 1",
-      "Accessing an out-of-bounds index returns undefined, no error",
-      "Arrays can hold mixed types (e.g., [1, 'string', null, { id: 1 }])",
-      "Modifying by index mutates the original array"
+      "Use d.get(key, default) instead of d[key] to avoid KeyError on missing keys",
+      "setdefault() is like get() but it ALSO inserts the key with the default value if it's missing",
+      "Always use d.items() to iterate over both keys and values simultaneously",
+      "dict.update() can take another dict or keyword arguments to update multiple keys at once",
+      "Dictionary comprehension syntax: {key_expr: val_expr for item in iterable if condition}"
     ],
-    "task": "Create an array of 3 student objects, each with `name` and `grade`. Log the first student. Then, change the grade of the second student to 'A+'. Finally, add a new student to the end of the array using index assignment.",
-    "hint": "Access via `students[0]`. Modify via `students[1].grade = 'A+'`. Add via `students[students.length] = { name: 'New Student', grade: 'B' }`.",
+    "task": "Create a function `invert_dict(d)` that inverts a dictionary. If the original dict has duplicate values, group the keys into a list (e.g., {'a': 1, 'b': 1} → {1: ['a', 'b']}). Create a function `deep_get(d, keys, default=None)` that safely accesses nested dictionaries, e.g., deep_get(d, ['a', 'b', 'c']) without throwing KeyError.",
+    "hint": "Invert: loop items, use `setdefault(val, []).append(key)` to group keys. Deep get: start with `obj = d`, loop through keys list, if key not in obj or not isinstance(obj, dict), return default, else `obj = obj[key]`.",
     "learnings": [
-      { "title": "Array-like Objects", "desc": "Objects with length and indexes (like strings or function arguments) that aren't true arrays." },
-      { "title": "Sparse Arrays", "desc": "Arrays with empty slots (e.g., `[1, , 3]`) and how they behave differently with map/filter." },
-      { "title": "Memory Structure", "desc": "How arrays store references for objects, meaning mutating an object in an array mutates the original object." }
+      { "title": "Creating dictionaries", "desc": "Building dicts using curly brace syntax, dict() constructor, and fromkeys() class method." },
+      { "title": "Accessing values", "desc": "Retrieving data using square brackets, get() method with defaults, and setdefault()." },
+      { "title": "Modifying dictionaries", "desc": "Adding, updating, and deleting key-value pairs using direct assignment and del/pop." },
+      { "title": "Dictionary methods", "desc": "Using keys(), values(), items(), update(), copy(), and popitem() for data manipulation." },
+      { "title": "Dictionary comprehension", "desc": "Building dictionaries concisely using inline key-value expression loops with conditions." },
+      { "title": "Nested dictionaries", "desc": "Structuring complex hierarchical data using dictionaries containing other dictionaries." }
     ],
-    "starterCode": "// Task: Create, Access, and Modify Arrays\n\n// 1. Create an array of 3 student objects\n\n\n// 2. Log the first student\n\n\n// 3. Change the second student's grade to 'A+'\n\n\n// 4. Add a new student to the end using index assignment\n\n\n// 5. Log the final array\n",
-    "solutionCode": "// Task: Create, Access, and Modify Arrays\n\n// 1. Create an array of 3 student objects\nconst students = [\n  { name: \"Ali\", grade: \"B\" },\n  { name: \"Bob\", grade: \"C\" },\n  { name: \"Charlie\", grade: \"A\" }\n];\n\n// 2. Log the first student\nconsole.log(\"First Student:\", students[0]);\n\n// 3. Change the second student's grade to 'A+'\nstudents[1].grade = \"A+\";\n\n// 4. Add a new student to the end using index assignment\nstudents[students.length] = { name: \"Diana\", grade: \"B+\" };\n\n// 5. Log the final array\nconsole.log(\"Final Array:\", students);",
-    "exampleCode": "// 🧠 Array Quirks\n\n// --- Mixed Types ---\nconst weird = [1, \"two\", null, { id: 4 }, [5, 6]];\n\n// --- Out of bounds ---\nconst arr = [10, 20];\nconsole.log(arr[5]); // undefined (No error!)\n\n// --- Sparse Arrays (Avoid!) ---\nconst sparse = [1, , 3];\nconsole.log(sparse.length); // 3\nconsole.log(sparse[1]);    // undefined\n\n// --- Reference Mutation ---\nconst objArr = [{ a: 1 }];\nconst copy = objArr; // NOT a real copy, just a reference!\ncopy[0].a = 99;\nconsole.log(objArr[0].a); // 99 (Original affected)",
+    "starterCode": "# Task: Dictionaries Mastery\n\n# 1. invert_dict(d) → inverted dict\n#    Handle duplicate values by grouping keys in lists\n\n# 2. deep_get(d, keys, default=None) → value or default\n#    Safely traverse nested dicts\n\n# 3. Test both:\n#    original = {'a': 1, 'b': 2, 'c': 1, 'd': 3}\n#    nested = {'a': {'b': {'c': 'FOUND'}}}\n#    Test deep_get with valid path and invalid path",
+    "solutionCode": "# Task: Dictionaries Mastery\n\n# 1. Invert dictionary with duplicate handling\ndef invert_dict(d):\n    inverted = {}\n    for key, value in d.items():\n        inverted.setdefault(value, []).append(key)\n    return inverted\n\n# 2. Deep get with safe traversal\ndef deep_get(d, keys, default=None):\n    obj = d\n    for key in keys:\n        if isinstance(obj, dict) and key in obj:\n            obj = obj[key]\n        else:\n            return default\n    return obj\n\n# 3. Test\noriginal = {'a': 1, 'b': 2, 'c': 1, 'd': 3}\nprint(f'Inverted: {invert_dict(original)}')\n# Inverted: {1: ['a', 'c'], 2: ['b'], 3: ['d']}\n\nnested = {'a': {'b': {'c': 'FOUND'}}}\nprint(f'Valid path: {deep_get(nested, [\"a\", \"b\", \"c\"])}')  # FOUND\nprint(f'Invalid path: {deep_get(nested, [\"x\", \"y\"])}')      # None",
+    "exampleCode": "# 🧠 Advanced Dictionary Patterns\n\n# Merge dictionaries (Python 3.9+)\nd1 = {'a': 1, 'b': 2}\nd2 = {'b': 3, 'c': 4}\nmerged = d1 | d2  # {'a': 1, 'b': 3, 'c': 4} (d2 wins on conflict)\n\n# Sorting dict by value\nscores = {'Alice': 85, 'Bob': 92, 'Charlie': 78}\nsorted_scores = dict(sorted(scores.items(), key=lambda x: x[1], reverse=True))\n\n# Default dict for grouping\nfrom collections import defaultdict\nwords = ['apple', 'banana', 'avocado', 'blueberry', 'cherry']\nby_letter = defaultdict(list)\nfor w in words:\n    by_letter[w[0]].append(w)\n# {'a': ['apple', 'avocado'], 'b': ['banana', 'blueberry'], 'c': ['cherry']}\n\n# Dictionary as a switch/case\ndef operation(op, a, b):\n    ops = {\n        '+': lambda x, y: x + y,\n        '-': lambda x, y: x - y,\n        '*': lambda x, y: x * y\n    }\n    func = ops.get(op, lambda x, y: None)\n    return func(a, b)\n\n# Flattening nested dict\ndef flatten_dict(d, parent_key='', sep='.'):\n    items = []\n    for k, v in d.items():\n        new_key = f\"{parent_key}{sep}{k}\" if parent_key else k\n        if isinstance(v, dict):\n            items.extend(flatten_dict(v, new_key, sep=sep).items())\n        else:\n            items.append((new_key, v))\n    return dict(items)\n\nprint(flatten_dict({'a': {'b': 1, 'c': {'d': 2}}}))\n# {'a.b': 1, 'a.c.d': 2}",
     "tests": [
-      { "id": "t1", "description": "Should create an array using literal notation", "check": "code => /=\\s*\\[/.test(code)" },
-      { "id": "t2", "description": "Should access index 0", "check": "code => /\\[\\s*0\\s*\\]/.test(code)" },
-      { "id": "t3", "description": "Should modify index 1", "check": "code => /\\[\\s*1\\s*\\]/.test(code)" },
-      { "id": "t4", "description": "Should use .length to add new item", "check": "code => /\\.length\\s*\\]/.test(code)" },
-      { "id": "t5", "description": "Should have objects with name and grade properties", "check": "code => /name\\s*:/.test(code) && /grade\\s*:/.test(code)" }
+      { "id": "t1", "description": "Should define invert_dict function", "check": "code => /def\\s+invert_dict/.test(code)" },
+      { "id": "t2", "description": "Should use setdefault or manual check for grouping", "check": "code => /setdefault|if\\s+value\\s+not\\s+in/.test(code)" },
+      { "id": "t3", "description": "Should define deep_get function", "check": "code => /def\\s+deep_get/.test(code)" },
+      { "id": "t4", "description": "Should use isinstance check in deep_get", "check": "code => /isinstance\\s*\\(.*dict/.test(code)" },
+      { "id": "t5", "description": "Should test with nested dictionary", "check": "code => /\\{.*\\{.*\\{/.test(code)" },
+      { "id": "t6", "description": "Should handle invalid path returning default", "check": "code => /default/.test(code)" }
     ]
   },
   {
     "id": "14",
-    "slug": "array-mutators-slicing",
-    "title": "Array Mutators & Slicing API",
-    "icon": "Scissors",
-    "overview": "Master standard boundary expansions, contractions, and segment splitting, understanding mutability.",
-    "explanation": "## Mutator Methods\n\nThese methods change the **original** array in place.\n- **`push(...items)`**: Adds to the end. Returns new length.\n- **`pop()`**: Removes from the end. Returns removed item.\n- **`unshift(...items)`**: Adds to the beginning. Returns new length. (Slow on huge arrays because it re-indexes everything).\n- **`shift()`**: Removes from the beginning. Returns removed item.\n\n## The Crucial Difference: `slice` vs `splice`\n\nThis is the most common interview mix-up.\n- **`slice(start, end)`**: IMMUTABLE. Returns a NEW array containing elements from `start` up to (but NOT including) `end`. Original array is untouched. If no `end` is given, it goes to the end.\n- **`splice(start, deleteCount, item1, ...)`**: MUTABLE. Modifies the original array by removing items (based on `deleteCount`) and optionally inserting new items. Returns an array of the REMOVED items.\n\n## Concatenation\n- **`concat(arr2)`**: IMMUTABLE. Merges two or more arrays into a new array without changing the originals.",
+    "slug": "python-advanced-collections",
+    "title": "Advanced Collections Module",
+    "icon": "Layers",
+    "overview": "Utilize specialized data structures from the collections module for optimized real-world scenarios.",
+    "explanation": "## Counter\n\n```python \nfrom collections import Counter\n\n# Count elements automatically\nwords = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']\ncounts = Counter(words)\nprint(counts)  # Counter({'apple': 3, 'banana': 2, 'cherry': 1})\n\n# Most common elements\nprint(counts.most_common(2))  # [('apple', 3), ('banana', 2)]\n\n# Math operations on counters\nc1 = Counter(a=3, b=1)\nc2 = Counter(a=1, b=2)\nprint(c1 + c2)  # Counter({'a': 4, 'b': 3})\nprint(c1 - c2)  # Counter({'a': 2}) (ignores zero/negative)\n```\n\n## defaultdict\n\n```python \nfrom collections import defaultdict\n\n# Auto-initializes missing keys!\n# Normal dict would throw KeyError\ngroups = defaultdict(list)\ngroups['fruits'].append('apple')  # Creates empty list automatically!\ngroups['fruits'].append('banana')\n\nint_dict = defaultdict(int)  # Default value 0\nint_dict['count'] += 1\n\n# Grouping pattern\nstudents = [('A', 85), ('B', 92), ('A', 78), ('B', 88)]\nby_grade = defaultdict(list)\nfor name, score in students:\n    by_grade[name].append(score)\n# defaultdict(list, {'A': [85, 78], 'B': [92, 88]})\n```\n\n## deque (Double-Ended Queue)\n\n```python \nfrom collections import deque\n\n# O(1) append and pop from BOTH ends\ndq = deque([1, 2, 3])\n\ndq.append(4)      # Add to right: [1, 2, 3, 4]\ndq.appendleft(0)  # Add to left: [0, 1, 2, 3, 4]\n\ndq.pop()         # Remove from right: returns 4\ndq.popleft()     # Remove from left: returns 0\n\n# Rotate\ndq = deque([1, 2, 3, 4, 5])\ndq.rotate(2)    # Rotate right 2: [4, 5, 1, 2, 3]\ndq.rotate(-1)   # Rotate left 1: [5, 1, 2, 3, 4]\n\n# Fixed size (automatically discards from opposite end)\nlast_3 = deque(maxlen=3)\nfor i in range(5):\n    last_3.append(i)\nprint(last_3)  # deque([2, 3, 4], maxlen=3)\n```\n\n## namedtuple\n\n```python \nfrom collections import namedtuple\n\n# Create a lightweight class\nPoint = namedtuple('Point', ['x', 'y'])\np = Point(10, 20)\n\n# Access by name (more readable than tuples!)\nprint(p.x)  # 10\nprint(p[1])  # 20 (still supports index)\n\n# Has _make, _asdict methods\ncoords = [30, 40]\np2 = Point._make(coords)\nprint(p2._asdict())  # {'x': 30, 'y': 40}\n```\n\n## ChainMap\n\n```python \nfrom collections import ChainMap\n\n# Group multiple dicts, searches in order\ndefaults = {'color': 'red', 'size': 'M'}\nuser_prefs = {'color': 'blue'}\n\ncombined = ChainMap(user_prefs, defaults)\nprint(combined['color'])  # 'blue' (from user_prefs)\nprint(combined['size'])   # 'M' (from defaults, not in user_prefs)\n```",
     "keyRules": [
-      "push/pop are fast (operate at end), shift/unshift are slow (re-index whole array)",
-      "slice is IMMUTABLE (returns new array)",
-      "splice is MUTABLE (alters original array, returns removed items)",
-      "concat is IMMUTABLE (returns new merged array)",
-      "Prefer slice/map/filter over splice for functional programming patterns"
+      "Counter is the best tool for frequency counting — use most_common(n) for top N items",
+      "defaultdict eliminates KeyError checks for missing keys by auto-initializing with a factory function",
+      "deque provides O(1) append/pop from both ends — lists are O(n) for insert(0, x) and pop(0)",
+      "deque with maxlen=N is perfect for keeping only the last N items (like a history buffer)",
+      "namedtuple provides readable dot-notation access without the overhead of a full class"
     ],
-    "task": "Write a function `processQueue()` that starts with an array `['A', 'B', 'C']`. Use `pop()` to remove the last item. Use `unshift()` to add 'Z' to the front. Then, make a safe copy of the first two elements using `slice()` WITHOUT mutating the array.",
-    "hint": "Call `arr.pop()`. Call `arr.unshift('Z')`. To get the first two without mutating, use `arr.slice(0, 2)` and store it in a new variable.",
+    "task": "Create a function `top_n_words(text, n)` that takes a string, splits it into words (case-insensitive, ignore punctuation), and returns the top N most frequent words using Counter. Create a function `moving_average(data, window_size)` that returns a list of moving averages using a `deque` with `maxlen` or manual window.",
+    "hint": "Top N: clean text with `[w.lower() for w in text.split() if w.isalpha()]`, pass to `Counter()`, use `.most_common(n)`. Moving Avg: maintain a `deque(maxlen=window_size)`, append each item, append `sum(dq)/len(dq)` to results.",
     "learnings": [
-      { "title": "Array Destructuring with Mutators", "desc": "Using const [first, ...rest] = arr; as a modern alternative to shift()." },
-      { "title": "Splice for Replacing", "desc": "Using splice(1, 1, 'new') to replace an element in place." },
-      { "title": "Performance Implications", "desc": "Why pushing to the end of an array is O(1) but unshifting is O(n)." }
+      { "title": "Counter", "desc": "Counting hashable object frequencies automatically and performing arithmetic on count results." },
+      { "title": "defaultdict", "desc": "Creating dictionaries that auto-initialize missing keys with factory default values." },
+      { "title": "deque", "desc": "Implementing double-ended queues with O(1) append and pop operations from both ends." },
+      { "title": "namedtuple", "desc": "Building lightweight immutable tuple subclasses with named field access via dot notation." },
+      { "title": "OrderedDict", "desc": "Maintaining explicit insertion order of keys for backward-compatible ordered dictionary needs." },
+      { "title": "ChainMap", "desc": "Grouping multiple dictionaries into a single unified lookup context without merging." }
     ],
-    "starterCode": "// Task: Demonstrate Mutators vs Immutable slice\n\nfunction processQueue() {\n  const queue = ['A', 'B', 'C'];\n  \n  // 1. Remove the last item using pop()\n  \n  // 2. Add 'Z' to the front using unshift()\n  \n  // 3. Create a copy of the first two elements safely (do NOT mutate queue)\n  const firstTwo = undefined; \n  \n  console.log(\"Original Queue:\", queue);\n  console.log(\"Safe Copy:\", firstTwo);\n}\n\nprocessQueue();",
-    "solutionCode": "// Task: Demonstrate Mutators vs Immutable slice\n\nfunction processQueue() {\n  const queue = ['A', 'B', 'C'];\n  \n  // 1. Remove the last item using pop()\n  queue.pop();\n  \n  // 2. Add 'Z' to the front using unshift()\n  queue.unshift('Z');\n  \n  // 3. Create a copy of the first two elements safely (do NOT mutate queue)\n  const firstTwo = queue.slice(0, 2);\n  \n  console.log(\"Original Queue:\", queue);   // ['Z', 'A', 'B']\n  console.log(\"Safe Copy:\", firstTwo);     // ['Z', 'A']\n}\n\nprocessQueue();",
-    "exampleCode": "// 🧠 Slice vs Splice Visualized\n\nconst original = [10, 20, 30, 40, 50];\n\n// --- SLICE (Immutable) ---\nconst copy = original.slice(1, 3);\nconsole.log(copy);     // [20, 30]\nconsole.log(original); // [10, 20, 30, 40, 50] (Unchanged!)\n\n// --- SPLICE (Mutable) ---\nconst removed = original.splice(1, 2, 99);\nconsole.log(removed);  // [20, 30] (The items removed)\nconsole.log(original); // [10, 99, 40, 50] (Changed!)\n\n// --- CONCAT (Immutable) ---\nconst merged = original.concat([60, 70]);\nconsole.log(original); // Still [10, 99, 40, 50]\nconsole.log(merged);   // [10, 99, 40, 50, 60, 70]",
+    "starterCode": "# Task: Advanced Collections Module\n\n# 1. top_n_words(text, n) → list of (word, count) tuples\n#    Case-insensitive, ignore non-alpha characters\n\n# 2. moving_average(data, window_size) → list of averages\n#    Use deque for the sliding window\n\n# 3. Test both:\n#    text = 'The cat sat on the mat the cat ate the rat'\n#    data = [10, 20, 30, 40, 50, 60]\n#    window = 3",
+    "solutionCode": "# Task: Advanced Collections Module\n\nfrom collections import Counter, deque\n\n# 1. Top N words\ndef top_n_words(text, n):\n    words = [w.lower() for w in text.split() if w.isalpha()]\n    return Counter(words).most_common(n)\n\n# 2. Moving average with dequedef moving_average(data, window_size):\n    window = deque(maxlen=window_size)\n    averages = []\n    for num in data:\n        window.append(num)\n        if len(window) == window_size:\n            averages.append(sum(window) / window_size)\n    return averages\n\n# 3. Test\ntext = 'The cat sat on the mat the cat ate the rat'\nprint(f'Top 2 words: {top_n_words(text, 2)}')\n# Top 2 words: [('the', 4), ('cat', 2)]\n\ndata = [10, 20, 30, 40, 50, 60]\nprint(f'Moving Avg (3): {moving_average(data, 3)}')\n# Moving Avg (3): [20.0, 30.0, 40.0, 50.0]",
+    "exampleCode": "# 🧠 Advanced Collections Patterns\n\n# Word frequency with stopwords removal\nfrom collections import Counter\nstopwords = {'the', 'a', 'an', 'on', 'in'}\ntext = 'the cat in the hat'\nwords = [w for w in text.lower().split() if w not in stopwords]\nprint(Counter(words))  # Counter({'cat': 1, 'hat': 1})\n\n# defaultdict with nested dicts\ndef nested_dict():\n    from collections import defaultdict\n    return defaultdict(nested_dict)\n\n# db = nested_dict()\n# db['users']['u1']['name'] = 'Alice'\n\n# Deque as a stack/queue benchmark\nfrom collections import deque\nimport time\n\n# Queue with list (SLOW)\nq_list = []\nstart = time.time()\nfor i in range(100000):\n    q_list.append(i)\nfor i in range(100000):\n    q_list.pop(0)  # O(n) operation!\nprint(f'List pop(0): {time.time()-start:.4f}s'\n\n# Queue with deque (FAST)\nq_deque = deque()\nstart = time.time()\nfor i in range(100000):\n    q_deque.append(i)\nfor i in range(100000):\n    q_deque.popleft()  # O(1) operation!\nprint(f'Deque popleft: {time.time()-start:.4f}s')\n\n# Namedtuple with defaults\nfrom collections import namedtuple\nPoint = namedtuple('Point', 'x y', defaults=[0, 0])\np = Point(10)  # Point(x=10, y=0)",
     "tests": [
-      { "id": "t1", "description": "Should use .pop() method", "check": "code => /\\.pop\\s*\\(\\s*\\)/.test(code)" },
-      { "id": "t2", "description": "Should use .unshift() method", "check": "code => /\\.unshift\\s*\\(\\s*['\"]Z['\"]\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should use .slice() to extract items", "check": "code => /\\.slice\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should NOT use .splice()", "check": "code => !/\\.splice\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "slice should pass 0 as first argument", "check": "code => /\\.slice\\s*\\(\\s*0/.test(code)" }
+      { "id": "t1", "description": "Should import from collections", "check": "code => /from\\s+collections\\s+import/.test(code)" },
+      { "id": "t2", "description": "Should define top_n_words function", "check": "code => /def\\s+top_n_words/.test(code)" },
+      { "id": "t3", "description": "Should use Counter for counting", "check": "code => /Counter\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should use most_common method", "check": "code => /\\.most_common\\s*\\(/.test(code)" },
+      { "id": "t5", "description": "Should define moving_average function", "check": "code => /def\\s+moving_average/.test(code)" },
+      { "id": "t6", "description": "Should use deque with maxlen", "check": "code => /deque\\s*\\(\\s*maxlen/.test(code)" }
     ]
   },
   {
     "id": "15",
-    "slug": "advanced-array-processors",
-    "title": "Advanced Array Processors",
-    "icon": "Filter",
-    "overview": "Orchestrate high-performance functional queries, transformations, and aggregations.",
-    "explanation": "## The Holy Trinity: `map`, `filter`, `reduce`\n\nThese three methods form the core of functional programming in JavaScript. They do NOT mutate the original array; they return new arrays (or a final value in reduce's case).\n\n- **`map(callback)`**: Transforms data. It loops over every element, applies a function to it, and returns a **new array** of the exact same length with the transformed values.\n- **`filter(callback)`**: Selects data. It loops over every element, keeps only the ones where the callback returns `true`, and returns a **new array** (usually shorter).\n- **`reduce(callback, initialValue)`**: Aggregates data. It loops over every element, accumulating a single result (like a sum, a single object, or a string). The callback receives `(accumulator, currentValue)`.\n\n## Search Methods\n- **`find(callback)`**: Returns the **first element** that matches. Returns `undefined` if not found.\n- **`findIndex(callback)`**: Returns the **index** of the first match. Returns `-1` if not found.\n- **`some(callback)`**: Returns `true` if **AT LEAST ONE** element passes the test.\n- **`every(callback)`**: Returns `true` if **ALL** elements pass the test.\n\n## Utility Methods\n- **`sort(compareFn)`**: MUTATES the original array! Sorts alphabetically by default (so `10` comes before `2`). Always provide a compare function for numbers: `(a, b) => a - b`.\n- **`flat(depth)`**: Flattens nested arrays. `[[1, 2], [3, 4]].flat()` becomes `[1, 2, 3, 4]`.",
+    "slug": "python-functions-basics",
+    "title": "Functions Basics",
+    "icon": "Code2",
+    "overview": "Define reusable code blocks using def, manage parameters, and return computed values.",
+    "explanation": "## Defining Functions\n\n```python \n# Basic syntax\ndef greet(name):\n    \"\"\"Greet the user by name.\"\"\"  # Docstring\n    return f'Hello, {name}!'\n\n# Calling\nmessage = greet('Alice')\nprint(message)  # 'Hello, Alice!'\n\n# Function without return (returns None implicitly)\ndef log(message):\n    print(f'[LOG]: {message}')\n\nresult = log('Started')\nprint(result)  # None\n```\n\n## Parameters vs Arguments\n\n```python \n# Parameters: variables in the definition\ndef add(a, b):  # a, b are parameters\n    return a + b\n\n# Arguments: actual values passed\ntotal = add(5, 10)  # 5, 10 are arguments\n```\n\n## Return Statement\n\n```python \n# Returns single value\ndef square(n):\n    return n * n\n\n# Returns multiple values (actually a tuple!)\ndef min_max(lst):\n    return min(lst), max(lst)\n\nresult = min_max([3, 1, 4])\nprint(type(result))  # <class 'tuple'>\nprint(result)       # (1, 4)\n\n# Early return (guard clause)\ndef divide(a, b):\n    if b == 0:\n        return None  # Exit early\n    return a / b\n\n# A function can only return ONCE per call\n# Code after return is UNREACHABLE\ndef bad():\n    return 1\n    print('Never runs')  # Dead code!\n```\n\n## Docstrings\n\n```python \ndef calculate_area(radius):\n    \"\"\"\n    Calculate the area of a circle.\n    \n    Args:\n        radius (float): The radius of the circle.\n        \n    Returns:\n        float: The area of the circle.\n    \"\"\"\n    import math\n    return math.pi * radius ** 2\n\n# Access docstring\nprint(calculate_area.__doc__)\n\n# help() uses docstrings\n# help(calculate_area)\n```\n\n## Functions are First-Class Objects\n\n```python \n# Assign to variable\nmy_func = print\nmy_func('Hello')  # Works!\n\n# Pass as argument\ndef execute(func, value):\n    return func(value)\n\nresult = execute(square, 5)  # 25\n\n# Return from function\ndef get_multiplier(factor):\n    def inner(x):\n        return x * factor\n    return inner\n\ndouble = get_multiplier(2)\nprint(double(10))  # 20\n```",
     "keyRules": [
-      "map, filter, and reduce do NOT mutate the original array",
-      "reduce requires an initialValue to prevent bugs on empty arrays",
-      "find returns the element, findIndex returns the index",
-      "sort() MUTATES the array; use .toSorted() for immutable sorting (ES2023)",
-      "Always pass (a, b) => a - b to sort numbers numerically"
+      "Functions that don't explicitly return a value return None — always check for None if needed",
+      "Returning multiple values (comma-separated) actually packs them into a tuple",
+      "Code after a return statement is dead code — Python will not execute it",
+      "Docstrings (triple-quoted strings right after def) are the standard way to document functions",
+      "Functions are first-class objects — they can be assigned to variables, passed as args, and returned"
     ],
-    "task": "Given an array of products `{ name, price, inStock }`, use `filter` to remove out-of-stock items. Then use `map` to extract just the prices. Finally, use `reduce` to calculate the total cost of all in-stock products.",
-    "hint": "Chain the methods: `products.filter(...).map(...).reduce(...)`. In reduce, the accumulator starts at 0, and you add the current price to it.",
+    "task": "Create a function `calculate_rectangle(length, width)` that returns a dictionary containing `'area'`, `'perimeter'`, and `'diagonal'` (use `**0.5` for square root). Include a proper multi-line docstring. Create a function `is_even(n)` that returns True/False, then use it inside `filter_evens(numbers)` to return only even numbers.",
+    "hint": "Rect: `area = l*w`, `perimeter = 2*(l+w)`, `diagonal = (l**2 + w**2)**0.5`. Return `{'area': area, ...}`. Filter evens: `return [n for n in numbers if is_even(n)]` or use the `filter()` built-in.",
     "learnings": [
-      { "title": "Method Chaining", "desc": "Why map/filter/reduce chain beautifully (they all return arrays)." },
-      { "title": "reduce for Grouping", "desc": "Using reduce to transform an array of objects into a dictionary/object." },
-      { "title": "Short-circuiting with some/every", "desc": "How some() and every() stop iterating as soon as the result is known." }
+      { "title": "def keyword", "desc": "Declaring named function blocks with a signature, docstring, and indented body." },
+      { "title": "Parameters & Arguments", "desc": "Defining input variables in signatures and passing actual values during function calls." },
+      { "title": "return statement", "desc": "Sending computed results back to the caller and exiting the function execution." },
+      { "title": "Multiple return values", "desc": "Returning tuples that can be unpacked into multiple variables at the call site." },
+      { "title": "Docstrings", "desc": "Writing triple-quoted documentation strings accessible via __doc__ attribute." }
     ],
-    "starterCode": "// Task: Calculate total price of in-stock items\n\nconst products = [\n  { name: \"Laptop\", price: 999, inStock: true },\n  { name: \"Phone\", price: 599, inStock: false },\n  { name: \"Tablet\", price: 300, inStock: true },\n  { name: \"Monitor\", price: 200, inStock: true }\n];\n\n// 1. Filter out items where inStock is false\n\n// 2. Map the filtered array to just their prices\n\n// 3. Reduce the prices to a single total sum\n\nconsole.log(\"Total Cost:\", totalCost); // Expect 1499",
-    "solutionCode": "// Task: Calculate total price of in-stock items\n\nconst products = [\n  { name: \"Laptop\", price: 999, inStock: true },\n  { name: \"Phone\", price: 599, inStock: false },\n  { name: \"Tablet\", price: 300, inStock: true },\n  { name: \"Monitor\", price: 200, inStock: true }\n];\n\nconst totalCost = products\n  // 1. Filter out items where inStock is false\n  .filter(product => product.inStock)\n  // 2. Map the filtered array to just their prices\n  .map(product => product.price)\n  // 3. Reduce the prices to a single total sum\n  .reduce((total, currentPrice) => total + currentPrice, 0);\n\nconsole.log(\"Total Cost:\", totalCost); // Expect 1499",
-    "exampleCode": "// 🧠 Advanced Processor Patterns\n\nconst users = [\n  { name: \"Ali\", age: 25, active: true },\n  { name: \"Bob\", age: 17, active: true },\n  { name: \"Charlie\", age: 30, active: false }\n];\n\n// --- some & every ---\nconst hasMinors = users.some(u => u.age < 18); // true\nconst allActive = users.every(u => u.active);   // false\n\n// --- find & findIndex ---\nconst bob = users.find(u => u.name === \"Bob\");\nconst bobIndex = users.findIndex(u => u.name === \"Bob\");\n\n// --- reduce to Group By ---\nconst grouped = users.reduce((acc, user) => {\n  const key = user.active ? \"active\" : \"inactive\";\n  if (!acc[key]) acc[key] = [];\n  acc[key].push(user.name);\n  return acc;\n}, {});\n// Result: { active: ['Ali', 'Bob'], inactive: ['Charlie'] }\n\n// --- Safe Number Sort ---\nconst nums = [10, 2, 30, 1];\nnums.sort((a, b) => a - b); // [1, 2, 10, 30]",
+    "starterCode": "# Task: Functions Basics\n\n# 1. calculate_rectangle(length, width) → dict\n#    Keys: 'area', 'perimeter', 'diagonal'\n#    Include a proper docstring\n\n# 2. is_even(n) → bool\n\n# 3. filter_evens(numbers) → list of even numbers\n#    Must use is_even() inside\n\n# 4. Test with length=3, width=4 and list [1..10]",
+    "solutionCode": "# Task: Functions Basics\n\n# 1. Rectangle calculator\ndef calculate_rectangle(length, width):\n    \"\"\"\n    Calculate area, perimeter, and diagonal of a rectangle.\n    \n    Args:\n        length (float): Length of the rectangle.\n        width (float): Width of the rectangle.\n        \n    Returns:\n        dict: Dictionary with area, perimeter, and diagonal.\n    \"\"\"\n    area = length * width\n    perimeter = 2 * (length + width)\n    diagonal = (length**2 + width**2) ** 0.5\n    return {\n        'area': area,\n        'perimeter': perimeter,\n        'diagonal': round(diagonal, 2)\n    }\n\n# 2. Even checker\ndef is_even(n):\n    return n % 2 == 0\n\n# 3. Filter evens\ndef filter_evens(numbers):\n    return [n for n in numbers if is_even(n)]\n\n# 4. Test\nprint(calculate_rectangle(3, 4))\n# {'area': 12, 'perimeter': 14, 'diagonal': 5.0}\n\nprint(filter_evens(list(range(1, 11))))\n# [2, 4, 6, 8, 10]",
+    "exampleCode": "# 🧠 Advanced Function Patterns\n\n# Type hinting (modern Python)\ndef greet(name: str, times: int = 1) -> str:\n    return (f'Hello, {name}! ') * times\n\n# *args and **kwargs\ndef log_event(event, *args, **kwargs):\n    print(f'Event: {event}')\n    if args:\n        print(f'Args: {args}')\n    if kwargs:\n        print(f'Kwargs: {kwargs}')\n\nlog_event('click', 10, 20, user='alice', page='home')\n\n# Function annotations access\nprint(greet.__annotations__)  # {'name': <class 'str'>, 'times': <class 'int'>, 'return': <class 'str'>}\n\n# Lambda assigned to variable (only if simple)\nsquare = lambda x: x ** 2\n\n# Inner function (encapsulation)\ndef outer():\n    def helper():\n        print('Helper running')\n    helper()\n\n# Callable instances\nclass Multiplier:\n    def __call__(self, x):\n        return x * 2\n\ndouble = Multiplier()\nprint(double(5))  # 10",
     "tests": [
-      { "id": "t1", "description": "Should use .filter() method", "check": "code => /\\.filter\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should use .map() method", "check": "code => /\\.map\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should use .reduce() method", "check": "code => /\\.reduce\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "filter should check inStock property", "check": "code => /inStock/.test(code)" },
-      { "id": "t5", "description": "reduce should have an initial value of 0", "check": "code => /reduce\\s*\\(\\s*\\([^,]+\\s*,\\s*[^,]+\\s*\\)\\s*,\\s*0\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should define calculate_rectangle function", "check": "code => /def\\s+calculate_rectangle/.test(code)" },
+      { "id": "t2", "description": "Should include a docstring", "check": "code => /\"\"\"/.test(code)" },
+      { "id": "t3", "description": "Should return a dictionary", "check": "code => /return\\s*\\{/.test(code)" },
+      { "id": "t4", "description": "Should define is_even function", "check": "code => /def\\s+is_even/.test(code)" },
+      { "id": "t5", "description": "Should define filter_evens function", "check": "code => /def\\s+filter_evens/.test(code)" },
+      { "id": "t6", "description": "filter_evens should call is_even inside", "check": "code => /is_even\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "16",
-    "slug": "iterators-generators",
-    "title": "Iterators & Generators",
-    "icon": "Workflow",
-    "overview": "Design custom data traversals and manage lazy-evaluated streams without loading everything into memory.",
-    "explanation": "## The Iteration Protocol\n\nUnder the hood, when you use `for...of` on an array or a string, JavaScript uses the **Iterator Protocol**. Any object is \"iterable\" if it has a special method at `Symbol.iterator`. This method returns an object with a `next()` function.\n\nEvery time `next()` is called, it returns an object: `{ value: <currentItem>, done: <boolean> }`. When `done` is `true`, the loop stops.\n\n## What are Generators?\n\nWriting custom iterators manually requires a lot of boilerplate. **Generators** are a special class of functions that automatically implement the iterator protocol for you.\n\n- Declared with `function*` (note the asterisk).\n- They can pause execution using the `yield` keyword.\n- When called, they don't run immediately. They return a **Generator Object**.\n- You manually step through them using `gen.next()`.\n\n## Why Generators? (Lazy Evaluation)\n\nIf you need to process a massive sequence (e.g., numbers from 1 to 1 billion), a standard array would crash your memory. A generator yields one number at a time, keeping memory usage flat at O(1). It only computes the next value when you ask for it.",
+    "slug": "python-advanced-function-design",
+    "title": "Advanced Function Design",
+    "icon": "Cpu",
+    "overview": "Master default arguments, keyword arguments, lambda expressions, recursion, closures, and scope mechanics.",
+    "explanation": "## Default Arguments\n\n```python \n# Default values are evaluated ONCE at definition time!\ndef greet(name, greeting='Hello'):\n    return f'{greeting}, {name}!'\n\nprint(greet('Alice'))            # 'Hello, Alice!'\nprint(greet('Bob', 'Hey'))       # 'Hey, Bob!'\n\n# ⚠️ Mutable default argument BUG!\ndef add_item(item, lst=[]):  # Dangerous!\n    lst.append(item)\n    return lst\n\nprint(add_item(1))  # [1]\nprint(add_item(2))  # [1, 2] (shared across calls!)\n\n# ✅ Correct way: use None\ndef add_item_safe(item, lst=None):\n    if lst is None:\n        lst = []\n    lst.append(item)\n    return lst\n```\n\n## *args and **kwargs\n\n```python \n# *args → tuple of positional arguments\ndef sum_all(*args):\n    return sum(args)\n\nprint(sum_all(1, 2, 3))  # 6\n\n# **kwargs → dict of keyword arguments\nndef print_info(**kwargs):\n    for key, val in kwargs.items():\n        print(f'{key}: {val}')\n\nprint_info(name='Alice', age=30)\n\n# Mixing them (order matters!)\ndef func(a, b, *args, key='default', **kwargs):\n    pass\n```\n\n## Lambda Functions\n\n```python \n# Anonymous single-expression functions\nsquare = lambda x: x ** 2\nadd = lambda x, y: x + y\n\n# Best used with map/filter/sorted\nnames = ['Charlie', 'Alice', 'Bob']\nnames.sort(key=lambda n: len(n))  # Sort by length\n\n# Conditional lambda\nis_adult = lambda age: True if age >= 18 else False\n```\n\n## Recursion\n\n```python \n# Factorial\ndef factorial(n):\n    if n <= 1:  # Base case (MUST have!)\n        return 1\n    return n * factorial(n - 1)  # Recursive case\n\n# Fibonacci\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n-1) + fib(n-2)  # Exponential time! (Use memoization for production)\n```\n\n## Closures & LEGB Scope\n\n```python \n# LEGB: Local → Enclosing → Global → Built-in\nx = 'global'\n\ndef outer():\n    x = 'enclosing'\n    def inner():\n        x = 'local'\n        print(x)  # 'local'\n    inner()\n\n# Closure: inner function remembers enclosing scope\ndef make_counter():\n    count = 0\n    def counter():\n        nonlocal count  # Required to modify enclosing var!\n        count += 1\n        return count\n    return counter\n\nc = make_counter()\nprint(c())  # 1\nprint(c())  # 2\n```",
     "keyRules": [
-      "Generators are declared with function* syntax",
-      "Use 'yield' to pause execution and return a value",
-      "Calling a generator doesn't run it; it returns an iterator object",
-      "Use gen.next() to step through, which returns { value, done }",
-      "Generators enable lazy evaluation for infinite or massive datasets"
+      "NEVER use mutable default arguments (like []) — they are created once and shared across all calls",
+      "Use None as default and initialize inside the function if you need a fresh mutable object",
+      "*args collects extra positional args into a tuple, **kwargs collects extra keyword args into a dict",
+      "Lambda is limited to a SINGLE expression — use def for anything complex",
+      "Every recursive function MUST have a base case that stops recursion, otherwise it hits max depth",
+      "Use 'nonlocal' keyword to modify a variable in the enclosing scope from inside a nested function"
     ],
-    "task": "Create a generator function `range(start, end)` that yields numbers from start to end. Then, write a standard function `printRange(gen)` that uses a `while` loop and `.next()` to manually iterate through the generator and log the values until `done` is true.",
-    "hint": "Inside `function* range`, use a `for` loop and `yield i`. In `printRange`, create a variable `res = gen.next()`, do `while(!res.done)`, log `res.value`, and call `res = gen.next()` again.",
+    "task": "Create a closure `make_multiplier(factor)` that returns a function multiplying by `factor`. Create a recursive function `power(base, exp)` that calculates base^exp without using `**` or `math.pow`. Create a function `merge_configs(*dicts)` that accepts any number of dictionaries and merges them into one (later dicts override earlier ones).",
+    "hint": "Multiplier: `def inner(x): return x * factor`. Power: base case `exp == 0: return 1`, recursive `return base * power(base, exp-1)`. Merge: `result = {}`, loop through dicts, `result.update(d)`.",
     "learnings": [
-      { "title": "Yielding Delegation (yield*)", "desc": "Using yield* to delegate to another generator or iterable inside a generator." },
-      { "title": "Sending Values Back In", "desc": "Passing arguments into gen.next(val) to send data back into the generator scope." },
-      { "title": "Async Generators", "desc": "Using async function* and for await...of to handle asynchronous streams." }
+      { "title": "Default arguments", "desc": "Pre-assigning parameter values that activate when no argument is provided during calls." },
+      { "title": "Keyword arguments", "desc": "Passing arguments by parameter name regardless of positional order in the signature." },
+      { "title": "*args & **kwargs", "desc": "Accepting arbitrary numbers of positional and keyword arguments using unpacking operators." },
+      { "title": "Lambda functions", "desc": "Writing anonymous single-expression functions using the lambda keyword for inline use." },
+      { "title": "Recursion", "desc": "Solving problems by having functions call themselves with reduced input until a base case is reached." },
+      { "title": "Scope (LEGB rule)", "desc": "Understanding Local, Enclosing, Global, and Built-in name resolution order." },
+      { "title": "Closures", "desc": "Creating inner functions that remember and access variables from their enclosing scope after it exits." }
     ],
-    "starterCode": "// Task: Create a custom range generator\n\n// 1. Define the generator function\nfunction range(start, end) {\n  \n}\n\n// 2. Define the manual iterator function\nfunction printRange(gen) {\n  \n}\n\n// 3. Execute and print numbers 3 to 7\nconst gen = range(3, 7);\nprintRange(gen);",
-    "solutionCode": "// Task: Create a custom range generator\n\n// 1. Define the generator function\nfunction* range(start, end) {\n  for (let i = start; i <= end; i++) {\n    yield i;\n  }\n}\n\n// 2. Define the manual iterator function\nfunction printRange(gen) {\n  let res = gen.next();\n  while (!res.done) {\n    console.log(res.value);\n    res = gen.next();\n  }\n}\n\n// 3. Execute and print numbers 3 to 7\nconst gen = range(3, 7);\nprintRange(gen);",
-    "exampleCode": "// 🧠 Generator Internals & Lazy Evaluation\n\n// --- Infinite Generator (Safe because it's lazy) ---\nfunction* infiniteIds() {\n  let id = 1;\n  while (true) {\n    yield id++;\n  }\n}\n\nconst idGen = infiniteIds();\nconsole.log(idGen.next().value); // 1\nconsole.log(idGen.next().value); // 2\n// Never crashes, because it only calculates one at a time!\n\n// --- Using for...of (Auto-handles next/done) ---\nfunction* colors() {\n  yield 'Red';\n  yield 'Green';\n  yield 'Blue';\n}\n\nfor (const color of colors()) {\n  console.log(color); // Automatically stops when done is true\n}",
+    "starterCode": "# Task: Advanced Function Design\n\n# 1. make_multiplier(factor) → returns a function\n\n# 2. power(base, exp) → recursive, no ** or pow()\n\n# 3. merge_configs(*dicts) → merged dict\n#    Later dicts override earlier ones\n\n# 4. Test all:\n#    double = make_multiplier(2); print(double(5))\n#    print(power(2, 10))\n#    print(merge_configs({'a':1}, {'b':2}, {'a':99}))",
+    "solutionCode": "# Task: Advanced Function Design\n\n# 1. Closure: make_multiplier\ndef make_multiplier(factor):\n    def inner(x):\n        return x * factor\n    return inner\n\ndouble = make_multiplier(2)\nprint(double(5))  # 10\n\n# 2. Recursive power\ndef power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\nprint(power(2, 10))  # 1024\n\n# 3. Merge configs with *args\ndef merge_configs(*dicts):\n    merged = {}\n    for d in dicts:\n        merged.update(d)\n    return merged\n\nprint(merge_configs({'a': 1}, {'b': 2}, {'a': 99}))\n# {'a': 99, 'b': 2}",
+    "exampleCode": "# 🧠 Advanced Closure & Recursion Patterns\n\n# Memoization decorator (fixes slow recursion)\ndef memoize(func):\n    cache = {}\n    def wrapper(*args):\n        if args not in cache:\n            cache[args] = func(*args)\n        return cache[args]\n    return wrapper\n\n@memoize\ndef fib(n):\n    if n <= 1: return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(50))  # Instant!\n\n# Closure as a state machine\ndef make_accumulator(initial=0):\n    total = initial\n    def accum(amount=1):\n        nonlocal total\n        total += amount\n        return total\n    return accum\n\nacc = make_accumulator(100)\nprint(acc(10))  # 110\nprint(acc(5))   # 115\n\n# Recursive directory flattening\nimport os\ndef find_files(path, ext=''):\n    results = []\n    for item in os.listdir(path):\n        full = os.path.join(path, item)\n        if os.path.isdir(full):\n            results.extend(find_files(full, ext))\n        elif item.endswith(ext):\n            results.append(full)\n    return results\n\n# kwargs forwarding\ndef log_and_call(func, *args, **kwargs):\n    print(f'Calling {func.__name__} with {kwargs}')\n    return func(*args, **kwargs)",
     "tests": [
-      { "id": "t1", "description": "Should declare a generator function", "check": "code => /function\\s*\\*\\s*range/.test(code)" },
-      { "id": "t2", "description": "Should use the 'yield' keyword", "check": "code => /yield\\s+/.test(code)" },
-      { "id": "t3", "description": "Should use .next() method", "check": "code => /\\.next\\s*\\(\\s*\\)/.test(code)" },
-      { "id": "t4", "description": "Should check the 'done' property", "check": "code => /res\\.done|result\\.done/.test(code)" },
-      { "id": "t5", "description": "Should access the 'value' property", "check": "code => /res\\.value|result\\.value/.test(code)" }
+      { "id": "t1", "description": "Should define make_multiplier with nested function", "check": "code => /def\\s+make_multiplier.*:\\n.*def\\s+/.test(code)" },
+      { "id": "t2", "description": "Should define recursive power function", "check": "code => /def\\s+power/.test(code) && /power\\s*\\(.*-\\s*1\\)/.test(code)" },
+      { "id": "t3", "description": "Power should have base case for exp==0", "check": "code => /exp\\s*==\\s*0/.test(code)" },
+      { "id": "t4", "description": "Should define merge_configs with *dicts", "check": "code => /def\\s+merge_configs\\s*\\(\\s*\\*dicts/.test(code)" },
+      { "id": "t5", "description": "Should use .update() for merging", "check": "code => /\\.update\\s*\\(/.test(code)" },
+      { "id": "t6", "description": "Should test with 3 dictionaries including override", "check": "code => /merge_configs\\s*\\(.*\\{.*\\}.*\\{.*\\}.*\\{.*\\}/.test(code)" }
     ]
   },
   {
     "id": "17",
-    "slug": "objects-basics",
-    "title": "Objects Basics",
-    "icon": "Box",
-    "overview": "Construct, modify, and query data records structured as Key-Value schemas using dot and bracket notations.",
-    "explanation": "## What is an Object?\n\nAn object is an unordered collection of key-value pairs. It is the foundational data structure in JavaScript. Arrays are objects, functions are objects, even classes are just syntactic sugar over objects.\n\n## Creating Objects\n- **Object Literal:** `const obj = { key: 'value' };` (Preferred)\n- **Object Constructor:** `const obj = new Object();` (Avoid, slower and less readable)\n\n## Accessing Properties\n1. **Dot Notation (`obj.name`)**: Cleaner, but the key must be a valid identifier (no spaces, can't start with a number).\n2. **Bracket Notation (`obj[\"name\"]` or `obj[myVar]`)**: Required for dynamic keys (variables), keys with spaces, or keys that are numbers/strings starting with numbers.\n\n## Modifying Objects\nObjects are mutable by default. You can add new properties, update existing ones, or delete them using the `delete` operator at any time.",
+    "slug": "python-functional-programming-tools",
+    "title": "Functional Programming Tools",
+    "icon": "Filter",
+    "overview": "Apply declarative transformation patterns using map, filter, and reduce higher-order functions.",
+    "explanation": "## map() — Transform\n\n```python \n# Apply function to every element\nnums = [1, 2, 3, 4, 5]\n\n# With named function\ndef square(n):\n    return n ** 2\n\nsquares = list(map(square, nums))  # [1, 4, 9, 16, 25]\n\n# With lambda (more common)\nsquares = list(map(lambda x: x**2, nums))\n\n# Multiple iterables\nnames = ['alice', 'bob']\nupper = list(map(str.upper, names))  # ['ALICE', 'BOB']\n\na = [1, 2, 3]\nb = [10, 20, 30]\nsummed = list(map(lambda x, y: x + y, a, b))  # [11, 22, 33]\n\n# map vs comprehension (comprehension is often preferred)\nsquares = [x**2 for x in nums]  # More Pythonic!\n```\n\n## filter() — Select\n\n```python \nnums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n# Keep only evens\nevens = list(filter(lambda x: x % 2 == 0, nums))\n# [2, 4, 6, 8, 10]\n\n# With named function\ndef is_prime(n):\n    if n < 2: return False\n    return all(n % i != 0 for i in range(2, int(n**0.5) + 1))\n\nprimes = list(filter(is_prime, range(20)))\n# [2, 3, 5, 7, 11, 13, 17, 19]\n\n# Remove falsy values\ndata = [0, 1, '', 'hello', None, [], [1, 2]]\ntruthy = list(filter(None, data))  # [1, 'hello', [1, 2]]\n\n# filter vs comprehension\nevens = [x for x in nums if x % 2 == 0]  # More Pythonic!\n```\n\n## reduce() — Accumulate\n\n```python \nfrom functools import reduce\n\nnums = [1, 2, 3, 4, 5]\n\n# Sum all numbers\n# Step 1: 1+2=3, Step 2: 3+3=6, Step 3: 6+4=10, Step 4: 10+5=15\ntotal = reduce(lambda acc, x: acc + x, nums)\n# 15\n\n# Find maximum\nmaximum = reduce(lambda acc, x: acc if acc > x else x, nums)\n# 5\n\n# With initializer (3rd arg)\ntotal = reduce(lambda acc, x: acc + x, nums, 100)\n# 115 (starts with 100 instead of first element)\n\n# Flatten a list of lists\nnested = [[1, 2], [3, 4], [5]]\nflat = reduce(lambda acc, x: acc + x, nested, [])\n# [1, 2, 3, 4, 5]\n```\n\n## Chaining Operations\n\n```python \nfrom functools import reduce\n\nnums = range(1, 11)\n\n# Pipeline: filter evens → square → sum\nresult = reduce(\n    lambda acc, x: acc + x,\n    map(lambda x: x**2,\n        filter(lambda x: x % 2 == 0, nums)\n    )\n)\n# (2^2 + 4^2 + 6^2 + 8^2 + 10^2) = 220\n\n# Comprehension equivalent (much more readable!)\nresult = sum(x**2 for x in nums if x % 2 == 0)\n```",
     "keyRules": [
-      "Use object literals {} to create objects",
-      "Use dot notation for static, known keys",
-      "Use bracket notation [] for dynamic keys or keys with special characters",
-      "Objects are mutable; you can add/update/delete properties anytime",
-      "Keys are always converted to strings (or Symbols) under the hood"
+      "map() transforms every element — returns a map object, wrap in list() to view results",
+      "filter() keeps elements where function returns True — returns a filter object",
+      "reduce() collapses iterable into a single value — MUST import from functools",
+      "Comprehensions are usually more readable than map/filter chains in Python",
+      "reduce() with an initializer handles empty iterables safely (returns initializer)",
+      "filter(None, iterable) is a quick way to remove all falsy values (0, '', None, [], False)"
     ],
-    "task": "Create a `user` object with name 'Ali'. Add a dynamic property where the key is stored in a variable called `keyName` (set to 'role') and the value is 'Admin'. Then, delete the `name` property. Finally, log the object to prove the changes.",
-    "hint": "Use `user[keyName] = 'Admin'` for dynamic addition. Use `delete user.name` to remove. Log `user` at the end.",
+    "task": "Create a function `process_data(numbers)` that takes a list of numbers and returns a dictionary: `'positives'` (count of positive nums using filter), `'squared'` (list of squared nums using map), and `'product'` (product of all nums using reduce, return 0 if empty). Import reduce from functools.",
+    "hint": "Positives: `len(list(filter(lambda x: x > 0, numbers)))`. Squared: `list(map(lambda x: x**2, numbers))`. Product: `reduce(lambda acc, x: acc * x, numbers, 1)` — the 1 handles empty lists safely.",
     "learnings": [
-      { "title": "Computed Property Names", "desc": "Defining dynamic keys directly inside the literal: { [variable]: value }." },
-      { "title": "Property Value Shorthand", "desc": "Writing { name } instead of { name: name } when key and variable match." },
-      { "title": "Symbol as Keys", "desc": "Using Symbols to create hidden properties not exposed in Object.keys()." }
+      { "title": "map() function", "desc": "Applying a transformation function to every element in an iterable and collecting results." },
+      { "title": "filter() function", "desc": "Selecting only elements that satisfy a predicate function's True condition from an iterable." },
+      { "title": "reduce() function", "desc": "Collapsing an iterable into a single cumulative value using a rolling two-argument function." },
+      { "title": "Chaining operations", "desc": "Composing map, filter, and reduce together for complex data pipeline transformations." }
     ],
-    "starterCode": "// Task: Dynamic Keys and Mutations\n\n// 1. Create the initial object\nconst user = {\n  \n};\n\n// 2. Define a dynamic key and add it using bracket notation\nconst keyName = \"role\";\n\n\n// 3. Delete a property\n\n\n// 4. Log the final object\n",
-    "solutionCode": "// Task: Dynamic Keys and Mutations\n\n// 1. Create the initial object\nconst user = {\n  name: \"Ali\"\n};\n\n// 2. Define a dynamic key and add it using bracket notation\nconst keyName = \"role\";\nuser[keyName] = \"Admin\";\n\n// 3. Delete a property\ndelete user.name;\n\n// 4. Log the final object\nconsole.log(user); // { role: 'Admin' }",
-    "exampleCode": "// 🧠 Object Nuances\n\n// --- Computed Property Names (ES6) ---\nconst dynamicKey = \"status\";\nconst config = {\n  [dynamicKey]: \"active\", // Evaluates to \"status\": \"active\"\n  id: 101\n};\n\n// --- Keys are Strings ---\nconst obj = {};\nobj[1] = \"Number one\";\nobj[\"1\"] = \"String one\";\nconsole.log(obj); // { '1': 'String one' } (1 became '1')\n\n// --- Dot vs Bracket limits ---\nconst data = { \"first name\": \"Ali\" };\n// data.first name // SYNTAX ERROR!\nconsole.log(data[\"first name\"]); // Works perfectly",
+    "starterCode": "# Task: Functional Programming Tools\n\nfrom functools import reduce\n\n# 1. process_data(numbers) → dict\n#    'positives': count of nums > 0 (use filter)\n#    'squared': list of squared nums (use map)\n#    'product': product of all nums (use reduce, 0 if empty)\n\n# 2. Test with: [2, -1, 0, 3, -4, 5]\n# 3. Test with: [] (empty list edge case)",
+    "solutionCode": "# Task: Functional Programming Tools\n\nfrom functools import reduce\n\ndef process_data(numbers):\n    if not numbers:\n        return {'positives': 0, 'squared': [], 'product': 0}\n        \n    return {\n        'positives': len(list(filter(lambda x: x > 0, numbers))),\n        'squared': list(map(lambda x: x**2, numbers)),\n        'product': reduce(lambda acc, x: acc * x, numbers, 1)\n    }\n\n# Test\nprint(process_data([2, -1, 0, 3, -4, 5]))\n# {'positives': 3, 'squared': [4, 1, 0, 9, 16, 25], 'product': 0}\n\nprint(process_data([]))\n# {'positives': 0, 'squared': [], 'product': 0}",
+    "exampleCode": "# 🧠 Advanced Functional Patterns\n\n# Function composition\ndef compose(*funcs):\n    def composed(x):\n        for f in reversed(funcs):\n            x = f(x)\n        return x\n    return composed\n\nadd1 = lambda x: x + 1\nsquare = lambda x: x ** 2\n\ntransform = compose(square, add1)\nprint(transform(4))  # (4+1)^2 = 25\n\n# Custom reduce implementations\ndef my_map(func, iterable):\n    return list(reduce(lambda acc, x: acc + [func(x)], iterable, []))\n\nprint(my_map(lambda x: x*2, [1,2,3]))  # [2, 4, 6]\n\ndef my_filter(func, iterable):\n    return list(reduce(lambda acc, x: acc + [x] if func(x) else acc, iterable, []))\n\nprint(my_filter(lambda x: x>2, [1,2,3,4]))  # [3, 4]\n\n# Group by with reduce\nfrom functools import reduce\nwords = ['apple', 'bat', 'bear', 'car', 'cat']\ngrouped = reduce(\n    lambda acc, w: {**acc, w[0]: acc.get(w[0], []) + [w]},\n    words,\n    {}\n)\nprint(grouped)\n# {'a': ['apple'], 'b': ['bat', 'bear'], 'c': ['car', 'cat']}\n\n# Currying with functools.partial\nfrom functools import partial\n\ndef power(base, exp):\n    return base ** exp\n\nsquare = partial(power, exp=2)\ncube = partial(power, exp=3)\n\nprint(square(5))  # 25\nprint(cube(3))    # 27",
     "tests": [
-      { "id": "t1", "description": "Should create an object using literal syntax", "check": "code => /const\\s+user\\s*=\\s*\\{/.test(code)" },
-      { "id": "t2", "description": "Should add a property using bracket notation", "check": "code => /user\\[keyName\\]\\s*=/.test(code)" },
-      { "id": "t3", "description": "Should use the delete operator", "check": "code => /delete\\s+user/.test(code)" },
-      { "id": "t4", "description": "Should have a variable named keyName", "check": "code => /const\\s+keyName\\s*=/.test(code)" },
-      { "id": "t5", "description": "Should log the final object", "check": "code => /console\\.log\\s*\\(\\s*user\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should import reduce from functools", "check": "code => /from\\s+functools\\s+import\\s+reduce/.test(code)" },
+      { "id": "t2", "description": "Should define process_data function", "check": "code => /def\\s+process_data/.test(code)" },
+      { "id": "t3", "description": "Should use filter for positives", "check": "code => /filter\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should use map for squared", "check": "code => /map\\s*\\(/.test(code)" },
+      { "id": "t5", "description": "Should use reduce for product", "check": "code => /reduce\\s*\\(/.test(code)" },
+      { "id": "t6", "description": "Should handle empty list edge case", "check": "code => /if\\s+not\\s+numbers|if\\s+len\\s*\\(\\s*numbers\\s*\\)/.test(code)" }
     ]
   },
   {
     "id": "18",
-    "slug": "object-transformation-security",
-    "title": "Object Transformation & Security",
-    "icon": "Lock",
-    "overview": "Extract data structures, clone configurations, and freeze object mutability settings to prevent accidental changes.",
-    "explanation": "## Object Static Methods\n\nJavaScript provides built-in methods on the `Object` constructor to transform and extract data:\n- **`Object.keys(obj)`**: Returns an array of string keys.\n- **`Object.values(obj)`**: Returns an array of values.\n- **`Object.entries(obj)`**: Returns an array of `[key, value]` tuples. Perfect for looping with `for...of`.\n- **`Object.assign(target, source)`**: Copies enumerable own properties from source to target. **Shallow copy only.**\n\n## Object Immutability (Security)\n\nBy default, anyone can modify your objects. To prevent this:\n- **`Object.freeze(obj)`**: Makes the object completely immutable. You cannot add, delete, or modify properties. Any attempt silently fails (or throws in strict mode).\n- **`Object.seal(obj)`**: You can modify existing properties, but you cannot add new properties or delete existing ones.\n- **Important:** Both of these are **shallow**. If your object contains a nested array or object, that nested reference can still be mutated unless you deep freeze it.",
+    "slug": "python-text-file-handling",
+    "title": "Text File Handling",
+    "icon": "FileText",
+    "overview": "Read, write, and append text data to files on the local file system using Python's file API.",
+    "explanation": "## Opening Files\n\n```python \n# Modes:\n# 'r'  - Read (default, error if doesn't exist)\n# 'w'  - Write (creates new or TRUNCATES existing)\n# 'a'  - Append (creates new or adds to end)\n# 'r+' - Read and write (doesn't truncate)\n# 'x'  - Exclusive creation (error if file exists)\n\n# ALWAYS use 'with' statement!\nwith open('data.txt', 'r') as f:\n    content = f.read()\n# File is automatically closed here, even if error occurs\n\n# ❌ BAD (manual close, risky)\nf = open('data.txt')\ncontent = f.read()\nf.close()  # What if read() crashes? File stays open!\n```\n\n## Reading Files\n\n```python \nwith open('data.txt', 'r') as f:\n    # Read entire file as string\n    content = f.read()\n    \n    # Read N characters\n    # first_10 = f.read(10)\n\nwith open('data.txt', 'r') as f:\n    # Read line by line (memory efficient for large files)\n    for line in f:\n        print(line.strip())  # .strip() removes \\n\nwith open('data.txt', 'r') as f:\n    # Read all lines into list (includes \\n at end of each!)\n    lines = f.readlines()\n    # ['line1\\n', 'line2\\n']\n\nwith open('data.txt', 'r') as f:\n    # Read single line\n    first_line = f.readline()\n```\n\n## Writing Files\n\n```python \n# Write (OVERWRITES existing content!)\nwith open('output.txt', 'w') as f:\n    f.write('Hello\\n')\n    f.write('World\\n')\n    \n    # Write multiple lines (adds \\n automatically)\n    f.writelines(['Line 1\\n', 'Line 2\\n', 'Line 3\\n'])\n\n# Append (adds to end, keeps existing content)\nwith open('output.txt', 'a') as f:\n    f.write('Appended line\\n')\n```\n\n## File Cursor Management\n\n```python \nwith open('data.txt', 'r') as f:\n    print(f.tell())     # 0 (current position)\n    first_5 = f.read(5)\n    print(f.tell())     # 5\n    \n    f.seek(0)          # Go back to start\n    content = f.read() # Reads from start again\n```\n\n## Common Patterns\n\n```python \n# Read file into list of clean lines\ndef read_lines(filepath):\n    with open(filepath, 'r') as f:\n        return [line.strip() for line in f]\n\n# Safe write with error handling\nimport os\ndef safe_write(filepath, content):\n    try:\n        with open(filepath, 'w') as f:\n            f.write(content)\n        return True\n    except IOError as e:\n        print(f'Error: {e}')\n        return False\n\n# Check if file exists before reading\nif os.path.exists('data.txt'):\n    with open('data.txt') as f:\n        data = f.read()\n```",
     "keyRules": [
-      "Object.entries() is best for iterating key-value pairs",
-      "Object.assign() or spread {...} only create SHALLOW copies",
-      "Object.freeze() prevents add, delete, AND update operations",
-      "Object.seal() prevents add and delete, but allows updates",
-      "Freeze and Seal are shallow; nested objects are still mutable"
+      "ALWAYS use the 'with' statement to open files — it guarantees the file closes automatically",
+      "'w' mode OVERWRITES the entire file — if you want to keep existing content, use 'a' (append)",
+      "readlines() includes the newline character (\\n) at the end of each string — use .strip() to remove it",
+      "Iterating over a file object (`for line in f:`) is the most memory-efficient way to read large files",
+      "seek(0) resets the cursor to the beginning, tell() returns the current cursor position"
     ],
-    "task": "Create a `config` object with `theme: 'dark'` and `fontSize: 14`. Use `Object.freeze()` on it. Attempt to change `theme` to 'light'. Use `Object.entries()` to log the key-value pairs to prove the mutation failed.",
-    "hint": "Call `Object.freeze(config)`. Then do `config.theme = 'light'`. Finally, loop over `Object.entries(config)` and `console.log` each pair.",
+    "task": "Create a function `word_count(filepath)` that reads a text file and returns a dictionary of word frequencies (case-insensitive, ignore punctuation). Create a function `write_report(filepath, data_dict)` that writes a formatted report to a file where each line is `\"Key: Value\"` sorted by key name. Use `with` statements for all file operations.",
+    "hint": "Word count: open file, `f.read().lower()`, extract words using regex or `isalpha()` filter, use `Counter`. Write report: `sorted(data.items())`, loop and write `f.write(f'{k}: {v}\\n')`. Use `'w'` mode for writing.",
     "learnings": [
-      { "title": "Deep Cloning", "desc": "Using structuredClone() (modern) or JSON.parse(JSON.stringify()) for true deep copies." },
-      { "title": "Object.is()", "desc": "A stricter equality check than === that handles NaN and -0 correctly." },
-      { "title": "Shallow Freeze Danger", "desc": "Why Object.freeze({ nested: { arr: [] } }) still allows arr.push()." }
+      { "title": "Opening files", "desc": "Using open() with mode strings 'r', 'w', 'a', and 'r+' to establish file handles." },
+      { "title": "Reading files", "desc": "Consuming file content using read(), readline(), and readlines() methods." },
+      { "title": "Writing files", "desc": "Outputting strings to files using write() and writelines() with proper newline handling." },
+      { "title": "Appending data", "desc": "Opening files in append mode to add content without overwriting existing data." },
+      { "title": "with statement", "desc": "Using context managers to guarantee files are properly closed after operations." },
+      { "title": "File cursor management", "desc": "Controlling read/write positions using seek() and checking location with tell()." }
     ],
-    "starterCode": "// Task: Freeze an object and prove it's immutable\n\n// 1. Create the config object\n\n\n// 2. Freeze it\n\n\n// 3. Attempt to mutate it\n\n\n// 4. Use Object.entries() to log and prove it failed\n",
-    "solutionCode": "// Task: Freeze an object and prove it's immutable\n\n// 1. Create the config object\nconst config = {\n  theme: \"dark\",\n  fontSize: 14\n};\n\n// 2. Freeze it\nObject.freeze(config);\n\n// 3. Attempt to mutate it\nconfig.theme = \"light\";\nconfig.newProp = \"oops\";\n\n// 4. Use Object.entries() to log and prove it failed\nconsole.log(\"Mutation failed. Config is still:\");\nfor (const [key, value] of Object.entries(config)) {\n  console.log(\`\${key}: \${value}\`);\n}",
-    "exampleCode": "// 🧠 Object Methods & Security\n\n// --- Transformation ---\nconst user = { name: \"Ali\", age: 25, role: \"Admin\" };\n\nconst keys = Object.keys(user);     // ['name', 'age', 'role']\nconst vals = Object.values(user);   // ['Ali', 25, 'Admin']\nconst entries = Object.entries(user); // [['name','Ali'], ...]\n\n// --- Shallow Copy Pitfall ---\nconst original = { data: [1, 2, 3] };\nconst clone = Object.assign({}, original);\nclone.data.push(4);\nconsole.log(original.data); // [1, 2, 3, 4] (Mutated!)\n\n// --- Seal vs Freeze ---\nconst sealed = { a: 1 };\nObject.seal(sealed);\nsealed.a = 2; // Allowed\n// sealed.b = 3; // Fails silently\n\ndelete sealed.a; // Fails silently",
+    "starterCode": "# Task: Text File Handling\n\nfrom collections import Counter\nimport re\n\n# 1. word_count(filepath) → dict of word frequencies\n#    Case-insensitive, ignore punctuation\n\n# 2. write_report(filepath, data_dict) → None\n#    Format: \"Key: Value\" per line, sorted by key\n\n# 3. Test:\n#    - Create a sample file 'sample.txt'\n#    - Run word_count on it\n#    - Write results to 'report.txt' using write_report\n#    - Print report.txt contents to verify",
+    "solutionCode": "# Task: Text File Handling\n\nfrom collections import Counter\nimport re\n\n# 1. Word counter\ndef word_count(filepath):\n    with open(filepath, 'r') as f:\n        text = f.read().lower()\n        # Extract words using regex\n        words = re.findall(r'[a-z]+', text)\n        return dict(Counter(words))\n\n# 2. Report writer\ndef write_report(filepath, data_dict):\n    with open(filepath, 'w') as f:\n        for key in sorted(data_dict.keys()):\n            f.write(f'{key}: {data_dict[key]}\\n')\n\n# 3. Test\nwith open('sample.txt', 'w') as f:\n    f.write('Hello world! Hello Python. World of code.')\n\nfreq = word_count('sample.txt')\nprint(f'Frequencies: {freq}')\n\nwrite_report('report.txt', freq)\n\nprint('\\n--- Report Contents ---')\nwith open('report.txt', 'r') as f:\n    print(f.read())",
+    "exampleCode": "# 🧠 Advanced File Patterns\n\n# Read large file chunk by chunk\ndef process_large_file(filepath, chunk_size=4096):\n    with open(filepath, 'r') as f:\n        while True:\n            chunk = f.read(chunk_size)\n            if not chunk:\n                break\n            yield chunk\n\n# Temporary file usage\nimport tempfile\n\nwith tempfile.NamedTemporaryFile(mode='w+', delete=True) as tmp:\n    tmp.write('Temporary data')\n    tmp.seek(0)\n    print(tmp.read())\n# File is deleted automatically after with block\n\n# File locking (cross-platform safe write)\nimport os\nimport json\n\ndef atomic_write(filepath, data):\n    temp_path = filepath + '.tmp'\n    with open(temp_path, 'w') as f:\n        json.dump(data, f)\n    os.replace(temp_path, filepath)  # Atomic on POSIX\n\n# Count lines without loading whole file\ndef count_lines(filepath):\n    with open(filepath, 'r') as f:\n        return sum(1 for _ in f)\n\n# Copy file line by line\ndef copy_file(src, dst):\n    with open(src, 'r') as f_src, open(dst, 'w') as f_dst:\n        for line in f_src:\n            f_dst.write(line)\n\n# Tail utility (last N lines)\ndef tail(filepath, n=10):\n    with open(filepath, 'r') as f:\n        return list(f)[-n:]\n\nprint(tail('report.txt', 2))",
     "tests": [
-      { "id": "t1", "description": "Should use Object.freeze()", "check": "code => /Object\\.freeze\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should attempt to reassign a property", "check": "code => /config\\.theme\\s*=/.test(code)" },
-      { "id": "t3", "description": "Should use Object.entries()", "check": "code => /Object\\.entries\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should destructure key and value from entries", "check": "code => /\\[\\s*key\\s*,\\s*value\\s*\\]/.test(code)" },
-      { "id": "t5", "description": "Should use a for...of loop", "check": "code => /for\\s*\\(.*of\\s+Object/.test(code)" }
+      { "id": "t1", "description": "Should define word_count function", "check": "code => /def\\s+word_count/.test(code)" },
+      { "id": "t2", "description": "Should use with open for reading", "check": "code => /with\\s+open\\s*\\(.*'r'/.test(code)" },
+      { "id": "t3", "description": "Should define write_report function", "check": "code => /def\\s+write_report/.test(code)" },
+      { "id": "t4", "description": "Should use with open for writing", "check": "code => /with\\s+open\\s*\\(.*'w'/.test(code)" },
+      { "id": "t5", "description": "Should sort keys in report", "check": "code => /sorted\\s*\\(/.test(code)" },
+      { "id": "t6", "description": "Should use f.write() to output", "check": "code => /f\\.write\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "19",
-    "slug": "destructuring-syntaxes",
-    "title": "Destructuring Syntaxes",
-    "icon": "GitMerge",
-    "overview": "Unpack variables smoothly from complex structural collections using elegant, concise syntax.",
-    "explanation": "## What is Destructuring?\n\nDestructuring is a syntactic sugar introduced in ES6 that allows you to unpack values from arrays or properties from objects into distinct variables. It makes code much cleaner, especially when dealing with function parameters or complex data structures.\n\n## Array Destructuring\nBased on **position** (order matters).\n```javascript\nconst colors = ['Red', 'Green', 'Blue'];\nconst [first, second] = colors;\n```\nYou can skip elements using empty commas: `const [first, , third] = colors;`.\n\n## Object Destructuring\nBased on **property names** (order does NOT matter). The variable name must exactly match the object key.\n```javascript\nconst user = { name: 'Ali', age: 25 };\nconst { name, age } = user;\n```\n\n## Renaming & Defaults\n- **Renaming:** `const { name: userName } = user;` (Extracts `name` but puts it in `userName` variable).\n- **Defaults:** `const { role = 'User' } = user;` (If `role` is missing or undefined, it falls back to 'User').\n\n## Nested Destructuring\nYou can drill down into nested objects directly: `const { address: { city } } = user;`",
+    "slug": "python-csv-file-operations",
+    "title": "CSV File Operations",
+    "icon": "Table",
+    "overview": "Parse and generate comma-separated value files using Python's dedicated csv module.",
+    "explanation": "## Reading CSV Files\n\n```python \nimport csv\n\n# Method 1: csv.reader (returns lists)\nwith open('data.csv', 'r', newline='') as f:\n    reader = csv.reader(f)\n    header = next(reader)  # Skip header row\n    for row in reader:\n        print(row)  # ['Alice', '25', 'NYC']\n\n# Method 2: csv.DictReader (returns dicts — BETTER!)\nwith open('data.csv', 'r', newline='') as f:\n    reader = csv.DictReader(f)\n    for row in reader:\n        # row is OrderedDict or dict\n        print(row['Name'], row['Age'])\n\n# Access all fieldnames\nwith open('data.csv', 'r') as f:\n    reader = csv.DictReader(f)\n    print(reader.fieldnames)  # ['Name', 'Age', 'City']\n```\n\n**Important:** Always use `newline=''` when opening files for the csv module to prevent double newlines on Windows.\n\n## Writing CSV Files\n\n```python \nimport csv\n\n# Method 1: csv.writer (from lists)\ndata = [\n    ['Name', 'Age', 'City'],\n    ['Alice', 25, 'NYC'],\n    ['Bob', 30, 'LA']\n]\n\nwith open('output.csv', 'w', newline='') as f:\n    writer = csv.writer(f)\n    writer.writerows(data)  # Write multiple rows\n    # writer.writerow(['Charlie', 22, 'CHI']) # Write single row\n\n# Method 2: csv.DictWriter (from dicts — BETTER!)\nfields = ['Name', 'Age', 'City']\ndata = [\n    {'Name': 'Alice', 'Age': 25, 'City': 'NYC'},\n    {'Name': 'Bob', 'Age': 30, 'City': 'LA'}\n]\n\nwith open('output.csv', 'w', newline='') as f:\n    writer = csv.DictWriter(f, fieldnames=fields)\n    writer.writeheader()  # Write the header row\n    writer.writerows(data) # Write all data rows\n```\n\n## Handling Special Cases\n\n```python \n# Custom delimiter (e.g., TSV - tab separated)\nwith open('data.tsv', 'r') as f:\n    reader = csv.reader(f, delimiter='\\t')\n    for row in reader:\n        print(row)\n\n# Quoting (handling commas inside values)\nwith open('output.csv', 'w', newline='') as f:\n    # csv.QUOTE_ALL, csv.QUOTE_MINIMAL (default), csv.QUOTE_NONNUMERIC\n    writer = csv.writer(f, quoting=csv.QUOTE_ALL)\n    writer.writerow(['Hello, World', 42])\n    # Output: \"Hello, World\",\"42\"\n\n# Skipping bad rows\nwith open('data.csv', 'r') as f:\n    reader = csv.reader(f)\n    for row in reader:\n        if len(row) < 3:\n            continue  # Skip malformed rows\n        process(row)\n```",
     "keyRules": [
-      "Array destructuring relies on order/position",
-      "Object destructuring relies on matching property names",
-      "Use colon : to rename variables during object destructuring",
-      "Use equals = to set default fallback values",
-      "Destructuring in function parameters makes APIs much cleaner"
+      "Always use `newline=''` in the open() call when working with csv to avoid extra blank lines",
+      "DictReader is almost always better than reader — it gives you named columns instead of indices",
+      "DictWriter requires explicit fieldnames and you MUST call writeheader() to write the column names",
+      "Use delimiter='\\t' for TSV files instead of the default comma",
+      "csv.writer handles quoting automatically — you don't need to manually escape commas inside values"
     ],
-    "task": "Write a function `displayUser` that takes an object as a parameter. Destructure `name`, rename `age` to `userAge`, and give `country` a default value of 'Pakistan'. Log these variables. Then, swap two variables `x` and `y` using array destructuring.",
-    "hint": "Function signature: `function displayUser({ name, age: userAge, country = 'Pakistan' })`. Swap: `[x, y] = [y, x]`.",
+    "task": "Create a function `read_employees(filepath)` that reads a CSV with columns 'Name', 'Department', 'Salary' and returns a list of dictionaries. Create a function `write_employees(filepath, employees)` that writes the list of dicts back to CSV, but add a new column 'Tax' which is 10% of Salary (round to 2 decimals). Use DictReader and DictWriter.",
+    "hint": "Read: `csv.DictReader(f)`, convert rows to list of standard dicts: `[dict(row) for row in reader]`. Write: new fieldnames = old + ['Tax'], loop through employees: `emp['Tax'] = round(emp['Salary'] * 0.10, 2)`, then `writer.writerows(employees)`.",
     "learnings": [
-      { "title": "Nested Destructuring", "desc": "Extracting deeply nested data like `const { a: { b: { c } } } = obj;`." },
-      { "title": "Mixed Destructuring", "desc": "Destructuring an array where one element is an object." },
-      { "title": "Loop Destructuring", "desc": "Using `for (const [key, value] of Object.entries(obj))` cleanly." }
+      { "title": "Reading CSV files", "desc": "Loading CSV data using csv.reader() for row-by-row list-based parsing." },
+      { "title": "DictReader", "desc": "Reading CSV rows as ordered dictionaries keyed by column header names." },
+      { "title": "Writing CSV files", "desc": "Outputting row data using csv.writer() with proper delimiter and quoting configurations." },
+      { "title": "DictWriter", "desc": "Writing dictionary records directly into CSV columns using fieldnames mapping." }
     ],
-    "starterCode": "// Task: Object Destructuring with Renaming/Defaults & Array Swap\n\n// 1. Write the destructuring function\nfunction displayUser(user) {\n  \n}\n\nconst profile = { name: \"Hamza\", age: 22 };\ndisplayUser(profile);\n\n// 2. Swap two variables using array destructuring\nlet x = 10;\nlet y = 20;\n\nconsole.log(`x: ${x}, y: ${y}`); // Expect x: 20, y: 10",
-    "solutionCode": "// Task: Object Destructuring with Renaming/Defaults & Array Swap\n\n// 1. Write the destructuring function\nfunction displayUser({ name, age: userAge, country = \"Pakistan\" }) {\n  console.log(\`Name: \${name}, Age: \${userAge}, Country: \${country}\`);\n}\n\nconst profile = { name: \"Hamza\", age: 22 };\ndisplayUser(profile);\n\n// 2. Swap two variables using array destructuring\nlet x = 10;\nlet y = 20;\n[x, y] = [y, x];\n\nconsole.log(`x: \${x}, y: \${y}`); // Expect x: 20, y: 10",
-    "exampleCode": "// 🧠 Advanced Destructuring\n\n// --- Nested Object Destructuring ---\nconst response = {\n  data: { user: { id: 1, name: \"Ali\" } }\n};\n\nconst { data: { user: { name } } } = response;\nconsole.log(name); // \"Ali\"\n\n// --- Array Destructuring with Defaults ---\nconst numbers = [1];\nconst [a, b = 99] = numbers;\nconsole.log(b); // 99 (fallback used)\n\n// --- Mixed Destructuring ---\nconst mixed = [1, { status: \"ok\" }];\nconst [id, { status }] = mixed;\nconsole.log(status); // \"ok\"",
+    "starterCode": "# Task: CSV File Operations\n\nimport csv\n\n# 1. read_employees(filepath) → list of dicts\n#    Columns: Name, Department, Salary\n\n# 2. write_employees(filepath, employees) → None\n#    Writes original columns + 'Tax' (10% of Salary)\n\n# 3. Test:\n#    - Create 'input.csv' with 3 employees\n#    - Read it\n#    - Write to 'output.csv' with Tax column\n#    - Print output.csv to verify",
+    "solutionCode": "# Task: CSV File Operations\n\nimport csv\n\n# 1. Read employees\ndef read_employees(filepath):\n    with open(filepath, 'r', newline='') as f:\n        reader = csv.DictReader(f)\n        return [dict(row) for row in reader]\n\n# 2. Write employees with Tax\ndef write_employees(filepath, employees):\n    if not employees:\n        return\n    \n    # Ensure Salary is float\n    for emp in employees:\n        emp['Salary'] = float(emp['Salary'])\n        emp['Tax'] = round(emp['Salary'] * 0.10, 2)\n    \n    fieldnames = ['Name', 'Department', 'Salary', 'Tax']\n    \n    with open(filepath, 'w', newline='') as f:\n        writer = csv.DictWriter(f, fieldnames=fieldnames)\n        writer.writeheader()\n        writer.writerows(employees)\n\n# 3. Test\nwith open('input.csv', 'w', newline='') as f:\n    f.write('Name,Department,Salary\\n')\n    f.write('Alice,Engineering,100000\\n')\n    f.write('Bob,Marketing,80000\\n')\n    f.write('Charlie,Sales,50000\\n')\n\ndata = read_employees('input.csv')\nprint('Read:', data)\n\nwrite_employees('output.csv', data)\n\nprint('\\n--- Output CSV ---')\nwith open('output.csv', 'r') as f:\n    print(f.read())",
+    "exampleCode": "# 🧠 Advanced CSV Patterns\n\n# Filtering CSV while reading\nimport csv\n\ndef filter_csv(infile, outfile, condition):\n    with open(infile, 'r', newline='') as fin, \\\n         open(outfile, 'w', newline='') as fout:\n        reader = csv.DictReader(fin)\n        writer = csv.DictWriter(fout, fieldnames=reader.fieldnames)\n        writer.writeheader()\n        \n        for row in reader:\n            if condition(row):\n                writer.writerow(row)\n\n# Filter employees with salary > 60000\n# filter_csv('input.csv', 'high_salary.csv', lambda r: float(r['Salary']) > 60000)\n\n# Appending to existing CSV\ndef append_csv(filepath, row_dict):\n    with open(filepath, 'a', newline='') as f:\n        writer = csv.DictWriter(f, fieldnames=row_dict.keys())\n        # Don't write header if appending to existing file\n        writer.writerow(row_dict)\n\n# Reading CSV directly into pandas (if available)\n# import pandas as pd\n# df = pd.read_csv('data.csv')\n\n# Handling dialects\n csv.register_dialect('pipes', delimiter='|')\n# with open('data.psv', 'r') as f:\n#     reader = csv.reader(f, dialect='pipes')\n\n# Converting CSV to JSON\nimport json\ndef csv_to_json(csv_path, json_path):\n    data = read_employees(csv_path)\n    # Convert numeric strings\n    for row in data:\n        for k, v in row.items():\n            try: row[k] = float(v)\n            except ValueError: pass\n    \n    with open(json_path, 'w') as f:\n        json.dump(data, f, indent=2)",
     "tests": [
-      { "id": "t1", "description": "Should destructure in function parameters", "check": "code => /function\\s+displayUser\\s*\\(\\s*\\{/.test(code)" },
-      { "id": "t2", "description": "Should rename 'age' to 'userAge'", "check": "code => /age\\s*:\\s*userAge/.test(code)" },
-      { "id": "t3", "description": "Should provide a default value for 'country'", "check": "code => /country\\s*=\\s*[\"']Pakistan[\"']/.test(code)" },
-      { "id": "t4", "description": "Should use array destructuring to swap x and y", "check": "code => /\\[\\s*x\\s*,\\s*y\\s*\\]\\s*=\\s*\\[\\s*y\\s*,\\s*x\\s*\\]/.test(code)" },
-      { "id": "t5", "description": "Should use template literals for logging", "check": "code => /`.*\\$\\{/.test(code)" }
+      { "id": "t1", "description": "Should import csv module", "check": "code => /import\\s+csv/.test(code)" },
+      { "id": "t2", "description": "Should use csv.DictReader", "check": "code => /csv\\.DictReader/.test(code)" },
+      { "id": "t3", "description": "Should define read_employees function", "check": "code => /def\\s+read_employees/.test(code)" },
+      { "id": "t4", "description": "Should define write_employees function", "check": "code => /def\\s+write_employees/.test(code)" },
+      { "id": "t5", "description": "Should use csv.DictWriter", "check": "code => /csv\\.DictWriter/.test(code)" },
+      { "id": "t6", "description": "Should call writeheader()", "check": "code => /writeheader\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "20",
-    "slug": "spread-rest-operators",
-    "title": "Spread & Rest Operators",
-    "icon": "MoreHorizontal",
-    "overview": "Unpack elements and capture multi-argument parameters cleanly using the exact same ... syntax.",
-    "explanation": "## The `...` Syntax Duality\n\nThe `...` syntax does two completely opposite things depending on WHERE you use it:\n\n### 1. The Spread Operator\n**Where:** In an array literal `[...]` or object literal `{...}`, or in function arguments `func(...arr)`.\n**What it does:** Unpacks/Expands an iterable into individual elements.\n- **Copying:** `const copy = [...arr];` or `const clone = {...obj};`\n- **Merging:** `const merged = [...arr1, ...arr2];`\n- **Applying Functions:** `Math.max(...nums)` (unpacks array so Math.max gets numbers, not an array).\n\n### 2. The Rest Parameter\n**Where:** In a function definition's parameter list `function func(...args) {}`.\n**What it does:** Condenses all remaining arguments into a single array.\n- Replaces the old, clunky `arguments` object (which isn't a real array).\n- Must be the LAST parameter: `function func(a, b, ...rest) {}`\n\n## Key Difference\n- Spread takes an array/object and turns it into comma-separated values.\n- Rest takes comma-separated values and packs them into an array.",
+    "slug": "python-json-file-operations",
+    "title": "JSON File Operations",
+    "icon": "FileJson",
+    "overview": "Serialize Python objects to JSON strings and deserialize JSON data back into native Python structures.",
+    "explanation": "## json.dumps() — Python → JSON String\n\n```python \nimport json\n\ndata = {\n    'name': 'Alice',\n    'age': 30,\n    'active': True,\n    'scores': [85, 90, 78],\n    'address': None\n}\n\n# Convert to JSON string\njson_str = json.dumps(data)\nprint(json_str)\n# {\"name\": \"Alice\", \"age\": 30, \"active\": true, \"scores\": [85, 90, 78], \"address\": null}\n\n# Note the translations:\n# Python True  → JSON true\n# Python False → JSON false\n# Python None  → JSON null\n\n# Pretty print (indentation)\npretty = json.dumps(data, indent=2)\nprint(pretty)\n# {\n#   \"name\": \"Alice\",\n#   \"age\": 30,\n#   ...\n# }\n\n# Sort keys\nsorted_json = json.dumps(data, sort_keys=True, indent=2)\n```\n\n## json.loads() — JSON String → Python\n\n```python \njson_str = '{\"name\": \"Bob\", \"age\": 25}'\n\n# Parse string to dict\ndata = json.loads(json_str)\nprint(type(data))  # <class 'dict'>\nprint(data['name']) # 'Bob'\n```\n\n## json.dump() — Python → JSON File\n\n```python \ndata = {'users': [{'id': 1, 'name': 'Alice'}]}\n\nwith open('data.json', 'w') as f:\n    json.dump(data, f, indent=2)\n    # File now contains formatted JSON\n```\n\n## json.load() — JSON File → Python\n\n```python \nwith open('data.json', 'r') as f:\n    data = json.load(f)\n    \nprint(data['users'][0]['name'])  # 'Alice'\n```\n\n## Handling Non-Serializable Types\n\n```python \nfrom datetime import datetime\n\n# This will FAIL!\n# data = {'time': datetime.now()}\n# json.dumps(data)  # TypeError: Object of type datetime is not JSON serializable\n\n# Solution 1: Custom encoder\nclass DateTimeEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, datetime):\n            return obj.isoformat()\n        return super().default(obj)\n\njson_str = json.dumps({'time': datetime.now()}, cls=DateTimeEncoder)\n\n# Solution 2: Default function\ndef custom_serializer(obj):\n    if isinstance(obj, datetime):\n        return obj.isoformat()\n    raise TypeError(f'Type {type(obj)} not serializable')\n\njson_str = json.dumps({'time': datetime.now()}, default=custom_serializer)\n```\n\n## Type Mapping Table\n\n| Python | JSON |\n|--------|------|\n| dict | object {} |\n| list, tuple | array [] |\n| str | string \"\" |\n| int, float | number |\n| True / False | true / false |\n| None | null |\n\n**Note:** Tuples become JSON arrays. When loading back, they become lists!",
     "keyRules": [
-      "Spread expands an array/object into individual elements",
-      "Rest parameters pack individual function arguments into a single array",
-      "Spread creates SHALLOW copies of arrays and objects",
-      "Rest parameter MUST be the last parameter in a function definition",
-      "Math.max() and Math.min() require spread to accept arrays"
+      "Use dump()/load() for files, dumps()/loads() for strings — the 's' stands for string",
+      "Python's True/False/None become JSON's true/false/null — remember this when parsing!",
+      "Tuples are converted to JSON arrays and come back as lists — convert manually if needed",
+      "Always use indent=2 for readable JSON files, omit it for compact network payloads",
+      "datetime, set, and custom class objects are NOT JSON serializable — use custom encoder or default function"
     ],
-    "task": "Create an object `defaults` with `theme: 'light'` and `lang: 'en'`. Create another object `userPrefs` with `theme: 'dark'`. Use spread to merge them into `settings`, ensuring `userPrefs` overrides `defaults`. Then, write a function `sum(...nums)` that sums all passed arguments using rest parameters.",
-    "hint": "Merge: `const settings = { ...defaults, ...userPrefs }`. Rest function: `function sum(...nums) { return nums.reduce(...) }`. Call `sum(1,2,3,4)`.",
+    "task": "Create a function `save_config(filepath, config_dict)` that writes a dictionary to a JSON file with indentation. Create a function `load_config(filepath)` that reads the JSON file and returns the dict. Wrap load_config in a try/except to handle FileNotFoundError and json.JSONDecodeError gracefully, returning an empty dict on failure.",
+    "hint": "Save: `json.dump(config_dict, f, indent=2)`. Load: `try: return json.load(f) except FileNotFoundError: return {} except json.JSONDecodeError: return {}`.",
     "learnings": [
-      { "title": "Overriding Keys", "desc": "Why order matters in spread: { ...a, ...b } means b's keys overwrite a's keys." },
-      { "title": "Arguments vs Rest", "desc": "Why 'arguments' is array-like but 'rest' is a true array (has .map, .filter)." },
-      { "title": "Spreading Strings", "desc": "Using [...'hello'] to quickly turn a string into an array of characters." }
+      { "title": "json.dumps()", "desc": "Converting Python dictionaries and lists into formatted JSON string output." },
+      { "title": "json.loads()", "desc": "Parsing JSON strings back into equivalent Python dict and list objects." },
+      { "title": "json.dump()", "desc": "Writing Python objects directly to file handles as JSON text." },
+      { "title": "json.load()", "desc": "Reading JSON text from file handles and converting to Python objects." },
+      { "title": "Indentation & sorting", "desc": "Formatting JSON output with pretty-print indent levels and sorted key orders." }
     ],
-    "starterCode": "// Task: Spread for Merging & Rest for Parameters\n\n// 1. Define defaults and userPrefs\n\n\n// 2. Merge them using spread (userPrefs should win)\nconst settings = undefined;\n\nconsole.log(settings); // Expect { theme: 'dark', lang: 'en' }\n\n// 3. Write a sum function using rest parameters\nfunction sum() {\n  \n}\n\nconsole.log(sum(10, 20, 30)); // Expect 60",
-    "solutionCode": "// Task: Spread for Merging & Rest for Parameters\n\n// 1. Define defaults and userPrefs\nconst defaults = { theme: \"light\", lang: \"en\" };\nconst userPrefs = { theme: \"dark\" };\n\n// 2. Merge them using spread (userPrefs should win)\nconst settings = { ...defaults, ...userPrefs };\n\nconsole.log(settings); // Expect { theme: 'dark', lang: 'en' }\n\n// 3. Write a sum function using rest parameters\nfunction sum(...nums) {\n  return nums.reduce((total, n) => total + n, 0);\n}\n\nconsole.log(sum(10, 20, 30)); // Expect 60",
-    "exampleCode": "// 🧠 Spread & Rest Magic\n\n// --- Spreading into Functions ---\nconst scores = [85, 92, 78];\nconst max = Math.max(...scores); // 92\n\n// --- Rest vs Arguments ---\nfunction oldWay() {\n  // console.log(arguments.map(x => x * 2)); // ERROR! arguments is not a real array\n  console.log(Array.from(arguments).map(x => x * 2)); // Clunky workaround\n}\n\nfunction newWay(...args) {\n  console.log(args.map(x => x * 2)); // Works perfectly!\n}\n\n// --- Immutable Array Updates ---\nconst original = [1, 2, 3];\n// Instead of original.push(4) (mutation)\nconst updated = [...original, 4]; // New array [1,2,3,4]\n\n// Instead of original.splice(1, 1) (mutation)\nconst filtered = original.filter(n => n !== 2);",
+    "starterCode": "# Task: JSON File Operations\n\nimport json\n\n# 1. save_config(filepath, config_dict) → None\n#    Use indent=2 for pretty formatting\n\n# 2. load_config(filepath) → dict\n#    Handle FileNotFoundError and JSONDecodeError\n#    Return {} on any error\n\n# 3. Test:\n#    - Save a sample config dict\n#    - Load it back and print\n#    - Try loading a non-existent file (should return {})",
+    "solutionCode": "# Task: JSON File Operations\n\nimport json\n\n# 1. Save config\ndef save_config(filepath, config_dict):\n    with open(filepath, 'w') as f:\n        json.dump(config_dict, f, indent=2)\n\n# 2. Load config safely\ndef load_config(filepath):\n    try:\n        with open(filepath, 'r') as f:\n            return json.load(f)\n    except FileNotFoundError:\n        print(f'File not found: {filepath}')\n        return {}\n    except json.JSONDecodeError:\n        print(f'Invalid JSON in: {filepath}')\n        return {}\n\n# 3. Test\nconfig = {\n    'app_name': 'MyApp',\n    'version': '1.0',\n    'debug': False,\n    'features': ['auth', 'logging']\n}\n\nsave_config('config.json', config)\nprint('Config saved.')\n\nloaded = load_config('config.json')\nprint(f'Loaded: {loaded}')\n\nmissing = load_config('does_not_exist.json')\nprint(f'Missing file result: {missing}')  # {}",
+    "exampleCode": "# 🧠 Advanced JSON Patterns\n\n# Updating a specific key in a JSON file\ndef update_json_key(filepath, key, value):\n    data = load_config(filepath)  # Assuming previous load_config\n    data[key] = value\n    save_config(filepath, data)\n\n# Merging multiple JSON files\ndef merge_json_files(file_paths, output_path):\n    merged = []\n    for path in file_paths:\n        with open(path, 'r') as f:\n            data = json.load(f)\n            if isinstance(data, list):\n                merged.extend(data)\n            else:\n                merged.append(data)\n    \n    with open(output_path, 'w') as f:\n        json.dump(merged, f, indent=2)\n\n# Compact JSON (for network payloads)\ncompact = json.dumps({'key': 'value'}, separators=(',', ':'))\n# {\"key\":\"value\"}\n\n# Deep get/set in JSON config\ndef get_nested(data, keys, default=None):\n    for key in keys:\n        if isinstance(data, dict):\n            data = data.get(key)\n        else:\n            return default\n    return data\n\nconfig = {'db': {'host': 'localhost', 'port': 5432}}\nprint(get_nested(config, ['db', 'host']))  # 'localhost'\n\n# Handling sets (not JSON serializable)\nclass SetEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, set):\n            return list(obj)\n        return super().default(obj)\n\ndata = {'tags': {'python', 'json', 'api'}}\nprint(json.dumps(data, cls=SetEncoder))",
     "tests": [
-      { "id": "t1", "description": "Should use spread operator to merge objects", "check": "code => /\\{\\s*\\.\\.\\.defaults\\s*,\\s*\\.\\.\\.userPrefs\\s*\\}/.test(code)" },
-      { "id": "t2", "description": "Should use rest parameters in function definition", "check": "code => /function\\s+sum\\s*\\(\\s*\\.\\.\\.\\w+\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should use reduce to sum the rest array", "check": "code => /reduce\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should pass multiple arguments to sum()", "check": "code => /sum\\s*\\(\\s*10\\s*,\\s*20\\s*,\\s*30\\s*\\)/.test(code)" },
-      { "id": "t5", "description": "Should define defaults and userPrefs objects", "check": "code => /const\\s+defaults/.test(code) && /const\\s+userPrefs/.test(code)" }
+      { "id": "t1", "description": "Should import json module", "check": "code => /import\\s+json/.test(code)" },
+      { "id": "t2", "description": "Should define save_config function", "check": "code => /def\\s+save_config/.test(code)" },
+      { "id": "t3", "description": "Should use json.dump with indent", "check": "code => /json\\.dump\\s*\\(.*indent/.test(code)" },
+      { "id": "t4", "description": "Should define load_config function", "check": "code => /def\\s+load_config/.test(code)" },
+      { "id": "t5", "description": "Should handle FileNotFoundError", "check": "code => /except\\s+FileNotFoundError/.test(code)" },
+      { "id": "t6", "description": "Should handle JSONDecodeError", "check": "code => /except\\s+json\\.JSONDecodeError/.test(code)" }
     ]
   },
   {
     "id": "21",
-    "slug": "json-operations",
-    "title": "JSON Operations",
-    "icon": "FileJson",
-    "overview": "Serialize internal objects to strings and parse external string data for storage or transmission.",
-    "explanation": "## What is JSON?\n\nJSON (JavaScript Object Notation) is a lightweight, text-based format for storing and transporting data. It is language-independent but uses syntax heavily borrowed from JavaScript objects.\n\n**Key difference from JS Objects:** JSON requires double quotes `\"` around all keys and string values. It does NOT support comments, functions, `undefined`, or `Symbol`.\n\n## The Two Core Methods\n\n- **`JSON.stringify(value, replacer, space)`**: Converts a JS object/array into a JSON string.\n  - *Replacer*: A function or array to filter which properties get stringified.\n  - *Space*: A number or string used for white-space indentation to make the output readable.\n  - *Pitfall*: It ignores functions, `undefined`, and `Symbol` properties. It throws an error on circular references.\n\n- **`JSON.parse(text, reviver)`**: Converts a valid JSON string back into a live JavaScript object.\n  - *Reviver*: A transformation function that runs on every key-value pair as it's parsed. Great for automatically converting date strings back into Date objects.\n\n## Deep Cloning\n\n`JSON.parse(JSON.stringify(obj))` is a famous, quick-and-dirty way to deep clone simple data objects. However, it fails if your object contains functions, `Date` objects (they become strings), `RegExp`, `Map`/`Set`, or `undefined`.",
+    "slug": "python-binary-file-handling",
+    "title": "Binary File Handling",
+    "icon": "FileArchive",
+    "overview": "Read and write raw binary data using bytes, bytearray, and the struct module for C-style layouts.",
+    "explanation": "## Binary Modes\n\n```python \n# 'rb' - Read binary\n# 'wb' - Write binary (overwrites)\n# 'ab' - Append binary\n# 'rb+' - Read/Write binary\n\n# DO NOT use text encoding/decoding with binary modes\nwith open('data.bin', 'wb') as f:\n    f.write(b'Hello')  # b'' = bytes literal\n```\n\n## bytes vs bytearray\n\n```python \n# bytes - IMMUTABLE\nb = b'\\x00\\x01\\x02\\x03'\n# b[0] = 99  # TypeError!\n\n# bytearray - MUTABLE\nba = bytearray(b'\\x00\\x01\\x02\\x03')\nba[0] = 99\nprint(ba)  # bytearray(b'c\\x01\\x02\\x03')\n\n# Creating from different sources\nb1 = bytes([65, 66, 67])   # b'ABC'\nb2 = bytes(range(5))       # b'\\x00\\x01\\x02\\x03\\x04'\nb3 = 'hello'.encode('utf-8')  # b'hello'\n```\n\n## struct Module (Pack/Unpack)\n\n```python  import struct\n\n# Format characters:\n# 'i' = int (4 bytes), 'd' = double (8 bytes)\n# 'f' = float (4 bytes), 'q' = long long (8 bytes)\n# '<' = little-endian, '>' = big-endian, '=' = native\n\n# Pack Python values into bytes\npacked = struct.pack('<iif', 42, 100, 3.14)\nprint(packed)  # b'*\\x00\\x00\\x00d\\x00\\x00\\x00\\xc3\\xf5H@'\nprint(len(packed))  # 12 bytes (4 + 4 + 4)\n\n# Unpack bytes back into Python values\norig = struct.unpack('<iif', packed)\nprint(orig)  # (42, 100, 3.140000104904175)\n\n# Calculate size without packing\nprint(struct.calcsize('<iif'))  # 12\n```\n\n## Pickle Serialization\n\n```python  import pickle\n\n# Serialize ANY Python object to binary\ndata = {'name': 'Alice', 'scores': [90, 85]}\n\nwith open('data.pkl', 'wb') as f:\n    pickle.dump(data, f)\n\n# Deserialize back\nwith open('data.pkl', 'rb') as f:\n    loaded = pickle.load(f)\n\nprint(loaded)  # {'name': 'Alice', 'scores': [90, 85]}\n\n# ⚠️ SECURITY: Never unpickle untrusted data!\n# It can execute arbitrary malicious code.\n```\n\n## Reading/Writing Binary Records\n\n```python  import struct\n\n# Write multiple records\nrecords = [\n    (1, 'Alice', 85.5),\n    (2, 'Bob', 92.0)\n]\n\nwith open('records.bin', 'wb') as f:\n    for rid, name, score in records:\n        # Pack id(int), name(10s = 10 byte string), score(double)\n        name_bytes = name.encode('utf-8').ljust(10, b'\\x00')\n        f.write(struct.pack('<i10sd', rid, name_bytes, score))\n\n# Read records back\nwith open('records.bin', 'rb') as f:\n    record_size = struct.calcsize('<i10sd')\n    while True:\n        chunk = f.read(record_size)\n        if not chunk:\n            break\n        rid, name_bytes, score = struct.unpack('<i10sd', chunk)\n        print(f'ID: {rid}, Name: {name_bytes.decode().strip()}, Score: {score}')\n```",
     "keyRules": [
-      "JSON.stringify converts JS objects to strings; JSON.parse converts strings back",
-      "JSON requires double quotes for keys and string values",
-      "JSON cannot handle functions, undefined, or circular references",
-      "Use the 'space' parameter in stringify for pretty-printing",
-      "JSON parse/stringify is a quick but flawed way to deep clone data"
+      "Always use 'rb'/'wb' modes for binary files — text modes will corrupt binary data",
+      "bytes is immutable, bytearray is mutable — use bytearray when you need to modify binary data in-place",
+      "struct.pack() converts Python types to C-style bytes; struct.unpack() converts bytes back to a tuple",
+      "Specify endianness in struct formats: '<' for little-endian (common on x86), '>' for big-endian (network byte order)",
+      "NEVER unpickle data from untrusted sources — pickle can execute arbitrary code during deserialization"
     ],
-    "task": "Create a `config` object with `port: 3000`, `debug: true`, and a nested `db: { host: 'localhost' }`. Use `JSON.stringify` with a 2-space indentation to log it. Then, parse it back and prove it's a deep clone by modifying the parsed object's db.host and logging the original.",
-    "hint": "Stringify: `JSON.stringify(config, null, 2)`. Parse: `const clone = JSON.parse(jsonStr)`. Modify `clone.db.host = 'remote'`. Log `config.db.host` to show it's still 'localhost'.",
+    "task": "Create a function `write_coords(filepath, points)` that takes a list of (x, y) float tuples and writes them to a binary file using struct (pack each pair as two doubles '<dd'). Create `read_coords(filepath)` that reads them back into a list of tuples. Calculate the struct size using calcsize.",
+    "hint": "Format for two doubles: `'<dd'`. Size: `struct.calcsize('<dd')`. Loop points, `struct.pack('<dd', x, y)` and `f.write()`. To read: `f.read(size)`, then `struct.unpack('<dd', chunk)`.",
     "learnings": [
-      { "title": "The Reviver Function", "desc": "Using the second argument of JSON.parse to transform values during parsing (e.g., converting date strings to Date objects)." },
-      { "title": "Handling Circular References", "desc": "Why JSON.stringify({ a: 1 }) { this.a = this } throws a TypeError." },
-      { "title": "Custom toJSON()", "desc": "Adding a toJSON() method to your class to control exactly how it gets serialized." }
+      { "title": "Binary mode flags", "desc": "Opening files with 'rb', 'wb', and 'ab' modes for raw byte-level access." },
+      { "title": "bytes & bytearray", "desc": "Working with immutable byte sequences and mutable byte arrays for binary data." },
+      { "title": "struct module", "desc": "Packing and unpacking binary data using format strings for C-style struct layouts." },
+      { "title": "Pickle serialization", "desc": "Converting complete Python object graphs to binary streams for storage and recovery." }
     ],
-    "starterCode": "// Task: Stringify, Parse, and Prove Deep Clone\n\n// 1. Create the config object\n\n// 2. Stringify it with 2-space indentation and log\n\n// 3. Parse it back into a new variable\n\n// 4. Mutate the parsed object's nested property\n\n// 5. Log the original object to prove it's unaffected",
-    "solutionCode": "// Task: Stringify, Parse, and Prove Deep Clone\n\n// 1. Create the config object\nconst config = {\n  port: 3000,\n  debug: true,\n  db: { host: 'localhost' }\n};\n\n// 2. Stringify it with 2-space indentation and log\nconst jsonStr = JSON.stringify(config, null, 2);\nconsole.log(\"JSON String:\\n\", jsonStr);\n\n// 3. Parse it back into a new variable\nconst clone = JSON.parse(jsonStr);\n\n// 4. Mutate the parsed object's nested property\nclone.db.host = 'remote';\n\n// 5. Log the original object to prove it's unaffected\nconsole.log(\"\\nOriginal db.host:\", config.db.host); // 'localhost'\nconsole.log(\"Cloned db.host:\", clone.db.host);   // 'remote'",
-    "exampleCode": "// 🧠 Advanced JSON Tricks\n\n// --- The Replacer Function ---\nconst user = { name: \"Ali\", password: \"1234\", age: 25 };\nconst safeString = JSON.stringify(user, (key, value) => {\n  if (key === 'password') return undefined; // Hide password\n  return value;\n});\n// Result: '{\"name\":\"Ali\",\"age\":25}'\n\n// --- Parsing with a Reviver ---\nconst json = '{\"date\": \"2023-10-25T10:00:00Z\"}';\nconst obj = JSON.parse(json, (key, value) => {\n  if (key === 'date') return new Date(value);\n  return value;\n});\n// obj.date is now a real Date object!",
+    "starterCode": "# Task: Binary File Handling\n\nimport struct\n\n# 1. write_coords(filepath, points)\n#    points is a list of (x, y) tuples\n#    Use struct.pack('<dd', x, y)\n\n# 2. read_coords(filepath)\n#    Use struct.calcsize and struct.unpack\n\n# 3. Test:\n#    points = [(1.5, 2.5), (3.14, 1.61), (0.0, 0.0)]\n#    Write, read back, and print to verify",
+    "solutionCode": "# Task: Binary File Handling\n\nimport struct\n\n# 1. Write coordinates\ndef write_coords(filepath, points):\n    with open(filepath, 'wb') as f:\n        for x, y in points:\n            packed = struct.pack('<dd', x, y)\n            f.write(packed)\n\n# 2. Read coordinates\ndef read_coords(filepath):\n    points = []\n    record_size = struct.calcsize('<dd')\n    with open(filepath, 'rb') as f:\n        while True:\n            chunk = f.read(record_size)\n            if not chunk:\n                break\n            x, y = struct.unpack('<dd', chunk)\n            points.append((x, y))\n    return points\n\n# 3. Test\npoints = [(1.5, 2.5), (3.14, 1.61), (0.0, 0.0)]\nwrite_coords('coords.bin', points)\n\nloaded = read_coords('coords.bin')\nprint(f'Original:  {points}')\nprint(f'Loaded:   {loaded}')",
+    "exampleCode": "# 🧠 Advanced Binary Patterns\n\n# Variable length binary data\ndef write_variable_strings(filepath, strings):\n    with open(filepath, 'wb') as f:\n        for s in strings:\n            data = s.encode('utf-8')\n            # Write length first (4 bytes), then data\n            f.write(struct.pack('<I', len(data)))\n            f.write(data)\n\ndef read_variable_strings(filepath):\n    strings = []\n    with open(filepath, 'rb') as f:\n        while True:\n            len_bytes = f.read(4)\n            if not len_bytes:\n                break\n            length = struct.unpack('<I', len_bytes)[0]\n            data = f.read(length)\n            strings.append(data.decode('utf-8'))\n    return strings\n\nwrite_variable_strings('str.bin', ['hello', 'world!', 'binary'])\nprint(read_variable_strings('str.bin'))\n\n# Bit manipulation with bytes\nb = bytearray(b'\\x00\\x00')\nb[0] |= 0x0F  # Set lower 4 bits\nb[1] &= ~0x80 # Clear highest bit\nprint([hex(x) for x in b])  # ['0xf', '0x0']\n\n# Memoryview (zero-copy slicing)\ndata = bytearray(b'0123456789')\nmv = memoryview(data)\nchunk = mv[2:5]  # No data copied!\nprint(bytes(chunk))  # b'234'\nchunk[0] = 99       # Modifies original data!",
     "tests": [
-      { "id": "t1", "description": "Should use JSON.stringify", "check": "code => /JSON\\.stringify\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should pass 2 as the space parameter", "check": "code => /JSON\\.stringify\\s*\\([^,]+,\\s*null\\s*,\\s*2\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should use JSON.parse", "check": "code => /JSON\\.parse\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should have a nested object property", "check": "code => /db\\s*:\\s*\\{/.test(code)" },
-      { "id": "t5", "description": "Should mutate the cloned nested property", "check": "code => /clone\\.db\\.host\\s*=/.test(code)" }
+      { "id": "t1", "description": "Should import struct module", "check": "code => /import\\s+struct/.test(code)" },
+      { "id": "t2", "description": "Should define write_coords function", "check": "code => /def\\s+write_coords/.test(code)" },
+      { "id": "t3", "description": "Should use struct.pack with '<dd'", "check": "code => /struct\\.pack\\s*\\(\\s*'<dd'/.test(code)" },
+      { "id": "t4", "description": "Should define read_coords function", "check": "code => /def\\s+read_coords/.test(code)" },
+      { "id": "t5", "description": "Should use struct.calcsize", "check": "code => /struct\\.calcsize/.test(code)" },
+      { "id": "t6", "description": "Should use struct.unpack to read back", "check": "code => /struct\\.unpack\\s*\\(\\s*'<dd'/.test(code)" }
     ]
   },
   {
     "id": "22",
-    "slug": "dom-tree-architecture",
-    "title": "DOM Tree Architecture",
-    "icon": "Network",
-    "overview": "Explore how the browser interprets document nodes and interfaces.",
-    "showInApp": false,
-    "explanation": "## What is the DOM?\n\nThe Document Object Model (DOM) is a programming interface provided by the browser that represents the structure of an HTML or XML document as a tree of objects. Each element, attribute, and piece of text becomes a **node** in this tree.\n\n**Key Point:** The DOM is NOT the HTML source code. The browser parses HTML, creates the DOM tree, and may fix/normalize invalid HTML in the process.\n\n## DOM Tree Structure\n\n- **Document Node**: The root of the tree, represented by `document`.\n- **Element Nodes**: HTML tags like `<div>`, `<p>`, `<h1>`.\n- **Text Nodes**: The actual text content inside elements.\n- **Attribute Nodes**: Attributes like `class`, `id`, `src`.\n- **Comment Nodes**: HTML comments `<!-- -->`.\n\n## Relational Hierarchies\n\n- **Parent**: The direct node one level above. `element.parentNode`\n- **Children**: All direct nodes one level below. `element.childNodes` (includes text nodes) vs `element.children` (only element nodes).\n- **Siblings**: Nodes at the same level. `element.nextSibling`, `element.previousSibling`, `element.nextElementSibling`, `element.previousElementSibling`.\n\n## Window vs Document\n\n- **`window`**: The global object representing the browser tab itself. It holds `setTimeout`, `alert`, `localStorage`, `location`, `history`, etc.\n- **`document`**: A property of `window` that specifically represents the loaded page's DOM tree. It holds methods like `querySelector`, `createElement`, `getElementById`.\n\n`window.document === document` evaluates to `true`.",
+    "slug": "python-exception-handling-basics",
+    "title": "Exception Handling Basics",
+    "icon": "AlertTriangle",
+    "overview": "Catch, handle, and manage runtime errors gracefully using try/except/else/finally structures.",
+    "explanation": "## The Problem\n\n```python  # Code crashes when something unexpected happens\nnumber = int('hello')  # ValueError!\nresult = 10 / 0       # ZeroDivisionError!\nmy_list = [1, 2, 3]\nprint(my_list[10])     # IndexError!\n```\n\n## Basic try / except\n\n```python \ntry:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero!')\n# Program continues running instead of crashing!\n```\n\n## Catching the Exception Object\n\n```python  try:\n    number = int('abc')\nexcept ValueError as e:\n    print(f'Error message: {e}')  # 'invalid literal for int()'\n    print(f'Error type: {type(e).__name__}')  # 'ValueError'\n```\n\n## Multiple except Blocks\n\n```python  try:\n    # Some risky operation\n    value = int('hello')\nexcept ValueError:\n    print('Invalid number format')\nexcept ZeroDivisionError:\n    print('Division failed')\nexcept (TypeError, IndexError) as e:\n    # Catch multiple types in one block\n    print(f'Other error: {e}')\nexcept Exception as e:\n    # Catch-all (use sparingly!)\n    print(f'Unexpected error: {e}')\n```\n\n**Order matters:** Catch specific exceptions BEFORE generic ones.\n\n## else Block\n\n```python  # Runs ONLY if NO exception was raised\ntry:\n    result = 10 / 2\nexcept ZeroDivisionError:\n    print('Error')\nelse:\n    print(f'Success! Result: {result}')  # This runs\n```\n\n## finally Block\n\n```python  # ALWAYS runs, whether exception occurred or not\ntry:\n    f = open('data.txt', 'r')\n    content = f.read()\nexcept FileNotFoundError:\n    print('File not found')\nfinally:\n    print('Cleanup code runs here')\n    # f.close() # Be careful: f might not be defined if open() failed!\n```\n\n## Best Practice Pattern\n\n```python  # Combine with statement for perfect safety\ntry:\n    with open('data.txt', 'r') as f:\n        content = f.read()\nexcept FileNotFoundError:\n    print('File missing')\nelse:\n    print(f'Read {len(content)} chars')\nfinally:\n    print('Operation attempted')\n```",
     "keyRules": [
-      "DOM is a tree of objects, not the raw HTML source",
-      "childNodes includes text/comment nodes; children only includes element nodes",
-      "document is a property of window — window is the global browser scope",
-      "Every DOM node inherits from the EventTarget prototype",
-      "The DOM is live — changes you make are immediately reflected in the browser"
+      "Always catch SPECIFIC exceptions (like ValueError) — avoid bare 'except:' or 'except Exception' when possible",
+      "Order except blocks from most specific to most generic — Python matches top-down",
+      "Use 'else' for code that should ONLY run if no exception occurred (keeps try block slim)",
+      "Use 'finally' for cleanup that MUST run regardless of success/failure (like closing connections)",
+      "Bare 'except:' catches EVERYTHING including KeyboardInterrupt and SystemExit — almost never use it"
     ],
-    "task": "Given a `ul#list` with 3 `li` items, write a script that logs the nodeName of the `ul`'s parent, counts only element children (not text nodes) of the `ul`, and logs whether `document === window.document`.",
-    "hint": "Use `document.querySelector('#list').parentNode.nodeName`, `.children.length`, and a strict equality check.",
+    "task": "Create a function `safe_divide(a, b)` that returns a tuple `(success: bool, result_or_error_msg)`. If division works, return `(True, result)`. If `ZeroDivisionError`, return `(False, 'Division by zero')`. If `TypeError`, return `(False, 'Invalid types')`. Use `else` to handle success. Create a wrapper `divide_and_print(a, b)` that calls safe_divide and prints the outcome.",
+    "hint": "Inside try: calculate `a / b`. except ZeroDivisionError: return tuple. except TypeError: return tuple. else: return `(True, result)`. In wrapper: unpack tuple, use if/else to print success or error.",
     "learnings": [
-      { "title": "What is DOM", "desc": "Analyzing the Document Object Model programming interface structure." },
-      { "title": "DOM Tree Model", "desc": "Tracking relational hierarchies across Parent, Child, and Sibling structures." },
-      { "title": "Window vs Document", "desc": "Differentiating the global browser tab canvas from active page content frames." }
+      { "title": "try block", "desc": "Wrapping potentially failing code inside monitored exception-catching zones." },
+      { "title": "except clause", "desc": "Specifying exception types to catch and defining handler logic for each error category." },
+      { "title": "Multiple except blocks", "desc": "Catching different exception types with separate handler blocks in priority order." },
+      { "title": "else clause", "desc": "Executing code only when the try block succeeds without raising any exceptions." },
+      { "title": "finally clause", "desc": "Running unconditional cleanup code regardless of whether an exception occurred or not." },
+      { "title": "Exception object", "desc": "Capturing the exception instance using 'as' keyword to access error messages and attributes." }
     ],
-    "starterCode": "// Task: Explore DOM Tree Relationships\n\n// 1. Get the ul#list element\n\n// 2. Log the nodeName of its parent\n\n// 3. Count ONLY element children (not text nodes)\n\n// 4. Check if document === window.document",
-    "solutionCode": "// Task: Explore DOM Tree Relationships\n\n// 1. Get the ul#list element\nconst list = document.querySelector('#list');\n\n// 2. Log the nodeName of its parent\nconsole.log('Parent nodeName:', list.parentNode.nodeName); // 'BODY' or 'DIV'\n\n// 3. Count ONLY element children (not text nodes)\nconsole.log('Element children count:', list.children.length); // 3\n\n// 4. Check if document === window.document\nconsole.log('document === window.document:', document === window.document); // true",
-    "exampleCode": "// 🧠 DOM Tree Traversal Deep Dive\n\nconst ul = document.querySelector('#list');\n\n// childNodes vs children\nconsole.log(ul.childNodes.length); // 7 (includes whitespace text nodes!)\nconsole.log(ul.children.length);   // 3 (only <li> elements)\n\n// First and last element child\nconst first = ul.firstElementChild;\nconst last = ul.lastElementChild;\nconsole.log(first.textContent, last.textContent);\n\n// Walking up to the root\nlet node = ul;\nwhile (node.parentNode) {\n  console.log(node.nodeName);\n  node = node.parentNode;\n}\n// Outputs: UL -> BODY -> HTML -> DOCUMENT",
+    "starterCode": "# Task: Exception Handling Basics\n\n# 1. safe_divide(a, b) → (bool, value_or_string)\n#    Use try/except/else\n#    Catch ZeroDivisionError and TypeError specifically\n\n# 2. divide_and_print(a, b) → None\n#    Calls safe_divide and prints formatted output\n\n# 3. Test:\n#    divide_and_print(10, 2)  → Success\n#    divide_and_print(10, 0)  → Error\n#    divide_and_print(10, 'a')→ Error",
+    "solutionCode": "# Task: Exception Handling Basics\n\n# 1. Safe divide with explicit returns\ndef safe_divide(a, b):\n    try:\n        result = a / b\n    except ZeroDivisionError:\n        return (False, 'Division by zero')\n    except TypeError:\n        return (False, 'Invalid types')\n    else:\n        return (True, result)\n\n# 2. Print wrapper\ndef divide_and_print(a, b):\n    success, value = safe_divide(a, b)\n    if success:\n        print(f'✅ Success: {a} / {b} = {value}')\n    else:\n        print(f'❌ Error: {value}')\n\n# 3. Test\ndivide_and_print(10, 2)\n# ✅ Success: 10 / 2 = 5.0\n\ndivide_and_print(10, 0)\n# ❌ Error: Division by zero\n\ndivide_and_print(10, 'a')\n# ❌ Error: Invalid types",
+    "exampleCode": "# 🧠 Advanced Error Patterns\n\n# Exception chaining (raising from)\ndef load_config():\n    try:\n        with open('config.json') as f:\n            return json.load(f)\n    except FileNotFoundError as e:\n        raise ValueError('Config file missing') from e\n\n# Custom context manager for timing\nimport time\nclass Timer:\n    def __enter__(self):\n        self.start = time.time()\n        return self\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.duration = time.time() - self.start\n        if exc_type:\n            print(f'Failed after {self.duration:.2f}s')\n        else:\n            print(f'Took {self.duration:.2f}s')\n        return False # Don't suppress exceptions\n\nwith Timer():\n    time.sleep(1)\n    # raise ValueError('test')\n\n# Retry decorator\ndef retry(max_attempts=3):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for attempt in range(1, max_attempts + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    print(f'Attempt {attempt} failed: {e}')\n                    if attempt == max_attempts:\n                        raise\n                    time.sleep(1)\n        return wrapper\n    return decorator\n\n# @retry(max_attempts=3)\n# def unstable_api_call(): pass",
     "tests": [
-      { "id": "t1", "description": "Should select #list", "check": "code => /querySelector\\s*\\(\\s*['\"]#list['\"]\\s*\\)/.test(code)" },
-      { "id": "t2", "description": "Should access parentNode", "check": "code => /\\.parentNode/.test(code)" },
-      { "id": "t3", "description": "Should use .children not .childNodes", "check": "code => /\\.children\\.length/.test(code)" },
-      { "id": "t4", "description": "Should compare document and window.document", "check": "code => /document\\s*===\\s*window\\.document/.test(code)" }
+      { "id": "t1", "description": "Should define safe_divide function", "check": "code => /def\\s+safe_divide/.test(code)" },
+      { "id": "t2", "description": "Should use try/except/else structure", "check": "code => /try\\s*:.*except.*else\\s*:/.test(code)" },
+      { "id": "t3", "description": "Should catch ZeroDivisionError specifically", "check": "code => /except\\s+ZeroDivisionError/.test(code)" },
+      { "id": "t4", "description": "Should catch TypeError specifically", "check": "code => /except\\s+TypeError/.test(code)" },
+      { "id": "t5", "description": "Should return tuple format", "check": "code => /return\\s*\\(\\s*(False|True)/.test(code)" },
+      { "id": "t6", "description": "Should define divide_and_print that calls safe_divide", "check": "code => /def\\s+divide_and_print.*:\\n.*safe_divide/.test(code)" }
     ]
   },
   {
     "id": "23",
-    "slug": "dom-query-manipulation",
-    "title": "DOM Query & Manipulation",
-    "icon": "MousePointerClick",
-    "overview": "Locate elements and update document structures at runtime.",
-    "showInApp": false,
-    "explanation": "## Selecting Nodes\n\nModern JavaScript provides two primary methods for querying the DOM:\n\n- **`querySelector(selector)`**: Returns the **first** element matching a CSS selector.\n- **`querySelectorAll(selector)`**: Returns a **static NodeList** of ALL matching elements.\n\n**Legacy methods** (avoid in new code): `getElementById`, `getElementsByClassName`, `getElementsByTagName`. These return **live** collections that update if the DOM changes.\n\n**NodeList vs HTMLCollection:** `querySelectorAll` returns a static NodeList (you can `forEach` it). Legacy methods return live HTMLCollections (no `forEach` natively, but they auto-update).\n\n## Modifying Content\n\n- **`textContent`**: Gets/sets the raw text of an element AND all descendants. Safest option — no XSS risk.\n- **`innerText`**: Similar to `textContent` but respects CSS styling (hidden elements return empty string). Triggers reflow — slower.\n- **`innerHTML`**: Gets/sets the HTML markup inside an element. **XSS risk** if inserting user input.\n\n## Attributes & Style Updates\n\n- **`element.setAttribute(name, value)`** / **`element.getAttribute(name)`**: Standard attribute API.\n- **`element.dataset`**: Access `data-*` attributes (`data-user-id` → `element.dataset.userId`).\n- **`element.classList`**: `.add()`, `.remove()`, `.toggle()`, `.contains()`, `.replace()`.\n- **`element.style`**: Direct inline styles. Properties are camelCase: `element.style.backgroundColor = 'red'`.\n\n## Creating & Inserting Elements\n\n- **`document.createElement(tag)`**: Creates a new element node.\n- **`parent.appendChild(child)`**: Appends as last child.\n- **`parent.insertBefore(newNode, referenceNode)`**: Inserts before a reference.\n- **`element.remove()`**: Removes the element from the DOM.",
+    "slug": "python-custom-exceptions",
+    "title": "Custom Exceptions",
+    "icon": "ShieldAlert",
+    "overview": "Design application-specific error classes for precise domain-level failure communication.",
+    "explanation": "## Why Custom Exceptions?\n\nBuilt-in exceptions are too generic for business logic:\n- `ValueError` could mean anything (negative age, invalid email, wrong format...)\n- Custom exceptions let callers catch SPECIFIC domain errors\n\n## Defining Custom Exceptions\n\n```python  # Basic custom exception (inherits from Exception)\nclass InvalidAgeError(Exception):\n    pass\n\n# Raising it\nraise InvalidAgeError('Age cannot be negative')\n```\n\n## Adding Custom Attributes\n\n```python  class ValidationError(Exception):\n    def __init__(self, field, message):\n        self.field = field\n        self.message = message\n        super().__init__(f'{field}: {message}')\n\ntry:\n    raise ValidationError('email', 'Invalid format')\nexcept ValidationError as e:\n    print(e)           # email: Invalid format\n    print(e.field)     # 'email'\n    print(e.message)   # 'Invalid format'\n```\n\n## Exception Hierarchies\n\n```python  # Base class for all app errors\nclass AppError(Exception):\n    pass\n\n# Sub-categories\nclass NetworkError(AppError):\n    pass\n\nclass DatabaseError(AppError):\n    pass\n\n# Specific errors\nclass ConnectionTimeoutError(NetworkError):\n    pass\n\nclass QueryError(DatabaseError):\n    pass\n\n# Caller can catch at any level\ntry:\n    raise ConnectionTimeoutError('Server not responding')\nexcept ConnectionTimeoutError:\n    print('Handle timeout specifically')\nexcept NetworkError:\n    print('Handle any network issue')\nexcept AppError:\n    print('Handle any app error')\n```\n\n## Real-World Example: Bank Account\n\n```python  class InsufficientFundsError(Exception):\n    def __init__(self, balance, amount):\n        self.balance = balance\n        self.amount = amount\n        super().__init__(f'Cannot withdraw {amount}. Balance: {balance}')\n\nclass BankAccount:\n    def __init__(self, balance=0):\n        self.balance = balance\n\n    def withdraw(self, amount):\n        if amount <= 0:\n            raise ValueError('Amount must be positive')\n        if amount > self.balance:\n            raise InsufficientFundsError(self.balance, amount)\n        self.balance -= amount\n\ntry:\n    acc = BankAccount(100)\n    acc.withdraw(150)\nexcept InsufficientFundsError as e:\n    print(e)            # Cannot withdraw 150. Balance: 100\n    print(f'Short by: {e.amount - e.balance}')\n```\n\n## Best Practices\n\n```python  # ✅ DO: Inherit from Exception (or a specific base)\nclass MyError(Exception): pass\n\n# ❌ DON'T: Inherit from BaseException\n# (catches SystemExit, KeyboardInterrupt, GeneratorExit)\nclass MyError(BaseException): pass\n\n# ✅ DO: Provide useful default messages\n# ✅ DO: Group related exceptions in a hierarchy\n```",
     "keyRules": [
-      "Always prefer querySelector/querySelectorAll over legacy methods",
-      "Use textContent over innerHTML when setting plain text to prevent XSS",
-      "classList.toggle is the cleanest way to add/remove a class",
-      "querySelectorAll returns a static NodeList, not a live collection",
-      "element.style sets inline styles — for multiple styles use classList instead"
+      "Always inherit from Exception (or a custom subclass of Exception) — never from BaseException",
+      "Call super().__init__() in your __init__ to ensure the base class is properly initialized",
+      "Add custom attributes (like self.field) to carry extra context that the handler might need",
+      "Build exception hierarchies so callers can catch broad categories or specific errors as needed",
+      "Use descriptive names ending in 'Error' (e.g., InvalidEmailError, DatabaseConnectionError)"
     ],
-    "task": "Select the `div.card` element. Change its text to 'Modified Card', add a class 'highlight' using classList, set a `data-status` attribute to 'active', and change its background color to yellow using the style object. Then append a new `<p>New Paragraph</p>` inside it.",
-    "hint": "Chain `classList.add('highlight')`, `setAttribute('data-status', 'active')`, `style.backgroundColor = 'yellow'`, and `appendChild(document.createElement('p'))`.",
+    "task": "Create an exception hierarchy: `AppError` (base), `AuthError(AppError)`, `InvalidCredentialsError(AuthError)`, `PermissionDeniedError(AuthError)`. Add a custom `status_code` attribute to all. Create a function `login(username, password, role)` that raises `InvalidCredentialsError` (401) if username/password is wrong, or `PermissionDeniedError` (403) if role is not 'admin'.",
+    "hint": "Base `AppError` takes `message` and `status_code`, calls `super().__init__(message)` and sets `self.status_code = status_code`. Subclasses just call `super().__init__(message, status_code)`. Login: `if user != 'admin' or pass != '123': raise InvalidCredentialsError(...)`.",
     "learnings": [
-      { "title": "Selecting Nodes", "desc": "Querying targets using modern querySelector and querySelectorAll API methods." },
-      { "title": "Modifying Content", "desc": "Updating UI views using textContent, innerText, and innerHTML properties." },
-      { "title": "Attributes & Style updates", "desc": "Mutating element classes via classList and applying direct inline CSS adjustments." }
+      { "title": "Defining custom exceptions", "desc": "Creating new exception classes by inheriting from Exception or its subclasses." },
+      { "title": "Custom error messages", "desc": "Overriding __init__ to accept and store domain-specific error context data." },
+      { "title": "Exception hierarchies", "desc": "Building structured exception class trees for categorized error handling." },
+      { "title": "Raising exceptions", "desc": "Using the raise keyword to trigger custom exceptions with descriptive messages." }
     ],
-    "starterCode": "// Task: Query and Manipulate a DOM Element\n\n// 1. Select the div.card element\n\n// 2. Change its text to 'Modified Card'\n\n// 3. Add class 'highlight'\n\n// 4. Set data-status to 'active'\n\n// 5. Set background color to yellow via style\n\n// 6. Append a new <p>New Paragraph</p> inside it",
-    "solutionCode": "// Task: Query and Manipulate a DOM Element\n\n// 1. Select the div.card element\nconst card = document.querySelector('div.card');\n\n// 2. Change its text to 'Modified Card'\ncard.textContent = 'Modified Card';\n\n// 3. Add class 'highlight'\ncard.classList.add('highlight');\n\n// 4. Set data-status to 'active'\ncard.setAttribute('data-status', 'active');\n\n// 5. Set background color to yellow via style\ncard.style.backgroundColor = 'yellow';\n\n// 6. Append a new <p>New Paragraph</p> inside it\nconst p = document.createElement('p');\np.textContent = 'New Paragraph';\ncard.appendChild(p);",
-    "exampleCode": "// 🧠 Advanced Manipulation Patterns\n\n// querySelectorAll with forEach\ndocument.querySelectorAll('.item').forEach((item, i) => {\n  item.dataset.index = i;\n});\n\n// classList operations\ncard.classList.toggle('active');   // add if missing, remove if present\ncard.classList.replace('old', 'new'); // swap classes\nconsole.log(card.classList.contains('highlight')); // true/false\n\n// Safe HTML insertion (no XSS)\nfunction setSafeHTML(el, html) {\n  const temp = document.createElement('div');\n  temp.textContent = html; // escapes HTML\n  el.innerHTML = temp.innerHTML;\n}\n\n// Removing elements\ndocument.querySelector('.old-card')?.remove();",
+    "starterCode": "# Task: Custom Exceptions\n\n# 1. Create exception hierarchy:\n#    AppError (base, takes message & status_code)\n#    AuthError(AppError)\n#    InvalidCredentialsError(AuthError)\n#    PermissionDeniedError(AuthError)\n\n# 2. Create login(username, password, role)\n#    Raise InvalidCredentialsError(401) if user!='admin' or pass!='123'\n#    Raise PermissionDeniedError(403) if role!='admin'\n\n# 3. Test:\n#    - Valid login\n#    - Wrong password\n#    - Right password but role='user'",
+    "solutionCode": "# Task: Custom Exceptions\n\n# 1. Exception Hierarchy\nclass AppError(Exception):\n    def __init__(self, message, status_code):\n        super().__init__(message)\n        self.status_code = status_code\n\nclass AuthError(AppError):\n    pass\n\nclass InvalidCredentialsError(AuthError):\n    pass\n\nclass PermissionDeniedError(AuthError):\n    pass\n\n# 2. Login function\ndef login(username, password, role):\n    if username != 'admin' or password != '123':\n        raise InvalidCredentialsError('Invalid username or password', 401)\n    if role != 'admin':\n        raise PermissionDeniedError('Admin access required', 403)\n    return 'Login successful!'\n\n# 3. Test\ntest_cases = [\n    ('admin', '123', 'admin'),\n    ('admin', 'wrong', 'admin'),\n    ('admin', '123', 'user')\n]\n\nfor u, p, r in test_cases:\n    try:\n        print(login(u, p, r))\n    except AuthError as e:\n        print(f'❌ [{e.status_code}] {e}')",
+    "exampleCode": "# 🧠 Advanced Exception Patterns\n\n# Exception with error code enum\nfrom enum import Enum\n\nclass ErrorCode(Enum):\n    NOT_FOUND = 404\n    SERVER_ERROR = 500\n\nclass APIError(Exception):\n    def __init__(self, code: ErrorCode, details: str):\n        self.code = code\n        self.details = details\n        super().__init__(f'{code.name}: {details}')\n\n# Raising multiple exceptions (Python 3.11+)\n# def process():\n#     errors = []\n#     if not data: errors.append(ValueError('Missing data'))\n#     if not auth: errors.append(PermissionError('Denied'))\n#     if errors:\n#         raise ExceptionGroup('Multiple errors', errors)\n\n# Catching ExceptionGroup\n# try:\n#     process()\n# except* ValueError as e:\n#     print(f'Handled value error: {e}')\n# except* PermissionError as e:\n#     print(f'Handled perm error: {e}')\n\n# Assertion as error checking\ndef set_age(age):\n    assert isinstance(age, int), 'Age must be integer'\n    assert age >= 0, 'Age cannot be negative'\n    return age\n\n# Warning vs Exception\nimport warnings\n\ndef old_function():\n    warnings.warn('This function is deprecated', DeprecationWarning, stacklevel=2)",
     "tests": [
-      { "id": "t1", "description": "Should select div.card", "check": "code => /querySelector\\s*\\(\\s*['\"]div\\.card['\"]\\s*\\)/.test(code)" },
-      { "id": "t2", "description": "Should use textContent", "check": "code => /\\.textContent\\s*=/.test(code)" },
-      { "id": "t3", "description": "Should use classList.add", "check": "code => /classList\\.add\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should set a data attribute", "check": "code => /setAttribute\\s*\\(\\s*['\"]data-/.test(code)" },
-      { "id": "t5", "description": "Should use style object", "check": "code => /\\.style\\./.test(code)" },
-      { "id": "t6", "description": "Should create and append element", "check": "code => /createElement\\s*\\(/.test(code) && /appendChild\\s*\\(/.test(code)" }
+      { "id": "t1", "description": "Should define AppError base class", "check": "code => /class\\s+AppError\\s*\\(.*Exception/.test(code)" },
+      { "id": "t2", "description": "Should define AuthError inheriting AppError", "check": "code => /class\\s+AuthError\\s*\\(.*AppError/.test(code)" },
+      { "id": "t3", "description": "Should set status_code attribute", "check": "code => /self\\.status_code\\s*=/.test(code)" },
+      { "id": "t4", "description": "Should call super().__init__", "check": "code => /super\\s*\\(\\s*\\)\\.\\s*__init__|super\\s*\\(\\s*__class__\\s*,\\s*self\\s*\\)\\.\\s*__init__/.test(code)" },
+      { "id": "t5", "description": "Should raise InvalidCredentialsError", "check": "code => /raise\\s+InvalidCredentialsError/.test(code)" },
+      { "id": "t6", "description": "Should catch AuthError in test block", "check": "code => /except\\s+AuthError/.test(code)" }
     ]
   },
   {
     "id": "24",
-    "slug": "browser-event-mechanics",
-    "title": "Browser Event Mechanics",
-    "icon": "Zap",
-    "overview": "Bind interactors to capture precise desktop and mouse events.",
-    "showInApp": false,
-    "explanation": "## Event Listeners\n\n**`addEventListener(event, handler, options)`** is the modern way to bind events. It replaces inline `onclick` attributes which mix HTML and JS.\n\n```js\nbtn.addEventListener('click', handleClick, { once: true, capture: false });\n```\n\n**Options object:**\n- `once: true` — auto-removes listener after first trigger.\n- `capture: true` — listen during capture phase (default is false = bubble phase).\n- `passive: true` — promises not to call `preventDefault()` (enables scroll performance).\n\n**Removing listeners:** You must pass the exact same function reference to `removeEventListener`. Anonymous functions cannot be removed.\n\n## Bubbling vs Capturing\n\nWhen an event occurs, it travels in **three phases**:\n\n1. **Capture Phase** (top → down): Event travels from `window` down to the target element.\n2. **Target Phase**: Event reaches the actual element that was clicked.\n3. **Bubble Phase** (bottom → up): Event bubbles back up from target to `window`.\n\n**Default is bubbling.** Most handlers listen during the bubble phase. Use `capture: true` to intercept during the downward pass.\n\n**Not all events bubble:** `focus`, `blur`, `mouseenter`, `mouseleave` do NOT bubble. Use `focusin`/`focusout` for bubbling versions.\n\n## The Event Object\n\nEvery handler receives an `Event` object with useful properties:\n\n- **`event.target`**: The actual element that triggered the event (may be a child).\n- **`event.currentTarget`**: The element the listener is attached to.\n- **`event.type`**: The event name (`'click'`, `'keydown'`, etc.).\n- **`event.timeStamp`**: Milliseconds since page load.\n- **Mouse events**: `clientX/Y` (viewport), `pageX/Y` (document), `button`.\n- **Keyboard events**: `key`, `code`, `ctrlKey`, `shiftKey`, `altKey`.",
+    "slug": "python-import-system",
+    "title": "Python Import System",
+    "icon": "Package",
+    "overview": "Understand how Python locates, loads, and manages module code across projects.",
+    "explanation": "## import Statement\n\n```python  # Import entire module\nimport math\nprint(math.pi)  # Must use module prefix\n\n# Import specific items\nfrom math import sqrt, pi\nprint(sqrt(16))  # Used directly, no prefix\n\n# Import everything (⚠️ BAD PRACTICE — pollutes namespace)\n# from math import *\n```\n\n## Aliases (as keyword)\n\n```python import numpy as np\nfrom datetime import datetime as dt\nfrom collections import defaultdict as dd\n```\n\n## Module Search Path (sys.path)\n\nPython finds modules in this order:\n1. Current directory (or script's directory)\n2. PYTHONPATH environment variable directories\n3. Standard library directories\n4. Third-party site-packages\n\n```python  import sys\nprint(sys.path)\n\n# Add custom directory temporarily\nsys.path.append('/my/custom/modules')\n```\n\n## The __name__ == '__main__' Guard\n\n```python # my_module.py\n\ndef main():\n    print('Running as script')\n\n# This runs ONLY when executed directly: python my_module.py\n# It does NOT run when imported: import my_module\nif __name__ == '__main__':\n    main()\n```\n\nWhy? Prevents test code/execution code from running when the file is imported as a module elsewhere.\n\n## Module Caching\n\n```python # Modules are loaded ONCE and cached in sys.modules\nimport my_module  # Loads and executes\nimport my_module  # Uses cached version, does NOT re-execute\n\n# Force reload (useful in Jupyter notebooks)\nimport importlib\nimportlib.reload(my_module)\n\n# Check what's loaded\nprint(sys.modules.keys())\n```\n\n## Circular Imports\n\n```python # a.py imports b.py\n# b.py imports a.py\n# ❌ This causes an error!\n\n# Solutions:\n# 1. Restructure code to remove circular dependency\n# 2. Import inside the function, not at the top of the file\n# def func():\n#     from module_b import something  # Lazy import\n```\n\n## Relative vs Absolute Imports\n\n```python # Inside a package:\n# from . import sibling_module      # Relative (same directory)\n# from .subpkg import module        # Relative (sub-directory)\n# from mypackage.subpkg import mod # Absolute (from project root)\n```",
     "keyRules": [
-      "Always use addEventListener — never inline onclick handlers",
-      "To remove a listener, you must store the function reference first",
-      "Events travel down (capture) then up (bubble) — default listeners use bubble",
-      "event.target is what was clicked; event.currentTarget is where the listener lives",
-      "focus/blur don't bubble — use focusin/focusout instead"
+      "Avoid 'from module import *' — it pollutes your namespace and makes it unclear where functions come from",
+      "Always use the if __name__ == '__main__': guard for script execution code",
+      "Modules are cached in sys.modules after first import — use importlib.reload() if you need to re-execute",
+      "Current directory is the FIRST place Python looks — never name your files the same as stdlib modules (e.g., math.py)",
+      "Use aliases (as) for long module names to improve readability (e.g., import pandas as pd)"
     ],
-    "task": "Attach a click listener to a `div.outer` that logs `event.target.tagName` and `event.currentTarget.id`. Then attach a click listener to a `div.inner` (inside outer) with `capture: true` that logs 'Capture phase hit'. Verify the capture log fires before the outer's bubble log.",
-    "hint": "Add the outer listener normally (bubble phase). Add the inner listener with `{ capture: true }`. Click the inner div and observe the log order.",
+    "task": "Create a mock module structure using strings to demonstrate the concept. Write a string representing `calc.py` containing `add(a, b)` and a `if __name__ == '__main__':` block. Write another string representing `main.py` that imports from calc. Print both. Then, write a function `get_module_info(module_name)` that tries to import a given module name dynamically using `importlib.import_module` and returns its file path or 'Not found'.",
+    "hint": "Use triple-quoted strings for the mock files. `get_module_info`: `try: mod = importlib.import_module(module_name); return mod.__file__; except ModuleNotFoundError: return 'Not found'`.",
     "learnings": [
-      { "title": "Event Listeners", "desc": "Attaching structural action observers via modern addEventListener hooks." },
-      { "title": "Bubbling vs Capturing", "desc": "Tracking propagation routes down capture nodes vs up to global frames." },
-      { "title": "Event Object", "desc": "Extracting real-time telemetry like mouse coordinates and key triggers." }
+      { "title": "import statement", "desc": "Loading entire modules into the current namespace using the import keyword." },
+      { "title": "from import syntax", "desc": "Importing specific functions, classes, or variables from a module directly." },
+      { "title": "Aliases (as keyword)", "desc": "Renaming imported modules or attributes using the 'as' keyword for brevity." },
+      { "title": "Module search path", "desc": "Understanding how Python resolves imports using sys.path and PYTHONPATH." },
+      { "title": "__name__ == '__main__'", "desc": "Guarding module-level execution code to prevent running during imports." }
     ],
-    "starterCode": "// Task: Demonstrate Capture vs Bubble & Event Object\n\n// 1. Attach a bubble-phase click listener to div.outer\n//    Log target.tagName and currentTarget.id\n\n// 2. Attach a capture-phase click listener to div.inner\n//    Log 'Capture phase hit'\n\n// 3. (Test by clicking div.inner in the browser)",
-    "solutionCode": "// Task: Demonstrate Capture vs Bubble & Event Object\n\n// 1. Attach a bubble-phase click listener to div.outer\nconst outer = document.querySelector('div.outer');\nouter.addEventListener('click', (e) => {\n  console.log('Bubble:', e.target.tagName, e.currentTarget.id);\n});\n\n// 2. Attach a capture-phase click listener to div.inner\nconst inner = document.querySelector('div.inner');\ninner.addEventListener('click', () => {\n  console.log('Capture phase hit');\n}, { capture: true });\n\n// When clicking div.inner:\n// 1st log: 'Capture phase hit' (capture phase, top-down)\n// 2nd log: 'Bubble: DIV inner' (target phase + bubble phase)",
-    "exampleCode": "// 🧠 Advanced Event Patterns\n\n// Named function for removable listeners\nfunction handleClick(e) {\n  console.log('Clicked!', e.target);\n  btn.removeEventListener('click', handleClick);\n}\nconst btn = document.querySelector('#myBtn');\nbtn.addEventListener('click', handleClick);\n\n// once option — auto-removes after first fire\nbtn.addEventListener('click', () => {\n  console.log('This runs only once');\n}, { once: true });\n\n// Keyboard event details\ndocument.addEventListener('keydown', (e) => {\n  console.log(e.key);      // 'a', 'Enter', 'Shift'\n  console.log(e.code);     // 'KeyA', 'Enter', 'ShiftLeft'\n  console.log(e.ctrlKey);  // true if Ctrl is held\n});\n\n// Mouse position relative to element\nbox.addEventListener('mousemove', (e) => {\n  const rect = box.getBoundingClientRect();\n  const x = e.clientX - rect.left;\n  const y = e.clientY - rect.top;\n});",
+    "starterCode": "# Task: Python Import System\n\nimport importlib\n\n# 1. Create string variables representing file contents:\n#    calc_code: contains add(a,b) and __name__ guard\n#    main_code: contains from calc import add\n\n# 2. Print both strings to show the structure\n\n# 3. Create get_module_info(module_name)\n#    Uses importlib.import_module dynamically\n#    Returns module.__file__ or 'Not found'\n\n# 4. Test get_module_info with 'math' and 'fakesystemmodule'",
+    "solutionCode": "# Task: Python Import System\n\nimport importlib\n\n# 1. Mock file structures\ncalc_code = '''\ndef add(a, b):\n    return a + b\n\nif __name__ == '__main__':\n    print('Running calc.py directly!')\n    print(add(5, 10))\n'''\n\nmain_code = '''\nfrom calc import add\nprint(f'Imported add: {add(2, 3)}')\n'''\n\n# 2. Print structures\nprint('--- calc.py ---')\nprint(calc_code.strip())\nprint('\\n--- main.py ---')\nprint(main_code.strip())\n\n# 3. Dynamic module info\ndef get_module_info(module_name):\n    try:\n        mod = importlib.import_module(module_name)\n        return mod.__file__\n    except ModuleNotFoundError:\n        return 'Not found'\n\n# 4. Test\nprint(f'\\nmath path: {get_module_info(\"math\")}')\nprint(f'fake path: {get_module_info(\"fakesystemmodule\")}')",
+    "exampleCode": "# 🧠 Advanced Import Patterns\n\n# Dynamic imports with fallback\ndef get_module(names):\n    for name in names:\n        try:\n            return importlib.import_module(name)\n        except ImportError:\n            continue\n    raise ImportError(f'None of {names} available')\n\n# Try yaml, fall back to json\n# parser = get_module(['yaml', 'json'])\n\n# Lazy loading properties\nclass HeavyResource:\n    @property\n    def db_connection(self):\n        if not hasattr(self, '_db'):\n            import psycopg2  # Only imported when accessed!\n            self._db = psycopg2.connect(...)\n        return self._db\n\n# Plugin system using importlib\nimport os\nimport importlib\n\ndef load_plugins(plugin_dir='plugins'):\n    plugins = {}\n    for filename in os.listdir(plugin_dir):\n        if filename.endswith('.py') and filename != '__init__.py':\n            mod_name = f'{plugin_dir}.{filename[:-3]}'\n            mod = importlib.import_module(mod_name)\n            if hasattr(mod, 'register'):\n                mod.register(plugins)\n    return plugins\n\n# Checking if module exists without importing\nimport importlib.util\n\ndef module_exists(mod_name):\n    return importlib.util.find_spec(mod_name) is not None\n\nprint(module_exists('os'))    # True\nprint(module_exists('fake'))  # False",
     "tests": [
-      { "id": "t1", "description": "Should select div.outer", "check": "code => /querySelector\\s*\\(\\s*['\"]div\\.outer['\"]\\s*\\)/.test(code)" },
-      { "id": "t2", "description": "Should use event.target", "check": "code => /e\\.target/.test(code) || /event\\.target/.test(code)" },
-      { "id": "t3", "description": "Should use event.currentTarget", "check": "code => /e\\.currentTarget/.test(code) || /event\\.currentTarget/.test(code)" },
-      { "id": "t4", "description": "Should use capture: true", "check": "code => /capture\\s*:\\s*true/.test(code)" },
-      { "id": "t5", "description": "Should use addEventListener", "check": "code => /addEventListener\\s*\\(/.test(code)" }
+      { "id": "t1", "description": "Should import importlib", "check": "code => /import\\s+importlib/.test(code)" },
+      { "id": "t2", "description": "Should show __name__ guard in string", "check": "code => /__name__\\s*==\\s*['\\\"]__main__['\\\"]/.test(code)" },
+      { "id": "t3", "description": "Should define get_module_info function", "check": "code => /def\\s+get_module_info/.test(code)" },
+      { "id": "t4", "description": "Should use importlib.import_module", "check": "code => /importlib\\.import_module/.test(code)" },
+      { "id": "t5", "description": "Should handle ModuleNotFoundError", "check": "code => /except\\s+ModuleNotFoundError/.test(code)" },
+      { "id": "t6", "description": "Should access __file__ attribute", "check": "code => /mod\\.__file__|__file__/.test(code)" }
     ]
   },
   {
     "id": "25",
-    "slug": "advanced-event-delegation",
-    "title": "Advanced Event Delegation",
-    "icon": "ShieldAlert",
-    "overview": "Optimize application memory footprints by decoupling interaction handlers.",
-    "showInApp": false,
-    "explanation": "## Event Delegation\n\nInstead of attaching an event listener to every child element, you attach **one listener to a common parent** and use `event.target` to determine which child was interacted with.\n\n**Why delegate?**\n- Memory efficiency: 1 listener instead of 1000.\n- Dynamic elements: Works on elements added to the DOM after the listener was set.\n- Simpler teardown: Remove one listener, not hundreds.\n\n**Pattern:**\n```js\nparent.addEventListener('click', (e) => {\n  const btn = e.target.closest('.action-btn');\n  if (!btn) return; // clicked outside any button\n  console.log('Clicked:', btn.dataset.id);\n});\n```\n\n**`closest(selector)`** is critical here — it walks UP from `event.target` to find the nearest ancestor matching the selector. This handles cases where the user clicks a `<span>` inside a `<button>`.\n\n## preventDefault()\n\nStops the browser's default action for the event:\n- `<form>` submit → prevents page reload.\n- `<a href>` click → prevents navigation.\n- `contextmenu` → prevents right-click menu.\n- `keydown` for certain keys → prevents typing.\n\n**It does NOT stop propagation.** The event still bubbles.\n\n## stopPropagation()\n\nStops the event from propagating to parent elements (both capture and bubble). The event won't reach any other listeners on ancestor elements.\n\n**`stopImmediatePropagation()`** goes further — it also prevents other listeners on the SAME element from firing.\n\n**Caution:** Overusing `stopPropagation()` creates brittle, tightly-coupled code. Prefer `event.target` checks over stopping propagation.",
+    "slug": "python-standard-library",
+    "title": "Python Standard Library",
+    "icon": "Library",
+    "overview": "Leverage built-in modules for math, randomness, datetime, OS operations, and system interactions.",
+    "explanation": "## math Module\n\n```python import math\n\nprint(math.pi)         # 3.141592653589793\nprint(math.e)          # 2.718281828459045\nprint(math.sqrt(16))   # 4.0\nprint(math.ceil(4.1))  # 5\nprint(math.floor(4.9)) # 4\nprint(math.factorial(5)) # 120\nprint(math.gcd(12, 18))  # 6\nprint(math.log2(8))    # 3.0\nprint(math.inf)        # Infinity\n```\n\n## random Module\n\n```python import random\n\nrandom.seed(42)        # Reproducible results\n\nprint(random.random())         # 0.0 to 1.0\nprint(random.randint(1, 10))   # 1 to 10 (inclusive)\nprint(random.uniform(1.5, 5.5)) # 1.5 to 5.5\n\n# Choose from sequence\nprint(random.choice(['a', 'b', 'c']))\nprint(random.choices([1,2,3], weights=[10,1,1], k=4)) # Weighted with replacement\nprint(random.sample(range(100), 5)) # 5 unique random items\n\n# Shuffle in-place\ncards = ['A', 'K', 'Q', 'J']\nrandom.shuffle(cards)\n```\n\n## datetime Module\n\n```python from datetime import datetime, date, timedelta\n\n# Current time\nnow = datetime.now()\ntoday = date.today()\n\n# Create specific date\ndob = date(1995, 5, 15)\n\n# Date arithmetic\nfuture = now + timedelta(days=30)\npast = now - timedelta(hours=2)\n\n# Difference (returns timedelta)\ndiff = now - dob\nprint(diff.days)  # Days between dates\n\n# Formatting (datetime → string)\nprint(now.strftime('%Y-%m-%d %H:%M:%S'))  # '2024-01-15 14:30:00'\n\n# Parsing (string → datetime)\nparsed = datetime.strptime('2024/01/15', '%Y/%m/%d')\n```\n\n## os Module\n\n```python import os\n\n# Paths\nprint(os.getcwd())                  # Current directory\nos.chdir('/tmp')                    # Change directory\nprint(os.path.exists('file.txt'))   # True/False\nprint(os.path.isfile('file.txt'))   # Is it a file?\nprint(os.path.isdir('folder'))      # Is it a directory?\n\n# Path manipulation (prefer os.path over string concat)\nfull_path = os.path.join('folder', 'subfolder', 'file.txt')\nprint(os.path.basename(full_path))  # 'file.txt'\nprint(os.path.dirname(full_path))   # 'folder/subfolder'\n\n# Environment variables\nprint(os.environ.get('PATH'))\nos.environ['MY_VAR'] = 'value'\n\n# List directory\nprint(os.listdir('.'))\n```\n\n## sys Module\n\n```python import sys\n\nprint(sys.argv)          # Command line arguments\nprint(sys.version)       # Python version\nprint(sys.platform)      # 'linux', 'win32', 'darwin'\nprint(sys.getsizeof([1,2,3]))  # Memory size in bytes\n\nsys.exit(0)             # Exit script\n```",
     "keyRules": [
-      "Use event delegation for lists, tables, and dynamically added elements",
-      "Always use closest() with delegation — event.target may be a child element",
-      "preventDefault stops browser default action but does NOT stop propagation",
-      "stopPropagation stops the event from reaching parent listeners",
-      "stopImmediatePropagation also blocks other listeners on the same element"
+      "Use random.seed() for reproducible results during testing — omit it for true randomness in production",
+      "Use os.path.join() for cross-platform paths — never hardcode '/' or '\\\\' for paths",
+      "datetime.strptime() parses strings to dates; strftime() formats dates to strings — don't mix them up",
+      "sys.argv[0] is the script name, sys.argv[1:] are the actual arguments passed by the user",
+      "Use math.inf and -math.inf instead of float('inf') for cleaner code"
     ],
-    "task": "Given a `ul#items` with several `li[data-id]` elements, attach a SINGLE click listener to the `ul`. Use `closest('li')` to find the clicked item and log its `data-id`. Also, prevent a nested `<a>` tag inside any `li` from navigating using `preventDefault`.",
-    "hint": "On the ul listener, check `e.target.closest('li')` and log `.dataset.id`. If `e.target.closest('a')` exists, call `e.preventDefault()`.",
+    "task": "Create a function `generate_password(length=12)` that generates a secure random password containing uppercase, lowercase, digits, and symbols. Use `random.SystemRandom()` for cryptographic security (don't use plain `random`). Create a function `days_until(target_date_str)` that takes a 'YYYY-MM-DD' string and returns the number of days from today.",
+    "hint": "Password: `import string`, `chars = string.ascii_letters + string.digits + string.punctuation`, `sec_rng = random.SystemRandom()`, `''.join(sec_rng.choice(chars) for _ in range(length))`. Days: `datetime.strptime(target, '%Y-%m-%d').date()`, subtract `date.today()`, get `.days`.",
     "learnings": [
-      { "title": "Event Delegation", "desc": "Attaching a single parent handler to govern hundreds of dynamic children inputs." },
-      { "title": "preventDefault", "desc": "Canceling native browser defaults like form posts and link navs." },
-      { "title": "stopPropagation", "desc": "Halting active event propagation runs across parent bubble nodes." }
+      { "title": "math module", "desc": "Using sqrt(), ceil(), floor(), pi, e, factorial(), gcd(), and trigonometric functions." },
+      { "title": "random module", "desc": "Generating pseudo-random numbers with randint(), choice(), shuffle(), and uniform()." },
+      { "title": "datetime module", "desc": "Creating, formatting, and arithmetic on date, time, and datetime objects." },
+      { "title": "os module", "desc": "Interacting with the operating system for path manipulation, directory listing, and environment variables." },
+      { "title": "sys module", "desc": "Accessing interpreter variables, command-line arguments via sys.argv, and exit codes." }
     ],
-    "starterCode": "// Task: Event Delegation with preventDefault\n\n// 1. Select ul#items\n\n// 2. Attach a single click listener to it\n\n// 3. Use closest('li') to find the clicked item\n\n// 4. Log the data-id of the clicked li\n\n// 5. If an <a> was clicked inside, prevent default navigation",
-    "solutionCode": "// Task: Event Delegation with preventDefault\n\n// 1. Select ul#items\nconst list = document.querySelector('ul#items');\n\n// 2. Attach a single click listener to it\nlist.addEventListener('click', (e) => {\n  // 5. If an <a> was clicked inside, prevent default navigation\n  const link = e.target.closest('a');\n  if (link) {\n    e.preventDefault();\n  }\n\n  // 3. Use closest('li') to find the clicked item\n  const li = e.target.closest('li');\n  if (!li) return;\n\n  // 4. Log the data-id of the clicked li\n  console.log('Clicked item ID:', li.dataset.id);\n});",
-    "exampleCode": "// 🧠 Delegation with Dynamic Elements\n\nconst list = document.querySelector('#items');\n\n// This single listener handles ALL items, even future ones!\nlist.addEventListener('click', (e) => {\n  const item = e.target.closest('[data-action]');\n  if (!item) return;\n\n  const action = item.dataset.action;\n  \n  if (action === 'delete') {\n    item.closest('li').remove();\n  } else if (action === 'edit') {\n    console.log('Editing:', item.closest('li').dataset.id);\n  }\n});\n\n// Adding a new item AFTER the listener was set — still works!\nconst newLi = document.createElement('li');\nnewLi.dataset.id = '99';\nnewLi.innerHTML = '<button data-action=\"delete\">X</button> New Item';\nlist.appendChild(newLi);\n\n// stopPropagation vs stopImmediatePropagation\nparent.addEventListener('click', (e) => {\n  e.stopImmediatePropagation(); // blocks BOTH parent + sibling listeners\n  console.log('Listener 1');\n});\nparent.addEventListener('click', () => {\n  console.log('This will NOT fire');\n});",
+    "starterCode": "# Task: Python Standard Library\n\nimport random\nimport string\nfrom datetime import datetime, date\n\n# 1. generate_password(length=12)\n#    Use random.SystemRandom() (cryptographically secure)\n#    Must include upper, lower, digits, symbols\n\n# 2. days_until(target_date_str)\n#    Input format: 'YYYY-MM-DD'\n#    Returns integer days from today\n\n# 3. Test:\n#    Print a 16-character password\n#    Calculate days until '2025-12-31'",
+    "solutionCode": "# Task: Python Standard Library\n\nimport random\nimport string\nfrom datetime import datetime, date\n\n# 1. Secure password generator\ndef generate_password(length=12):\n    chars = string.ascii_letters + string.digits + string.punctuation\n    sec_rng = random.SystemRandom()\n    return ''.join(sec_rng.choice(chars) for _ in range(length))\n\n# 2. Days until calculator\ndef days_until(target_date_str):\n    target = datetime.strptime(target_date_str, '%Y-%m-%d').date()\n    diff = target - date.today()\n    return diff.days\n\n# 3. Test\nprint(f'Password: {generate_password(16)}')\nprint(f'Days until 2025-12-31: {days_until(\"2025-12-31\")}')",
+    "exampleCode": "# 🧠 Advanced Stdlib Patterns\n\n# Temporary directories safely\nimport tempfile\nimport shutil\n\nwith tempfile.TemporaryDirectory() as tmpdir:\n    print(f'Working in {tmpdir}')\n    # Files created here are automatically deleted\n\n# Platform independent newlines\nimport os\ntext = 'line1\\nline2'\n# Use os.linesep if needed, but \\n works in Python 3 text mode\n\n# Walking a directory tree\nimport os\nfor root, dirs, files in os.walk('.'):\n    print(f'{root}: {len(files)} files')\n    # To skip hidden directories:\n    # dirs[:] = [d for d in dirs if not d.startswith('.')]\n\n# High-precision timing\nimport time\nstart = time.perf_counter()\n# ... work ...\nduration = time.perf_counter() - start\n\n# Command line arguments parsing (better than sys.argv)\n# import argparse\n# parser = argparse.ArgumentParser()\n# parser.add_argument('--count', type=int, default=1)\n# args = parser.parse_args()\n\n# JSON config loading\nimport json, os\nconfig_path = os.path.expanduser('~/.myapp/config.json')\n# if os.path.exists(config_path):\n#     with open(config_path) as f:\n#         config = json.load(f)",
     "tests": [
-      { "id": "t1", "description": "Should select ul#items", "check": "code => /querySelector\\s*\\(\\s*['\"]ul#items['\"]\\s*\\)/.test(code)" },
-      { "id": "t2", "description": "Should use closest('li')", "check": "code => /closest\\s*\\(\\s*['\"]li['\"]\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should access dataset.id", "check": "code => /dataset\\.id/.test(code)" },
-      { "id": "t4", "description": "Should use preventDefault", "check": "code => /preventDefault\\s*\\(\\s*\\)/.test(code)" },
-      { "id": "t5", "description": "Should only have ONE addEventListener on the parent", "check": "code => (code.match(/addEventListener\\s*\\(/g) || []).length <= 2" }
+      { "id": "t1", "description": "Should import string module", "check": "code => /import\\s+string/.test(code)" },
+      { "id": "t2", "description": "Should define generate_password function", "check": "code => /def\\s+generate_password/.test(code)" },
+      { "id": "t3", "description": "Should use random.SystemRandom()", "check": "code => /SystemRandom\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should use string constants (ascii_letters, digits)", "check": "code => /string\\.ascii_letters|string\\.digits/.test(code)" },
+      { "id": "t5", "description": "Should define days_until function", "check": "code => /def\\s+days_until/.test(code)" },
+      { "id": "t6", "description": "Should use strptime for parsing", "check": "code => /strptime\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "26",
-    "slug": "web-storage-mechanisms",
-    "title": "Web Storage Mechanisms",
-    "icon": "HardDrive",
-    "showInApp": false,
-    "overview": "Persist operational state variables locally within client environments.",
-    "explanation": "## Web Storage API\n\nThe Web Storage API provides two mechanisms for storing key-value pairs in the browser:\n\n## LocalStorage\n\n- **Persists**: Data survives browser restarts, tab closes, and system reboots.\n- **Scope**: Shared across all tabs of the **same origin** (protocol + domain + port).\n- **Capacity**: ~5-10 MB per origin.\n- **Use cases**: User preferences, theme selection, saved form data, authentication tokens (with caution).\n\n## SessionStorage\n\n- **Persists**: Data is cleared when the **tab is closed**.\n- **Scope**: Isolated to the **specific tab**. Even same-origin tabs don't share it.\n- **Capacity**: ~5-10 MB per origin.\n- **Use cases**: Form step data, one-time session flags, temporary UI state.\n\n## API Methods (identical for both)\n\n```js\nlocalStorage.setItem('key', 'value');    // Store (value must be string)\nlocalStorage.getItem('key');               // Retrieve (returns null if missing)\nlocalStorage.removeItem('key');            // Delete one key\nlocalStorage.clear();                     // Delete ALL keys\nlocalStorage.length;                      // Number of stored items\nlocalStorage.key(0);                      // Get key name by index\n```\n\n## Critical: Only Strings!\n\nWeb Storage only stores **strings**. To store objects/arrays, you must `JSON.stringify` on save and `JSON.parse` on load.\n\n## Security Notes\n\n- Storage is accessible via JavaScript → vulnerable to XSS attacks.\n- Never store sensitive data (passwords, tokens) in localStorage without proper XSS protection.\n- Storage data is sent in headers for some requests but is NOT sent to the server automatically like cookies.",
+    "slug": "python-creating-custom-modules",
+    "title": "Creating Custom Modules",
+    "icon": "FileCode",
+    "overview": "Organize Python code into reusable module files that can be imported across projects.",
+    "explanation": "## What is a Module?\n\nAny `.py` file is a module. The filename (without `.py`) is the module name.\n\n## Module Structure\n\n```python # utils.py (This IS the module)\n\n\"\"\"Utility functions for string and math operations.\"\"\"\n\n__version__ = '1.0.0'\n__all__ = ['format_name', 'add']  # Controls 'from utils import *'\n\n# Public function\ndef format_name(first, last):\n    return f'{first} {last}'.title()\n\n# Public function\ndef add(a, b):\n    return a + b\n\n# Internal/Private function (by convention)\ndef _internal_helper():\n    pass\n\n# Execution guard\nif __name__ == '__main__':\n    print('Testing utils module...')\n    print(format_name('john', 'doe'))\n    print(add(2, 3))\n```\n\n## Using the Module\n\n```python # main.py\nimport utils\n\nprint(utils.format_name('alice', 'smith'))\nprint(utils.__version__)\n\n# Or specific imports\nfrom utils import format_name, add\n```\n\n## The __all__ Variable\n\n```python # utils.py\n__all__ = ['public_func']  # Only these are imported with *\n\ndef public_func(): pass\ndef _private_func(): pass\n\ndef helper_func(): pass  # Not in __all__, won't be imported with *\n\n# Elsewhere:\n# from utils import *  # Only gets 'public_func'\n```\n\n## Module Attributes\n\n```python import my_module\n\nprint(my_module.__name__)   # 'my_module'\nprint(my_module.__file__)   # '/path/to/my_module.py'\nprint(my_module.__doc__)    # Docstring of the module\nprint(dir(my_module))       # List all attributes\n```\n\n## Relative vs Absolute Imports\n\n```python # Inside a package structure:\n# myproject/\n#   utils/\n#     __init__.py\n#     strings.py\n#     math_ops.py\n\n# In strings.py:\nfrom .math_ops import add      # Relative import (same pkg)\nfrom ..core import engine      # Relative import (parent pkg)\nfrom myproject.utils import x  # Absolute import\n```\n\n**Best Practice:** Use absolute imports in most cases. They are clearer and work even if the module is moved., \n ## Running Modules as Scripts\n\n```bash\npython -m my_package.my_module  # Runs module as script\n```",
     "keyRules": [
-      "LocalStorage survives tab close; SessionStorage does not",
-      "SessionStorage is isolated per tab, even for same origin",
-      "Web Storage only stores strings — use JSON.stringify/parse for objects",
-      "Never store sensitive data in localStorage (XSS accessible)",
-      "Always check for null from getItem before parsing"
+      "Any .py file is a module — the filename becomes the module name",
+      "Use __all__ = ['func1', 'func2'] to explicitly define the public API for 'import *'",
+      "Prefix internal functions with a single underscore (_func) — this is a convention, not enforced by Python",
+      "Always use if __name__ == '__main__': to separate importable code from executable script code",
+      "Prefer absolute imports (from mypkg.module import x) over relative imports (from .module import x) for clarity"
     ],
-    "task": "Create a `user` object with `name` and `score`. Save it to localStorage as 'userData'. Then retrieve it, parse it back, increment the score by 10, and save it back. Log the updated score. Also save 'tempStep' to sessionStorage and verify it exists.",
-    "hint": "Use `JSON.stringify` when setting and `JSON.parse` when getting. Retrieve, modify, then re-stringify and set again.",
+    "task": "Since we are in a single file, simulate module creation. Create a string `module_code` that contains a proper module structure: a docstring, `__version__`, `__all__`, a public function `greet(name)`, and a private function `_log()`. Then, write a function `analyze_module_code(code_str)` that parses the string and returns a dict of found attributes: `has_docstring`, `has_version`, `has_all`, `public_functions` (list of 'def' names not starting with _).",
+    "hint": "`analyze_module_code`",
     "learnings": [
-      { "title": "LocalStorage API", "desc": "Storing persistent string records containing zero expiration configurations." },
-      { "title": "SessionStorage API", "desc": "Managing distinct operational states tied strictly to isolated tab lifetimes." }
+      { "title": "Module structure", "desc": "Writing Python files containing functions, classes, and variables for export." },
+      { "title": "__all__ variable", "desc": "Defining the public API list that from module import * will expose." },
+      { "title": "Module attributes", "desc": "Accessing __file__, __doc__, __name__, and __dict__ for introspection." },
+      { "title": "Relative vs absolute imports", "desc": "Distinguishing between dot-prefixed relative imports and full path absolute imports." }
     ],
-    "starterCode": "// Task: Store, Retrieve, and Update Data\n\n// 1. Create a user object { name: 'Player', score: 50 }\n\n// 2. Save it to localStorage as 'userData'\n\n// 3. Retrieve, parse, increment score by 10\n\n// 4. Save the updated object back to localStorage\n\n// 5. Log the updated score\n\n// 6. Save 'tempStep' = 'step2' to sessionStorage and verify it",
-    "solutionCode": "// Task: Store, Retrieve, and Update Data\n\n// 1. Create a user object\nconst user = { name: 'Player', score: 50 };\n\n// 2. Save it to localStorage as 'userData'\nlocalStorage.setItem('userData', JSON.stringify(user));\n\n// 3. Retrieve, parse, increment score by 10\nconst retrieved = JSON.parse(localStorage.getItem('userData'));\nretrieved.score += 10;\n\n// 4. Save the updated object back to localStorage\nlocalStorage.setItem('userData', JSON.stringify(retrieved));\n\n// 5. Log the updated score\nconsole.log('Updated score:', retrieved.score); // 60\n\n// 6. Save 'tempStep' to sessionStorage and verify it\nsessionStorage.setItem('tempStep', 'step2');\nconsole.log('Session step:', sessionStorage.getItem('tempStep')); // 'step2'",
-    "exampleCode": "// 🧠 Robust Storage Helper Pattern\n\nclass Storage {\n  constructor(storage) {\n    this.storage = storage;\n  }\n\n  get(key, fallback = null) {\n    try {\n      const item = this.storage.getItem(key);\n      return item ? JSON.parse(item) : fallback;\n    } catch {\n      return fallback;\n    }\n  }\n\n  set(key, value) {\n    this.storage.setItem(key, JSON.stringify(value));\n  }\n\n  remove(key) {\n    this.storage.removeItem(key);\n  }\n}\n\nconst local = new Storage(localStorage);\nconst session = new Storage(sessionStorage);\n\nlocal.set('theme', { dark: true, fontSize: 16 });\nconsole.log(local.get('theme')); // { dark: true, fontSize: 16 }\nconsole.log(local.get('missing', 'default')); // 'default'\n\n// Checking storage availability\nfunction isStorageAvailable(type) {\n  try {\n    const storage = window[type];\n    storage.setItem('__test__', '1');\n    storage.removeItem('__test__');\n    return true;\n  } catch {\n    return false;\n  }\n}",
+    "starterCode": "# Task: Creating Custom Modules\n\nimport re\n\n# 1. Create a string 'module_code' containing:\n#    - Module docstring\n#    - __version__ = '1.0'\n#    - __all__ = ['greet']\n#    - def greet(name)\n#    - def _log(message)\n\n# 2. Create analyze_module_code(code_str) → dict\n#    Keys: 'has_docstring', 'has_version', 'has_all', 'public_functions'\n#    Use regex to find function names starting without underscore\n\n# 3. Test analyze_module_code on your string",
+    "solutionCode": "# Task: Creating Custom Modules\n\nimport re\n\n# 1. Simulated module code\nmodule_code = '''\n\"\"\"This is a sample utility module.\"\"\"\n\n__version__ = '1.0'\n__all__ = ['greet']\n\ndef greet(name):\n    return f'Hello, {name}!'\n\ndef _log(message):\n    print(f'LOG: {message}')\n'''\n\n# 2. Analyzer function\ndef analyze_module_code(code_str):\n    all_funcs = re.findall(r'^def\\s+([a-zA-Z_]\\w*)', code_str, re.MULTILINE)\n    public_funcs = [f for f in all_funcs if not f.startswith('_')]\n    \n    return {\n        'has_docstring': '\"\"\"' in code_str,\n        'has_version': '__version__' in code_str,\n        'has_all': '__all__' in code_str,\n        'public_functions': public_funcs\n    }\n\n# 3. Test\nprint(module_code.strip())\nprint('\\n--- Analysis ---')\nprint(analyze_module_code(module_code))\n# {'has_docstring': True, 'has_version': True, 'has_all': True, 'public_functions': ['greet']}",
+    "exampleCode": "# 🧠 Advanced Module Patterns\n\n# Executing module code in a namespace\ndef run_module_code(code_str):\n    import types\n    namespace = {}\n    exec(code_str, namespace)\n    # Create a fake module object\n    mod = types.ModuleType('dynamic_mod')\n    for k, v in namespace.items():\n        if not k.startswith('__'):\n            setattr(mod, k, v)\n    return mod\n\n# Dynamic module loading from path\nimport importlib.util\n\ndef load_from_path(filepath):\n    spec = importlib.util.spec_from_file_location('custom_mod', filepath)\n    mod = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(mod)\n    return mod\n\n# Module as a singleton configuration\nclass Config:\n    _instance = None\n    \n    def __new__(cls):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n            cls._instance.debug = False\n            cls._instance.db_url = 'localhost'\n        return cls._instance\n\n# Using __getattr__ for lazy module imports (PEP 562)\n# In __init__.py:\n# def __getattr__(name):\n#     if name == 'heavy_module':\n#         from . import heavy_module\n#         return heavy_module\n#     raise AttributeError(f'module {__name__!r} has no attribute {name!r}')",
     "tests": [
-      { "id": "t1", "description": "Should create user object", "check": "code => /name\\s*:/ .test(code) && /score\\s*:/ .test(code)" },
-      { "id": "t2", "description": "Should use localStorage.setItem", "check": "code => /localStorage\\.setItem\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should use JSON.stringify for saving", "check": "code => /JSON\\.stringify\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should use JSON.parse for reading", "check": "code => /JSON\\.parse\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should increment score", "check": "code => /score\\s*\\+\\s*10|score\\s*\\+=/.test(code)" },
-      { "id": "t6", "description": "Should use sessionStorage", "check": "code => /sessionStorage\\.setItem\\s*\\(/.test(code)" }
+      { "id": "t1", "description": "Should import re module", "check": "code => /import\\s+re/.test(code)" },
+      { "id": "t2", "description": "Module string should have __all__", "check": "code => /__all__/.test(code)" },
+      { "id": "t3", "description": "Should define analyze_module_code function", "check": "code => /def\\s+analyze_module_code/.test(code)" },
+      { "id": "t4", "description": "Should use regex to find functions", "check": "code => /re\\.findall\\s*\\(.*def/.test(code)" },
+      { "id": "t5", "description": "Should filter out private functions (starting with _)", "check": "code => /not\\s+f\\.startswith\\s*\\(\\s*['\\\"]_['\\\"]|not\\s+\\w+\\.startswith\\s*\\(\\s*['\\\"]_/.test(code)" },
+      { "id": "t6", "description": "Should return a dictionary with specific keys", "check": "code => /'has_docstring'|'has_version'|'has_all'|'public_functions'/.test(code)" }
     ]
   },
   {
     "id": "27",
-    "slug": "cookies-client-storage-security",
-    "title": "Cookies & Client Storage Security",
-    "icon": "Cookie",
-    "showInApp": false,
-    "overview": "Manage persistent server cookies and protect application endpoints.",
-    "explanation": "## What are Cookies?\n\nCookies are small pieces of data (max ~4KB each, ~50 per domain) that the server sends to the browser via the `Set-Cookie` header. The browser automatically includes them in subsequent requests to the same origin.\n\n**Unlike localStorage, cookies are sent to the server with every HTTP request.** This makes them ideal for authentication sessions but wasteful for large data.\n\n## Reading/Writing Cookies in JS\n\n```js\n// Read all cookies as a single string\nconsole.log(document.cookie); // \"name=ali; theme=dark\"\n\n// Write a cookie\ndocument.cookie = \"name=ali; max-age=3600; path=/\";\n```\n\n**Pain point:** `document.cookie` returns ALL cookies as one semicolon-separated string. You must parse it manually. There's no built-in `getCookie()` method.\n\n## Cookie Attributes\n\n- **`max-age=N`**: Expires in N seconds. **`max-age=0` deletes the cookie.**\n- **`expires=DATE`**: Absolute expiration date (GMT string).\n- **`path=/`**: Cookie is sent for all paths under this path.\n- **`domain=.example.com`**: Share cookie across subdomains.\n- **`Secure`**: Cookie only sent over HTTPS.\n- **`HttpOnly`**: Cookie is NOT accessible via `document.cookie` — only sent in HTTP headers.\n- **`SameSite=Strict|Lax|None`**: Controls cross-site request behavior.\n\n## Security: HttpOnly & Secure\n\n**The #1 defense against XSS cookie theft:** Set `HttpOnly` flag. JavaScript cannot read or modify HttpOnly cookies. Even if an attacker injects a script, they can't steal session cookies.\n\n```http\nSet-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Strict; Path=/\n\n**`Secure` flag** ensures the cookie is only transmitted over encrypted HTTPS connections.\n\n**`SameSite=Lax`** (default in modern browsers): Cookies are sent on top-level navigations (like clicking a link) but not on cross-site POST requests or iframe loads.\n\n## Cookies vs LocalStorage\n\n| Feature | Cookies | LocalStorage |\n|---|---|---|\n| Sent to server | Yes (every request) | No |\n| Max size | ~4KB | ~5-10MB |\n| Expiration | Configurable | Never (manual) |\n| JS access | No (if HttpOnly) | Always |",
+    "slug": "python-packages",
+    "title": "Python Packages",
+    "icon": "FolderTree",
+    "overview": "Structure multi-module projects into hierarchical packages using __init__.py and namespace organization.",
+    "explanation": "## What is a Package?\n\nA package is a directory containing an `__init__.py` file. It allows you to group related modules together.\n\n```\nmy_project/\n├── main.py\n└── ecommerce/              # The PACKAGE\n    ├── __init__.py         # Makes 'ecommerce' a package\n    ├── products.py\n    ├── cart.py\n    └── utils/\n        ├── __init__.py     # Makes 'utils' a SUBPACKAGE\n        └── formatting.py\n```\n\n## The __init__.py File\n\n```python # ecommerce/__init__.py\n\n# This runs when the package is imported\nprint('E-commerce package loaded!')\n\n# Define package-level variables\nVERSION = '2.0'\n\n# Control what gets imported with 'from ecommerce import *'\n__all__ = ['products', 'cart']\n\n# Provide convenient imports at the package level\nfrom .products import get_product\nfrom .cart import ShoppingCart\n```\n\nNow users can do:\n```python from ecommerce import get_product, ShoppingCart  # Clean API!\n```\n\n## Importing from Packages\n\n```python # Import specific module\nimport ecommerce.products\necommerce.products.get_product(1)\n\n# Import specific item from module\nfrom ecommerce.products import get_product\nget_product(1)\n\n# Import from subpackage\nfrom ecommerce.utils.formatting import format_currency\n\n# Relative imports (INSIDE the package only)\n# In ecommerce/cart.py:\nfrom .products import get_product  # Same package\nfrom ..core import database        # Parent package\n```\n\n## Namespace Packages (Python 3.3+)\n\nYou CAN have packages without `__init__.py` (called namespace packages). Useful for splitting a large package across multiple directories.\n\n```\n# Both directories contribute to 'shared_pkg'\n/site-packages/shared_pkg/module_a.py\n/another_path/shared_pkg/module_b.py\n```\n\n**Recommendation:** Always use `__init__.py` for your own projects. Namespace packages are mainly for library vendors.\n\n## __init__.py Patterns\n\n```python # Pattern 1: Lazy loading (fast imports)\ndef __getattr__(name):\n    if name == 'heavy_module':\n        from . import heavy_module\n        return heavy_module\n    raise AttributeError(f'module {__name__!r} has no attribute {name!r}')\n\n# Pattern 2: Submodule import shortcut\n# __init__.py\nfrom .database import db\nfrom .models import User, Product\n\n# Now: from myapp import db, User\n```",
     "keyRules": [
-      "document.cookie returns all cookies as one string — you must parse it manually",
-      "Cookies are automatically sent with every HTTP request to the server",
-      "HttpOnly prevents JavaScript access — the #1 defense against cookie XSS theft",
-      "Secure flag ensures cookies only travel over HTTPS",
-      "Use max-age=0 or expires in the past to delete a cookie"
+      "A directory is a package ONLY if it contains __init__.py (unless using implicit namespace packages)",
+      "Use __init__.py to expose a clean, simplified API and hide internal module structure",
+      "Relative imports (from . import x) ONLY work inside packages — they fail if you run the file as a script directly",
+      "Use 'from .module import func' in __init__.py so users don't need to know your internal file structure",
+      "Run packages as scripts using: python -m mypackage.mymodule"
     ],
-    "task": "Write a helper function `getCookie(name)` that parses `document.cookie` and returns the value for a given cookie name (or null if not found). Then write `setCookie(name, value, days)` that sets a cookie with the given name, value, and expiration in days. Test by setting 'theme=dark' for 7 days and reading it back.",
-    "hint": "Split document.cookie by ';', trim each piece, split by '=' to get key-value pairs. For setCookie, calculate a new Date with `days * 86400000` and set `expires`.",
+    "task": "Simulate a package structure using dictionaries and strings. Create a dict `package_structure` representing an `ecommerce` package with `__init__` code, `products.py` code, and `cart.py` code. Write the `__init__.py` string so that it imports `get_product` from `products` and `ShoppingCart` from `cart` using relative imports. Print the structure clearly.",
+    "hint": "Dict keys: `'__init__'`, `'products'`, `'cart'`. Values: multi-line strings with python code. `__init__` string: `from .products import get_product\\nfrom .cart import ShoppingCart`. Print using a loop over dict items.",
     "learnings": [
-      { "title": "Cookie Management", "desc": "Parsing document.cookie values and passing small state markers." },
-      { "title": "HttpOnly & Secure Flags", "desc": "Securing keys from scripts access to neutralize cross-site scripting risks." }
+      { "title": "__init__.py file", "desc": "Marking directories as Python packages and controlling package-level initialization." },
+      { "title": "Package imports", "desc": "Importing modules from packages using dot notation paths like package.module." },
+      { "title": "Subpackages", "desc": "Creating nested package hierarchies for large-scale project organization." },
+      { "title": "Namespace packages", "desc": "Building split packages that can span multiple directories without __init__.py." },
+      { "title": "__init__.py configurations", "desc": "Using __init__.py to re-export symbols, run setup code, and define package-level variables." }
     ],
-    "starterCode": "// Task: Build Cookie Helper Functions\n\n// 1. Create getCookie(name) function\n//    Parse document.cookie and return the value\n\n// 2. Create setCookie(name, value, days) function\n//    Set cookie with expiration in days\n\n// 3. Test: set 'theme' to 'dark' for 7 days\n\n// 4. Test: read 'theme' back and log it",
-    "solutionCode": "// Task: Build Cookie Helper Functions\n\n// 1. Create getCookie(name) function\nfunction getCookie(name) {\n  const cookies = document.cookie.split(';');\n  for (let c of cookies) {\n    c = c.trim();\n    if (c.startsWith(name + '=')) {\n      return c.substring(name.length + 1);\n    }\n  }\n  return null;\n}\n\n// 2. Create setCookie(name, value, days) function\nfunction setCookie(name, value, days) {\n  const d = new Date();\n  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);\n  const expires = `expires=${d.toUTCString()}`;\n  document.cookie = `${name}=${value}; ${expires}; path=/`;\n}\n\n// 3. Test: set 'theme' to 'dark' for 7 days\nsetCookie('theme', 'dark', 7);\n\n// 4. Test: read 'theme' back and log it\nconsole.log('Theme:', getCookie('theme')); // 'dark'",
-    "exampleCode": "// 🧠 Advanced Cookie Patterns\n\n// Delete a cookie\nfunction deleteCookie(name) {\n  document.cookie = `${name}=; max-age=0; path=/`;\n}\n\n// Batch parse all cookies into an object\nfunction parseAllCookies() {\n  return document.cookie\n    .split(';')\n    .reduce((obj, c) => {\n      const [key, ...val] = c.trim().split('=');\n      if (key) obj[key] = val.join('=');\n      return obj;\n    }, {});\n}\n\nconsole.log(parseAllCookies());\n// { theme: 'dark', lang: 'en' }\n\n// Security check: is this cookie HttpOnly?\n// You CANNOT check HttpOnly from JS — that's the point!\n// If document.cookie doesn't show it, it's likely HttpOnly.\n\n// Cookie consent helper\nfunction hasConsented() {\n  return getCookie('cookie_consent') === 'true';\n}\n\nfunction grantConsent() {\n  setCookie('cookie_consent', 'true', 365);\n}",
+    "starterCode": "# Task: Python Packages\n\n# 1. Create a dict 'package_structure' representing 'ecommerce' package\n#    Keys: '__init__', 'products', 'cart'\n#    \n#    __init__: relative imports for get_product and ShoppingCart\n#    products: define get_product(id) returning a mock dict\n#    cart: define ShoppingCart class with add_item method\n\n# 2. Loop through the dict and print file names and their contents\n#    Format: \"=== ecommerce/filename.py ===\"",
+    "solutionCode": "# Task: Python Packages\n\n# 1. Simulated Package Structure\npackage_structure = {\n    '__init__': \"\"\"\nfrom .products import get_product\nfrom .cart import ShoppingCart\n\nVERSION = '1.0.0'\n\"\"\",\n    'products': \"\"\"\ndef get_product(product_id):\n    mock_db = {\n        1: {'name': 'Laptop', 'price': 999.99},\n        2: {'name': 'Mouse', 'price': 25.50}\n    }\n    return mock_db.get(product_id, {})\n\"\"\",\n    'cart': \"\"\"\nclass ShoppingCart:\n    def __init__(self):\n        self.items = []\n    \n    def add_item(self, product_id, qty=1):\n        self.items.append({'id': product_id, 'qty': qty})\n        return self\n    \n    def show(self):\n        return self.items\n\"\"\"\n}\n\n# 2. Print structure\nfor filename, code in package_structure.items():\n    print(f'=== ecommerce/{filename}.py ===')\n    print(code.strip())\n    print()",
+    "exampleCode": "# 🧠 Advanced Package Patterns\n\n# Dynamic package creation\nimport os\nimport types\n\ndef create_package(base_path, package_name, modules):\n    pkg_path = os.path.join(base_path, package_name)\n    os.makedirs(pkg_path, exist_ok=True)\n    \n    # Create __init__.py\n    with open(os.path.join(pkg_path, '__init__.py'), 'w') as f:\n        f.write(f'\"\"\"{package_name} package.\"\"\"\\n')\n        for mod in modules:\n            f.write(f'from .{mod} import *\\n')\n    \n    # Create module files\n    for mod in modules:\n        with open(os.path.join(pkg_path, f'{mod}.py'), 'w') as f:\n            f.write(f'# {mod} module\\n')\n\n# Plugin architecture using packages\n# plugins/\n#   __init__.py  -> auto-discovers and loads plugins\n#   plugin_a.py\n#   plugin_b.py\n\n# In __init__.py:\nimport importlib\nimport os\n\n# def load_plugins():\n#     plugins = {}\n#     current_dir = os.path.dirname(__file__)\n#     for filename in os.listdir(current_dir):\n#         if filename.endswith('.py') and filename != '__init__.py':\n#             mod_name = f'.{filename[:-3]}'\n#             mod = importlib.import_module(mod_name, package=__name__)\n#             if hasattr(mod, 'register'):\n#                 mod.register(plugins)\n#     return plugins\n\n# __path__ extension (advanced)\n# You can modify __path__ in __init__.py to add custom\n# module search locations dynamically.",
     "tests": [
-      { "id": "t1", "description": "Should define getCookie function", "check": "code => /function\\s+getCookie\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should define setCookie function", "check": "code => /function\\s+setCookie\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should split document.cookie by semicolon", "check": "code => /document\\.cookie\\.split\\s*\\(\\s*['\";].*['\";]\\s*\\)/.test(code)" },
-      { "id": "t4", "description": "Should use toUTCString for expires", "check": "code => /toUTCString\\s*\\(\\s*\\)/.test(code)" },
-      { "id": "t5", "description": "Should set path=/", "check": "code => /path=\\//.test(code)" },
-      { "id": "t6", "description": "Should test setting and reading a cookie", "check": "code => /setCookie\\s*\\(\\s*['\"]theme['\"]/.test(code) && /getCookie\\s*\\(\\s*['\"]theme['\"]/.test(code)" }
+      { "id": "t1", "description": "Should create package_structure dict", "check": "code => /package_structure\\s*=\\s*\\{/.test(code)" },
+      { "id": "t2", "description": "Should have __init__ key", "check": "code => /'__init__'/.test(code)" },
+      { "id": "t3", "description": "__init__ should use relative imports", "check": "code => /from\\s+\\.products|from\\s+\\.cart/.test(code)" },
+      { "id": "t4", "description": "Should define ShoppingCart class in cart", "check": "code => /class\\s+ShoppingCart/.test(code)" },
+      { "id": "t5", "description": "Should define get_product function in products", "check": "code => /def\\s+get_product/.test(code)" },
+      { "id": "t6", "description": "Should loop and print the structure", "check": "code => /for.*in.*package_structure/.test(code) && /print\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "28",
-    "slug": "timers-execution-schedulers",
-    "title": "Timers & Execution Schedulers",
-    "icon": "Clock",
-    "overview": "Manage asynchronous delay timelines and task schedules inside loops.",
-    "explanation": "## setTimeout\n\nSchedules a function to run **once** after a specified delay in milliseconds.\n\n```js\nconst id = setTimeout(() => {\n  console.log('Fired after 1 second');\n}, 1000);\n```\n\n**Important:** The delay is a **minimum** guarantee, not exact. If the call stack is busy, the callback waits. A `setTimeout(fn, 0)` doesn't fire immediately — it goes to the task queue and waits for the stack to clear.\n\n## setInterval\n\nSchedules a function to run **repeatedly** at fixed intervals.\n\n```js\nconst id = setInterval(() => {\n  console.log('Every 500ms');\n}, 500);\n```\n\n**Pitfall:** If the callback takes longer than the interval, callbacks queue up and may fire back-to-back with no gap. `setInterval` does NOT guarantee exact timing.\n\n## Clearing Timers\n\nBoth `setTimeout` and `setInterval` return a numeric ID. Use this ID to cancel them:\n\n```js\nclearTimeout(id);  // Cancel a pending setTimeout\nclearInterval(id);  // Stop a running setInterval\n```\n\n**Best practice:** Always clear intervals when components unmount or when a condition is met. Uncleared intervals cause memory leaks and ghost executions.\n\n## Nested setTimeout Pattern\n\nFor reliable repeated execution, prefer recursive `setTimeout` over `setInterval`:\n\n```js\nfunction run() {\n  doWork();\n  setTimeout(run, 1000); // Next call only after current finishes\n}\n```\nThis guarantees at least 1 second between the END of one call and the START of the next, preventing queue buildup.\n\n## Timer Scope Issues\n\n```js\nfor (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100); // 3, 3, 3!\n}\n```\nUsing `var` creates one shared `i`. Fix with `let` (block-scoped) or IIFE closures.",
+    "slug": "python-classes-objects",
+    "title": "Classes & Objects",
+    "icon": "Blocks",
+    "overview": "Create object-oriented blueprints using class definitions and instantiate concrete object instances.",
+    "explanation": "## Defining a Class\n\n```python class Dog:\n    # Class attribute (shared by all instances)\n    species = 'Canis familiaris'\n\n    # Constructor (initializer)\n    def __init__(self, name, age):\n        # Instance attributes (unique to each object)\n        self.name = name\n        self.age = age\n\n    # Instance method\n    def bark(self):\n        return f'{self.name} says Woof!'\n\n    def get_older(self):\n        self.age += 1\n```\n\n## Creating Objects (Instances)\n\n```python dog1 = Dog('Rex', 3)\ndog2 = Dog('Buddy', 5)\n\nprint(dog1.name)   # 'Rex'\nprint(dog2.name)   # 'Buddy'\nprint(dog1.bark()) # 'Rex says Woof!'\n\n# Class attribute accessed via instance or class\nprint(dog1.species)  # 'Canis familiaris'\nprint(Dog.species)   # 'Canis familiaris'\n```\n\n## Understanding 'self'\n\n```python # 'self' refers to the CURRENT INSTANCE\n# Python passes it automatically when you call a method\n\ndog1.bark()\n# Python internally translates this to:\nDog.bark(dog1)\n\n# You can name it anything, but 'self' is the universal convention\nclass Bad:\n    def __init__(this_is_weird, val):  # Works, but don't do this!\n        this_is_weird.val = val\n```\n\n## Dynamic Attributes\n\n```python \nclass User:\n    pass\n\nu = User()\nu.name = 'Alice'  # Adding attribute on the fly!\nu.email = 'alice@test.com'\n\n# ⚠️ Dangerous: another instance won't have these\nu2 = User()\n# print(u2.name)  # AttributeError!\n```\n\n## Methods Types\n\n```python class Calculator:\n    # Instance method (takes self)\n    def add(self, a, b):\n        return a + b\n\n    # Class method (takes cls, used for alternative constructors)\n    @classmethod\n    def from_string(cls, math_string):\n        a, b = map(int, math_string.split('+'))\n        return cls(a, b)  # Returns instance\n\n    # Static method (no self or cls, just a namespaced function)\n    @staticmethod\n    def is_number(val):\n        return isinstance(val, (int, float))\n```\n\n## __str__ and __repr__\n\n```python class Person:\n    def __init__(self, name):\n        self.name = name\n\n    def __str__(self):\n        # User-friendly string (for print/display)\n        return f'Person: {self.name}'\n\n    def __repr__(self):\n        # Developer-friendly string (for debugging)\n        return f'Person({self.name!r})'\n\np = Person('Alice')\nprint(p)          # Person: Alice (calls __str__)\nprint(repr(p))    # Person('Alice') (calls __repr__)\nprint([p])        # [Person('Alice')] (lists use __repr__)\n```",
     "keyRules": [
-      "setTimeout delay is a minimum, not a guarantee — the callback waits for the call stack",
-      "setTimeout(fn, 0) does NOT run immediately — it goes to the task queue",
-      "Always store and clear interval IDs to prevent memory leaks",
-      "setInterval can stack up if callbacks take longer than the interval",
-      "Prefer recursive setTimeout over setInterval for reliable repeated execution"
+      "__init__ is NOT a constructor — it's an initializer. The object is already created by __new__ before __init__ runs",
+      "self must be the FIRST parameter of any instance method — Python passes the instance automatically",
+      "Class attributes are shared across ALL instances; instance attributes (self.x) are unique to each object",
+      "Always implement __repr__ for your classes — it saves hours of debugging by showing useful info",
+      "Use @staticmethod for utility functions that don't need class/instance data, @classmethod for factory methods"
     ],
-    "task": "Create a countdown timer that logs numbers from 5 to 1, one number per second. After reaching 1, log 'Go!' and stop. Use `setTimeout` recursively (NOT setInterval). Store each timeout ID and clear it if needed.",
-    "hint": "Create a function `countdown(n)` that logs `n`, then calls `setTimeout(() => countdown(n-1), 1000)` if n > 1, else logs 'Go!'.",
+    "task": "Create a `Car` class with `make`, `model`, and `year` instance attributes, and a class attribute `total_cars = 0`. The `__init__` should increment `total_cars`. Add methods `describe()` (returns a string), `update_mileage(self, miles)` (adds to `self.mileage`), and `__repr__()`. Create 2 cars, describe them, update mileage, and print `Car.total_cars`.",
+    "hint": "Class level: `total_cars = 0`. Init: `Car.total_cars += 1`, `self.mileage = 0`. Describe: `return f'{self.year} {self.make} {self.model}'`. `__repr__`: `return f'Car({self.make!r}, {self.model!r}, {self.year})'`.",
     "learnings": [
-      { "title": "setTimeout", "desc": "Scheduling non-blocking code executions once specified intervals elapse." },
-      { "title": "setInterval", "desc": "Running infinite tracking operations repeatedly on locked time periods." },
-      { "title": "Clearing Timers", "desc": "Canceling active intervals and timers using clearTimeout and clearInterval tools." }
+      { "title": "Class definition", "desc": "Declaring classes using the class keyword with optional parent class inheritance." },
+      { "title": "Object instantiation", "desc": "Creating instances by calling the class as a function to produce individual objects." },
+      { "title": "Instance attributes", "desc": "Attaching data properties to individual objects via self.parameter assignments." },
+      { "title": "Instance methods", "desc": "Defining functions inside classes that receive the instance reference as first parameter (self)." },
+      { "title": "Class attributes", "desc": "Defining variables at the class level shared across all instances of the class." }
     ],
-    "starterCode": "// Task: Recursive setTimeout Countdown\n\n// 1. Create a countdown function that takes a number\n\n// 2. Log the current number\n\n// 3. If number > 1, schedule next call with 1 second delay\n\n// 4. If number === 1, log 'Go!' and stop\n\n// 5. Start the countdown from 5",
-    "solutionCode": "// Task: Recursive setTimeout Countdown\n\n// 1-4. Create the countdown function\nlet timeoutId;\nfunction countdown(n) {\n  console.log(n);\n\n  if (n > 1) {\n    timeoutId = setTimeout(() => countdown(n - 1), 1000);\n  } else {\n    console.log('Go!');\n    clearTimeout(timeoutId); // Clean up\n  }\n}\n\n// 5. Start the countdown from 5\ncountdown(5);\n// Output: 5 (wait 1s) 4 (wait 1s) 3 (wait 1s) 2 (wait 1s) 1 Go!",
-    "exampleCode": "// 🧠 Timer Patterns & Pitfalls\n\n// --- The var vs let trap ---\nfor (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log('var:', i), 100);\n}\n// Output: var: 3, var: 3, var: 3\n\nfor (let j = 0; j < 3; j++) {\n  setTimeout(() => console.log('let:', j), 100);\n}\n// Output: let: 0, let: 1, let: 2\n\n// --- Reliable repeated execution ---\nlet count = 0;\nfunction reliableTick() {\n  count++;\n  console.log('Tick:', count);\n  if (count < 5) {\n    setTimeout(reliableTick, 1000);\n  }\n}\nreliableTick();\n\n// --- Debounce with clearTimeout ---\nfunction debounce(fn, delay) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(() => fn(...args), delay);\n  };\n}\n\nconst search = debounce((query) => {\n  console.log('Searching:', query);\n}, 300);\n\ninput.addEventListener('input', (e) => search(e.target.value));",
+    "starterCode": "# Task: Classes & Objects\n\n# 1. Create Car class\n#    Class attr: total_cars = 0\n#    Init: make, model, year. Increment total_cars. Init mileage = 0\n#    Methods: describe(), update_mileage(miles), __repr__()\n\n# 2. Create two car instances\n#    car1 = Car('Toyota', 'Corolla', 2020)\n#    car2 = Car('Honda', 'Civic', 2022)\n\n# 3. Test:\n#    Print descriptions\n#    Update mileage (car1: 15000, car2: 5000)\n#    Print repr of cars in a list\n#    Print Car.total_cars",
+    "solutionCode": "# Task: Classes & Objects\n\n# 1. Car class\nclass Car:\n    total_cars = 0\n\n    def __init__(self, make, model, year):\n        self.make = make\n        self.model = model\n        self.year = year\n        self.mileage = 0\n        Car.total_cars += 1\n\n    def describe(self):\n        return f'{self.year} {self.make} {self.model} (Mileage: {self.mileage})'\n\n    def update_mileage(self, miles):\n        self.mileage += miles\n\n    def __repr__(self):\n        return f'Car({self.make!r}, {self.model!r}, {self.year})'\n\n# 2. Create instances\ncar1 = Car('Toyota', 'Corolla', 2020)\ncar2 = Car('Honda', 'Civic', 2022)\n\n# 3. Test\nprint(car1.describe())\nprint(car2.describe())\n\ncar1.update_mileage(15000)\ncar2.update_mileage(5000)\n\nprint('\\nUpdated:')\nprint(car1.describe())\nprint(car2.describe())\n\nprint(f'\\nGarage: {[car1, car2]}')\nprint(f'Total cars manufactured: {Car.total_cars}')",
+    "exampleCode": "# 🧠 Advanced Class Patterns\n\n# Dataclasses (modern alternative for data-heavy classes)\nfrom dataclasses import dataclass, field\n\n@dataclass\nclass Product:\n    name: str\n    price: float\n    in_stock: bool = True\n    tags: list = field(default_factory=list)\n\np1 = Product('Laptop', 999.99)\nprint(p1)  # Product(name='Laptop', price=999.99, in_stock=True, tags=[])\n\n# Dynamic attribute creation\nclass DynamicObject:\n    def __init__(self, **kwargs):\n        for key, value in kwargs.items():\n            setattr(self, key, value)\n\nobj = DynamicObject(name='Alice', age=30)\nprint(obj.name)\n\n# Singleton pattern\nclass Singleton:\n    _instance = None\n    \n    def __new__(cls):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n\na = Singleton()\nb = Singleton()\nprint(a is b)  # True\n\n# Method chaining (fluent interface)\nclass QueryBuilder:\n    def __init__(self, table):\n        self.query = f'SELECT * FROM {table}'\n    \n    def where(self, condition):\n        self.query += f' WHERE {condition}'\n        return self  # Returns self!\n    \n    def limit(self, n):\n        self.query += f' LIMIT {n}'\n        return self\n\nq = QueryBuilder('users').where('age > 18').limit(10)\nprint(q.query)",
     "tests": [
-      { "id": "t1", "description": "Should define a countdown function", "check": "code => /function\\s+countdown|const\\s+countdown/.test(code)" },
-      { "id": "t2", "description": "Should use setTimeout", "check": "code => /setTimeout\\s*\\(/.test(code)" },
-      { "id": "t3", "description": "Should NOT use setInterval", "check": "code => !/setInterval\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should log 'Go!'", "check": "code => /Go!/.test(code)" },
-      { "id": "t5", "description": "Should start from 5", "check": "code => /countdown\\s*\\(\\s*5\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should define Car class", "check": "code => /class\\s+Car/.test(code)" },
+      { "id": "t2", "description": "Should have class attribute total_cars", "check": "code => /total_cars\\s*=\\s*0/.test(code)" },
+      { "id": "t3", "description": "Should increment total_cars in __init__", "check": "code => /total_cars\\s*\\+=\\s*1|total_cars\\s*=\\s*total_cars\\s*\\+\\s*1/.test(code)" },
+      { "id": "t4", "description": "Should implement __repr__ method", "check": "code => /def\\s+__repr__/.test(code)" },
+      { "id": "t5", "description": "Should create at least 2 Car instances", "check": "code => /Car\\s*\\(.*\\).*\\n.*Car\\s*\\(/.test(code)" },
+      { "id": "t6", "description": "Should call describe and update_mileage", "check": "code => /\\.describe\\s*\\(/.test(code) && /\\.update_mileage\\s*\\(/.test(code)" }
     ]
   },
   {
     "id": "29",
-    "slug": "async-concepts-event-loop",
-    "title": "Async Concepts & The Event Loop",
-    "icon": "InfinityIcon",
-    "overview": "Deconstruct how single-threaded runtimes execute asynchronous tasks.",
-    "explanation": "## JavaScript is Single-Threaded\n\nJavaScript has **one call stack**. It can only do one thing at a time. So how does it handle async operations without freezing?\n\n**Answer:** The browser/Node.js provides Web APIs (separate threads) for heavy work, and the **Event Loop** coordinates when their results get back onto the main thread.\n\n## Synchronous vs Asynchronous\n\n**Synchronous:** Code executes line by line. Each line blocks until complete.\n```js\nconsole.log('A'); // blocks until logged\nconsole.log('B'); // waits for A to finish\n```\n\n**Asynchronous:** Code initiates a task and moves on. The result is handled later via callback.\n```js\nsetTimeout(() => console.log('B'), 0); // registered, doesn't block\nconsole.log('A'); // runs immediately\n// Output: A, B (even with 0ms delay!)\n```\n\n## The Callback Queue (Task Queue)\n\nWhen a Web API operation completes (timer fires, HTTP response arrives), its callback is placed in the **Callback Queue** (also called the Task Queue or Macrotask Queue).\n\nThe Event Loop checks: **\"Is the call stack empty?\"** If yes, it takes the first callback from the queue and pushes it onto the stack.\n\n## Microtask Queue\n\nPromises (`.then`, `.catch`, `.finally`) use a **separate, higher-priority queue** called the Microtask Queue.\n\n**Critical rule:** The Event Loop drains the **entire** microtask queue before processing ANY callback from the macrotask queue. Microtasks always win.\n\n## Execution Order\n\n1. Synchronous code (call stack)\n2. All microtasks (Promise callbacks, queueMicrotask)\n3. One macrotask (setTimeout, setInterval, I/O)\n4. All microtasks again\n5. Next macrotask...\n\n## Classic Interview Question\n\n```js\nconsole.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');\n// Output: 1, 4, 3, 2",
+    "slug": "python-constructors-initialization",
+    "title": "Constructors & Initialization",
+    "icon": "Hammer",
+    "overview": "Control object creation and initialization using __new__ and __init__ special methods.",
+    "explanation": "## __init__ (The Initializer)\n\n```python \nclass User:\n    def __init__(self, username, email):\n        # At this point, the object ALREADY EXISTS in memory\n        self.username = username\n        self.email = email\n\nu = User('alice', 'a@test.com')\n```\n\n**Key point:** `__init__` does NOT create the object. It initializes an already-created object.\n\n## __new__ (The Actual Constructor)\n\n```python \nclass Singleton:\n    _instance = None\n\n    def __new__(cls, *args, **kwargs):\n        # __new__ CREATES the instance\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance  # Returns the created object\n\n    def __init__(self, name):\n        self.name = name\n\ns1 = Singleton('A')\ns2 = Singleton('B')\nprint(s1 is s2)  # True (same object)\nprint(s1.name)   # 'B' (__init__ runs AGAIN on the existing object!)\n```\n\n**Flow:** `__new__` creates → `__init__` initializes.\n\n## Parameterized Constructors\n\n```python \nclass Point:\n    def __init__(self, x=0, y=0):\n        self.x = x\n        self.y = y\n\n    # Alternative constructors using classmethod\n    @classmethod\n    def from_tuple(cls, coords):\n        return cls(coords[0], coords[1])\n\n    @classmethod\n    def from_string(cls, str_coords):\n        x, y = map(float, str_coords.split(','))\n        return cls(x, y)\n\np1 = Point(10, 20)\np2 = Point.from_tuple((30, 40))\np3 = Point.from_string('50.5,60.5')\n```\n\n## Constructor Chaining with super()\n\n```python \nclass Employee:\n    def __init__(self, name, salary):\n        self.name = name\n        self.salary = salary\n        print('Employee initialized')\n\nclass Manager(Employee):\n    def __init__(self, name, salary, department):\n        # Call parent's __init__ FIRST\n        super().__init__(name, salary)\n        self.department = department\n        print('Manager initialized')\n\nm = Manager('Alice', 90000, 'Engineering')\n# Output:\n# Employee initialized\n# Manager initialized\n```\n\n## Handling Initialization Errors\n\n```python \nclass Age:\n    def __init__(self, value):\n        if not isinstance(value, int):\n            raise TypeError('Age must be an integer')\n        if value < 0 or value > 150:\n            raise ValueError('Age out of range')\n        self.value = value\n\n# a = Age(-5)  # Raises ValueError immediately\n```\n\n## __init__ Return Value\n\n```python \nclass Bad:\n    def __init__(self):\n        return 42  # ❌ TypeError! __init__ must return None\n```\n\n**Rule:** `__init__` MUST return None implicitly or explicitly. Any other return value causes a TypeError.",
     "keyRules": [
-      "JavaScript is single-threaded — one call stack only",
-      "setTimeout callbacks go to the macrotask queue, Promises go to the microtask queue",
-      "Microtasks always execute before the next macrotask",
-      "The event loop only pushes from queues when the call stack is empty",
-      "setTimeout(fn, 0) does NOT mean 'run immediately' — it means 'next macrotask'"
+      "__new__ creates the object (allocates memory), __init__ initializes it (sets attributes)",
+      "Always call super().__init__() in a subclass BEFORE setting subclass-specific attributes",
+      "Use @classmethod for alternative constructors (like from_string) instead of overloading __init__",
+      "__init__ MUST NOT return anything other than None — it's an initializer, not a factory",
+      "Be careful with Singletons: __init__ runs every time you call ClassName(), even if __new__ returns an existing object"
     ],
-    "task": "Predict and log (as comments) the output order of this code without running it, then verify by running:\n```\nconsole.log('start');\nsetTimeout(() => console.log('timeout'), 0);\nPromise.resolve().then(() => console.log('promise1'));\nPromise.resolve().then(() => console.log('promise2'));\nconsole.log('end');\n```",
-    "hint": "Synchronous code first (start, end), then ALL microtasks (promise1, promise2), then macrotask (timeout).",
+    "task": "Create a `Person` class with `name` and `age`. Create an `Employee(Person)` class that adds `employee_id` and `salary`. Employee's `__init__` MUST use `super()` to initialize name and age. Add a `@classmethod` to Person called `from_birth_year(cls, name, birth_year)` that calculates age from current year. Create one Employee manually and one Person using the classmethod.",
+    "hint": "Person init: `self.name, self.age`. Employee init: `super().__init__(name, age)`, then `self.id, self.salary`. Classmethod: `import datetime; age = datetime.datetime.now().year - birth_year; return cls(name, age)`.",
     "learnings": [
-      { "title": "Synchronous vs Asynchronous", "desc": "Contrasting line-by-line blocked flows with unblocked background processing." },
-      { "title": "Callback Queue", "desc": "Tracking execution entries for standard asynchronous macro-tasks." },
-      { "title": "Event Loop Runtime", "desc": "Monitoring call stack states and fetching task references continuously." }
+      { "title": "__init__ method", "desc": "Defining the initializer that sets up instance attributes immediately after object creation." },
+      { "title": "__new__ method", "desc": "Overriding the actual object allocator that creates the instance before __init__ runs." },
+      { "title": "Parameterized constructors", "desc": "Accepting arguments during instantiation to customize initial object state." },
+      { "title": "Constructor chaining", "desc": "Calling parent class constructors using super().__init__() during child initialization." }
     ],
-    "starterCode": "// Task: Predict the Execution Order\n\n// Write your predicted order as a comment first:\n// Predicted: ???\n\n// Then run this code and verify:\nconsole.log('start');\nsetTimeout(() => console.log('timeout'), 0);\nPromise.resolve().then(() => console.log('promise1'));\nPromise.resolve().then(() => console.log('promise2'));\nconsole.log('end');\n\n// Actual output: ???",
-    "solutionCode": "// Task: Predict the Execution Order\n\n// Predicted: start, end, promise1, promise2, timeout\n\n// Then run this code and verify:\nconsole.log('start');\nsetTimeout(() => console.log('timeout'), 0);\nPromise.resolve().then(() => console.log('promise1'));\nPromise.resolve().then(() => console.log('promise2'));\nconsole.log('end');\n\n// Actual output:\n// start\n// end\n// promise1\n// promise2\n// timeout\n\n// Explanation:\n// 1. 'start' — synchronous, immediate\n// 2. setTimeout registered — callback goes to MACROTASK queue\n// 3. Promise.resolve().then — callback goes to MICROTASK queue\n// 4. Another .then — callback goes to MICROTASK queue\n// 5. 'end' — synchronous, immediate\n// 6. Call stack empty → drain ALL microtasks: 'promise1', 'promise2'\n// 7. Microtask queue empty → process one macrotask: 'timeout'",
-    "exampleCode": "// 🧠 Deeper Event Loop Scenarios\n\n// Nested microtasks spawn more microtasks\nPromise.resolve().then(() => {\n  console.log('micro 1');\n  return Promise.resolve().then(() => {\n    console.log('micro 1.1'); // runs before micro 2!\n  });\n}).then(() => {\n  console.log('micro 1.2');\n});\nPromise.resolve().then(() => console.log('micro 2'));\n\n// Output: micro 1, micro 1.1, micro 2, micro 1.2\n\n// queueMicrotask — manual microtask scheduling\nconsole.log('sync');\nqueueMicrotask(() => console.log('micro'));\nsetTimeout(() => console.log('macro'), 0);\n// Output: sync, micro, macro\n\n// The 'infinite' microtask trap\nfunction infiniteMicrotasks() {\n  queueMicrotask(infiniteMicrotasks);\n}\n// ⚠️ This will freeze the page! Macrotasks never get a chance.\n// infiniteMicrotasks();",
+    "starterCode": "# Task: Constructors & Initialization\n\nimport datetime\n\n# 1. Create Person class\n#    Init: name, age\n#    Classmethod: from_birth_year(cls, name, birth_year)\n\n# 2. Create Employee(Person) class\n#    Init: name, age, employee_id, salary\n#    MUST use super() to call Person __init__\n\n# 3. Test:\n#    emp = Employee('Bob', 30, 'E001', 50000)\n#    person = Person.from_birth_year('Alice', 1995)\n#    Print both details",
+    "solutionCode": "# Task: Constructors & Initialization\n\nimport datetime\n\n# 1. Person class\nclass Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\n    @classmethod\n    def from_birth_year(cls, name, birth_year):\n        current_year = datetime.datetime.now().year\n        age = current_year - birth_year\n        return cls(name, age)\n\n    def __repr__(self):\n        return f'{self.__class__.__name__}({self.name!r}, {self.age})'\n\n# 2. Employee class\nclass Employee(Person):\n    def __init__(self, name, age, employee_id, salary):\n        super().__init__(name, age)  # Chain to parent!\n        self.employee_id = employee_id\n        self.salary = salary\n\n    def __repr__(self):\n        return f'Employee({self.name!r}, {self.age}, {self.employee_id!r}, {self.salary})'\n\n# 3. Test\nemp = Employee('Bob', 30, 'E001', 50000)\nperson = Person.from_birth_year('Alice', 1995)\n\nprint(emp)\nprint(person)",
+    "exampleCode": "# 🧠 Advanced Constructor Patterns\n\n# Preventing direct instantiation (Abstract base)\nclass Shape:\n    def __init__(self):\n        if self.__class__ == Shape:\n            raise TypeError('Cannot instantiate Shape directly')\n\n# class Circle(Shape):\n#     def __init__(self, radius):\n#         super().__init__()\n#         self.radius = radius\n\n# Immutable objects (frozen dataclass style)\nclass ImmutablePoint:\n    __slots__ = ('x', 'y')  # Saves memory, prevents dynamic attrs\n    \n    def __init__(self, x, y):\n        object.__setattr__(self, 'x', x)  # Bypass our __setattr__\n        object.__setattr__(self, 'y', y)\n\n    def __setattr__(self, name, value):\n        raise AttributeError('Immutable object')\n\n    def __delattr__(self, name):\n        raise AttributeError('Immutable object')\n\n# p = ImmutablePoint(1, 2)\n# p.x = 5  # AttributeError!\n\n# Copy constructor pattern\nclass Config:\n    def __init__(self, data=None):\n        self.data = data.copy() if data else {}\n\n    @classmethod\n    def from_config(cls, other_config):\n        # Deep copy from another instance\n        import copy\n        return cls(copy.deepcopy(other_config.data))\n\nc1 = Config({'a': 1})\nc2 = Config.from_config(c1)\nc2.data['a'] = 99\nprint(c1.data['a'])  # 1 (independent copy)",
     "tests": [
-      { "id": "t1", "description": "Should include the prediction as a comment", "check": "code => /Predicted|predict|order/i.test(code)" },
-      { "id": "t2", "description": "Should have console.log('start')", "check": "code => /console\\.log\\s*\\(\\s*['\"]start['\"]\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should have setTimeout with 0", "check": "code => /setTimeout\\s*\\([^)]*,\\s*0\\s*\\)/.test(code)" },
-      { "id": "t4", "description": "Should have at least 2 Promise.resolve().then", "check": "code => (code.match(/Promise\\.resolve\\(\\)\\.then/g) || []).length >= 2" },
-      { "id": "t5", "description": "Should explain the output", "check": "code => /microtask|macrotask|queue|stack|Explanation/i.test(code)" }
+      { "id": "t1", "description": "Should define Person class", "check": "code => /class\\s+Person/.test(code)" },
+      { "id": "t2", "description": "Should define from_birth_year as classmethod", "check": "code => /@classmethod\\s*\\n\\s*def\\s+from_birth_year/.test(code)" },
+      { "id": "t3", "description": "Should define Employee inheriting from Person", "check": "code => /class\\s+Employee\\s*\\(.*Person/.test(code)" },
+      { "id": "t4", "description": "Should use super().__init__ in Employee", "check": "code => /super\\s*\\(\\s*\\)\\.\\s*__init__/.test(code)" },
+      { "id": "t5", "description": "Should call from_birth_year in test", "check": "code => /from_birth_year\\s*\\(/.test(code)" },
+      { "id": "t6", "description": "Should import datetime", "check": "code => /import\\s+datetime/.test(code)" }
     ]
   },
   {
     "id": "30",
-    "slug": "promises-ecosystem",
-    "title": "Promises Ecosystem",
-    "icon": "CheckSquare",
-    "overview": "Govern clean async operations using object state resolutions.",
-    "explanation": "## What is a Promise?\n\nA Promise is an object representing the eventual completion (or failure) of an asynchronous operation. It has three states:\n\n- **Pending**: Initial state — neither fulfilled nor rejected.\n- **Fulfilled**: Operation completed successfully. Has a value.\n- **Rejected**: Operation failed. Has a reason (error).\n\n**A promise can only transition once** — from Pending to either Fulfilled or Rejected. It's immutable after settling.\n\n## Creating Promises\n\n```js\nconst p = new Promise((resolve, reject) => {\n  const success = true;\n  if (success) {\n    resolve('Data loaded!'); // fulfills with value\n  } else {\n    reject(new Error('Failed!')); // rejects with error\n  }\n});\n```\n\n**The executor function runs SYNCHRONOUSLY** when you create the Promise. Only the `resolve`/`reject` callbacks trigger async behavior.\n\n## .then() / .catch() / .finally()\n\n- **`.then(onFulfilled, onRejected)`**: Called when promise fulfills (or rejects if second arg provided). Returns a NEW promise — enabling chaining.\n- **`.catch(onRejected)`**: Sugar for `.then(null, onRejected)`. Catches any error in the chain.\n- **`.finally(onFinally)`**: Runs regardless of fulfillment or rejection. Receives no arguments. Useful for cleanup (hide loaders, close connections).\n\n## Chaining\n\n```js\nfetchUser()\n  .then(user => fetchPosts(user.id))\n  .then(posts => renderPosts(posts))\n  .catch(err => showError(err))\n  .finally(() => hideSpinner());\n```\n\nEach `.then` returns a new promise. If you return a value, it wraps it in a fulfilled promise. If you return a Promise, it unwraps it. If you throw, it rejects.\n\n## Promise Static Methods\n\n- **`Promise.resolve(value)`**: Creates an already-fulfilled promise.\n- **`Promise.reject(reason)`**: Creates an already-rejected promise.\n- **`Promise.all([p1, p2, p3])`**: Waits for ALL to fulfill. Rejects on FIRST failure.\n- **`Promise.allSettled([...])`**: Waits for ALL to settle. Returns array of `{status, value/reason}`.\n- **`Promise.race([...])`**: Resolves/rejects with the FIRST settled promise.\n- **`Promise.any([...])`**: Resolves with the FIRST fulfilled promise. Rejects only if ALL reject.",
+    "slug": "python-instance-vs-class-variables",
+    "title": "Instance vs Class Variables",
+    "icon": "GitCompare",
+    "overview": "Differentiate between per-object data and shared class-level data with critical behavioral distinctions.",
+    "explanation": "## The Core Difference\n\n```python \nclass Dog:\n    # Class variable: shared by ALL dogs\n    species = 'Canis familiaris'\n\n    def __init__(self, name):\n        # Instance variable: unique to EACH dog\n        self.name = name\n\ndog1 = Dog('Rex')\ndog2 = Dog('Buddy')\n\n# Instance variables are independent\ndog1.name = 'Max'\nprint(dog1.name)  # 'Max'\nprint(dog2.name)  # 'Buddy' (unchanged)\n\n# Class variable is shared\nprint(dog1.species)  # 'Canis familiaris'\nprint(dog2.species)  # 'Canis familiaris'\n```\n\n## Attribute Resolution Order\n\n```python # Python looks in THIS order:\n# 1. Instance __dict__\n# 2. Class __dict__\n# 3. Parent class __dict__ (if inherited)\n\nclass Test:\n    x = 'Class Level'\n\n    def __init__(self):\n        self.x = 'Instance Level'\n\nt = Test()\nprint(t.x)        # 'Instance Level' (found here first!)\nprint(Test.x)     # 'Class Level'\n\ndel t.x           # Delete instance variable\nprint(t.x)        # 'Class Level' (falls back to class!)\n```\n\n## ⚠️ The Mutable Class Variable Trap\n\n```python class Bad:\n    # Mutable class variable (LIST)\n    items = []\n\n    def __init__(self, name):\n        self.name = name\n\na = Bad('A')\nb = Bad('B')\n\na.items.append('apple')  # Modifies the SHARED list!\nprint(b.items)           # ['apple'] 🐛 Bug!\n```\n\n**Fix:** Initialize mutable objects inside `__init__`\n```python \nclass Good:\n    def __init__(self, name):\n        self.name = name\n        self.items = []  # Fresh list for EACH instance\n\na = Good('A')\nb = Good('B')\n\na.items.append('apple')\nprint(b.items)  # [] (Safe!)\n```\n\n## When to Use Class Variables\n\n```python # 1. Constants\nclass Circle:\n    PI = 3.14159\n\n# 2. Counters\nclass User:\n    user_count = 0\n    def __init__(self, name):\n        self.name = name\n        User.user_count += 1\n\n# 3. Caching/Shared state\nclass Config:\n    _settings = {}\n    \n    @classmethod\n    def set(cls, key, val):\n        cls._settings[key] = val\n```\n\n## Accessing Class Variables\n\n```python \nclass MyClass:\n    count = 0\n\n    def __init__(self):\n        # ⚠️ Ambiguous: creates INSTANCE variable if assigned!\n        # self.count = 1  \n\n    def increment_bad(self):\n        self.count += 1  # Creates INSTANCE var, shadows CLASS var!\n\n    def increment_good(self):\n        MyClass.count += 1  # ✅ Correctly modifies CLASS var\n\n    @classmethod\n    def increment_cls(cls):\n        cls.count += 1  # ✅ Also correct, more flexible\n```",
     "keyRules": [
-      "A Promise has 3 states: Pending → Fulfilled or Rejected (one-way transition)",
-      "The executor function runs synchronously — only resolve/reject trigger async flow",
-      ".then returns a NEW promise — this is what enables chaining",
-      ".catch catches errors from ANY previous step in the chain",
-      "Promise.all fails fast on first rejection; use allSettled to wait for all"
+      "Instance variables (self.x) are unique to each object; class variables (Class.x) are shared across all instances",
+      "NEVER use mutable objects (lists, dicts) as class variables — they are shared and cause cross-instance contamination",
+      "Always initialize mutable instance attributes inside __init__, not at the class level",
+      "Inside methods, use ClassName.var or cls.var to modify class variables — self.var += 1 creates an instance variable!",
+      "Python looks up attributes in order: instance dict → class dict → parent class dict"
     ],
-    "task": "Create a function `delay(ms)` that returns a Promise resolving after `ms` milliseconds. Chain it: wait 300ms, log 'First', wait 200ms, log 'Second', then use `.finally` to log 'Done'. Wrap the chain in a try/catch equivalent using `.catch` to log any errors.",
-    "hint": "`delay(ms)` returns `new Promise(resolve => setTimeout(resolve, ms))`. Chain: `delay(300).then(() => { console.log('First'); return delay(200); })...`",
+    "task": "Create a `Circle` class with a class variable `PI = 3.14159` and an instance variable `radius`. Add methods `area()` and `circumference()` using `Circle.PI`. Then create a `BugDemo` class with a class variable `shared_list = []`. Show the bug: create two instances, append to one's list, and print the other's list. Then fix it by moving the list initialization to `__init__` in `FixedDemo`.",
+    "hint": "Bug: `class BugDemo: shared_list = []`. Fix: `class FixedDemo: def __init__(self): self.my_list = []`. Circle area: `Circle.PI * self.radius ** 2`.",
     "learnings": [
-      { "title": "Promise States", "desc": "Tracking active flows across Pending, Fulfilled, and Rejected conditions." },
-      { "title": ".then & .catch", "desc": "Chaining functional resolution data and catching structural errors." },
-      { "title": ".finally", "desc": "Executing absolute cleanup routines regardless of total execution paths." }
+      { "title": "Instance variables", "desc": "Properties unique to each object, defined inside methods using self.prefix notation." },
+      { "title": "Class variables", "desc": "Properties shared across all instances, defined directly inside the class body." },
+      { "title": "Attribute resolution order", "desc": "Understanding how Python finds attributes—checking instance before falling back to class." },
+      { "title": "Mutation dangers", "desc": "Recognizing pitfalls when mutable class variables like lists are modified through instances." },
+      { "title": "Static tracking patterns", "desc": "Using class variables to count instances or share configuration across objects." }
     ],
-    "starterCode": "// Task: Build a Delay Function with Promise Chaining\n\n// 1. Create delay(ms) that returns a resolving Promise\n\n// 2. Chain: delay 300ms → log 'First'\n\n// 3. Chain: delay 200ms → log 'Second'\n\n// 4. Add .finally to log 'Done'\n\n// 5. Add .catch to log any errors",
-    "solutionCode": "// Task: Build a Delay Function with Promise Chaining\n\n// 1. Create delay(ms)\nfunction delay(ms) {\n  return new Promise(resolve => setTimeout(resolve, ms));\n}\n\n// 2-5. Chain the delays\ndelay(300)\n  .then(() => {\n    console.log('First');\n    return delay(200);\n  })\n  .then(() => {\n    console.log('Second');\n  })\n  .finally(() => {\n    console.log('Done');\n  })\n  .catch((err) => {\n    console.error('Error:', err.message);\n  });\n\n// Output (after ~500ms total):\n// First\n// Second\n// Done",
-    "exampleCode": "// 🧠 Promise Patterns\n\n// Promise.all — parallel execution\nconst urls = ['/api/users', '/api/posts', '/api/comments'];\nconst results = await Promise.all(urls.map(u => fetch(u).then(r => r.json())));\n\n// Promise.allSettled — safe parallel\nconst outcomes = await Promise.allSettled(urls.map(u => fetch(u)));\noutcomes.forEach(o => {\n  if (o.status === 'fulfilled') console.log('Success:', o.value.status);\n  else console.log('Failed:', o.reason.message);\n});\n\n// Promise.race — timeout pattern\nfunction fetchWithTimeout(url, ms) {\n  return Promise.race([\n    fetch(url),\n    new Promise((_, reject) => \n      setTimeout(() => reject(new Error('Timeout')), ms)\n    )\n  ]);\n}\n\n// Promise.any — first success wins\nconst fast = await Promise.any([\n  fetch(server1).catch(() => {}),\n  fetch(server2).catch(() => {}),\n  fetch(server3).catch(() => {}),\n]);\n\n// Returning vs throwing in .then\nfetch('/api/data')\n  .then(r => {\n    if (!r.ok) throw new Error(`HTTP ${r.status}`);\n    return r.json(); // returned value goes to next .then\n  })\n  .then(data => console.log(data))\n  .catch(err => console.error(err));",
+    "starterCode": "# Task: Instance vs Class Variables\n\n# 1. Create Circle class\n#    Class var: PI = 3.14159\n#    Instance var: radius\n#    Methods: area(), circumference() using Circle.PI\n\n# 2. Create BugDemo class\n#    Class var: shared_list = []\n#    (Do NOT put it in __init__)\n\n# 3. Create FixedDemo class\n#    Init: self.my_list = []\n\n# 4. Demonstrate the bug and the fix",
+    "solutionCode": "# Task: Instance vs Class Variables\n\n# 1. Circle class\nclass Circle:\n    PI = 3.14159\n\n    def __init__(self, radius):\n        self.radius = radius\n\n    def area(self):\n        return Circle.PI * self.radius ** 2\n\n    def circumference(self):\n        return 2 * Circle.PI * self.radius\n\n# 2. Buggy class\nclass BugDemo:\n    shared_list = []  # Dangerous!\n\n# 3. Fixed class\nclass FixedDemo:\n    def __init__(self):\n        self.my_list = []  # Safe!\n\n# 4. Demonstrate\nprint('--- Circle ---')\nc = Circle(5)\nprint(f'Area: {c.area():.2f}')\nprint(f'Circumference: {c.circumference():.2f}')\n\nprint('\\n--- Bug Demo ---')\nbug1 = BugDemo()\nbug2 = BugDemo()\nbug1.shared_list.append('bug1 item')\nprint(f'bug2.shared_list: {bug2.shared_list}')  # ['bug1 item'] 🐛\n\nprint('\\n--- Fixed Demo ---')\nfix1 = FixedDemo()\nfix2 = FixedDemo()\nfix1.my_list.append('fix1 item')\nprint(f'fix2.my_list: {fix2.my_list}')  # [] ✅",
+    "exampleCode": "# 🧠 Advanced Variable Patterns\n\n# Tracking instance creation order\nclass Tracked:\n    _instances = []\n    _id_counter = 0\n\n    def __init__(self, name):\n        Tracked._id_counter += 1\n        self.id = Tracked._id_counter\n        self.name = name\n        Tracked._instances.append(self)\n\n    @classmethod\n    def get_all(cls):\n        return list(cls._instances)\n\na = Tracked('A')\nb = Tracked('B')\nprint([f'{t.id}:{t.name}' for t in Tracked.get_all()])  # ['1:A', '2:B']\n\n# Inspecting namespaces\nprint(a.__dict__)  # Instance variables only: {'id': 1, 'name': 'A'}\nprint(Tracked.__dict__.keys())  # Class variables & methods\n\n# Class variables with inheritance\nclass Parent:\n    var = 'Parent'\n\nclass Child(Parent):\n    pass\n\nprint(Child.var)  # 'Parent' (inherited)\nChild.var = 'Child' # Creates var in Child's namespace\nprint(Parent.var)  # 'Parent' (unchanged!)\nprint(Child.var)   # 'Child'\n\n# Using __slots__ to prevent dynamic instance variables\nclass Strict:\n    __slots__ = ['name', 'age']\n\ns = Strict()\ns.name = 'Alice'\n# s.email = 'a@b.com'  # AttributeError! 'email' not in __slots__\n# Saves memory and catches typos!",
     "tests": [
-      { "id": "t1", "description": "Should define delay function", "check": "code => /function\\s+delay|const\\s+delay/.test(code)" },
-      { "id": "t2", "description": "Should return a new Promise", "check": "code => /return\\s+new\\s+Promise/.test(code)" },
-      { "id": "t3", "description": "Should use setTimeout inside Promise", "check": "code => /setTimeout\\s*\\(\\s*resolve/.test(code)" },
-      { "id": "t4", "description": "Should chain at least 2 .then calls", "check": "code => (code.match(/\\.then\\s*\\(/g) || []).length >= 2" },
-      { "id": "t5", "description": "Should use .finally", "check": "code => /\\.finally\\s*\\(/.test(code)" },
-      { "id": "t6", "description": "Should use .catch", "check": "code => /\\.catch\\s*\\(/.test(code)" }
+      { "id": "t1", "description": "Should define Circle class with class variable PI", "check": "code => /class\\s+Circle.*:\\n.*PI\\s*=/.test(code)" },
+      { "id": "t2", "description": "Should use Circle.PI in methods", "check": "code => /Circle\\.PI/.test(code)" },
+      { "id": "t3", "description": "Should define BugDemo with shared_list = []", "check": "code => /class\\s+BugDemo.*:\\n.*shared_list\\s*=\\s*\\[/.test(code)" },
+      { "id": "t4", "description": "Should define FixedDemo with __init__", "check": "code => /class\\s+FixedDemo.*:\\n.*def\\s+__init__/.test(code)" },
+      { "id": "t5", "description": "FixedDemo should initialize list in __init__", "check": "code => /self\\.my_list\\s*=\\s*\\[/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate bug2 accessing shared_list", "check": "code => /bug2\\.shared_list/.test(code)" }
     ]
   },
   {
     "id": "31",
-    "slug": "async-await-paradigms",
-    "title": "Async / Await Paradigms",
-    "icon": "Activity",
-    "overview": "Write asynchronous execution lines mimicking standard clean procedural formats.",
-    "explanation": "## Async Functions\n\nAn `async function` always returns a Promise. Even if you return a plain value, it's automatically wrapped in `Promise.resolve(value)`.\n\n```js\nasync function greet() {\n  return 'Hello'; // Equivalent to: return Promise.resolve('Hello')\n}\ngreet().then(msg => console.log(msg)); // 'Hello'\n```\n\n**Arrow syntax:** `const greet = async () => 'Hello';`\n\n## The Await Keyword\n\n`await` can only be used inside an `async function`. It pauses execution of that function until the Promise settles, then returns the resolved value (or throws if rejected).\n\n```js\nasync function getData() {\n  const response = await fetch('/api/data'); // pauses here\n  const data = await response.json();        // pauses here\n  return data; // data is the actual parsed object\n}\n```\n\n**Key insight:** `await` does NOT block the main thread. It only pauses the async function — the event loop continues processing other tasks.\n\n## Error Handling with try/catch\n\nSince `await` throws on rejection, use `try/catch` instead of `.catch()`:\n\n```js\nasync function safeFetch() {\n  try {\n    const res = await fetch(url);\n    if (!res.ok) throw new Error(`HTTP ${res.status}`);\n    return await res.json();\n  } catch (err) {\n    console.error('Failed:', err.message);\n    return null; // fallback value\n  } finally {\n    console.log('Request complete');\n  }\n}\n```\n\n## Parallel Execution with await\n\n**Sequential (slow):**\n```js\nconst a = await fetchA(); // waits 1s\nconst b = await fetchB(); // waits 1s\n// Total: 2s\n```\n\n**Parallel (fast):**\n```js\nconst [a, b] = await Promise.all([fetchA(), fetchB()]);\n// Total: 1s\n```\n\n## Top-Level Await\n\nIn ES Modules (`type=\"module\"`), you can use `await` at the top level without wrapping in an async function.\n\n## Common Pitfalls\n\n- Forgetting `await` — you get a Promise object instead of the value.\n- Using `await` in loops — causes sequential execution. Use `Promise.all` with `.map` for parallel.\n- `try/catch` inside a loop catches one failure but stops the rest. Use `Promise.allSettled` for resilience.",
+    "slug": "python-inheritance-code-reuse",
+    "title": "Inheritance & Code Reuse",
+    "icon": "GitBranch",
+    "overview": "Establish parent-child class relationships to share and extend behavior through hierarchical derivation.",
+    "explanation": "## Single Inheritance Basics\n\n```python\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        return 'Some sound'\n\n    def info(self):\n        return f'{self.name} says {self.speak()}'\n\nclass Dog(Animal):\n    def speak(self):\n        return 'Woof!'\n\ndog = Dog('Rex')\nprint(dog.name)    # 'Rex' (inherited from Animal)\nprint(dog.speak()) # 'Woof!' (overridden)\nprint(dog.info())  # 'Rex says Woof!' (inherited method calls overridden speak)\n```\n\n## super() Function\n\n```python\nclass Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\nclass Student(Person):\n    def __init__(self, name, age, school):\n        super().__init__(name, age)  # Call parent's __init__\n        self.school = school\n\ns = Student('Ali', 20, 'MIT')\nprint(s.name)   # 'Ali'\nprint(s.school) # 'MIT'\n```\n\n## Method Overriding\n\n```python\nclass List:\n    def append(self, item):\n        print(f'Appending {item}')\n\nclass LogList(List):\n    def append(self, item):\n        print(f'[LOG] Before append')\n        super().append(item)  # Call parent's append\n        print(f'[LOG] After append')\n\nll = LogList()\nll.append(5)\n# [LOG] Before append\n# Appending 5\n# [LOG] After append\n```\n\n## Multiple Inheritance & MRO\n\n```python\nclass A:\n    def greet(self):\n        return 'A'\n\nclass B(A):\n    def greet(self):\n        return 'B'\n\nclass C(A):\n    def greet(self):\n        return 'C'\n\nclass D(B, C):\n    pass\n\nd = D()\nprint(d.greet())        # 'B'\nprint(D.__mro__)\n# (<class 'D'>, <class 'B'>, <class 'C'>, <class 'A'>, <class 'object'>)\n```\n\n## isinstance() & issubclass()\n\n```python\nprint(isinstance(d, D))   # True\nprint(isinstance(d, B))   # True\nprint(isinstance(d, A))   # True\nprint(issubclass(D, A))   # True\nprint(issubclass(A, D))   # False\n```",
     "keyRules": [
-      "async functions always return a Promise, even if you return a plain value",
-      "await only pauses the async function — it does NOT block the main thread",
-      "Use try/catch/finally for error handling instead of .then/.catch",
-      "Use Promise.all for parallel awaits — sequential await in loops is slow",
-      "Forgetting await gives you a Promise object, not the resolved value"
+      "Child class inherits ALL methods and attributes from parent — use super().__init__() to properly initialize parent state",
+      "Always use super() to call parent methods — never hardcode parent class name inside child methods",
+      "Method overriding replaces parent behavior; use super().method() to extend it instead of fully replacing",
+      "In multiple inheritance, MRO follows C3 linearization — check ClassName.__mro__ to understand lookup order",
+      "Prefer composition over inheritance when there's no true 'is-a' relationship"
     ],
-    "task": "Create an async function `fetchUser(id)` that uses `await` to simulate fetching user data (use a `delay` promise that resolves with `{ id, name: 'User ' + id }` after 100ms). Create another async function `fetchPosts(userId)` that resolves with `['Post 1', 'Post 2']` after 100ms. Then write `loadDashboard(id)` that fetches both in PARALLEL using `Promise.all` with `await`, logs both results, and handles errors with try/catch.",
-    "hint": "Make `delay` resolve with a value: `new Promise(r => setTimeout(() => r(value), ms))`. In `loadDashboard`, use `const [user, posts] = await Promise.all([fetchUser(id), fetchPosts(id)])`.",
+    "task": "Create a base class `Vehicle` with `__init__(self, brand, speed)` and a method `describe()` returning a string. Create `Car(Vehicle)` that adds `doors` attribute via super().__init__() and overrides `describe()` to include doors. Create `ElectricCar(Car)` that adds `battery` attribute. Demonstrate all three levels work. Also print `ElectricCar.__mro__`.",
+    "hint": "ElectricCar.__init__ calls super().__init__(brand, speed, doors). describe() in Car calls super().describe() then appends doors info.",
     "learnings": [
-      { "title": "Async functions", "desc": "Declaring clean wrappers that consistently deliver Promise outputs." },
-      { "title": "Await keyword", "desc": "Pausing inline functional runs until target promises fully settle." },
-      { "title": "Error handling", "desc": "Wrapping asynchronous runs inside robust structural try/catch enclosures." }
+      { "title": "Single inheritance", "desc": "Deriving a child class from one parent class to inherit all its methods and attributes." },
+      { "title": "super() function", "desc": "Accessing and calling parent class methods from within overridden child methods." },
+      { "title": "Method overriding", "desc": "Redefining inherited methods in child classes to provide specialized behavior." },
+      { "title": "Multiple inheritance", "desc": "Deriving from more than one parent class and understanding MRO resolution." },
+      { "title": "MRO (Method Resolution Order)", "desc": "Understanding C3 linearization algorithm that determines attribute lookup sequence." },
+      { "title": "isinstance() & issubclass()", "desc": "Checking object-type relationships and class hierarchy membership at runtime." }
     ],
-    "starterCode": "// Task: Async/Await with Parallel Execution\n\n// 1. Create a delay helper that resolves with a value\n\n// 2. Create async fetchUser(id) → { id, name: 'User N' } after 100ms\n\n// 3. Create async fetchPosts(userId) → ['Post 1', 'Post 2'] after 100ms\n\n// 4. Create async loadDashboard(id) that:\n//    - Fetches user and posts in PARALLEL\n//    - Logs both results\n//    - Handles errors with try/catch\n\n// 5. Call loadDashboard(42)",
-    "solutionCode": "// Task: Async/Await with Parallel Execution\n\n// 1. Delay helper that resolves with a value\nfunction delay(ms, value) {\n  return new Promise(resolve => setTimeout(() => resolve(value), ms));\n}\n\n// 2. Async fetchUser\nasync function fetchUser(id) {\n  return await delay(100, { id, name: `User ${id}` });\n}\n\n// 3. Async fetchPosts\nasync function fetchPosts(userId) {\n  return await delay(100, ['Post 1', 'Post 2']);\n}\n\n// 4. Async loadDashboard with parallel execution\nasync function loadDashboard(id) {\n  try {\n    const [user, posts] = await Promise.all([\n      fetchUser(id),\n      fetchPosts(id)\n    ]);\n    console.log('User:', user);   // { id: 42, name: 'User 42' }\n    console.log('Posts:', posts);  // ['Post 1', 'Post 2']\n  } catch (err) {\n    console.error('Dashboard failed:', err.message);\n  }\n}\n\n// 5. Call it\nloadDashboard(42);",
-    "exampleCode": "// 🧠 Advanced Async/Await Patterns\n\n// Sequential loop pitfall vs parallel\nasync function processItems(items) {\n  // ❌ Sequential — each waits for the previous\n  // for (const item of items) {\n  //   await processItem(item);\n  // }\n\n  // ✅ Parallel — all start at once\n  const results = await Promise.all(\n    items.map(item => processItem(item))\n  );\n  return results;\n}\n\n// Async IIFE (when top-level await isn't available)\n(async () => {\n  const data = await fetch('/api/data').then(r => r.json());\n  console.log(data);\n})();\n\n// Retry pattern\nasync function fetchWithRetry(url, retries = 3) {\n  for (let i = 0; i < retries; i++) {\n    try {\n      const res = await fetch(url);\n      if (!res.ok) throw new Error(`HTTP ${res.status}`);\n      return await res.json();\n    } catch (err) {\n      if (i === retries - 1) throw err;\n      console.log(`Retry ${i + 1}...`);\n    }\n  }\n}\n\n// For...await — processing async iterables one by one\nasync function* streamData() {\n  yield await delay(100, 'chunk1');\n  yield await delay(100, 'chunk2');\n  yield await delay(100, 'chunk3');\n}\n\nfor await (const chunk of streamData()) {\n  console.log(chunk);\n}",
+    "starterCode": "# Task: Inheritance & Code Reuse\n\n# 1. Create Vehicle base class\n#    __init__(self, brand, speed)\n#    describe() method\n\n# 2. Create Car(Vehicle)\n#    Adds doors attribute\n#    Overrides describe()\n\n# 3. Create ElectricCar(Car)\n#    Adds battery attribute\n#    Overrides describe()\n\n# 4. Demonstrate all three levels\n# 5. Print ElectricCar.__mro__",
+    "solutionCode": "# Task: Inheritance & Code Reuse\n\nclass Vehicle:\n    def __init__(self, brand, speed):\n        self.brand = brand\n        self.speed = speed\n\n    def describe(self):\n        return f'{self.brand} moving at {self.speed} km/h'\n\nclass Car(Vehicle):\n    def __init__(self, brand, speed, doors):\n        super().__init__(brand, speed)\n        self.doors = doors\n\n    def describe(self):\n        base = super().describe()\n        return f'{base}, {self.doors}-door car'\n\nclass ElectricCar(Car):\n    def __init__(self, brand, speed, doors, battery):\n        super().__init__(brand, speed, doors)\n        self.battery = battery\n\n    def describe(self):\n        base = super().describe()\n        return f'{base}, {self.battery}kWh battery'\n\n# Demonstrate\nv = Vehicle('Generic', 60)\nprint(v.describe())\n\nc = Car('Toyota', 120, 4)\nprint(c.describe())\n\ne = ElectricCar('Tesla', 200, 4, 75)\nprint(e.describe())\n\nprint(f'\\nMRO: {[cls.__name__ for cls in ElectricCar.__mro__]}')",
+    "exampleCode": "# 🧠 Advanced Inheritance Patterns\n\n# Diamond problem resolution\nclass Base:\n    def method(self):\n        return 'Base'\n\nclass Left(Base):\n    def method(self):\n        return 'Left -> ' + super().method()\n\nclass Right(Base):\n    def method(self):\n        return 'Right -> ' + super().method()\n\nclass Child(Left, Right):\n    def method(self):\n        return 'Child -> ' + super().method()\n\nprint(Child().method())\n# 'Child -> Left -> Right -> Base'\n\n# Mixin pattern\nclass JsonMixin:\n    def to_json(self):\n        import json\n        return json.dumps(self.__dict__)\n\nclass LogMixin:\n    def log(self, msg):\n        print(f'[{self.__class__.__name__}] {msg}')\n\nclass User(JsonMixin, LogMixin):\n    def __init__(self, name, email):\n        self.name = name\n        self.email = email\n\nu = User('Ali', 'ali@test.com')\nprint(u.to_json())  # {\"name\": \"Ali\", \"email\": \"ali@test.com\"}\nu.log('Created')    # [User] Created",
     "tests": [
-      { "id": "t1", "description": "Should define async functions", "check": "code => /async\\s+function|async\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should use await", "check": "code => /await\\s+/.test(code)" },
-      { "id": "t3", "description": "Should use Promise.all for parallel execution", "check": "code => /Promise\\.all\\s*\\(\\s*\\[/.test(code)" },
-      { "id": "t4", "description": "Should use try/catch", "check": "code => /try\\s*\\{/.test(code) && /catch\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should call loadDashboard", "check": "code => /loadDashboard\\s*\\(/.test(code)" },
-      { "id": "t6", "description": "Should destructure results from Promise.all", "check": "code => /const\\s*\\[/.test(code) && /await\\s+Promise\\.all/.test(code)" }
+      { "id": "t1", "description": "Should define Vehicle class with __init__", "check": "code => /class\\s+Vehicle.*:\\n.*def\\s+__init__/.test(code)" },
+      { "id": "t2", "description": "Car should inherit from Vehicle", "check": "code => /class\\s+Car\\s*\\(\\s*Vehicle\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "ElectricCar should inherit from Car", "check": "code => /class\\s+ElectricCar\\s*\\(\\s*Car\\s*\\)/.test(code)" },
+      { "id": "t4", "description": "Should use super() in Car __init__", "check": "code => /class\\s+Car[\\s\\S]*?def\\s+__init__.*super\\(\\)\\.__init__/.test(code)" },
+      { "id": "t5", "description": "Should use super() in ElectricCar __init__", "check": "code => /class\\s+ElectricCar[\\s\\S]*?def\\s+__init__.*super\\(\\)\\.__init__/.test(code)" },
+      { "id": "t6", "description": "Should print ElectricCar.__mro__", "check": "code => /ElectricCar\\.__mro__/.test(code)" }
     ]
   },
   {
     "id": "32",
-    "slug": "fetch-api-content-handlers",
-    "title": "Fetch API & Content Handlers",
-    "icon": "CloudDownload",
-    "overview": "Connect client runtimes out to external network endpoints seamlessly.",
-    "explanation": "## The Fetch API\n\n`fetch()` is the modern replacement for `XMLHttpRequest`. It returns a Promise that resolves with a `Response` object.\n\n```js\nconst response = await fetch(url);\n```\n\n**Critical:** `fetch` does NOT reject on HTTP error statuses (404, 500, etc.). It only rejects on network failures. You MUST check `response.ok` or `response.status` manually.\n\n## GET Requests\n\n```js\nconst res = await fetch('/api/users');\nif (!res.ok) throw new Error(`HTTP ${res.status}`);\nconst data = await res.json(); // Parse JSON body\n```\n\n**Response body methods** (each returns a Promise — can only call ONE):\n- `.json()` — parse as JSON\n- `.text()` — get as plain text\n- `.blob()` — get as binary Blob (files, images)\n- `.formData()` — parse as FormData\n- `.arrayBuffer()` — get as raw ArrayBuffer\n\n## POST Requests\n\n```js\nconst res = await fetch('/api/users', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ name: 'Ali', age: 25 })\n});\n```\n\n**Important:** When sending JSON, you MUST set the `Content-Type: application/json` header AND `JSON.stringify` the body. `fetch` does NOT auto-serialize.\n\n## Headers\n\n```js\nconst headers = new Headers({\n  'Content-Type': 'application/json',\n  'Authorization': `Bearer ${token}`\n});\n\nfetch(url, { headers });\n```\n\nReading response headers: `res.headers.get('Content-Type')`\n\n## Other Options\n\n- **`method`**: GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS\n- **`mode`**: `'cors'` (default), `'no-cors'`, `'same-origin'`\n- **`credentials`**: `'same-origin'` (default), `'include'` (send cookies cross-origin), `'omit'`\n- **`cache`**: `'default'`, `'no-cache'`, `'force-cache'`, `'no-store'`\n- **`signal`**: Pass an `AbortController` signal to cancel the request.\n\n## AbortController\n\n```js\nconst controller = new AbortController();\nsetTimeout(() => controller.abort(), 5000); // 5s timeout\n\nfetch(url, { signal: controller.signal })\n  .catch(err => {\n    if (err.name === 'AbortError') console.log('Request canceled');\n  });\n```",
+    "slug": "python-polymorphism",
+    "title": "Polymorphism in Python",
+    "icon": "Shuffle",
+    "overview": "Enable objects of different classes to be treated through a common interface with behavior variation.",
+    "explanation": "## Duck Typing\n\n```python\n# \"If it walks like a duck and quacks like a duck...\"\n\nclass Duck:\n    def speak(self):\n        return 'Quack!'\n\nclass Robot:\n    def speak(self):\n        return 'Beep boop!'\n\nclass Parrot:\n    def talk(self):  # Different method name!\n        return 'Polly wants cracker'\n\ndef make_sound(obj):\n    # No type check — just call .speak()\n    # Will fail for Parrot (no .speak method)\n    return obj.speak()\n\nprint(make_sound(Duck()))   # 'Quack!'\nprint(make_sound(Robot()))  # 'Beep boop!'\n# make_sound(Parrot())     # AttributeError!\n```\n\n## Method Polymorphism\n\n```python\nclass Circle:\n    def __init__(self, radius):\n        self.radius = radius\n    def area(self):\n        return 3.14159 * self.radius ** 2\n\nclass Rectangle:\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n    def area(self):\n        return self.w * self.h\n\nclass Triangle:\n    def __init__(self, base, height):\n        self.base, self.height = base, height\n    def area(self):\n        return 0.5 * self.base * self.height\n\n# Same interface, different behavior\nshapes = [Circle(5), Rectangle(4, 6), Triangle(3, 8)]\nfor s in shapes:\n    print(f'{s.__class__.__name__}: {s.area():.2f}')\n```\n\n## Operator Polymorphism\n\n```python\nprint(5 + 3)        # 8 (int addition)\nprint('a' + 'b')    # 'ab' (string concatenation)\nprint([1] + [2])    # [1, 2] (list concatenation)\nprint(3.14 * 2)     # 6.28 (float multiplication)\nprint('ha' * 3)     # 'hahaha' (string repetition)\n```\n\n## Abstract Base Classes (Formal Interface)\n\n```python\nfrom abc import ABC, abstractmethod\n\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n\n    @abstractmethod\n    def perimeter(self):\n        pass\n\n# shape = Shape()  # TypeError! Can't instantiate ABC\n\nclass Square(Shape):\n    def __init__(self, side):\n        self.side = side\n    def area(self):\n        return self.side ** 2\n    def perimeter(self):\n        return 4 * self.side\n\n# Missing perimeter() would raise TypeError at import time\n```",
     "keyRules": [
-      "fetch does NOT reject on 404/500 — always check response.ok manually",
-      "Response body methods (.json, .text) can only be called ONCE per response",
-      "POST with JSON requires Content-Type header AND JSON.stringify on body",
-      "Use AbortController for request cancellation and timeouts",
-      "fetch only rejects on network failures, never on HTTP error statuses"
+      "Duck typing means Python cares about WHAT an object can do (methods), not WHAT it IS (type)",
+      "Polymorphic functions work with any object that supports the expected interface — no inheritance required",
+      "Use ABCs when you need to ENFORCE that subclasses implement specific methods",
+      "Operator polymorphism is built into Python — same operator behaves differently based on operand types",
+      "Prefer duck typing for flexibility; use ABCs when you need strict contract enforcement"
     ],
-    "task": "Write an async function `postUser(name, email)` that sends a POST request to `https://jsonplaceholder.typicode.com/users` with a JSON body containing the name and email. Set the correct Content-Type header. Parse the JSON response and return it. Wrap in try/catch and throw a descriptive error if `response.ok` is false.",
-    "hint": "Use `fetch(url, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name, email}) })`. Check `!res.ok` and throw. Return `res.json()`.",
+    "task": "Create a `PaymentProcessor` ABC with abstract method `pay(amount)`. Create `CreditCardPayment`, `PaypalPayment`, and `CryptoPayment` classes that implement `pay()` with unique messages. Write a `process_payment(processor, amount)` function that calls `processor.pay(amount)`. Demonstrate processing the same amount through all three.",
+    "hint": "Use `from abc import ABC, abstractmethod`. Each subclass implements `def pay(self, amount):` with a different print/return. The function just calls `.pay(amount)` — no type checks needed.",
     "learnings": [
-      { "title": "GET requests", "desc": "Fetching external data blocks and resolving parsing states." },
-      { "title": "POST requests", "desc": "Submitting payload structures containing custom parameters or headers." },
-      { "title": "Headers & JSON Handling", "desc": "Injecting authorization variables and running inline .json() operations." }
+      { "title": "Duck typing", "desc": "Python's approach of focusing on object behavior over explicit type relationships." },
+      { "title": "Method polymorphism", "desc": "Calling the same method name on different objects and getting class-specific behavior." },
+      { "title": "Operator polymorphism", "desc": "Built-in operators like + behaving differently for ints, strings, and lists." },
+      { "title": "Function polymorphism", "desc": "Writing functions that operate on any object supporting the expected interface." },
+      { "title": "Abstract base classes", "desc": "Using ABCs to formally define interfaces that subclasses must implement." }
     ],
-    "starterCode": "// Task: POST Request with Fetch API\n\n// 1. Create async postUser(name, email) function\n\n// 2. Send POST to https://jsonplaceholder.typicode.com/users\n\n// 3. Set Content-Type: application/json header\n\n// 4. Stringify the body with name and email\n\n// 5. Check response.ok — throw if false\n\n// 6. Parse and return the JSON response\n\n// 7. Test it: postUser('Ali', 'ali@test.com').then(console.log)",
-    "solutionCode": "// Task: POST Request with Fetch API\n\nasync function postUser(name, email) {\n  try {\n    // 2-4. Send POST with JSON body and headers\n    const res = await fetch('https://jsonplaceholder.typicode.com/users', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({ name, email })\n    });\n\n    // 5. Check response.ok\n    if (!res.ok) {\n      throw new Error(`POST failed: HTTP ${res.status}`);\n    }\n\n    // 6. Parse and return JSON\n    return await res.json();\n  } catch (err) {\n    console.error('Request error:', err.message);\n    throw err;\n  }\n}\n\n// 7. Test it\npostUser('Ali', 'ali@test.com').then(data => {\n  console.log('Created user:', data);\n});",
-    "exampleCode": "// 🧠 Advanced Fetch Patterns\n\n// GET with error handling\nasync function safeGet(url) {\n  const res = await fetch(url);\n  if (!res.ok) {\n    throw new Error(`HTTP ${res.status}: ${res.statusText}`);\n  }\n  return res.json();\n}\n\n// PUT request (full update)\nawait fetch('/api/users/1', {\n  method: 'PUT',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ name: 'Updated', email: 'new@test.com' })\n});\n\n// DELETE request\nawait fetch('/api/users/1', { method: 'DELETE' });\n\n// Fetch with timeout using AbortController\nasync function fetchWithTimeout(url, ms = 5000) {\n  const controller = new AbortController();\n  const id = setTimeout(() => controller.abort(), ms);\n  \n  try {\n    const res = await fetch(url, { signal: controller.signal });\n    clearTimeout(id);\n    return await res.json();\n  } catch (err) {\n    clearTimeout(id);\n    if (err.name === 'AbortError') throw new Error('Request timed out');\n    throw err;\n  }\n}\n\n// Bearer token auth\nconst res = await fetch('/api/protected', {\n  headers: {\n    'Authorization': `Bearer ${getToken()}`\n  }\n});",
+    "starterCode": "# Task: Polymorphism in Python\n\n# 1. Import ABC and abstractmethod\n\n# 2. Create PaymentProcessor ABC\n#    Abstract method: pay(self, amount)\n\n# 3. Create CreditCardPayment, PaypalPayment, CryptoPayment\n#    Each implements pay() differently\n\n# 4. Create process_payment(processor, amount) function\n\n# 5. Demonstrate with all three processors",
+    "solutionCode": "# Task: Polymorphism in Python\n\nfrom abc import ABC, abstractmethod\n\nclass PaymentProcessor(ABC):\n    @abstractmethod\n    def pay(self, amount):\n        pass\n\nclass CreditCardPayment(PaymentProcessor):\n    def pay(self, amount):\n        return f'Credit card charged ${amount:.2f}'\n\nclass PaypalPayment(PaymentProcessor):\n    def pay(self, amount):\n        return f'PayPal transfer of ${amount:.2f} completed'\n\nclass CryptoPayment(PaymentProcessor):\n    def pay(self, amount):\n        return f'{amount:.6f} BTC sent to wallet'\n\ndef process_payment(processor, amount):\n    return processor.pay(amount)\n\n# Demonstrate\nprocessors = [\n    CreditCardPayment(),\n    PaypalPayment(),\n    CryptoPayment()\n]\n\namount = 100.0\nfor p in processors:\n    result = process_payment(p, amount)\n    print(f'{p.__class__.__name__}: {result}')",
+    "exampleCode": "# 🧠 Advanced Polymorphism\n\n# Polymorphic iteration\nclass Range:\n    def __init__(self, start, end):\n        self.start, self.end = start, end\n    def __iter__(self):\n        return iter(range(self.start, self.end))\n\nclass Countdown:\n    def __init__(self, n):\n        self.n = n\n    def __iter__(self):\n        return iter(range(self.n, 0, -1))\n\nfor x in Range(1, 4):\n    print(x, end=' ')  # 1 2 3\nprint()\nfor x in Countdown(3):\n    print(x, end=' ')  # 3 2 1\n\n# Using getattr for flexible interfaces\ndef process(obj, method_name, *args):\n    method = getattr(obj, method_name)\n    return method(*args)\n\n# Protocol checking (Python 3.8+)\nfrom typing import Protocol\n\nclass Drawable(Protocol):\n    def draw(self) -> str: ...\n\nclass Canvas:\n    def add(self, item: Drawable):\n        print(f'Added: {item.draw()}')\n\nclass Button:\n    def draw(self):\n        return 'Button widget'\n\nclass TextBox:\n    def draw(self):\n        return 'Text box widget'\n\n# No inheritance needed — structural typing!\nc = Canvas()\nc.add(Button())   # Works!\nc.add(TextBox())  # Works!",
     "tests": [
-      { "id": "t1", "description": "Should define async postUser function", "check": "code => /async\\s+function\\s+postUser|const\\s+postUser\\s*=\\s*async/.test(code)" },
-      { "id": "t2", "description": "Should use method: 'POST'", "check": "code => /method\\s*:\\s*['\"]POST['\"]/.test(code)" },
-      { "id": "t3", "description": "Should set Content-Type header", "check": "code => /Content-Type\\s*:\\s*application\\/json/.test(code)" },
-      { "id": "t4", "description": "Should JSON.stringify the body", "check": "code => /JSON\\.stringify\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should check response.ok", "check": "code => /!\\s*res\\.ok|res\\.ok\\s*===\\s*false/.test(code)" },
-      { "id": "t6", "description": "Should use res.json()", "check": "code => /res\\.json\\s*\\(\\s*\\)|response\\.json\\s*\\(\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should import ABC and abstractmethod", "check": "code => /from\\s+abc\\s+import\\s+ABC.*abstractmethod/.test(code)" },
+      { "id": "t2", "description": "PaymentProcessor should inherit from ABC", "check": "code => /class\\s+PaymentProcessor\\s*\\(\\s*ABC\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "Should have @abstractmethod on pay", "check": "code => /@abstractmethod\\s*\\n\\s*def\\s+pay/.test(code)" },
+      { "id": "t4", "description": "Should define 3 payment classes", "check": "code => (code.match(/class\\s+\\w+Payment/g) || []).length >= 3" },
+      { "id": "t5", "description": "Should have process_payment function", "check": "code => /def\\s+process_payment\\s*\\(\\s*processor\\s*,\\s*amount\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "process_payment should call .pay(amount)", "check": "code => /processor\\.pay\\s*\\(\\s*amount\\s*\\)/.test(code)" }
     ]
   },
   {
     "id": "33",
-    "slug": "apis-http-architecture",
-    "title": "APIs & HTTP Architecture",
-    "icon": "Server",
-    "showInApp": false,
-    "overview": "Understand standard global API contracts and web response definitions.",
-    "explanation": "## What is an API?\n\nAn API (Application Programming Interface) is a contract between a client and a server that defines how they communicate. In web development, this typically means a server exposing endpoints that return data (usually JSON) over HTTP.\n\n## REST APIs\n\nREST (Representational State Transfer) is an architectural style for APIs based on these principles:\n\n- **Stateless**: Each request contains all info needed. Server doesn't store session state.\n- **Resource-based**: URLs represent resources (`/users`, `/users/123`, `/users/123/posts`).\n- **Uniform Interface**: Use standard HTTP methods for CRUD operations.\n- **Cacheable**: Responses should indicate if they can be cached.\n\n**Resource naming conventions:**\n- ✅ `/users` (plural nouns)\n- ✅ `/users/42/posts` (nested resources)\n- ❌ `/getUsers` (verbs in URLs)\n- ❌ `/user` (singular)\n\n## HTTP Methods\n\n| Method | Purpose | Idempotent | Has Body |\n|---|---|---|---|\n| GET | Read a resource | ✅ Yes | ❌ No |\n| POST | Create a new resource | ❌ No | ✅ Yes |\n| PUT | Replace entire resource | ✅ Yes | ✅ Yes |\n| PATCH | Partial update | ❌ No | ✅ Yes |\n| DELETE | Remove a resource | ✅ Yes | ❌ No |\n\n**Idempotent:** Calling it once has the same effect as calling it multiple times. `PUT /users/42` with the same data always results in the same state. `POST /users` creates a new resource each time.\n\n## HTTP Status Codes\n\n**2xx Success:**\n- `200 OK` — Successful GET/PUT/PATCH\n- `201 Created` — Successful POST (new resource created)\n- `204 No Content` — Successful DELETE (no body returned)\n\n**3xx Redirection:**\n- `301 Moved Permanently` — Resource URL changed permanently\n- `302 Found` — Temporary redirect\n- `304 Not Modified` — Cached version is still valid\n\n**4xx Client Errors:**\n- `400 Bad Request` — Malformed request syntax\n- `401 Unauthorized` — Missing or invalid authentication\n- `403 Forbidden` — Authenticated but not authorized\n- `404 Not Found` — Resource doesn't exist\n- `409 Conflict` — Duplicate entry or version conflict\n- `422 Unprocessable Entity` — Valid syntax but semantic errors\n- `429 Too Many Requests` — Rate limited\n\n**5xx Server Errors:**\n- `500 Internal Server Error` — Unhandled server exception\n- `502 Bad Gateway` — Upstream server issue\n- `503 Service Unavailable` — Server overloaded or maintenance\n\n## Request/Response Structure\n\n**Request:** Method + URL + Headers + Body (optional)\n**Response:** Status Code + Status Text + Headers + Body (optional)",
+    "slug": "python-encapsulation-access-control",
+    "title": "Encapsulation & Access Control",
+    "icon": "Shield",
+    "overview": "Restrict direct access to internal object state using naming conventions and property management.",
+    "explanation": "## Public Members\n\n```python\nclass User:\n    def __init__(self, name):\n        self.name = name  # Public — accessible anywhere\n\nu = User('Alice')\nprint(u.name)   # 'Alice'\nu.name = 'Bob' # Direct modification — no restrictions\n```\n\n## Protected Members (_prefix)\n\n```python\nclass BankAccount:\n    def __init__(self, balance):\n        self._balance = balance  # Protected by convention\n\n    def _validate(self, amount):  # Protected method\n        return amount > 0\n\n# _balance is STILL accessible — it's just a CONVENTION\nacc = BankAccount(1000)\nprint(acc._balance)  # 1000 (works, but you shouldn't!)\nacc._balance = -500  # Works, but violates the convention\n```\n\n## Private Members (__prefix) & Name Mangling\n\n```python\nclass Secret:\n    def __init__(self):\n        self.__hidden = 'secret data'\n\n    def get_hidden(self):\n        return self.__hidden\n\ns = Secret()\n# print(s.__hidden)  # AttributeError!\nprint(s.get_hidden())  # 'secret data'\n\n# Name mangling: __hidden becomes _Secret__hidden\nprint(s._Secret__hidden)  # 'secret data' (works but DON'T do this!)\n```\n\n## Getter & Setter Methods\n\n```python\nclass Temperature:\n    def __init__(self, celsius):\n        self.__celsius = celsius\n\n    def get_celsius(self):\n        return self.__celsius\n\n    def set_celsius(self, value):\n        if value < -273.15:\n            raise ValueError('Below absolute zero!')\n        self.__celsius = value\n\nt = Temperature(25)\nt.set_celsius(30)\nprint(t.get_celsius())  # 30\n# t.set_celsius(-300)   # ValueError!\n```\n\n## Why Python's 'Private' Isn't Truly Private\n\n```python\nclass Parent:\n    def __init__(self):\n        self.__value = 'parent'\n\nclass Child(Parent):\n    def try_access(self):\n        # self.__value looks for _Child__value, NOT _Parent__value!\n        # return self.__value  # AttributeError!\n        return self._Parent__value  # Works with mangled name\n\nc = Child()\nprint(c.try_access())  # 'parent'\n```",
     "keyRules": [
-      "REST uses plural nouns for resources — never verbs in URLs",
-      "GET and DELETE should NOT have a request body",
-      "POST creates, PUT replaces, PATCH updates partially — know the difference",
-      "200 for success, 201 for creation, 204 for successful delete with no body",
-      "401 = not authenticated, 403 = authenticated but not authorized"
+      "Public (no prefix): accessible everywhere — use for attributes that form the object's public API",
+      "Protected (_prefix): convention only, NOT enforced — signals 'internal use, subclass may access'",
+      "Private (__prefix): name-mangled to _ClassName__attr — prevents accidental access, not security",
+      "Name mangling uses the CLASS where the attribute is defined, not the class accessing it",
+      "Use getter/setter methods when you need validation — but prefer @property for Pythonic code (next topic)"
     ],
-    "task": "Given a base URL `https://jsonplaceholder.typicode.com`, write four async functions: `getUsers()`, `getUser(id)`, `createUser(data)`, and `deleteUser(id)`. Each should use the correct HTTP method, log the status code, and handle errors. For `createUser`, pass `{ name: 'Ali', email: 'ali@test.com' }` as JSON.",
-    "hint": "GET: `fetch(url)`. POST: `fetch(url, { method: 'POST', ... })`. DELETE: `fetch(url, { method: 'DELETE' })`. Log `res.status` before parsing.",
+    "task": "Create a `BankAccount` class with `__balance` (private), `_transaction_log` (protected), and `owner` (public). Add `deposit(amount)` and `withdraw(amount)` methods that validate amount > 0 and update `__balance`. Add `get_balance()` getter. Show that `__balance` can't be accessed directly but `_transaction_log` can (with a warning comment). Demonstrate valid and invalid operations.",
+    "hint": "In __init__: `self.__balance = 0`, `self._transaction_log = []`, `self.owner = owner`. In withdraw: check `amount > 0` and `amount <= self.__balance`.",
     "learnings": [
-      { "title": "REST APIs", "desc": "Consuming structural stateless endpoints designed around resource targets." },
-      { "title": "HTTP Methods", "desc": "Mapping explicit REST goals via standard GET, POST, PUT, and DELETE actions." },
-      { "title": "Status Codes", "desc": "Decoding status codes across success (2xx), redirects (3xx), client bugs (4xx), and server crashes (5xx)." }
+      { "title": "Public members", "desc": "Attributes and methods accessible from anywhere with no naming restrictions." },
+      { "title": "Protected members (_prefix)", "desc": "Convention-based single-underscore prefix indicating internal use, not enforced by Python." },
+      { "title": "Private members (__prefix)", "desc": "Name-mangled double-underscore attributes that prevent direct external access." },
+      { "title": "Name mangling", "desc": "Understanding how Python transforms __attr into _ClassName__attr behind the scenes." },
+      { "title": "Getter & Setter methods", "desc": "Creating controlled access points for reading and writing private attributes." }
     ],
-    "starterCode": "// Task: Implement Full CRUD with Correct HTTP Methods\n\nconst BASE = 'https://jsonplaceholder.typicode.com/users';\n\n// 1. getUsers() — GET all users, log status, return data\n\n// 2. getUser(id) — GET single user, log status, return data\n\n// 3. createUser(data) — POST new user, log status, return data\n\n// 4. deleteUser(id) — DELETE user, log status\n\n// 5. Test all four functions",
-    "solutionCode": "// Task: Implement Full CRUD with Correct HTTP Methods\n\nconst BASE = 'https://jsonplaceholder.typicode.com/users';\n\n// 1. GET all users\nasync function getUsers() {\n  const res = await fetch(BASE);\n  console.log('GET /users:', res.status);\n  return res.json();\n}\n\n// 2. GET single user\nasync function getUser(id) {\n  const res = await fetch(`${BASE}/${id}`);\n  console.log(`GET /users/${id}:`, res.status);\n  return res.json();\n}\n\n// 3. POST new user\nasync function createUser(data) {\n  const res = await fetch(BASE, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(data)\n  });\n  console.log('POST /users:', res.status);\n  return res.json();\n}\n\n// 4. DELETE user\nasync function deleteUser(id) {\n  const res = await fetch(`${BASE}/${id}`, { method: 'DELETE' });\n  console.log(`DELETE /users/${id}:`, res.status);\n}\n\n// 5. Test all four\n(async () => {\n  await getUsers();\n  await getUser(1);\n  await createUser({ name: 'Ali', email: 'ali@test.com' });\n  await deleteUser(1);\n})();",
-    "exampleCode": "// 🧠 HTTP Architecture Deep Dive\n\n// PUT vs PATCH\n// PUT — replaces the ENTIRE resource\nawait fetch('/users/1', {\n  method: 'PUT',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ name: 'Ali', email: 'ali@test.com' })\n  // Missing fields will be REMOVED/overwritten\n});\n\n// PATCH — updates ONLY provided fields\nawait fetch('/users/1', {\n  method: 'PATCH',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ name: 'Updated Name' })\n  // email remains unchanged\n});\n\n// Query parameters\nfunction buildURL(base, params) {\n  const query = new URLSearchParams(params).toString();\n  return query ? `${base}?${query}` : base;\n}\n\nconst url = buildURL('/api/users', {\n  page: 1,\n  limit: 10,\n  sort: 'name'\n});\n// '/api/users?page=1&limit=10&sort=name'\n\n// Handling different status codes\nasync function robustFetch(url, options = {}) {\n  const res = await fetch(url, options);\n  \n  switch (res.status) {\n    case 200: return res.json();\n    case 201: console.log('Created!'); return res.json();\n    case 204: return null;\n    case 401: throw new Error('Please log in');\n    case 403: throw new Error('No permission');\n    case 404: throw new Error('Not found');\n    case 429: throw new Error('Rate limited — slow down');\n    default: throw new Error(`HTTP ${res.status}`);\n  }\n}",
+    "starterCode": "# Task: Encapsulation & Access Control\n\n# 1. Create BankAccount class\n#    Private: __balance\n#    Protected: _transaction_log\n#    Public: owner\n\n# 2. Add deposit(amount) and withdraw(amount)\n#    Validate: amount > 0\n#    Withdraw also checks: amount <= balance\n#    Log each transaction\n\n# 3. Add get_balance() getter\n\n# 4. Demonstrate all access levels",
+    "solutionCode": "# Task: Encapsulation & Access Control\n\nclass BankAccount:\n    def __init__(self, owner, initial_balance=0):\n        self.owner = owner                  # Public\n        self.__balance = initial_balance    # Private\n        self._transaction_log = []          # Protected\n\n    def deposit(self, amount):\n        if amount <= 0:\n            raise ValueError('Deposit must be positive')\n        self.__balance += amount\n        self._transaction_log.append(f'+{amount}')\n\n    def withdraw(self, amount):\n        if amount <= 0:\n            raise ValueError('Withdrawal must be positive')\n        if amount > self.__balance:\n            raise ValueError('Insufficient funds')\n        self.__balance -= amount\n        self._transaction_log.append(f'-{amount}')\n\n    def get_balance(self):\n        return self.__balance\n\n# Demonstrate\nacc = BankAccount('Alice', 500)\nprint(f'Owner: {acc.owner}')\nprint(f'Balance: {acc.get_balance()}')\n\nacc.deposit(200)\nacc.withdraw(100)\nprint(f'Balance: {acc.get_balance()}')\n\n# Protected — accessible but shouldn't (convention)\nprint(f'Log (protected): {acc._transaction_log}')  # Works!\n\n# Private — direct access fails\ntry:\n    print(acc.__balance)  # AttributeError!\nexcept AttributeError as e:\n    print(f'Private access blocked: {e}')\n\n# Invalid operations\ntry:\n    acc.deposit(-50)\nexcept ValueError as e:\n    print(f'Error: {e}')\n\ntry:\n    acc.withdraw(9999)\nexcept ValueError as e:\n    print(f'Error: {e}')",
+    "exampleCode": "# 🧠 Advanced Encapsulation Patterns\n\n# Name mangling in inheritance\nclass Base:\n    def __init__(self):\n        self.__x = 'base_x'\n        self._y = 'base_y'\n\nclass Derived(Base):\n    def show(self):\n        # self.__x -> _Derived__x (doesn't exist!)\n        # self._y  -> _y (found in parent)\n        return self._y\n\nd = Derived()\nprint(d.show())          # 'base_y'\nprint(d._Base__x)        # 'base_x' (mangled name access)\n\n# Encapsulation with __slots__\nclass StrictAccount:\n    __slots__ = ['_balance', 'owner']\n\n    def __init__(self, owner, balance):\n        self.owner = owner\n        self._balance = balance\n\nsa = StrictAccount('Bob', 100)\n# sa.hack = 'malicious'  # AttributeError! Not in __slots__\n\n# Checking what's really private\nimport inspect\nobj = BankAccount('Test', 0)\nprivate_attrs = [a for a in dir(obj) if a.startswith('_BankAccount')]\nprint(private_attrs)  # ['_BankAccount__balance']",
     "tests": [
-      { "id": "t1", "description": "Should define getUsers with GET", "check": "code => /function\\s+getUsers|getUsers\\s*=/.test(code) && /fetch\\s*\\(\\s*BASE/.test(code)" },
-      { "id": "t2", "description": "Should define createUser with POST", "check": "code => /function\\s+createUser|createUser\\s*=/.test(code) && /method\\s*:\\s*['\"]POST['\"]/.test(code)" },
-      { "id": "t3", "description": "Should define deleteUser with DELETE", "check": "code => /function\\s+deleteUser|deleteUser\\s*=/.test(code) && /method\\s*:\\s*['\"]DELETE['\"]/.test(code)" },
-      { "id": "t4", "description": "Should log res.status in each function", "check": "code => (code.match(/res\\.status/g) || []).length >= 3" },
-      { "id": "t5", "description": "Should use JSON.stringify in POST", "check": "code => /JSON\\.stringify/.test(code)" }
+      { "id": "t1", "description": "Should define BankAccount with __balance", "check": "code => /self\\.__balance\\s*=/.test(code)" },
+      { "id": "t2", "description": "Should define _transaction_log (protected)", "check": "code => /self\\._transaction_log\\s*=/.test(code)" },
+      { "id": "t3", "description": "Should have public owner attribute", "check": "code => /self\\.owner\\s*=/.test(code)" },
+      { "id": "t4", "description": "Should have deposit method with validation", "check": "code => /def\\s+deposit.*amount.*>\\s*0/.test(code)" },
+      { "id": "t5", "description": "Should have withdraw with balance check", "check": "code => /def\\s+withdraw.*amount\\s*>\\s*self\\.__balance/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate private access error", "check": "code => /acc\\.__balance/.test(code)" }
     ]
   },
   {
     "id": "34",
-    "slug": "oop-in-javascript",
-    "title": "OOP in JavaScript",
-    "icon": "Blocks",
-    "overview": "Architect scalable code systems using classes and design methodologies.",
-    "explanation": "## Classes & Constructors\n\nES6 classes are **syntactic sugar** over JavaScript's existing prototype-based inheritance. They provide a cleaner, more familiar syntax for creating objects.\n\n```js\nclass Animal {\n  constructor(name) {\n    this.name = name; // instance property\n  }\n\n  speak() {\n    console.log(`${this.name} makes a sound`);\n  }\n}\n```\n\n- **`constructor`**: Special method called automatically with `new`. Initializes instance properties.\n- **`new` keyword**: Creates a new object, sets `this` to it, calls constructor, returns the object.\n- **Methods**: Defined directly in the class body — they go on the prototype, not on each instance.\n\n## The 'this' Keyword\n\n`this` depends on HOW a function is called:\n\n- **Method call**: `obj.method()` → `this` = `obj`\n- **Constructor call**: `new MyClass()` → `this` = new instance\n- **Standalone call**: `func()` → `this` = `undefined` (strict mode) or `window` (sloppy)\n- **Arrow function**: Inherits `this` from enclosing scope (lexical `this`)\n- **Event listener**: `this` = the element the listener is attached to\n- **`call/apply/bind`**: Explicitly set `this`\n\n**Common pitfall:** Passing a method as a callback loses its `this` binding.\n```js\nclass Timer {\n  constructor() { this.seconds = 0; }\n  tick() { this.seconds++; }\n  startBad()  { setInterval(this.tick, 1000); }   // ❌ this = undefined\n  startGood() { setInterval(() => this.tick(), 1000); } // ✅ arrow preserves this\n}\n```\n\n## Encapsulation\n\nES2022 introduced **private class fields** using `#`:\n\n```js\nclass BankAccount {\n  #balance = 0; // private field\n\n  deposit(amount) { this.#balance += amount; }\n  getBalance() { return this.#balance; }\n}\n```\nPrivate fields cannot be accessed outside the class — not even by subclasses.\n\n## Inheritance\n\n```js\nclass Dog extends Animal {\n  constructor(name, breed) {\n    super(name); // MUST call super() before using this\n    this.breed = breed;\n  }\n\n  speak() {\n    super.speak(); // call parent method\n    console.log(`${this.name} barks!`);\n  }\n}\n```\n\n**Rules:** `super()` must be called before accessing `this` in a subclass constructor.\n\n## Polymorphism\n\nSubclasses override parent methods to provide specific behavior:\n\n```js\nclass Cat extends Animal {\n  speak() { console.log(`${this.name} meows`); }\n}\n\nconst animals = [new Dog('Rex'), new Cat('Whiskers')];\nanimals.forEach(a => a.speak()); // Each speaks differently!\n```",
+    "slug": "python-abstraction-interfaces",
+    "title": "Abstraction & Interfaces",
+    "icon": "Eye",
+    "overview": "Hide implementation complexity behind clean interfaces using abstract classes and abstract methods.",
+    "explanation": "## Abstract Classes\n\n```python\nfrom abc import ABC, abstractmethod\n\nclass Shape(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n\n    @abstractmethod\n    def perimeter(self):\n        pass\n\n# shape = Shape()  # TypeError: Can't instantiate abstract class\n```\n\n## Concrete Implementations\n\n```python\nclass Circle(Shape):\n    def __init__(self, radius):\n        self.radius = radius\n\n    def area(self):\n        return 3.14159 * self.radius ** 2\n\n    def perimeter(self):\n        return 2 * 3.14159 * self.radius\n\nclass Rectangle(Shape):\n    def __init__(self, w, h):\n        self.w, self.h = w, h\n\n    def area(self):\n        return self.w * self.h\n\n    def perimeter(self):\n        return 2 * (self.w + self.h)\n\nc = Circle(5)\nprint(c.area())  # 78.53975\n```\n\n## Partial Implementation in Abstract Classes\n\n```python\nclass DataProcessor(ABC):\n    @abstractmethod\n    def fetch_data(self):\n        pass\n\n    @abstractmethod\n    def parse_data(self, raw):\n        pass\n\n    # Non-abstract method — provides shared logic!\n    def process(self):\n        raw = self.fetch_data()\n        parsed = self.parse_data(raw)\n        return f'Processed: {parsed}'\n\nclass ApiProcessor(DataProcessor):\n    def fetch_data(self):\n        return '{\"value\": 42}'\n\n    def parse_data(self, raw):\n        import json\n        return json.loads(raw)['value']\n\nprint(ApiProcessor().process())  # 'Processed: 42'\n```\n\n## Abstract Properties\n\n```python\nclass Config(ABC):\n    @property\n    @abstractmethod\n    def max_connections(self):\n        pass\n\nclass DevConfig(Config):\n    @property\n    def max_connections(self):\n        return 5\n\nclass ProdConfig(Config):\n    @property\n    def max_connections(self):\n        return 100\n\n# Missing @property would fail at instantiation!\n```",
     "keyRules": [
-      "Class methods live on the prototype — shared across all instances",
-      "super() must be called before using 'this' in a subclass constructor",
-      "Arrow functions preserve lexical 'this' — use them for callbacks in classes",
-      "Private fields (#) are truly private — not accessible outside the class",
-      "Polymorphism means same method name, different behavior per subclass"
+      "Abstract classes CANNOT be instantiated — they exist only as blueprints for subclasses",
+      "Subclasses MUST implement ALL abstract methods, or they too remain abstract and can't be instantiated",
+      "Abstract classes CAN have concrete (non-abstract) methods that provide shared logic to subclasses",
+      "Use @abstractproperty (or @property + @abstractmethod) for mandatory read-only attributes",
+      "ABCs catch missing implementations at IMPORT TIME, not at method call time — fail fast"
     ],
-    "task": "Create a `Vehicle` class with `#speed` (private), constructor setting `make` and `#speed = 0`, and methods `accelerate(amount)` that adds to `#speed`, `getSpeed()` that returns `#speed`, and `info()` that returns a string. Then create `ElectricCar` extending `Vehicle` with a `#battery` property, override `info()` to include battery level, and add `charge(amount)` method.",
-    "hint": "Use `#speed = 0` in Vehicle constructor. In ElectricCar, call `super(make)` first, then set `#battery`. Override `info()` with `super.info()` + battery info.",
+    "task": "Create an abstract class `Notification` with abstract methods `send(self, message)` and `get_channel(self) -> str`, plus a concrete method `notify(self, message)` that prints `f'Sending via {self.get_channel()}: {message}'` then calls `self.send(message)`. Create `EmailNotification` and `SMSNotification` implementing both abstract methods. Demonstrate calling `notify()` on both.",
+    "hint": "The concrete `notify()` method calls `self.get_channel()` and `self.send(message)` — both are implemented by subclasses, so it works via polymorphism.",
     "learnings": [
-      { "title": "Classes & Constructors", "desc": "Creating standard reusable object factories containing initialized properties." },
-      { "title": "The 'this' Keyword", "desc": "Evaluating binding targets dynamically based on execution points." },
-      { "title": "Encapsulation & Inheritance", "desc": "Restricting internal states via private modifiers and extending class layers via super()." },
-      { "title": "Polymorphism", "desc": "Overriding inherited methods to process distinct custom computations." }
+      { "title": "Abstract classes", "desc": "Defining classes that cannot be instantiated and serve as blueprints for subclasses." },
+      { "title": "Abstract methods", "desc": "Declaring method signatures without implementation that subclasses must override." },
+      { "title": "ABC module", "desc": "Using abc.ABC and @abstractmethod decorator to create formal abstract base classes." },
+      { "title": "Concrete implementations", "desc": "Providing actual logic in subclasses that extend and fulfill abstract contracts." },
+      { "title": "Abstract properties", "desc": "Defining @abstractproperty decorators for mandatory attribute implementations." }
     ],
-    "starterCode": "// Task: OOP with Inheritance, Encapsulation & Polymorphism\n\n// 1. Create Vehicle class with private #speed\n//    - constructor(make): set make and #speed = 0\n//    - accelerate(amount): add to #speed\n//    - getSpeed(): return #speed\n//    - info(): return \"Make: {make}, Speed: {#speed}km/h\"\n\n// 2. Create ElectricCar extending Vehicle\n//    - constructor(make, battery): super(make), set #battery\n//    - charge(amount): add to #battery (max 100)\n//    - override info(): include battery %\n\n// 3. Test: create a Tesla, accelerate, charge, and log info",
-    "solutionCode": "// Task: OOP with Inheritance, Encapsulation & Polymorphism\n\n// 1. Vehicle class\nclass Vehicle {\n  #speed = 0;\n\n  constructor(make) {\n    this.make = make;\n  }\n\n  accelerate(amount) {\n    this.#speed += amount;\n  }\n\n  getSpeed() {\n    return this.#speed;\n  }\n\n  info() {\n    return `${this.make}, Speed: ${this.#speed}km/h`;\n  }\n}\n\n// 2. ElectricCar class\nclass ElectricCar extends Vehicle {\n  #battery = 0;\n\n  constructor(make, battery) {\n    super(make);\n    this.#battery = battery;\n  }\n\n  charge(amount) {\n    this.#battery = Math.min(100, this.#battery + amount);\n  }\n\n  info() {\n    return `${super.info()}, Battery: ${this.#battery}%`;\n  }\n}\n\n// 3. Test\nconst tesla = new ElectricCar('Tesla Model 3', 50);\ntesla.accelerate(120);\ntesla.charge(30);\nconsole.log(tesla.info());\n// \"Tesla Model 3, Speed: 120km/h, Battery: 80%\"\n\nconsole.log(tesla.getSpeed()); // 120\n// tesla.#speed; // ❌ SyntaxError — private!\n// tesla.#battery; // ❌ SyntaxError — private!",
-    "exampleCode": "// 🧠 Advanced OOP Patterns\n\n// Static methods and properties\nclass MathUtils {\n  static PI = 3.14159;\n\n  static circleArea(radius) {\n    return this.PI * radius * radius;\n  }\n}\nconsole.log(MathUtils.circleArea(5));\n\n// Getter / Setter\nclass Temperature {\n  #celsius = 0;\n\n  get fahrenheit() {\n    return this.#celsius * 9/5 + 32;\n  }\n\n  set fahrenheit(f) {\n    this.#celsius = (f - 32) * 5/9;\n  }\n}\n\nconst temp = new Temperature();\ntemp.fahrenheit = 212;\nconsole.log(temp.fahrenheit); // 212\n\n// 'this' pitfall and fix\nclass Button {\n  constructor(label) {\n    this.label = label;\n  }\n\n  // ❌ Loses 'this' when passed as callback\n  // clickHandler() { console.log(this.label); }\n\n  // ✅ Arrow function preserves 'this'\n  clickHandler = () => {\n    console.log(this.label);\n  };\n}\n\nconst btn = new Button('Submit');\nsetTimeout(btn.clickHandler, 100); // 'Submit'\n\n// instanceof check\nconsole.log(tesla instanceof ElectricCar); // true\nconsole.log(tesla instanceof Vehicle);    // true\nconsole.log(tesla instanceof Object);      // true",
+    "starterCode": "# Task: Abstraction & Interfaces\n\n# 1. Import ABC, abstractmethod\n\n# 2. Create Notification ABC\n#    Abstract: send(message), get_channel()\n#    Concrete: notify(message)\n\n# 3. Create EmailNotification and SMSNotification\n\n# 4. Demonstrate notify() on both",
+    "solutionCode": "# Task: Abstraction & Interfaces\n\nfrom abc import ABC, abstractmethod\n\nclass Notification(ABC):\n    @abstractmethod\n    def send(self, message):\n        pass\n\n    @abstractmethod\n    def get_channel(self):\n        pass\n\n    def notify(self, message):\n        channel = self.get_channel()\n        print(f'Sending via {channel}: {message}')\n        self.send(message)\n\nclass EmailNotification(Notification):\n    def send(self, message):\n        print(f'  Email delivered: \"{message}\"')\n\n    def get_channel(self):\n        return 'Email'\n\nclass SMSNotification(Notification):\n    def send(self, message):\n        print(f'  SMS delivered: \"{message}\"')\n\n    def get_channel(self):\n        return 'SMS'\n\n# Demonstrate\nemail = EmailNotification()\nemail.notify('Hello via email!')\n\nprint()\nsms = SMSNotification()\nsms.notify('Hello via SMS!')\n\n# This would fail:\n# n = Notification()  # TypeError: Can't instantiate\n\n# This would also fail (missing send):\n# class Broken(Notification):\n#     def get_channel(self):\n#         return 'Broken'\n# Broken()  # TypeError!",
+    "exampleCode": "# 🧠 Advanced Abstraction Patterns\n\n# Abstract class with state\nclass Repository(ABC):\n    def __init__(self, connection_string):\n        self._conn = connection_string\n\n    @abstractmethod\n    def save(self, entity):\n        pass\n\n    @abstractmethod\n    def find_by_id(self, id):\n        pass\n\n    def save_and_return(self, entity):\n        self.save(entity)\n        return self.find_by_id(entity['id'])\n\nclass InMemoryRepo(Repository):\n    def __init__(self):\n        super().__init__('memory://')\n        self._store = {}\n\n    def save(self, entity):\n        self._store[entity['id']] = entity\n\n    def find_by_id(self, id):\n        return self._store.get(id)\n\nrepo = InMemoryRepo()\nresult = repo.save_and_return({'id': 1, 'name': 'Test'})\nprint(result)  # {'id': 1, 'name': 'Test'}\n\n# Registering virtual subclasses\nfrom abc import ABC\n\nclass Plugin(ABC):\n    @classmethod\n    def __subclasshook__(cls, C):\n        if cls is Plugin:\n            if any('run' in B.__dict__ for B in C.__mro__):\n                return True\n        return NotImplemented\n\nclass MyPlugin:\n    def run(self):\n        print('Running!')\n\nprint(issubclass(MyPlugin, Plugin))  # True! (structural)\nprint(isinstance(MyPlugin(), Plugin)) # True!",
     "tests": [
-      { "id": "t1", "description": "Should define Vehicle class with private #speed", "check": "code => /class\\s+Vehicle/.test(code) && /#speed/.test(code)" },
-      { "id": "t2", "description": "Should define ElectricCar extending Vehicle", "check": "code => /class\\s+ElectricCar\\s+extends\\s+Vehicle/.test(code)" },
-      { "id": "t3", "description": "Should call super() in ElectricCar constructor", "check": "code => /super\\s*\\(/.test(code)" },
-      { "id": "t4", "description": "Should have private #battery in ElectricCar", "check": "code => /#battery/.test(code)" },
-      { "id": "t5", "description": "Should override info() and call super.info()", "check": "code => /super\\.info\\s*\\(\\s*\\)/.test(code)" },
-      { "id": "t6", "description": "Should create an ElectricCar instance and call methods", "check": "code => /new\\s+ElectricCar/.test(code) && /\\.info\\s*\\(\\s*\\)/.test(code)" }
+      { "id": "t1", "description": "Should import ABC and abstractmethod", "check": "code => /from\\s+abc\\s+import/.test(code)" },
+      { "id": "t2", "description": "Notification should inherit from ABC", "check": "code => /class\\s+Notification\\s*\\(\\s*ABC\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "Should have two @abstractmethod decorated methods", "check": "code => (code.match(/@abstractmethod/g) || []).length >= 2" },
+      { "id": "t4", "description": "notify() should call self.get_channel()", "check": "code => /self\\.get_channel\\s*\\(\\s*\\)/.test(code)" },
+      { "id": "t5", "description": "notify() should call self.send(message)", "check": "code => /self\\.send\\s*\\(\\s*message\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "Should create both Email and SMS notification", "check": "code => /class\\s+EmailNotification/.test(code) && /class\\s+SMSNotification/.test(code)" }
     ]
   },
   {
     "id": "35",
-    "slug": "prototype-system",
-    "title": "Prototype System",
-    "icon": "Link2",
-    "overview": "Deconstruct Javascript's native system of object link chains.",
-    "explanation": "## The Prototype Chain\n\nEvery JavaScript object has an internal `[[Prototype]]` link to another object. When you access a property, JS first looks on the object itself, then its prototype, then the prototype's prototype, and so on until it reaches `null`.\n\n```js\nconst arr = [1, 2, 3];\narr.push(4); // 'push' is NOT on arr — it's on Array.prototype\narr.toString(); // 'toString' is on Object.prototype\narr.fakeMethod; // undefined — reached null, not found\n```\n\n**Chain:** `arr → Array.prototype → Object.prototype → null`\n\n## __proto__ vs prototype\n\nThese are the two most confusing concepts in JavaScript:\n\n- **`Function.prototype`**: A property on constructor functions. It's the object that will be used as the prototype for instances created by `new`.\n- **`__proto__`**: A getter/setter on ALL objects. It exposes the `[[Prototype]]` link. `obj.__proto__ === ConstructorFunction.prototype`.\n\n```js\nfunction Person(name) { this.name = name; }\nPerson.prototype.greet = function() { return `Hi, I'm ${this.name}`; };\n\nconst ali = new Person('Ali');\nconsole.log(ali.__proto__ === Person.prototype); // true\nconsole.log(ali.greet()); // 'Hi, I'm Ali'\n```\n\n**Key distinction:**\n- `Person.prototype` exists on the **constructor function**.\n- `ali.__proto__` exists on the **instance**. They point to the same object.\n- Regular objects don't have `.prototype` — only functions do.\n\n## Prototypal Inheritance\n\nObjects can share methods through the prototype chain without duplicating them:\n\n```js\nconst animal = {\n  speak() { console.log(`${this.name} speaks`); }\n};\n\nconst dog = Object.create(animal);\ndog.name = 'Rex';\ndog.speak(); // 'Rex speaks' — found via prototype chain\n```\n\n**`Object.create(proto)`** creates a new object with `proto` as its `[[Prototype]]`.\n\n## hasOwnProperty\n\nSince prototype properties are accessible as if they're own properties, use `hasOwnProperty` to check:\n\n```js\nali.hasOwnProperty('name');  // true — own property\nali.hasOwnProperty('greet'); // false — from prototype\n```\n\nOr use `Object.hasOwn(ali, 'name')` (ES2022, safer for objects that override it).\n\n## Performance Tip\n\nPutting methods on the prototype (instead of inside the constructor) means one copy is shared across all instances — not one copy per instance.",
+    "slug": "python-magic-dunder-methods",
+    "title": "Magic / Dunder Methods",
+    "icon": "Sparkles",
+    "overview": "Override Python's special double-underscore methods to integrate custom classes with built-in operations.",
+    "explanation": "## __str__ & __repr__\n\n```python\nclass Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __str__(self):\n        return f'Point({self.x}, {self.y})'\n\n    def __repr__(self):\n        return f'Point(x={self.x}, y={self.y})'\n\np = Point(3, 4)\nprint(str(p))   # Point(3, 4) — for users\nprint(repr(p))  # Point(x=3, y=4) — for developers\nprint(p)        # Point(3, 4) — print uses __str__\n```\n\n## __len__ & __getitem__\n\n```python\nclass Squares:\n    def __init__(self, n):\n        self.n = n\n\n    def __len__(self):\n        return self.n\n\n    def __getitem__(self, index):\n        if index < 0 or index >= self.n:\n            raise IndexError('out of range')\n        return index ** 2\n\nsq = Squares(5)\nprint(len(sq))   # 5\nprint(sq[0])     # 0\nprint(sq[3])     # 9\nfor s in sq:     # Works because __getitem__ + __len__ = iterable!\n    print(s, end=' ')  # 0 1 4 9 16\n```\n\n## __add__ & __eq__\n\n```python\nclass Vector:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __add__(self, other):\n        return Vector(self.x + other.x, self.y + other.y)\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __repr__(self):\n        return f'Vector({self.x}, {self.y})'\n\nv1 = Vector(1, 2)\nv2 = Vector(3, 4)\nprint(v1 + v2)    # Vector(4, 6)\nprint(v1 == v2)   # False\nprint(Vector(1,2) == Vector(1,2))  # True\n```\n\n## __call__\n\n```python\nclass Multiplier:\n    def __init__(self, factor):\n        self.factor = factor\n\n    def __call__(self, x):\n        return x * self.factor\n\ndouble = Multiplier(2)\ntriple = Multiplier(3)\nprint(double(5))  # 10\nprint(triple(5))  # 15\n```\n\n## __iter__ & __next__\n\n```python\nclass Countdown:\n    def __init__(self, start):\n        self.current = start\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.current <= 0:\n            raise StopIteration\n        self.current -= 1\n        return self.current + 1\n\nfor n in Countdown(3):\n    print(n, end=' ')  # 3 2 1\n```\n\n## __enter__ & __exit__\n\n```python\nclass Timer:\n    def __enter__(self):\n        import time\n        self.start = time.time()\n        return self\n\n    def __exit__(self, *args):\n        import time\n        print(f'Elapsed: {time.time() - self.start:.4f}s')\n\nwith Timer():\n    sum(range(1000000))\n# Elapsed: 0.0312s\n```",
     "keyRules": [
-      "Every object has a [[Prototype]] link forming a chain ending at null",
-      "prototype is a property on constructor functions; __proto__ is on instances",
-      "obj.__proto__ === ConstructorFunction.prototype is always true for instances",
-      "Methods on prototype are shared — one copy for all instances, not duplicated",
-      "Use hasOwnProperty to distinguish own vs inherited properties"
+      "__str__ is for end users (readable), __repr__ is for developers (unambiguous, ideally eval-able)",
+      "__len__ + __getitem__ automatically makes your class iterable by for loops",
+      "Arithmetic dunder methods (__add__, __sub__, etc.) should return NEW objects, not modify self",
+      "__call__ makes instances behave like functions — useful for stateful callables",
+      "__enter__ and __exit__ enable 'with' statement support for resource management",
+      "Always return NotImplemented (not raise) from dunder methods when the operation isn't supported for the other type"
     ],
-    "task": "Create a constructor function `Hero(name)` that sets `this.name = name`. Add a `levelUp()` method to `Hero.prototype` that increments `this.level` (initialized to 1 in constructor). Create two heroes, call `levelUp()` on both, then prove the `levelUp` method is shared (not duplicated) by checking `hero1.levelUp === hero2.levelUp`. Also prove `levelUp` is NOT an own property using `hasOwnProperty`.",
-    "hint": "Set `this.level = 1` in constructor. Add `Hero.prototype.levelUp = function() { this.level++; };`. Check method sharing with strict equality. Use `hero1.hasOwnProperty('levelUp')`.",
+    "task": "Create a `Fraction` class with `__init__(self, num, den)` that stores numerator and denominator. Implement `__str__` (as 'num/den'), `__repr__`, `__add__` (returns new Fraction with common denominator), `__eq__` (cross-multiply), `__lt__` (cross-multiply), and `__bool__` (False if num is 0). Demonstrate: `f1 = Fraction(1, 3)`, `f2 = Fraction(2, 6)`, print them, add them, compare them, check equality.",
+    "hint": "For __add__: common_den = self.den * other.den, new_num = self.num * other.den + other.num * self.den. For __eq__: self.num * other.den == other.num * self.den.",
     "learnings": [
-      { "title": "Prototype Chain", "desc": "Tracking properties up through chained structural fallbacks." },
-      { "title": "__proto__ vs prototype", "desc": "Differentiating functional blueprint definitions from individual active pointers." },
-      { "title": "Prototypal Inheritance", "desc": "Sharing shared parent methods across children arrays without duplicate storage allocations." }
+      { "title": "__init__ & __new__", "desc": "Controlling object initialization and actual memory allocation during creation." },
+      { "title": "__str__ & __repr__", "desc": "Defining human-readable and developer-focused string representations of objects." },
+      { "title": "__len__ & __getitem__", "desc": "Enabling len() function support and square-bracket indexing on custom objects." },
+      { "title": "__add__ & __sub__", "desc": "Overloading arithmetic operators (+, -, *, /) for custom class instances." },
+      { "title": "__eq__ & __lt__", "desc": "Implementing equality and comparison operators for custom sorting and matching." },
+      { "title": "__call__", "desc": "Making instances callable like functions by implementing the __call__ method." },
+      { "title": "__iter__ & __next__", "desc": "Turning custom objects into iterable sequences compatible with for loops." },
+      { "title": "__enter__ & __exit__", "desc": "Enabling context manager protocol for use with the 'with' statement." }
     ],
-    "starterCode": "// Task: Prototypes & Shared Methods\n\n// 1. Create Hero constructor function\n//    Set this.name and this.level = 1\n\n// 2. Add levelUp() to Hero.prototype\n//    It should increment this.level\n\n// 3. Create two Hero instances\n\n// 4. Call levelUp() on both heroes\n\n// 5. Prove levelUp is shared (same reference)\n\n// 6. Prove levelUp is NOT an own property",
-    "solutionCode": "// Task: Prototypes & Shared Methods\n\n// 1. Hero constructor\nfunction Hero(name) {\n  this.name = name;\n  this.level = 1;\n}\n\n// 2. Add levelUp to prototype\nHero.prototype.levelUp = function() {\n  this.level++;\n};\n\n// 3. Create two instances\nconst hero1 = new Hero('Warrior');\nconst hero2 = new Hero('Mage');\n\n// 4. Call levelUp on both\nhero1.levelUp();\nhero1.levelUp();\nhero2.levelUp();\n\nconsole.log(hero1.level); // 3\nconsole.log(hero2.level); // 2\n\n// 5. Prove levelUp is shared (same reference)\nconsole.log(hero1.levelUp === hero2.levelUp); // true\n\n// 6. Prove levelUp is NOT an own property\nconsole.log(hero1.hasOwnProperty('levelUp')); // false\nconsole.log(hero1.hasOwnProperty('name'));    // true\nconsole.log(hero1.hasOwnProperty('level'));   // true\n\n// Bonus: Verify the prototype chain\nconsole.log(hero1.__proto__ === Hero.prototype);        // true\nconsole.log(Hero.prototype.__proto__ === Object.prototype); // true\nconsole.log(Object.prototype.__proto__);                    // null",
-    "exampleCode": "// 🧠 Prototype Deep Dive\n\n// Object.create — clean prototypal inheritance\nconst vehicle = {\n  type: 'vehicle',\n  describe() { return `${this.name} is a ${this.type}`; }\n};\n\nconst car = Object.create(vehicle);\ncar.name = 'Toyota';\ncar.type = 'car';\nconsole.log(car.describe()); // 'Toyota is a car'\nconsole.log(car.__proto__ === vehicle); // true\n\n// Prototype chain lookup\nfunction A() {}\nfunction B() {}\nB.prototype = Object.create(A.prototype);\nB.prototype.constructor = B; // fix constructor reference\n\nconst b = new B();\nconsole.log(b instanceof B); // true\nconsole.log(b instanceof A); // true\n\n// Modifying built-in prototypes (⚠️ discouraged in production)\nArray.prototype.last = function() {\n  return this[this.length - 1];\n};\n[10, 20, 30].last(); // 30\n\n// Object.hasOwn (ES2022 — safer than hasOwnProperty)\nconst obj = Object.create({ inherited: true });\nobj.own = true;\nconsole.log(Object.hasOwn(obj, 'own'));       // true\nconsole.log(Object.hasOwn(obj, 'inherited')); // false\n\n// Getting all own properties\nconsole.log(Object.keys(obj));        // ['own']\nconsole.log(Object.getOwnPropertyNames(obj)); // ['own']",
+    "starterCode": "# Task: Magic / Dunder Methods\n\n# 1. Create Fraction class\n#    __init__(self, num, den)\n\n# 2. Implement __str__, __repr__\n\n# 3. Implement __add__ (common denominator)\n\n# 4. Implement __eq__ and __lt__ (cross-multiply)\n\n# 5. Implement __bool__ (False if num == 0)\n\n# 6. Demonstrate all operations",
+    "solutionCode": "# Task: Magic / Dunder Methods\n\nclass Fraction:\n    def __init__(self, num, den):\n        self.num = num\n        self.den = den\n\n    def __str__(self):\n        return f'{self.num}/{self.den}'\n\n    def __repr__(self):\n        return f'Fraction({self.num}, {self.den})'\n\n    def __add__(self, other):\n        new_num = self.num * other.den + other.num * self.den\n        new_den = self.den * other.den\n        return Fraction(new_num, new_den)\n\n    def __eq__(self, other):\n        return self.num * other.den == other.num * self.den\n\n    def __lt__(self, other):\n        return self.num * other.den < other.num * self.den\n\n    def __bool__(self):\n        return self.num != 0\n\n# Demonstrate\nf1 = Fraction(1, 3)\nf2 = Fraction(2, 6)\nf3 = Fraction(1, 4)\n\nprint(f'f1: {f1}')         # 1/3\nprint(f'f2: {f2}')         # 2/6\nprint(f'repr(f1): {repr(f1)}')  # Fraction(1, 3)\n\nprint(f'\\nf1 + f3 = {f1 + f3}')  # 7/12\n\nprint(f'\\nf1 == f2: {f1 == f2}')  # True\nprint(f'f1 < f3: {f1 < f3}')      # False\n\nprint(f'\\nbool(f1): {bool(f1)}')  # True\nprint(f'bool(Fraction(0, 1)): {bool(Fraction(0, 1))}')  # False\n\n# Sorting works because __lt__ is defined\nfractions = [Fraction(1, 2), Fraction(1, 3), Fraction(2, 3)]\nprint(f'\\nSorted: {sorted(fractions)}')",
+    "exampleCode": "# 🧠 Advanced Dunder Methods\n\n# __new__ vs __init__\nclass Singleton:\n    _instance = None\n\n    def __new__(cls):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n\ns1 = Singleton()\ns2 = Singleton()\nprint(s1 is s2)  # True\n\n# Reverse arithmetic (__radd__)\nclass Number:\n    def __init__(self, val):\n        self.val = val\n    def __add__(self, other):\n        return Number(self.val + other.val)\n    def __radd__(self, other):\n        return Number(other + self.val)  # other is NOT a Number\n    def __repr__(self):\n        return f'Number({self.val})'\n\nn = Number(10)\nprint(n + Number(5))  # Number(15)\nprint(5 + n)          # Number(15) — __radd__ called!\n\n# __contains__ for 'in' operator\nclass Deck:\n    def __init__(self):\n        self.cards = ['A', 'K', 'Q', 'J']\n    def __contains__(self, card):\n        return card in self.cards\n\nd = Deck()\nprint('A' in d)  # True\nprint('2' in d)  # False\n\n# __hash__ for using in sets/dicts\nclass Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n    def __hash__(self):\n        return hash((self.x, self.y))\n\npoints = {Point(0,0), Point(1,1), Point(0,0)}\nprint(len(points))  # 2 (duplicate eliminated)",
     "tests": [
-      { "id": "t1", "description": "Should create Hero constructor function", "check": "code => /function\\s+Hero\\s*\\(/.test(code)" },
-      { "id": "t2", "description": "Should set this.level = 1 in constructor", "check": "code => /this\\.level\\s*=\\s*1/.test(code)" },
-      { "id": "t3", "description": "Should add method to Hero.prototype", "check": "code => /Hero\\.prototype\\.levelUp\\s*=/.test(code)" },
-      { "id": "t4", "description": "Should create at least 2 instances", "check": "code => (code.match(/new\\s+Hero/g) || []).length >= 2" },
-      { "id": "t5", "description": "Should prove method is shared with === check", "check": "code => /levelUp\\s*===\\s*.*levelUp/.test(code)" },
-      { "id": "t6", "description": "Should use hasOwnProperty", "check": "code => /hasOwnProperty\\s*\\(\\s*['\"]levelUp['\"]/.test(code)" }
+      { "id": "t1", "description": "Should define Fraction class with num and den", "check": "code => /class\\s+Fraction.*:\\n.*def\\s+__init__\\s*\\(\\s*self\\s*,\\s*num\\s*,\\s*den\\s*\\)/.test(code)" },
+      { "id": "t2", "description": "Should implement __str__ returning num/den format", "check": "code => /def\\s+__str__.*return.*f['\"].*num.*den/.test(code)" },
+      { "id": "t3", "description": "Should implement __add__ returning new Fraction", "check": "code => /def\\s+__add__.*return\\s+Fraction/.test(code)" },
+      { "id": "t4", "description": "Should implement __eq__ with cross-multiplication", "check": "code => /def\\s+__eq__.*self\\.num\\s*\\*\\s*other\\.den/.test(code)" },
+      { "id": "t5", "description": "Should implement __lt__", "check": "code => /def\\s+__lt__/.test(code)" },
+      { "id": "t6", "description": "Should implement __bool__ checking num != 0", "check": "code => /def\\s+__bool__.*self\\.num\\s*!=\\s*0/.test(code)" }
     ]
   },
   {
     "id": "36",
-    "slug": "modules-integration",
-    "title": "Modules Integration",
-    "icon": "Package",
-    "showInApp": false,
-    "overview": "Partition workspace scripts using professional import and export definitions.",
-    "explanation": "## ES Modules (ESM)\n\nES Modules are the official standard for JavaScript modules, supported in browsers (via `<script type=\"module\">`) and Node.js.\n\n**Named Exports:**\n```js\n// math.js\nexport const PI = 3.14;\nexport function add(a, b) { return a + b; }\nexport default class Calculator { ... }\n```\n\n**Named Imports:**\n```js\n// app.js\nimport { PI, add } from './math.js';\nimport Calculator from './math.js'; // default import\nimport Calculator, { PI, add } from './math.js'; // combined\n```\n\n**Renaming imports/exports:**\n```js\nimport { add as sum } from './math.js';\nexport { add as sum, PI };\n```\n\n**Namespace import:**\n```js\nimport * as math from './math.js';\nmath.add(2, 3);\nmath.PI;\n```\n\n**Key ESM characteristics:**\n- **Static:** Imports are resolved at parse time (not runtime). You can't conditionally import.\n- **Strict mode:** All ESM code runs in strict mode automatically.\n- **Live bindings:** If the exporting module changes a value, the importing module sees the updated value.\n- **Single copy:** A module is only executed once, no matter how many times it's imported.\n- **`this` is `undefined`** at the top level (not `window`).\n\n## CommonJS (CJS)\n\nCommonJS is Node.js's original module system, still widely used in Node.js ecosystems.\n\n```js\n// math.js\nconst PI = 3.14;\nfunction add(a, b) { return a + b; }\nmodule.exports = { PI, add };\n// OR: exports.PI = PI;\n// OR: module.exports = add; // single export\n```\n\n```js\n// app.js\nconst { PI, add } = require('./math');\nconst math = require('./math');\n```\n\n**Key CJS characteristics:**\n- **Dynamic:** `require()` is a function call — can be used conditionally.\n- **Copied values:** Exports are copied, not live bindings.\n- **`this` is `module.exports`** (or `{}`) at the top level.\n- **Synchronous:** `require()` blocks until the module loads.\n\n## ESM vs CJS Comparison\n\n| Feature | ESM | CJS |\n|---|---|---|\n| Syntax | `import/export` | `require/module.exports` |\n| Resolution | Static (parse time) | Dynamic (runtime) |\n| Strict mode | Always | Optional |\n| Live bindings | Yes | No (copies) |\n| Top-level await | Yes | No |\n| Tree shaking | Possible | Not possible |\n| Conditional import | No (use dynamic import()) | Yes (`if (x) require()`) |\n\n## Dynamic Import\n\nESM supports runtime conditional imports via `import()`:\n```js\nif (user.isAdmin) {\n  const admin = await import('./admin.js');\n  admin.renderDashboard();\n}\n```\nReturns a Promise — works in both ESM and CJS contexts.",
+    "slug": "python-property-decorators",
+    "title": "Property Decorators",
+    "icon": "ToggleRight",
+    "overview": "Replace explicit getter/setter methods with Pythonic @property syntax for controlled attribute access.",
+    "explanation": "## @property Decorator\n\n```python\nclass Circle:\n    def __init__(self, radius):\n        self._radius = radius\n\n    @property\n    def radius(self):\n        \"\"\"Get the radius\"\"\"\n        return self._radius\n\nc = Circle(5)\nprint(c.radius)  # 5 (no parentheses!)\n# c.radius = 10  # AttributeError! No setter defined\n```\n\n## @setter Decorator\n\n```python\nclass Temperature:\n    def __init__(self, celsius=0):\n        self._celsius = celsius\n\n    @property\n    def celsius(self):\n        return self._celsius\n\n    @celsius.setter\n    def celsius(self, value):\n        if value < -273.15:\n            raise ValueError('Below absolute zero!')\n        self._celsius = value\n\n    @property\n    def fahrenheit(self):\n        return self._celsius * 9/5 + 32\n\n    @fahrenheit.setter\n    def fahrenheit(self, value):\n        self.celsius = (value - 32) * 5/9  # Reuses celsius setter!\n\nt = Temperature(100)\nprint(t.fahrenheit)   # 212.0\nt.fahrenheit = 32     # Uses fahrenheit setter\nprint(t.celsius)      # 0.0\n# t.celsius = -300    # ValueError!\n```\n\n## @deleter Decorator\n\n```python\nclass File:\n    def __init__(self, name):\n        self._name = name\n        self._loaded = True\n\n    @property\n    def name(self):\n        if not self._loaded:\n            raise RuntimeError('File has been deleted')\n        return self._name\n\n    @name.deleter\n    def name(self):\n        print(f'Deleting {self._name}...')\n        self._loaded = False\n\nf = File('data.txt')\nprint(f.name)    # 'data.txt'\ndel f.name       # 'Deleting data.txt...'\n# print(f.name)  # RuntimeError!\n```\n\n## Computed Properties\n\n```python\nclass Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    @property\n    def area(self):\n        return self.width * self.height\n\n    @property\n    def perimeter(self):\n        return 2 * (self.width + self.height)\n\n    @property\n    def is_square(self):\n        return self.width == self.height\n\nr = Rectangle(4, 5)\nprint(r.area)       # 20 (no parentheses!)\nprint(r.is_square)  # False\n```\n\n## Read-Only Properties\n\n```python\nclass User:\n    def __init__(self, first, last):\n        self.first = first\n        self.last = last\n\n    @property\n    def full_name(self):\n        return f'{self.first} {self.last}'\n\n    # No setter — read-only!\n\nu = User('John', 'Doe')\nprint(u.full_name)     # 'John Doe'\n# u.full_name = 'X'    # AttributeError!\n```",
     "keyRules": [
-      "ESM imports are static and resolved at parse time — no conditional imports",
-      "CommonJS require() is dynamic and synchronous — can be used conditionally",
-      "ESM has live bindings; CJS copies values at export time",
-      "Use default export for the main thing, named exports for everything else",
-      "Use dynamic import() for code splitting and lazy loading"
+      "@property turns a method into an attribute accessor — call it WITHOUT parentheses",
+      "@setter must use the SAME name as the property it decorates: @property_name.setter",
+      "Properties let you add validation LATER without changing the public API — backward compatible",
+      "Computed properties recalculate every time they're accessed — cache if expensive",
+      "Read-only properties have @property but NO @setter — assignment raises AttributeError",
+      "Use @deleter for cleanup logic when `del obj.attr` is called"
     ],
-    "task": "You're given two files conceptually. Write `utils.js` exports: a named export `clamp(value, min, max)` that constrains a number, a named export `MAX_SIZE = 100`, and a default export function `identity(x)` that returns x. Then write `app.js` that imports all three — the default without braces, the named ones with braces — and logs `clamp(150, 0, MAX_SIZE)` and `identity('hello')`.",
-    "hint": "In utils: `export const MAX_SIZE = 100;`, `export function clamp(...) {...}`, `export default function identity(x) {...}`. In app: `import identity, { clamp, MAX_SIZE } from './utils.js'`.",
+    "task": "Create a `Product` class with `__init__(self, name, price, discount_percent)`. Store price as `self._price` and discount as `self._discount`. Create: `@property price` (getter), `@price.setter` (validates price > 0), `@property discount` (getter), `@discount.setter` (validates 0-100), `@property final_price` (computed: price * (1 - discount/100), read-only). Demonstrate valid/invalid assignments and computed final_price.",
+    "hint": "final_price has @property but no @setter. discount setter: `if not 0 <= value <= 100: raise ValueError`.",
     "learnings": [
-      { "title": "ES Modules (ESM)", "desc": "Utilizing modern static import and export commands across applications." },
-      { "title": "CommonJS (CJS)", "desc": "Managing classic runtime module actions through require() and module.exports." }
+      { "title": "@property decorator", "desc": "Converting a method into a read-only attribute accessor without parentheses." },
+      { "title": "@setter decorator", "desc": "Defining write operations on a property with validation logic before assignment." },
+      { "title": "@deleter decorator", "desc": "Specifying cleanup actions when a property attribute is deleted using del." },
+      { "title": "Computed properties", "desc": "Creating dynamically calculated attributes that derive values from other internal state." },
+      { "title": "Read-only properties", "desc": "Defining properties with no setter to create immutable computed attributes." }
     ],
-    "starterCode": "// === utils.js ===\n// 1. Named export: MAX_SIZE = 100\n\n// 2. Named export: clamp(value, min, max) function\n\n// 3. Default export: identity(x) function\n\n\n// === app.js ===\n// 4. Import default and named exports\n\n// 5. Log clamp(150, 0, MAX_SIZE)\n\n// 6. Log identity('hello')",
-    "solutionCode": "// === utils.js ===\n\n// 1. Named export: MAX_SIZE\nexport const MAX_SIZE = 100;\n\n// 2. Named export: clamp function\nexport function clamp(value, min, max) {\n  return Math.min(Math.max(value, min), max);\n}\n\n// 3. Default export: identity function\nexport default function identity(x) {\n  return x;\n}\n\n\n// === app.js ===\n\n// 4. Import default (no braces) and named (with braces)\nimport identity, { clamp, MAX_SIZE } from './utils.js';\n\n// 5. Log clamped value\nconsole.log(clamp(150, 0, MAX_SIZE)); // 100\n\n// 6. Log identity result\nconsole.log(identity('hello')); // 'hello'",
-    "exampleCode": "// 🧠 Advanced Module Patterns\n\n// Re-exporting (barrel files)\n// index.js\nexport { User } from './User.js';\nexport { Post } from './Post.js';\nexport { Comment } from './Comment.js';\n\n// Now consumers can do:\n// import { User, Post, Comment } from './index.js';\n\n// Renaming on export\nexport { fetchUsers as getUsers } from './api.js';\n\n// Namespace re-export\nexport * as Utils from './utils.js';\n\n// Dynamic import for code splitting\nasync function loadChart() {\n  const { Chart } = await import('./chart.js');\n  new Chart(canvas, config);\n}\n\nbutton.addEventListener('click', loadChart);\n\n// CommonJS equivalents\n// --- utils.js (CJS) ---\nconst MAX_SIZE = 100;\nfunction clamp(value, min, max) {\n  return Math.min(Math.max(value, min), max);\n}\nfunction identity(x) { return x; }\nmodule.exports = { MAX_SIZE, clamp, identity };\n// OR: module.exports = { MAX_SIZE, clamp, default: identity };\n\n// --- app.js (CJS) ---\nconst { MAX_SIZE, clamp, default: identity } = require('./utils');\nconsole.log(clamp(150, 0, MAX_SIZE));\n\n// Detecting module system\nif (typeof module !== 'undefined' && module.exports) {\n  module.exports = { myFunc };\n} else {\n  export { myFunc };\n}",
+    "starterCode": "# Task: Property Decorators\n\n# 1. Create Product class\n#    _price and _discount stored internally\n\n# 2. @property price + @price.setter (validate > 0)\n\n# 3. @property discount + @discount.setter (validate 0-100)\n\n# 4. @property final_price (computed, read-only)\n\n# 5. Demonstrate all features",
+    "solutionCode": "# Task: Property Decorators\n\nclass Product:\n    def __init__(self, name, price, discount_percent):\n        self.name = name\n        self._price = price\n        self._discount = discount_percent\n\n    @property\n    def price(self):\n        return self._price\n\n    @price.setter\n    def price(self, value):\n        if value <= 0:\n            raise ValueError('Price must be positive')\n        self._price = value\n\n    @property\n    def discount(self):\n        return self._discount\n\n    @discount.setter\n    def discount(self, value):\n        if not 0 <= value <= 100:\n            raise ValueError('Discount must be 0-100')\n        self._discount = value\n\n    @property\n    def final_price(self):\n        return self._price * (1 - self._discount / 100)\n\n# Demonstrate\np = Product('Laptop', 1000, 10)\nprint(f'{p.name}: ${p.price}')\nprint(f'Discount: {p.discount}%')\nprint(f'Final Price: ${p.final_price:.2f}')\n\n# Update price\np.price = 800\nprint(f'\\nNew Price: ${p.price}')\nprint(f'Final Price: ${p.final_price:.2f}')\n\n# Update discount\np.discount = 25\nprint(f'New Discount: {p.discount}%')\nprint(f'Final Price: ${p.final_price:.2f}')\n\n# Invalid price\ntry:\n    p.price = -50\nexcept ValueError as e:\n    print(f'\\nError: {e}')\n\n# Invalid discount\ntry:\n    p.discount = 150\nexcept ValueError as e:\n    print(f'Error: {e}')\n\n# Read-only final_price\ntry:\n    p.final_price = 100\nexcept AttributeError as e:\n    print(f'Error: {e}')",
+    "exampleCode": "# 🧠 Advanced Property Patterns\n\n# Cached property (Python 3.8+)\nfrom functools import cached_property\n\nclass HeavyComputation:\n    def __init__(self, n):\n        self.n = n\n\n    @cached_property\n    def result(self):\n        print('Computing...')\n        return sum(range(self.n))\n\nh = HeavyComputation(1000000)\nprint(h.result)  # Computing... then value\nprint(h.result)  # Cached! No 'Computing...'\n\n# Property with docstrings\nclass Config:\n    @property\n    def timeout(self):\n        \"\"\"Get request timeout in seconds (default: 30).\"\"\"\n        return self._timeout\n\n    @timeout.setter\n    def timeout(self, value):\n        \"\"\"Set request timeout. Must be positive.\"\"\"\n        if value <= 0:\n            raise ValueError('Timeout must be positive')\n        self._timeout = value\n\nprint(Config.timeout.__doc__)  # The docstring!\n\n# Property overriding inherited attribute\nclass Base:\n    def __init__(self):\n        self._value = 10\n\nclass Derived(Base):\n    @property\n    def value(self):\n        return self._value * 2\n\nd = Derived()\nprint(d.value)  # 20",
     "tests": [
-      { "id": "t1", "description": "Should use named export for MAX_SIZE", "check": "code => /export\\s+const\\s+MAX_SIZE/.test(code)" },
-      { "id": "t2", "description": "Should use named export for clamp", "check": "code => /export\\s+function\\s+clamp/.test(code)" },
-      { "id": "t3", "description": "Should use default export for identity", "check": "code => /export\\s+default\\s+function\\s+identity/.test(code)" },
-      { "id": "t4", "description": "Should import default without braces", "check": "code => /import\\s+identity\\s*,/.test(code)" },
-      { "id": "t5", "description": "Should import named exports with braces", "check": "code => /\\{\\s*clamp\\s*,\\s*MAX_SIZE\\s*\\}/.test(code)" },
-      { "id": "t6", "description": "Should use clamp with MAX_SIZE", "check": "code => /clamp\\s*\\(\\s*150\\s*,\\s*0\\s*,\\s*MAX_SIZE/.test(code)" }
+      { "id": "t1", "description": "Should define Product class with _price and _discount", "check": "code => /self\\._price\\s*=/.test(code) && /self\\._discount\\s*=/.test(code)" },
+      { "id": "t2", "description": "Should have @property price", "check": "code => /@property\\s*\\n\\s*def\\s+price/.test(code)" },
+      { "id": "t3", "description": "Should have @price.setter with validation", "check": "code => /@price\\.setter\\s*\\n\\s*def\\s+price.*value\\s*<=\\s*0/.test(code)" },
+      { "id": "t4", "description": "Should have @discount.setter validating 0-100", "check": "code => /@discount\\.setter.*0\\s*<=\\s*value\\s*<=\\s*100/.test(code)" },
+      { "id": "t5", "description": "Should have @property final_price (computed)", "check": "code => /@property\\s*\\n\\s*def\\s+final_price.*\\(\\s*1\\s*-\\s*self\\._discount\\s*\\/\\s*100\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate read-only error on final_price", "check": "code => /p\\.final_price\\s*=/.test(code)" }
     ]
   },
   {
     "id": "37",
-    "slug": "error-handling-diagnostics",
-    "title": "Error Handling & Diagnostics",
-    "icon": "AlertTriangle",
-    "overview": "Protect production workloads against unexpected application failures.",
-    "explanation": "## try / catch / finally\n\nThe `try/catch/finally` statement handles runtime errors gracefully:\n\n```js\ntry {\n  // Code that might throw\n  const data = JSON.parse(invalidJSON);\n} catch (error) {\n  // Handle the error\n  console.error(error.name);    // 'SyntaxError'\n  console.error(error.message); // 'Unexpected token...'\n  console.error(error.stack);   // Full call stack trace\n} finally {\n  // Always runs — even if try/catch returns\n  cleanup();\n}\n```\n\n**Key rules:**\n- `catch` only catches **synchronous** errors in the `try` block.\n- `finally` runs NO MATTER WHAT — even if `try` has a `return` statement.\n- If `finally` has a `return`, it OVERRIDES the `try`/`catch` return value.\n\n## try/catch Does NOT Catch Async Errors\n\n```js\ntry {\n  fetch('/api/data')          // This doesn't throw\n    .then(r => r.json())      // This might throw — but NOT caught here!\n    .catch(err => ...);       // This catches it\n} catch (err) {\n  // ❌ This never catches Promise rejections\n}\n```\n\n**Fix:** Use `async/await` with `try/catch`:\n```js\ntry {\n  const res = await fetch('/api/data');\n  const data = await res.json(); // ✅ Now catchable\n} catch (err) {\n  console.error(err); // ✅ Catches it\n}\n```\n\n## Custom Errors\n\nExtend the built-in `Error` class to create domain-specific errors:\n\n```js\nclass ValidationError extends Error {\n  constructor(field, message) {\n    super(message);\n    this.name = 'ValidationError';\n    this.field = field;\n  }\n}\n\nclass NotFoundError extends Error {\n  constructor(resource, id) {\n    super(`${resource} with id ${id} not found`);\n    this.name = 'NotFoundError';\n    this.statusCode = 404;\n  }\n}\n```\n\n**Why custom errors?**\n- You can `instanceof` check them: `if (err instanceof ValidationError)`\n- They carry extra context (field, statusCode)\n- They make error handling precise instead of generic.\n\n## Throwing Errors\n\n```js\nthrow new Error('Something went wrong');\nthrow new ValidationError('email', 'Invalid email format');\n```\n\n**Never throw strings:** `throw 'error'` loses the stack trace and can't be instanceof-checked.\n\n## Global Error Handlers\n\n```js\n// Uncaught synchronous errors\nwindow.onerror = (msg, url, line, col, error) => {\n  console.error('Global error:', error);\n};\n\n// Unhandled Promise rejections\nwindow.onunhandledrejection = (event) => {\n  console.error('Unhandled rejection:', event.reason);\n};\n```",
+    "slug": "python-iterators-iterator-protocol",
+    "title": "Iterators & Iterator Protocol",
+    "icon": "Workflow",
+    "overview": "Implement the iterator protocol to create custom objects that support sequential element traversal.",
+    "explanation": "## Iterator Protocol\n\n```python\nclass CountUp:\n    def __init__(self, start, end):\n        self.current = start\n        self.end = end\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.current > self.end:\n            raise StopIteration\n        value = self.current\n        self.current += 1\n        return value\n\nfor n in CountUp(1, 5):\n    print(n, end=' ')  # 1 2 3 4 5\n```\n\n## iter() and next() Built-ins\n\n```python\nclass Squares:\n    def __init__(self, n):\n        self.n = n\n        self.i = 0\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.i >= self.n:\n            raise StopIteration\n        self.i += 1\n        return (self.i - 1) ** 2\n\nsq = Squares(4)\nit = iter(sq)       # Get the iterator\nprint(next(it))      # 0\nprint(next(it))      # 1\nprint(next(it))      # 4\nprint(next(it))      # 9\n# print(next(it))    # StopIteration\n```\n\n## Iterator is Exhausted After One Pass\n\n```python\nclass MyRange:\n    def __init__(self, n):\n        self.n = n\n        self.i = 0\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.i >= self.n:\n            raise StopIteration\n        val = self.i\n        self.i += 1\n        return val\n\nr = MyRange(3)\nprint(list(r))  # [0, 1, 2]\nprint(list(r))  # [] — exhausted!\n```\n\n## Fix: Separate Iterable from Iterator\n\n```python\nclass RangeIterable:\n    def __init__(self, n):\n        self.n = n\n\n    def __iter__(self):\n        return RangeIterator(self.n)  # NEW iterator each time!\n\nclass RangeIterator:\n    def __init__(self, n):\n        self.n = n\n        self.i = 0\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.i >= self.n:\n            raise StopIteration\n        val = self.i\n        self.i += 1\n        return val\n\nr = RangeIterable(3)\nprint(list(r))  # [0, 1, 2]\nprint(list(r))  # [0, 1, 2] — works again!\n```\n\n## Custom Reverse Iterator\n\n```python\nclass Reverse:\n    def __init__(self, data):\n        self.data = data\n        self.index = len(data)\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.index <= 0:\n            raise StopIteration\n        self.index -= 1\n        return self.data[self.index]\n\nfor ch in Reverse('hello'):\n    print(ch, end='')  # olleh\n```",
     "keyRules": [
-      "try/catch only catches synchronous errors — use async/await for async errors",
-      "finally always runs, even if try has a return — its return overrides try's return",
-      "Always throw Error objects, never strings — strings lose stack traces",
-      "Extend Error class for domain-specific errors with extra context",
-      "Use window.onerror and onunhandledrejection as global safety nets"
+      "Iterator protocol requires exactly TWO methods: __iter__() returning self, and __next__() returning next value",
+      "Raise StopIteration from __next__() to signal the end — for loops handle this automatically",
+      "An iterator is EXHAUSTED after one full traversal — calling list() on it twice gives empty list second time",
+      "To make a reusable iterable, separate the iterable (__iter__ returns new iterator) from the iterator",
+      "iter(obj) calls obj.__iter__(), and next(it) calls it.__next__()",
+      "Any object with __iter__ + __next__ works with for loops, list(), tuple(), set(), sum(), and all() built-ins"
     ],
-    "task": "Create a `ValidationError` class extending `Error` that accepts `field` and `message`. Create a `validateAge(age)` function that throws `ValidationError` if age is not a number or is less than 0 or greater than 150. Write a `safeValidate(age)` function using try/catch/finally that calls `validateAge`, logs 'Validation complete' in `finally`, and returns `{ valid: true }` on success or `{ valid: false, error: err.message }` on failure.",
-    "hint": "In `ValidationError` constructor, call `super(message)` then set `this.name = 'ValidationError'` and `this.field = field`. In `safeValidate`, wrap the call in try/catch and always run finally.",
+    "task": "Create a `FibIterator` class that generates Fibonacci numbers up to a `limit` parameter. Implement the full iterator protocol. Create a `FibIterable` class whose `__iter__` returns a NEW `FibIterator` each time (so it's reusable). Demonstrate: iterating with for loop, converting to list twice (both should work), and using next() manually.",
+    "hint": "FibIterator.__init__(self, limit): set self.a=0, self.b=1, self.limit=limit. __next__: if self.a > self.limit: raise StopIteration, else save self.a, update a,b = b, a+b, return saved value.",
     "learnings": [
-      { "title": "try / catch blocks", "desc": "Isolating experimental logic inside safe, monitored runtime zones." },
-      { "title": "Custom Errors", "desc": "Extending basic Error classes to dispatch application-specific debugging logs." }
+      { "title": "Iterator protocol", "desc": "Implementing __iter__() returning self and __next__() returning successive elements." },
+      { "title": "StopIteration exception", "desc": "Signaling the end of iteration by raising StopIteration from __next__()." },
+      { "title": "iter() built-in", "desc": "Converting any iterable into an explicit iterator object using the iter() function." },
+      { "title": "next() built-in", "desc": "Manually advancing an iterator and retrieving the next value from the sequence." },
+      { "title": "Custom iterator classes", "desc": "Building classes that generate values on-demand like range, reverse, or countdown iterators." }
     ],
-    "starterCode": "// Task: Custom Errors with try/catch/finally\n\n// 1. Create ValidationError class extending Error\n//    Accept field and message, set name = 'ValidationError'\n\n// 2. Create validateAge(age) function\n//    Throw ValidationError if: not number, < 0, or > 150\n\n// 3. Create safeValidate(age) function\n//    try: call validateAge, return { valid: true }\n//    catch: return { valid: false, error: err.message }\n//    finally: log 'Validation complete'\n\n// 4. Test with valid and invalid ages",
-    "solutionCode": "// Task: Custom Errors with try/catch/finally\n\n// 1. ValidationError class\nclass ValidationError extends Error {\n  constructor(field, message) {\n    super(message);\n    this.name = 'ValidationError';\n    this.field = field;\n  }\n}\n\n// 2. validateAge function\nfunction validateAge(age) {\n  if (typeof age !== 'number' || isNaN(age)) {\n    throw new ValidationError('age', 'Age must be a number');\n  }\n  if (age < 0) {\n    throw new ValidationError('age', 'Age cannot be negative');\n  }\n  if (age > 150) {\n    throw new ValidationError('age', 'Age cannot exceed 150');\n  }\n}\n\n// 3. safeValidate function\nfunction safeValidate(age) {\n  try {\n    validateAge(age);\n    return { valid: true };\n  } catch (err) {\n    return { valid: false, error: err.message };\n  } finally {\n    console.log('Validation complete');\n  }\n}\n\n// 4. Test\nconsole.log(safeValidate(25));     // { valid: true }\nconsole.log(safeValidate(-5));     // { valid: false, error: 'Age cannot be negative' }\nconsole.log(safeValidate('abc'));  // { valid: false, error: 'Age must be a number' }\nconsole.log(safeValidate(200));    // { valid: false, error: 'Age cannot exceed 150' }\n\n// 'Validation complete' logged 4 times (finally always runs)",
-    "exampleCode": "// 🧠 Advanced Error Handling Patterns\n\n// Multiple error types with instanceof\nclass AuthError extends Error {\n  constructor(msg) { super(msg); this.name = 'AuthError'; this.status = 401; }\n}\n\nclass PermissionError extends Error {\n  constructor(msg) { super(msg); this.name = 'PermissionError'; this.status = 403; }\n}\n\nasync function adminAction() {\n  try {\n    // ... some logic that might throw\n  } catch (err) {\n    if (err instanceof AuthError) {\n      redirect('/login');\n    } else if (err instanceof PermissionError) {\n      showWarning('No access');\n    } else {\n      throw err; // re-throw unknown errors\n    }\n  }\n}\n\n// Error grouping with a base class\nclass AppError extends Error {\n  constructor(message, statusCode) {\n    super(message);\n    this.name = this.constructor.name;\n    this.statusCode = statusCode;\n  }\n}\n\nclass NotFoundError extends AppError {\n  constructor(resource) {\n    super(`${resource} not found`, 404);\n  }\n}\n\n// Retry with error handling\nasync function retry(fn, attempts = 3) {\n  for (let i = 0; i < attempts; i++) {\n    try {\n      return await fn();\n    } catch (err) {\n      if (i === attempts - 1) throw err;\n      console.warn(`Attempt ${i + 1} failed: ${err.message}`);\n    }\n  }\n}\n\n// Global safety net\nwindow.addEventListener('error', (e) => {\n  // e.error is the Error object\n  reportToService(e.error);\n});\n\nwindow.addEventListener('unhandledrejection', (e) => {\n  reportToService(e.reason);\n});",
+    "starterCode": "# Task: Iterators & Iterator Protocol\n\n# 1. Create FibIterator (single-use)\n#    __init__(self, limit)\n#    __iter__, __next__\n\n# 2. Create FibIterable (reusable)\n#    __init__(self, limit)\n#    __iter__ returns NEW FibIterator\n\n# 3. Demonstrate:\n#    - for loop over FibIterable\n#    - list() twice (both work)\n#    - Manual next() calls",
+    "solutionCode": "# Task: Iterators & Iterator Protocol\n\nclass FibIterator:\n    def __init__(self, limit):\n        self.limit = limit\n        self.a = 0\n        self.b = 1\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.a > self.limit:\n            raise StopIteration\n        value = self.a\n        self.a, self.b = self.b, self.a + self.b\n        return value\n\nclass FibIterable:\n    def __init__(self, limit):\n        self.limit = limit\n\n    def __iter__(self):\n        return FibIterator(self.limit)  # New iterator each time!\n\n# Demonstrate\nfib = FibIterable(50)\n\n# For loop\nprint('For loop:')\nfor n in fib:\n    print(n, end=' ')  # 0 1 1 2 3 5 8 13 21 34\n\n# Reusable!\nprint('\\n\\nFirst list:', list(FibIterable(30)))\nprint('Second list:', list(FibIterable(30)))\n\n# Manual next()\nprint('\\nManual next():')\nit = iter(FibIterable(20))\nprint(next(it))  # 0\nprint(next(it))  # 1\nprint(next(it))  # 1\nprint(next(it))  # 2\nprint(next(it))  # 3\n\n# Single-use iterator exhaustion demo\nprint('\\nExhaustion demo:')\nsingle = FibIterator(10)\nprint('First pass:', list(single))  # [0, 1, 1, 2, 3, 5, 8]\nprint('Second pass:', list(single))  # [] (exhausted!)",
+    "exampleCode": "# 🧠 Advanced Iterator Patterns\n\n# Iterator that yields from another iterable\nclass SkipIterator:\n    def __init__(self, iterable, skip=0):\n        self._iter = iter(iterable)\n        self.skip = skip\n        self._count = 0\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        while True:\n            value = next(self._iter)\n            self._count += 1\n            if self._count > self.skip:\n                return value\n\nprint(list(SkipIterator(range(10), skip=3)))  # [3, 4, 5, 6, 7, 8, 9]\n\n# Infinite iterator\nclass InfiniteCount:\n    def __init__(self, start=0):\n        self.current = start\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        value = self.current\n        self.current += 1\n        return value\n\nimport itertools\ncount = InfiniteCount(10)\nprint(list(itertools.islice(count, 5)))  # [10, 11, 12, 13, 14]\n\n# Chaining iterators\nclass ChainIterator:\n    def __init__(self, *iterables):\n        self.iterables = [iter(it) for it in iterables]\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        while self.iterables:\n            try:\n                return next(self.iterables[0])\n            except StopIteration:\n                self.iterables.pop(0)\n        raise StopIteration\n\nprint(list(ChainIterator([1,2], [3,4], [5])))  # [1, 2, 3, 4, 5]",
     "tests": [
-      { "id": "t1", "description": "Should define ValidationError extending Error", "check": "code => /class\\s+ValidationError\\s+extends\\s+Error/.test(code)" },
-      { "id": "t2", "description": "Should call super(message) in constructor", "check": "code => /super\\s*\\(\\s*message\\s*\\)/.test(code)" },
-      { "id": "t3", "description": "Should set this.name = 'ValidationError'", "check": "code => /this\\.name\\s*=\\s*['\"]ValidationError['\"]/.test(code)" },
-      { "id": "t4", "description": "Should throw ValidationError in validateAge", "check": "code => /throw\\s+new\\s+ValidationError/.test(code)" },
-      { "id": "t5", "description": "Should use try/catch/finally in safeValidate", "check": "code => /try\\s*\\{/.test(code) && /catch\\s*\\(/.test(code) && /finally\\s*\\{/.test(code)" },
-      { "id": "t6", "description": "Should test with both valid and invalid inputs", "check": "code => /safeValidate\\s*\\(/.test(code) && (code.match(/safeValidate\\s*\\(/g) || []).length >= 2" }
+      { "id": "t1", "description": "Should define FibIterator with __iter__ and __next__", "check": "code => /class\\s+FibIterator.*__iter__.*__next__/.test(code)" },
+      { "id": "t2", "description": "Should raise StopIteration when over limit", "check": "code => /raise\\s+StopIteration/.test(code)" },
+      { "id": "t3", "description": "Should define FibIterable class", "check": "code => /class\\s+FibIterable/.test(code)" },
+      { "id": "t4", "description": "FibIterable.__iter__ should return new FibIterator", "check": "code => /class\\s+FibIterable[\\s\\S]*?def\\s+__iter__.*return\\s+FibIterator/.test(code)" },
+      { "id": "t5", "description": "Should use next() built-in manually", "check": "code => /next\\s*\\(\\s*it\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate list() conversion", "check": "code => /list\\s*\\(.*Fib/.test(code)" }
     ]
   },
   {
     "id": "38",
-    "slug": "regular-expressions",
-    "title": "Regular Expressions",
-    "icon": "Search",
-    "overview": "Parse and validate text patterns using powerful token matching expressions.",
-    "explanation": "## What are Regular Expressions?\n\nA RegEx (Regular Expression) is a pattern-matching language for searching, replacing, and validating strings. In JavaScript, you create them with literal syntax `/pattern/flags` or the constructor `new RegExp('pattern', 'flags')`.\n\n## Core Pattern Syntax\n\n**Character Classes:**\n- `[abc]` — any single character a, b, or c\n- `[a-z]` — any lowercase letter\n- `[^abc]` — NOT a, b, or c\n- `\\d` — digit [0-9]\n- `\\w` — word character [a-zA-Z0-9_]\n- `\\s` — whitespace (space, tab, newline)\n- `.` — any character (except newline)\n\n**Quantifiers:**\n- `*` — 0 or more\n- `+` — 1 or more\n- `?` — 0 or 1 (optional)\n- `{n}` — exactly n\n- `{n,m}` — between n and m\n- `{n,}` — n or more\n\n**Anchors:**\n- `^` — start of string\n- `$` — end of string\n- `\\b` — word boundary\n\n**Groups & Alternation:**\n- `(abc)` — capture group\n- `(?:abc)` — non-capturing group\n- `a|b` — alternation (a OR b)\n- `\\1`, `\\2` — backreferences to capture groups\n\n**Escaping:** `\\.` `\\*` `\\+` `\\?` `\\$` `\\^` `\\[` `\\]` `\\(` `\\)` `\\|` `\\\\`\n\n## Flags\n\n- **`g`** — global: find all matches (not just first)\n- **`i`** — case-insensitive\n- **`m`** — multiline: `^` and `$` match per line, not whole string\n- **`s`** — dotall: `.` matches newline too\n- **`u`** — unicode: full unicode support\n\n## RegExp Methods\n\n```js\nconst regex = /\\d+/g;\n\nregex.test('abc123');     // true — does it match?\n'abc123'.match(regex);   // ['123'] — get all matches\n'abc123'.search(regex);   // 3 — index of first match\n'abc123'.replace(regex, 'X'); // 'abcX' — replace\n'abc123'.split(regex);    // ['abc', ''] — split by pattern\n```\n\n**`match` with `g` flag** returns an array of all matches. Without `g`, it returns an array with extra info (index, input, groups).\n\n**`matchAll`** (ES2020): Returns an iterator of detailed match objects, requires `g` flag:\n```js\n[...'abc123def456'.matchAll(/(\\d+)/g)]\n// [{match: '123', index: 3, groups: {1: '123'}}, ...]\n```\n\n## Named Capture Groups\n\n```js\nconst dateRegex = /(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})/;\nconst match = '2024-01-15'.match(dateRegex);\nconsole.log(match.groups.year);  // '2024'\nconsole.log(match.groups.month); // '01'\n```\n\n## Common Patterns\n\n```js\nconst email = /^[\\w.-]+@[\\w.-]+\\.\\w{2,}$/;\nconst phone = /^\\+?[\\d\\s-]{10,15}$/;\nconst url = /^https?:\\/\\/[\\w.-]+(?:\\.[\\w]{2,})(?:\\/\\S*)?$/;\nconst password = /^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%]).{8,}$/;\n```",
+    "slug": "python-generators-yield",
+    "title": "Generators & Yield",
+    "icon": "Zap",
+    "overview": "Create lazy-evaluated sequences using generator functions that pause and resume execution.",
+    "explanation": "## Generator Functions\n\n```python\ndef count_up(n):\n    i = 0\n    while i < n:\n        yield i\n        i += 1\n\nfor num in count_up(5):\n    print(num, end=' ')  # 0 1 2 3 4\n\n# Returns a generator object, NOT a list!\nprint(type(count_up(5)))  # <class 'generator'>\n```\n\n## yield vs return\n\n```python\ndef first_n(n):\n    result = []\n    for i in range(n):\n        result.append(i ** 2)\n    return result  # Returns FULL list at once\n\ndef first_n_gen(n):\n    for i in range(n):\n        yield i ** 2  # Yields ONE value at a time\n\nprint(first_n(5))       # [0, 1, 4, 9, 16]\nprint(first_n_gen(5))   # <generator object>\nprint(list(first_n_gen(5)))  # [0, 1, 4, 9, 16]\n```\n\n## Generator Expressions\n\n```python\n# List comprehension — builds entire list in memory\nsquares_list = [x**2 for x in range(1000000)]  # ~8MB\n\n# Generator expression — lazy, ~0MB\nsquares_gen = (x**2 for x in range(1000000))   # ~0MB\n\nprint(sum(squares_gen))  # Consumes values one by one\n```\n\n## yield from (Delegation)\n\n```python\ndef upper_letters():\n    yield from 'ABCDE'\n\ndef lower_letters():\n    yield from 'abcde'\n\ndef all_letters():\n    yield from upper_letters()\n    yield from lower_letters()\n\nprint(list(all_letters()))  # ['A','B','C','D','E','a','b','c','d','e']\n```\n\n## Infinite Generators\n\n```python\ndef fibonacci():\n    a, b = 0, 1\n    while True:\n        yield a\n        a, b = b, a + b\n\nimport itertools\nprint(list(itertools.islice(fibonacci(), 10)))\n# [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]\n```\n\n## send() Method\n\n```python\ndef accumulator():\n    total = 0\n    while True:\n        value = yield total\n        if value is not None:\n            total += value\n\ngen = accumulator()\nnext(gen)      # Prime the generator (returns 0)\nprint(gen.send(10))  # 10\nprint(gen.send(20))  # 30\nprint(gen.send(5))   # 35\n```",
     "keyRules": [
-      "Use ^ and $ anchors for full-string validation, not partial matches",
-      "g flag makes match() return all matches; without it, you get extra details",
-      "Use non-capturing groups (?:...) when you don't need backreferences",
-      "Always escape special characters or use them inside character classes safely",
-      "Named capture groups (?<name>...) are more readable than numbered \\1, \\2"
+      "A function with yield is a generator function — calling it returns a generator OBJECT, not executing the body",
+      "yield PAUSES the function and saves all local state — resumes from exact point on next() call",
+      "Generator expressions use () instead of [] — they're memory-efficient lazy iterators",
+      "yield from delegates to a sub-generator — equivalent to a for loop yielding each value",
+      "Infinite generators are safe because values are produced on-demand — use itertools.islice to limit",
+      "send(value) passes a value INTO the generator — must prime with next() first before sending"
     ],
-    "task": "Create a regex pattern that validates a simple email format: one or more word characters/dots/hyphens, followed by `@`, followed by one or more word characters/dots/hyphens, followed by `.`, followed by 2 or more word characters. Use it to validate `['ali@test.com', 'invalid-email', 'hello@world.io', '@missing.com', 'no@dot']`. Log each email and whether it's valid.",
-    "hint": "Pattern: `/^[\\w.-]+@[\\w.-]+\\.\\w{2,}$/`. Use `.test(email)` in a loop or forEach.",
+    "task": "Create a generator function `prime_numbers()` that yields prime numbers infinitely. Create a generator function `take(n, gen)` that yields only the first n values from any generator using yield from with islice. Create a generator expression `even_squares` that yields squares of even numbers from 0-20. Demonstrate: first 10 primes, even_squares as a list, and a pipeline where you filter primes > 100.",
+    "hint": "For prime_numbers: use a while True loop, check each number for primality (trial division up to sqrt). For take: `yield from itertools.islice(gen, n)`.",
     "learnings": [
-      { "title": "RegEx Patterns", "desc": "Constructing validation structures to check formats like emails and phone numbers." },
-      { "title": "Flags", "desc": "Modifying global searches via global (g), case-insensitive (i), and multiline (m) parameters." }
+      { "title": "Generator functions", "desc": "Using yield instead of return to produce values one at a time without building full lists." },
+      { "title": "yield keyword", "desc": "Pausing function execution, saving state, and resuming on the next next() call." },
+      { "title": "Generator expressions", "desc": "Creating memory-efficient lazy iterators using parentheses syntax like list comprehensions." },
+      { "title": "yield from", "desc": "Delegating to a sub-generator and yielding all its values transparently." },
+      { "title": "Infinite generators", "desc": "Building unbounded sequences like Fibonacci or prime number generators that never exhaust." },
+      { "title": "send() method", "desc": "Sending values back into a running generator to influence its output dynamically." }
     ],
-    "starterCode": "// Task: Email Validation with Regular Expressions\n\n// 1. Create the email regex pattern\n\n// 2. Create test array with valid and invalid emails\n\n// 3. Loop through and log each email + validity\n\n// 4. Bonus: Extract the domain from each valid email using match()",
-    "solutionCode": "// Task: Email Validation with Regular Expressions\n\n// 1. Create the email regex pattern\nconst emailRegex = /^[\\w.-]+@[\\w.-]+\\.\\w{2,}$/;\n\n// 2. Test array\nconst emails = [\n  'ali@test.com',\n  'invalid-email',\n  'hello@world.io',\n  '@missing.com',\n  'no@dot',\n  'user.name+tag@domain.co.uk'\n];\n\n// 3. Loop and validate\nemails.forEach(email => {\n  const isValid = emailRegex.test(email);\n  console.log(`${email}: ${isValid ? '✅ Valid' : '❌ Invalid'}`);\n});\n\n// 4. Bonus: Extract domains from valid emails\nconst domainRegex = /@([\\w.-]+\\.\\w{2,})$/;\nemails.forEach(email => {\n  const match = email.match(domainRegex);\n  if (match) {\n    console.log(`Domain of ${email}: ${match[1]}`);\n  }\n});\n\n// Output:\n// ali@test.com: ✅ Valid\n// invalid-email: ❌ Invalid\n// hello@world.io: ✅ Valid\n// @missing.com: ❌ Invalid\n// no@dot: ❌ Invalid\n// user.name+tag@domain.co.uk: ✅ Valid\n// Domain of ali@test.com: test.com\n// Domain of hello@world.io: world.io",
-    "exampleCode": "// 🧠 Advanced RegEx Techniques\n\n// Named capture groups for parsing\nconst urlRegex = /^(?<protocol>https?):\\/\\/(?<host>[\\w.-]+)(?<path>\\/\\S*)?$/;\nconst m = 'https://api.example.com/users?page=1'.match(urlRegex);\nconsole.log(m.groups.protocol); // 'https'\nconsole.log(m.groups.host);     // 'api.example.com'\nconsole.log(m.groups.path);     // '/users?page=1'\n\n// matchAll with capture groups\nconst text = 'Jan: 5, Feb: 12, Mar: 8';\nfor (const match of text.matchAll(/(\\w+):\\s*(\\d+)/g)) {\n  console.log(`${match[1]} = ${match[2]}`);\n}\n// 'Jan = 5', 'Feb = 12', 'Mar = 8'\n\n// replace with capture group references\nconst template = 'Hello {name}, you have {count} messages';\nconst result = template.replace(/\\{(\\w+)\\}/g, (match, key) => {\n  const data = { name: 'Ali', count: 5 };\n  return data[key] || match;\n});\nconsole.log(result); // 'Hello Ali, you have 5 messages'\n\n// Password strength checker\nfunction checkPasswordStrength(pwd) {\n  const checks = [\n    { name: 'length',     regex: /.{8,}/,           score: 1 },\n    { name: 'uppercase',  regex: /[A-Z]/,           score: 1 },\n    { name: 'lowercase',  regex: /[a-z]/,           score: 1 },\n    { name: 'digit',      regex: /\\d/,              score: 1 },\n    { name: 'special',    regex: /[!@#$%^&*(),.?\":{}|<>]/, score: 1 },\n  ];\n  return checks\n    .filter(c => c.regex.test(pwd))\n    .reduce((sum, c) => sum + c.score, 0);\n}\nconsole.log(checkPasswordStrength('Pass123!')); // 5",
+    "starterCode": "# Task: Generators & Yield\n\n# 1. Create prime_numbers() infinite generator\n\n# 2. Create take(n, gen) using yield from + islice\n\n# 3. Create even_squares generator expression\n\n# 4. Demonstrate all three",
+    "solutionCode": "# Task: Generators & Yield\n\nimport itertools\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    if n < 4:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\ndef prime_numbers():\n    n = 2\n    while True:\n        if is_prime(n):\n            yield n\n        n += 1\n\ndef take(n, gen):\n    yield from itertools.islice(gen, n)\n\n# Generator expression\neven_squares = (x**2 for x in range(21) if x % 2 == 0)\n\n# Demonstrate\nprint('First 10 primes:')\nprint(list(take(10, prime_numbers())))\n# [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]\n\nprint('\\nEven squares (0-20):')\nprint(list(even_squares))\n# [0, 4, 16, 36, 64, 100, 144, 196, 256, 324, 400]\n\nprint('\\nPrimes > 100 (first 5):')\nprimes_over_100 = (p for p in prime_numbers() if p > 100)\nprint(list(take(5, primes_over_100)))\n# [101, 103, 107, 109, 113]\n\n# Memory efficiency demo\nprint(f'\\nType of prime_numbers(): {type(prime_numbers())}')\nprint(f'Gen expr type: {type(even_squares)}')",
+    "exampleCode": "# 🧠 Advanced Generator Patterns\n\n# Generator pipeline\ndef read_lines(filename):\n    for line in open(filename):\n        yield line.strip()\n\ndef filter_empty(lines):\n    for line in lines:\n        if line:\n            yield line\n\ndef to_upper(lines):\n    for line in lines:\n        yield line.upper()\n\n# pipeline = to_upper(filter_empty(read_lines('file.txt')))\n\n# Generator as coroutine with send()\ndef moving_average():\n    total = 0\n    count = 0\n    avg = None\n    while True:\n        value = yield avg\n        if value is not None:\n            total += value\n            count += 1\n            avg = total / count\n\nma = moving_average()\nnext(ma)  # Prime\nprint(ma.send(10))  # 10.0\nprint(ma.send(20))  # 15.0\nprint(ma.send(30))  # 20.0\n\n# Close and throw\nimport sys\ndef echo():\n    try:\n        while True:\n            yield\n    except GeneratorExit:\n        print('Cleaned up!')\n    except ValueError:\n        print(f'Got value error')\n        yield  # Can still yield after handling\n\ne = echo()\nnext(e)\ne.close()  # Prints 'Cleaned up!'\n\n# Flatten nested lists recursively\ndef flatten(nested):\n    for item in nested:\n        if isinstance(item, (list, tuple)):\n            yield from flatten(item)\n        else:\n            yield item\n\nprint(list(flatten([1, [2, [3, 4]], 5, [6, [7]]])))\n# [1, 2, 3, 4, 5, 6, 7]",
     "tests": [
-      { "id": "t1", "description": "Should create a regex pattern", "check": "code => /\\/[\\^\\w\\.\\[\\]-]+@[\\w\\.\\[\\]-]+\\/[a-z]*$/.test(code) || /new\\s+RegExp/.test(code)" },
-      { "id": "t2", "description": "Should use anchors ^ and $", "check": "code => /\\^/.test(code) && /\\$/.test(code)" },
-      { "id": "t3", "description": "Should have a test array of emails", "check": "code => /\\[\\s*['\"]/.test(code) && /@/.test(code)" },
-      { "id": "t4", "description": "Should use .test() for validation", "check": "code => /\\.test\\s*\\(/.test(code)" },
-      { "id": "t5", "description": "Should loop through emails", "check": "code => /\\.forEach|for\\s*\\(|for\\s+of/.test(code)" },
-      { "id": "t6", "description": "Should have both valid and invalid test cases", "check": "code => (code.match(/['\"][^'\"]+@[^'\"]+['\"]/g) || []).length >= 3" }
+      { "id": "t1", "description": "Should define prime_numbers generator with yield", "check": "code => /def\\s+prime_numbers.*yield/.test(code)" },
+      { "id": "t2", "description": "Should have is_prime helper function", "check": "code => /def\\s+is_prime/.test(code)" },
+      { "id": "t3", "description": "Should define take with yield from and islice", "check": "code => /yield\\s+from.*islice/.test(code)" },
+      { "id": "t4", "description": "Should create even_squares as generator expression", "check": "code => /even_squares\\s*=\\s*\\(.+for/.test(code)" },
+      { "id": "t5", "description": "Should demonstrate with list()", "check": "code => /list\\s*\\(.*take/.test(code)" },
+      { "id": "t6", "description": "Should import itertools", "check": "code => /import\\s+itertools/.test(code)" }
     ]
   },
   {
     "id": "39",
-    "slug": "dates-time-operations",
-    "title": "Dates & Time Operations",
-    "icon": "Calendar",
-    "overview": "Instantiate, convert, and format real-world timestamps.",
-    "explanation": "## The Date Object\n\nJavaScript has a built-in `Date` object for working with dates and times. It represents a single moment in time as the number of **milliseconds since January 1, 1970 UTC** (the Unix epoch).\n\n```js\nconst now = new Date();           // Current date & time\nconst specific = new Date(2024, 0, 15, 10, 30, 0); // Jan 15, 2024 10:30:00\nconst fromString = new Date('2024-01-15T10:30:00Z');\nconst fromMs = new Date(1705312200000);\n```\n\n**Critical gotcha:** Months are **0-indexed** (0 = January, 11 = December). Days are 1-indexed.\n\n## Getters & Setters\n\n```js\nconst d = new Date();\n\n// Getters (all local time)\nd.getFullYear();   // 2024\nd.getMonth();      // 0-11 (January = 0!)\nd.getDate();       // 1-31 (day of month)\nd.getDay();        // 0-6 (Sunday = 0!)\nd.getHours();      // 0-23\nd.getMinutes();    // 0-59\nd.getSeconds();    // 0-59\nd.getMilliseconds(); // 0-999\nd.getTime();       // Milliseconds since epoch\nd.getTimezoneOffset(); // Minutes offset from UTC\n\n// UTC versions\nd.getUTCFullYear(), d.getUTCHours(), etc.\n\n// Setters\nd.setFullYear(2025);\nd.setMonth(11); // December\nd.setDate(25);\nd.setHours(14);\n```\n\n**Setters mutate the original Date object and return the new timestamp.**\n\n## Date Arithmetic\n\n```js\nconst now = new Date();\nconst tomorrow = new Date(now);\ntomorrow.setDate(now.getDate() + 1);\n\nconst nextWeek = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);\n\n// Difference between two dates\nconst diff = date2.getTime() - date1.getTime(); // milliseconds\nconst days = Math.floor(diff / (1000 * 60 * 60 * 24));\n```\n\n## Formatting\n\nJavaScript's native formatting is limited:\n```js\nd.toDateString();     // 'Mon Jan 15 2024'\nd.toTimeString();     // '10:30:00 GMT+0500'\nd.toISOString();      // '2024-01-15T05:30:00.000Z' (ALWAYS UTC!)\nd.toLocaleDateString('en-US', { \n  year: 'numeric', month: 'long', day: 'numeric' \n}); // 'January 15, 2024'\nd.toLocaleDateString('hi-IN'); // '१५/१/२०२४'\n```\n\n**`toISOString()` is the most reliable for APIs and storage** — it's always in UTC.\n\n## Parsing Pitfalls\n\n```js\nnew Date('2024-01-15');    // Treated as UTC midnight ✅\nnew Date('2024-01-15T00:00:00'); // Treated as LOCAL time ❌ confusion!\nnew Date('2024/01/15');    // Treated as LOCAL time ❌\nnew Date('01-15-2024');    // May parse differently across browsers ❌\n```\n\n**Rule:** Always use `YYYY-MM-DDTHH:mm:ss.sssZ` format or the `Date(year, month, day)` constructor for reliability.\n\n## Time Constants\n\n```js\nconst MINUTE = 60 * 1000;\nconst HOUR = 60 * MINUTE;\nconst DAY = 24 * HOUR;\nconst WEEK = 7 * DAY;\n```",
+    "slug": "python-decorators-deep-dive",
+    "title": "Decorators Deep Dive",
+    "icon": "PaintBucket",
+    "overview": "Wrap and modify functions or classes dynamically using higher-order decorator patterns.",
+    "explanation": "## Basic Decorators\n\n```python\ndef uppercase(func):\n    def wrapper(*args, **kwargs):\n        result = func(*args, **kwargs)\n        return result.upper()\n    return wrapper\n\n@uppercase\ndef greet(name):\n    return f'hello {name}'\n\nprint(greet('alice'))  # 'HELLO ALICE'\n```\n\n## Decorators with Arguments\n\n```python\ndef repeat(n):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            results = []\n            for _ in range(n):\n                results.append(func(*args, **kwargs))\n            return results\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef say_hi():\n    return 'hi'\n\nprint(say_hi())  # ['hi', 'hi', 'hi']\n```\n\n## functools.wraps\n\n```python\nimport functools\n\ndef timer(func):\n    @functools.wraps(func)  # Preserves metadata!\n    def wrapper(*args, **kwargs):\n        import time\n        start = time.time()\n        result = func(*args, **kwargs)\n        print(f'{func.__name__} took {time.time()-start:.4f}s')\n        return result\n    return wrapper\n\n@timer\ndef slow_function():\n    \"\"\"A slow function\"\"\"\n    import time\n    time.sleep(0.1)\n\nprint(slow_function.__name__)  # 'slow_function' (not 'wrapper')\nprint(slow_function.__doc__)   # 'A slow function'\n```\n\n## Class-Based Decorators\n\n```python\nclass CountCalls:\n    def __init__(self, func):\n        self.func = func\n        self.count = 0\n\n    def __call__(self, *args, **kwargs):\n        self.count += 1\n        print(f'Call #{self.count}')\n        return self.func(*args, **kwargs)\n\n@CountCalls\ndef add(a, b):\n    return a + b\n\nprint(add(1, 2))  # Call #1, then 3\nprint(add(3, 4))  # Call #2, then 7\nprint(add.count)  # 2\n```\n\n## Stacking Decorators\n\n```python\ndef bold(func):\n    def wrapper(*args, **kwargs):\n        return f'**{func(*args, **kwargs)}**'\n    return wrapper\n\ndef italic(func):\n    def wrapper(*args, **kwargs):\n        return f'_{func(*args, **kwargs)}_'\n    return wrapper\n\n@bold\n@italic  # Applied first (bottom-up!)\ndef text():\n    return 'hello'\n\nprint(text())  # '**_hello_**'\n```\n\n## Common: Retry Decorator\n\n```python\ndef retry(max_attempts=3):\n    def decorator(func):\n        import functools\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(1, max_attempts + 1):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    if attempt == max_attempts:\n                        raise\n                    print(f'Attempt {attempt} failed: {e}')\n        return wrapper\n    return decorator\n```",
     "keyRules": [
-      "Months are 0-indexed (January = 0) — this is the #1 Date bug source",
-      "toISOString() always returns UTC — use it for API payloads and storage",
-      'Date string parsing is inconsistent — prefer YYYY-MM-DD format or constructor arguments',
-      "Setters mutate the original Date object — clone first if you need the original",
-      "getTime() returns milliseconds since epoch — use it for date arithmetic and comparison"
+      "A decorator is a function that takes a function and returns a NEW function — @syntax is just sugar",
+      "Always use *args, **kwargs in wrapper to handle any function signature",
+      "ALWAYS use @functools.wraps(func) to preserve __name__, __doc__, and other metadata",
+      "Decorators with arguments need a 3-level function: outer(config) → decorator(func) → wrapper(*args)",
+      "Class-based decorators use __init__(func) to store the function and __call__(*args) to wrap it",
+      "Stacked decorators execute bottom-up: @bold @italic means italic is applied first, then bold"
     ],
-    "task": "Create a function `formatDate(date)` that returns a string in `'DD/MM/YYYY'` format (padded with zeros). Create a function `daysBetween(d1, d2)` that returns the number of full days between two dates. Test by formatting today's date and calculating days between '2024-01-01' and '2024-12-31'.",
-    "hint": "For padding: `String(date.getDate()).padStart(2, '0')`. For days: `Math.abs(d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24)` and round down.",
+    "task": "Create: 1) `@timer` decorator that prints execution time using `time.perf_counter()`. 2) `@validate_types(*expected_types)` decorator factory that checks argument types match expected. 3) `@CountCalls` class-based decorator that counts calls and prints count. Apply `@CountCalls` then `@timer` to a `factorial(n)` function. Demonstrate with valid and invalid type calls.",
+    "hint": "validate_types: in wrapper, zip args with expected_types, check isinstance. If mismatch, raise TypeError. Use functools.wraps on all function-based decorators.",
     "learnings": [
-      { "title": "Date Object", "desc": "Tracking system ticks since Unix epochs and extracting component structures." },
-      { "title": "Time formatting", "desc": "Parsing international time zones and building clean, user-facing output templates." }
+      { "title": "Basic decorators", "desc": "Creating functions that accept a function, add behavior, and return a wrapper function." },
+      { "title": "@syntax sugar", "desc": "Applying decorators using the @decorator_name syntax above function definitions." },
+      { "title": "Decorators with arguments", "desc": "Building decorator factories that accept configuration parameters and return actual decorators." },
+      { "title": "functools.wraps", "desc": "Preserving the original function's metadata like __name__ and __doc__ through wrapping." },
+      { "title": "Class-based decorators", "desc": "Implementing decorators as classes with __call__ methods for stateful decoration." },
+      { "title": "Stacking decorators", "desc": "Applying multiple decorators to a single function and understanding execution order." },
+      { "title": "Common use cases", "desc": "Building logging, timing, authentication, caching, and retry decorators." }
     ],
-    "starterCode": "// Task: Date Formatting & Difference Calculation\n\n// 1. Create formatDate(date) → 'DD/MM/YYYY'\n//    Use padStart to ensure 2-digit day and month\n\n// 2. Create daysBetween(d1, d2) → number of full days\n//    Use getTime() and the DAY constant\n\n// 3. Format today's date and log it\n\n// 4. Calculate days between '2024-01-01' and '2024-12-31'\n\n// 5. Log both results",
-    "solutionCode": "// Task: Date Formatting & Difference Calculation\n\n// 1. formatDate function\nfunction formatDate(date) {\n  const day = String(date.getDate()).padStart(2, '0');\n  const month = String(date.getMonth() + 1).padStart(2, '0'); // +1 because 0-indexed!\n  const year = date.getFullYear();\n  return `${day}/${month}/${year}`;\n}\n\n// 2. daysBetween function\nconst DAY = 24 * 60 * 60 * 1000;\nfunction daysBetween(d1, d2) {\n  const diffMs = Math.abs(d2.getTime() - d1.getTime());\n  return Math.floor(diffMs / DAY);\n}\n\n// 3. Format today\nconst today = new Date();\nconsole.log('Today:', formatDate(today)); // e.g., '15/06/2025'\n\n// 4. Calculate days between two dates\nconst start = new Date('2024-01-01');\nconst end = new Date('2024-12-31');\nconst days = daysBetween(start, end);\n\n// 5. Log results\nconsole.log(`Days between 2024-01-01 and 2024-12-31: ${days}`); // 365",
-    "exampleCode": "// 🧠 Advanced Date Patterns\n\n// Add days/weeks/months safely\nfunction addDays(date, days) {\n  const result = new Date(date);\n  result.setDate(result.getDate() + days);\n  return result;\n}\n\nfunction addMonths(date, months) {\n  const result = new Date(date);\n  result.setMonth(result.getMonth() + months);\n  return result;\n}\n\n// Is today between two dates?\nfunction isBetween(date, start, end) {\n  const t = date.getTime();\n  return t >= start.getTime() && t <= end.getTime();\n}\n\n// Countdown formatter\nfunction timeUntil(targetDate) {\n  const now = new Date();\n  let diff = targetDate.getTime() - now.getTime();\n\n  if (diff <= 0) return 'Passed!';\n\n  const days = Math.floor(diff / (24 * 60 * 60 * 1000));\n  diff %= 24 * 60 * 60 * 1000;\n  const hours = Math.floor(diff / (60 * 60 * 1000));\n  diff %= 60 * 60 * 1000;\n  const mins = Math.floor(diff / (60 * 1000));\n\n  return `${days}d ${hours}h ${mins}m`;\n}\n\nconst newYear = new Date('2026-01-01T00:00:00');\nconsole.log(timeUntil(newYear));\n\n// Relative time formatter\nfunction relativeTime(date) {\n  const now = Date.now();\n  const diff = now - date.getTime();\n  const secs = Math.floor(diff / 1000);\n\n  if (secs < 60) return 'just now';\n  if (secs < 3600) return `${Math.floor(secs / 60)}m ago`;\n  if (secs < 86400) return `${Math.floor(secs / 3600)}h ago`;\n  return `${Math.floor(secs / 86400)}d ago`;\n}\n\n// Performance timer\nconsole.time('operation');\n// ... heavy work\nconsole.timeEnd('operation'); // 'operation: 42.5ms'",
+    "starterCode": "# Task: Decorators Deep Dive\n\n# 1. Create @timer decorator\n\n# 2. Create @validate_types(*expected_types) factory\n\n# 3. Create @CountCalls class-based decorator\n\n# 4. Apply @CountCalls then @timer to factorial(n)\n\n# 5. Demonstrate all features",
+    "solutionCode": "# Task: Decorators Deep Dive\n\nimport functools\nimport time\n\n# 1. Timer decorator\ndef timer(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        result = func(*args, **kwargs)\n        elapsed = time.perf_counter() - start\n        print(f'  [{func.__name__}] took {elapsed:.6f}s')\n        return result\n    return wrapper\n\n# 2. Type validation decorator factory\ndef validate_types(*expected_types):\n    def decorator(func):\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            for i, (arg, expected) in enumerate(zip(args, expected_types)):\n                if not isinstance(arg, expected):\n                    raise TypeError(\n                        f'Arg {i} expected {expected.__name__}, '\n                        f'got {type(arg).__name__}'\n                    )\n            return func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n# 3. Class-based call counter\nclass CountCalls:\n    def __init__(self, func):\n        self.func = func\n        self.count = 0\n        functools.update_wrapper(self, func)\n\n    def __call__(self, *args, **kwargs):\n        self.count += 1\n        print(f'  Call #{self.count} to {self.func.__name__}')\n        return self.func(*args, **kwargs)\n\n# 4. Apply both decorators\n@CountCalls   # Outer (applied second)\n@timer        # Inner (applied first)\ndef factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\n# 5. Demonstrate\nprint('Valid call:')\nresult = factorial(5)\nprint(f'  Result: {result}')\nprint(f'  Total calls: {factorial.count}')\n\nprint('\\nType validation demo:')\n@validate_types(int, int)\ndef add(a, b):\n    return a + b\n\nprint(f'add(3, 4) = {add(3, 4)}')  # 7\ntry:\n    add(3, '4')  # TypeError!\nexcept TypeError as e:\n    print(f'Error: {e}')",
+    "exampleCode": "# 🧠 Advanced Decorator Patterns\n\n# Decorator with optional arguments\ndef smart_decorator(arg=None):\n    if callable(arg):\n        # Called without parentheses: @smart_decorator\n        func = arg\n        @functools.wraps(func)\n        def wrapper(*args, **kwargs):\n            print('No config')\n            return func(*args, **kwargs)\n        return wrapper\n    else:\n        # Called with parentheses: @smart_decorator(config)\n        def decorator(func):\n            @functools.wraps(func)\n            def wrapper(*args, **kwargs):\n                print(f'Config: {arg}')\n                return func(*args, **kwargs)\n            return wrapper\n        return decorator\n\n@smart_decorator\ndef func1(): pass\n\n@smart_decorator('custom')\ndef func2(): pass\n\n# Caching decorator (like lru_cache)\ndef memoize(func):\n    cache = {}\n    @functools.wraps(func)\n    def wrapper(*args):\n        if args not in cache:\n            cache[args] = func(*args)\n        return cache[args]\n    wrapper.cache = cache\n    return wrapper\n\n@memoize\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n-1) + fib(n-2)\n\nprint(fib(50))  # Fast!\nprint(fib.cache)  # All cached results\n\n# Decorator for class methods\ndef log_method(func):\n    @functools.wraps(func)\n    def wrapper(self, *args, **kwargs):\n        print(f'{self.__class__.__name__}.{func.__name__} called')\n        return func(self, *args, **kwargs)\n    return wrapper\n\nclass Service:\n    @log_method\n    def do_work(self):\n        return 'done'\n\nService().do_work()  # Service.do_work called",
     "tests": [
-      { "id": "t1", "description": "Should define formatDate function", "check": "code => /function\\s+formatDate|const\\s+formatDate/.test(code)" },
-      { "id": "t2", "description": "Should use padStart for zero-padding", "check": "code => /padStart\\s*\\(\\s*2\\s*,\\s*['\"]0['\"]/.test(code)" },
-      { "id": "t3", "description": "Should add 1 to getMonth (0-indexed fix)", "check": "code => /getMonth\\s*\\(\\s*\\)\\s*\\+\\s*1|getMonth\\s*\\(\\s*\\)\\s*\\+/.test(code)" },
-      { "id": "t4", "description": "Should define daysBetween function", "check": "code => /function\\s+daysBetween|const\\s+daysBetween/.test(code)" },
-      { "id": "t5", "description": "Should use getTime() for date arithmetic", "check": "code => /getTime\\s*\\(\\s*\\)/.test(code)" },
-      { "id": "t6", "description": "Should test with specific dates", "check": "code => /2024-01-01|2024-12-31/.test(code)" }
+      { "id": "t1", "description": "Should define timer decorator with functools.wraps", "check": "code => /def\\s+timer.*functools\\.wraps/.test(code)" },
+      { "id": "t2", "description": "Should define validate_types as decorator factory", "check": "code => /def\\s+validate_types\\s*\\(\\s*\\*\\s*expected_types\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "validate_types should check isinstance", "check": "code => /isinstance\\s*\\(\\s*arg\\s*,\\s*expected\\s*\\)/.test(code)" },
+      { "id": "t4", "description": "Should define CountCalls class with __call__", "check": "code => /class\\s+CountCalls.*def\\s+__call__/.test(code)" },
+      { "id": "t5", "description": "Should stack @CountCalls and @timer", "check": "code => /@CountCalls\\s*\\n\\s*@timer/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate TypeError from validate_types", "check": "code => /except\\s+TypeError/.test(code)" }
     ]
   },
+  {
+    "id": "40",
+    "slug": "python-context-managers",
+    "title": "Context Managers",
+    "icon": "Box",
+    "overview": "Manage resource acquisition and cleanup automatically using the with statement protocol.",
+    "explanation": "## Context Manager Protocol\n\n```python\nclass FileHandler:\n    def __init__(self, filename, mode):\n        self.filename = filename\n        self.mode = mode\n        self.file = None\n\n    def __enter__(self):\n        self.file = open(self.filename, self.mode)\n        print(f'Opened {self.filename}')\n        return self.file\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if self.file:\n            self.file.close()\n            print(f'Closed {self.filename}')\n        if exc_type:\n            print(f'Exception: {exc_val}')\n        return False  # Don't suppress exceptions\n\nwith FileHandler('test.txt', 'w') as f:\n    f.write('Hello!')\n# Output:\n# Opened test.txt\n# Closed test.txt\n```\n\n## contextlib.contextmanager\n\n```python\nfrom contextlib import contextmanager\n\n@contextmanager\ndef my_open(filename, mode):\n    f = open(filename, mode)\n    try:\n        print(f'Opening {filename}')\n        yield f  # Value for 'as' variable\n    finally:\n        f.close()\n        print(f'Closed {filename}')\n\nwith my_open('test.txt', 'r') as f:\n    content = f.read()\n```\n\n## suppress() Utility\n\n```python\nfrom contextlib import suppress\n\nwith suppress(FileNotFoundError):\n    open('nonexistent.txt', 'r')\n    print('This won\\'t print if file missing')\n\nprint('Continued anyway!')  # Always prints\n\n# Equivalent to:\ntry:\n    open('nonexistent.txt', 'r')\nexcept FileNotFoundError:\n    pass\n```\n\n## Timer Context Manager\n\n```python\nimport time\n\nclass Timer:\n    def __enter__(self):\n        self.start = time.perf_counter()\n        return self\n\n    def __exit__(self, *args):\n        self.elapsed = time.perf_counter() - self.start\n        print(f'Elapsed: {self.elapsed:.4f}s')\n\nwith Timer() as t:\n    sum(range(1000000))\n\nprint(f'Stored: {t.elapsed:.4f}s')\n```\n\n## Nested Context Managers\n\n```python\nwith open('in.txt') as fin, open('out.txt', 'w') as fout:\n    fout.write(fin.read())\n```\n\n## Redirecting stdout\n\n```python\nimport sys\nfrom contextlib import redirect_stdout\n\nwith open('output.txt', 'w') as f:\n    with redirect_stdout(f):\n        print('This goes to file, not console')\n```",
+    "keyRules": [
+      "__enter__() sets up the resource and returns the value for 'as' variable",
+      "__exit__(exc_type, exc_val, exc_tb) handles cleanup — receives exception info if any was raised",
+      "Return True from __exit__ to SUPPRESS the exception, False to let it propagate",
+      "@contextmanager turns a generator function into a context manager — yield the resource, cleanup in finally",
+      "Use suppress() to silently handle specific exceptions without try/except blocks",
+      "Always use context managers for files, locks, database connections, and network sessions"
+    ],
+    "task": "Create a `Timer` class-based context manager that records start time in __enter__, calculates elapsed in __exit__, and prints the elapsed time. Create a `@contextmanager` function `temporary_file(content)` that creates a temp file with content, yields the file path, and deletes the file in finally block. Create a `DatabaseConnection` context manager that prints 'Connected' in __enter__ and 'Disconnected' in __exit__. Demonstrate all three.",
+    "hint": "For temporary_file: use `import tempfile; import os`, write content to a temp file, `yield path`, then `os.remove(path)` in finally. Timer: use `time.perf_counter()`.",
+    "learnings": [
+      { "title": "Context manager protocol", "desc": "Implementing __enter__() for setup and __exit__() for guaranteed cleanup." },
+      { "title": "with statement", "desc": "Using context managers to ensure resources are properly released after use." },
+      { "title": "contextlib module", "desc": "Simplifying context manager creation using @contextmanager generator decorator." },
+      { "title": "suppress() utility", "desc": "Silently handling specified exceptions within a context block without try/except." },
+      { "title": "Real-world patterns", "desc": "Managing database connections, file handles, locks, and network sessions safely." }
+    ],
+    "starterCode": "# Task: Context Managers\n\n# 1. Create Timer class-based context manager\n\n# 2. Create temporary_file(content) using @contextmanager\n\n# 3. Create DatabaseConnection class-based context manager\n\n# 4. Demonstrate all three",
+    "solutionCode": "# Task: Context Managers\n\nimport time\nimport os\nimport tempfile\nfrom contextlib import contextmanager\n\n# 1. Timer context manager\nclass Timer:\n    def __enter__(self):\n        self.start = time.perf_counter()\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        self.elapsed = time.perf_counter() - self.start\n        print(f'  Timer: {self.elapsed:.6f}s')\n        return False\n\n# 2. Temporary file context manager\n@contextmanager\ndef temporary_file(content):\n    fd, path = tempfile.mkstemp()\n    try:\n        with os.fdopen(fd, 'w') as f:\n            f.write(content)\n        print(f'  Created temp file: {path}')\n        yield path\n    finally:\n        os.remove(path)\n        print(f'  Deleted temp file: {path}')\n\n# 3. Database connection context manager\nclass DatabaseConnection:\n    def __init__(self, db_name):\n        self.db_name = db_name\n\n    def __enter__(self):\n        print(f'  Connected to {self.db_name}')\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        print(f'  Disconnected from {self.db_name}')\n        if exc_type:\n            print(f'  Error during connection: {exc_val}')\n        return False\n\n    def query(self, sql):\n        print(f'  Executing: {sql}')\n\n# Demonstrate\nprint('=== Timer ===')\nwith Timer():\n    sum(range(1000000))\n\nprint('\\n=== Temporary File ===')\nwith temporary_file('Hello, World!') as path:\n    with open(path, 'r') as f:\n        print(f'  Content: {f.read()}')\n\nprint('\\n=== Database Connection ===')\nwith DatabaseConnection('mydb') as db:\n    db.query('SELECT * FROM users')\n\nprint('\\n=== Exception Handling ===')\nwith DatabaseConnection('testdb') as db:\n    db.query('INSERT INTO logs VALUES (1)')\n    raise ValueError('Simulated error!')\nexcept ValueError as e:\n    print(f'  Caught outside: {e}')",
+    "exampleCode": "# 🧠 Advanced Context Manager Patterns\n\n# Context manager that suppresses specific errors\nclass IgnoreErrors:\n    def __init__(self, *error_types):\n        self.error_types = error_types\n\n    def __enter__(self):\n        return self\n\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if exc_type in self.error_types:\n            print(f'Suppressed: {exc_type.__name__}: {exc_val}')\n            return True  # Suppress!\n        return False\n\nwith IgnoreErrors(ValueError, TypeError):\n    int('not a number')  # Suppressed!\n\nprint('Continued!')\n\n# Chaining context managers dynamically\nfrom contextlib import ExitStack\n\ndef open_files(*paths):\n    with ExitStack() as stack:\n        files = [stack.enter_context(open(p)) for p in paths]\n        # All files stay open here\n        contents = [f.read() for f in files]\n        return contents  # Files closed when ExitStack exits\n\n# Reentrant context manager\nclass ReentrantLock:\n    def __init__(self):\n        self._level = 0\n\n    def __enter__(self):\n        self._level += 1\n        print(f'Lock acquired (level {self._level})')\n        return self\n\n    def __exit__(self, *args):\n        self._level -= 1\n        print(f'Lock released (level {self._level})')\n        return False\n\nlock = ReentrantLock()\nwith lock:\n    with lock:\n        print('  Doing work nested')",
+    "tests": [
+      { "id": "t1", "description": "Should define Timer with __enter__ and __exit__", "check": "code => /class\\s+Timer.*__enter__.*__exit__/.test(code)" },
+      { "id": "t2", "description": "Timer should use time.perf_counter()", "check": "code => /time\\.perf_counter\\(\\)/.test(code)" },
+      { "id": "t3", "description": "Should use @contextmanager decorator", "check": "code => /@contextmanager/.test(code)" },
+      { "id": "t4", "description": "temporary_file should have finally block", "check": "code => /finally:/.test(code)" },
+      { "id": "t5", "description": "Should define DatabaseConnection class", "check": "code => /class\\s+DatabaseConnection/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate with statement for all three", "check": "code => (code.match(/with\\s+/g) || []).length >= 3" }
+    ]
+  },
+  {
+    "id": "41",
+    "slug": "python-comprehensions-mastery",
+    "title": "Comprehensions Mastery",
+    "icon": "Braces",
+    "overview": "Write concise, readable, and performant collection-building expressions for lists, dicts, and sets.",
+    "explanation": "## List Comprehensions\n\n```python\n# Basic\nsquares = [x**2 for x in range(10)]\n# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\n\n# With condition\nevens = [x for x in range(20) if x % 2 == 0]\n# [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]\n\n# With if-else (different from filter!)\nlabels = ['even' if x % 2 == 0 else 'odd' for x in range(5)]\n# ['even', 'odd', 'even', 'odd', 'even']\n\n# String processing\nwords = ['hello', 'WORLD', 'Python']\ncleaned = [w.lower().strip() for w in words]\n# ['hello', 'world', 'python']\n```\n\n## Dict Comprehensions\n\n```python\n# From two lists\nnames = ['alice', 'bob', 'charlie']\nscores = [95, 87, 92]\ngrades = {name: score for name, score in zip(names, scores)}\n# {'alice': 95, 'bob': 87, 'charlie': 92}\n\n# Transform keys/values\noriginal = {'a': 1, 'b': 2, 'c': 3}\nupper = {k.upper(): v * 10 for k, v in original.items()}\n# {'A': 10, 'B': 20, 'C': 30}\n\n# Filter dict\nfiltered = {k: v for k, v in original.items() if v > 1}\n# {'b': 2, 'c': 3}\n```\n\n## Set Comprehensions\n\n```python\n# Remove duplicates automatically\nnums = [1, 2, 2, 3, 3, 3, 4]\nunique_squares = {x**2 for x in nums}\n# {1, 4, 9, 16}\n\n# Find unique lengths\nwords = ['hi', 'hey', 'yo', 'hello', 'bye']\nlengths = {len(w) for w in words}\n# {2, 3, 5}\n```\n\n## Nested Comprehensions\n\n```python\n# Flatten a matrix\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nflat = [num for row in matrix for num in row]\n# [1, 2, 3, 4, 5, 6, 7, 8, 9]\n\n# Transpose a matrix\ntransposed = [[row[i] for row in matrix] for i in range(3)]\n# [[1, 4, 7], [2, 5, 8], [3, 6, 9]]\n\n# Cartesian product\npairs = [(x, y) for x in range(3) for y in range(3) if x != y]\n# [(0,1), (0,2), (1,0), (1,2), (2,0), (2,1)]\n```\n\n## Walrus in Comprehensions\n\n```python\nimport re\n\ntext = 'foo123bar456baz789'\n# Without walrus — calls findall twice\n# results = [m for m in re.findall(r'\\d+', text) if int(m) > 200]\n\n# With walrus — compute once\nresults = [int(m) for m in re.findall(r'\\d+', text) if (n := int(m)) > 200]\n# [456, 789]\n```",
+    "keyRules": [
+      "List comprehension: [expr for item in iterable if condition] — condition filters, if-else transforms",
+      "Dict comprehension: {key_expr: val_expr for item in iterable} — need both key and value expressions",
+      "Set comprehension: {expr for item in iterable} — auto-deduplicates like a set",
+      "Nested comprehensions read LEFT to RIGHT as nested loops: [x for row in matrix for x in row]",
+      "There is NO tuple comprehension — (x for x in ...) creates a GENERATOR, not a tuple",
+      "Keep comprehensions simple — if they need more than 2 lines, use a regular loop for readability"
+    ],
+    "task": "Given a list of sentences, use a list comprehension to flatten all words (split by space). Use a dict comprehension to create a word frequency map from those words (lowercase). Use a set comprehension to find all unique word lengths. Use a nested comprehension to create a multiplication table (3x3). Use a walrus operator in a comprehension to filter strings that are longer than 4 characters after stripping whitespace.",
+    "hint": "Flatten: `[word for s in sentences for word in s.split()]`. Freq: `{w: words.count(w) for w in set(words_lower)}`. Walrus: `[s for s in strings if (cleaned := s.strip()) and len(cleaned) > 4]`.",
+    "learnings": [
+      { "title": "List comprehensions", "desc": "Building lists inline using [expression for item in iterable if condition] syntax." },
+      { "title": "Dict comprehensions", "desc": "Creating dictionaries using {key_expr: val_expr for item in iterable} patterns." },
+      { "title": "Set comprehensions", "desc": "Generating sets with {expression for item in iterable} eliminating duplicates automatically." },
+      { "title": "Nested comprehensions", "desc": "Flattening matrices and building multi-level structures using nested for clauses." },
+      { "title": "Comprehension vs loops", "desc": "Understanding performance benefits and readability trade-offs compared to traditional loops." },
+      { "title": "Walrus in comprehensions", "desc": "Using assignment expressions inside comprehensions to avoid redundant computations." }
+    ],
+    "starterCode": "# Task: Comprehensions Mastery\n\nsentences = ['Hello world', 'Python is great', 'Hello Python']\nstrings = ['  hi  ', 'hello world', '  yo', 'python rocks  ']\n\n# 1. Flatten all words from sentences (list comp)\n\n# 2. Word frequency map, lowercase (dict comp)\n\n# 3. Unique word lengths (set comp)\n\n# 4. 3x3 multiplication table (nested comp)\n\n# 5. Filter strings > 4 chars after strip (walrus)",
+    "solutionCode": "# Task: Comprehensions Mastery\n\nsentences = ['Hello world', 'Python is great', 'Hello Python']\nstrings = ['  hi  ', 'hello world', '  yo', 'python rocks  ']\n\n# 1. Flatten all words\nwords = [word for s in sentences for word in s.split()]\nprint(f'Words: {words}')\n# ['Hello', 'world', 'Python', 'is', 'great', 'Hello', 'Python']\n\n# 2. Word frequency map (lowercase)\nwords_lower = [w.lower() for w in words]\nfreq = {w: words_lower.count(w) for w in set(words_lower)}\nprint(f'Frequency: {freq}')\n# {'hello': 2, 'world': 1, 'python': 2, 'is': 1, 'great': 1}\n\n# 3. Unique word lengths\nlengths = {len(w) for w in words}\nprint(f'Unique lengths: {sorted(lengths)}')\n# [2, 3, 5, 6]\n\n# 4. 3x3 multiplication table\ntable = [[(i+1) * (j+1) for j in range(3)] for i in range(3)]\nprint(f'Mult table: {table}')\n# [[1, 2, 3], [2, 4, 6], [3, 6, 9]]\n\nfor row in table:\n    print('  ', row)\n\n# 5. Walrus: filter strings > 4 chars after strip\nlong_strings = [cleaned for s in strings if (cleaned := s.strip()) and len(cleaned) > 4]\nprint(f'Long strings: {long_strings}')\n# ['hello world', 'python rocks']",
+    "exampleCode": "# 🧠 Advanced Comprehension Patterns\n\n# Comprehension with side effects (generally avoid!)\nresults = [print(x) or x**2 for x in range(5)]\n# 0 1 2 3 4\n# [0, 1, 4, 9, 16]\n\n# Dict comprehension to swap keys/values\noriginal = {'a': 1, 'b': 2, 'c': 3}\nswapped = {v: k for k, v in original.items()}\n# {1: 'a', 2: 'b', 3: 'c'}\n\n# Grouping with dict comprehension\nfrom collections import defaultdict\nitems = [('fruit', 'apple'), ('veg', 'carrot'), ('fruit', 'banana')]\ngroups = defaultdict(list)\nfor cat, item in items:\n    groups[cat].append(item)\ngrouped = dict(groups)\n# {'fruit': ['apple', 'banana'], 'veg': ['carrot']}\n\n# Nested dict comprehension\nmatrix = [[i*3+j for j in range(3)] for i in range(3)]\ncoords = {(i, j): matrix[i][j] for i in range(3) for j in range(3)}\n# {(0,0): 0, (0,1): 1, (0,2): 2, ...}\n\n# Performance comparison\nimport timeit\n\nn = 100000\nloop_time = timeit.timeit(\n    'result = []\\nfor x in range(n):\\n    if x % 2 == 0: result.append(x**2)',\n    globals=globals(), number=10\n)\ncomp_time = timeit.timeit(\n    '[x**2 for x in range(n) if x % 2 == 0]',\n    globals=globals(), number=10\n)\nprint(f'Loop: {loop_time:.4f}s')\nprint(f'Comp: {comp_time:.4f}s')\n# Comprehension is typically 10-20% faster",
+    "tests": [
+      { "id": "t1", "description": "Should flatten words with nested list comprehension", "check": "code => /\\[\\s*word\\s+for\\s+s\\s+in\\s+sentences\\s+for\\s+word/.test(code)" },
+      { "id": "t2", "description": "Should create dict comprehension for frequency", "check": "code => /\\{\\s*\\w+\\s*:/.test(code)" },
+      { "id": "t3", "description": "Should use set comprehension for lengths", "check": "code => /\\{\\s*len\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should create nested comprehension for table", "check": "code => /\\[\\s*\\[.*for\\s+j.*for\\s*i/.test(code)" },
+      { "id": "t5", "description": "Should use walrus operator in comprehension", "check": "code => /:=/.test(code)" },
+      { "id": "t6", "description": "Should use .strip() in walrus comprehension", "check": "code => /:=\\s*\\w+\\.strip\\s*\\(/.test(code)" }
+    ]
+  },
+  {
+    "id": "42",
+    "slug": "python-zip-enumerate-utilities",
+    "title": "Zip & Enumerate Utilities",
+    "icon": "Link2",
+    "overview": "Combine parallel iterables and track indices elegantly using built-in zip and enumerate functions.",
+    "explanation": "## zip() Function\n\n```python\nnames = ['Alice', 'Bob', 'Charlie']\nages = [25, 30, 35]\n\npaired = list(zip(names, ages))\n# [('Alice', 25), ('Bob', 30), ('Charlie', 35)]\n\n# With three iterables\nscores = [95, 87, 92]\ncombined = list(zip(names, ages, scores))\n# [('Alice', 25, 95), ('Bob', 30, 87), ('Charlie', 35, 92)]\n```\n\n## zip() with Unequal Lengths\n\n```python\na = [1, 2, 3, 4, 5]\nb = ['a', 'b', 'c']\n\nprint(list(zip(a, b)))  # [(1,'a'), (2,'b'), (3,'c')] — truncated!\n\n# zip_longest fills with None (or custom fillvalue)\nfrom itertools import zip_longest\nprint(list(zip_longest(a, b)))\n# [(1,'a'), (2,'b'), (3,'c'), (4,None), (5,None)]\n\nprint(list(zip_longest(a, b, fillvalue='-')))\n# [(1,'a'), (2,'b'), (3,'c'), (4,'-'), (5,'-')]\n```\n\n## Unzipping\n\n```python\npairs = [('a', 1), ('b', 2), ('c', 3)]\nletters, numbers = zip(*pairs)\nprint(letters)  # ('a', 'b', 'c')\nprint(numbers)  # (1, 2, 3)\n\n# Transpose a matrix\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\ntransposed = list(zip(*matrix))\n# [(1, 4, 7), (2, 5, 8), (3, 6, 9)]\n```\n\n## enumerate() Function\n\n```python\nfruits = ['apple', 'banana', 'cherry']\n\nfor index, fruit in enumerate(fruits):\n    print(f'{index}: {fruit}')\n# 0: apple\n# 1: banana\n# 2: cherry\n\n# Custom start index\nfor i, fruit in enumerate(fruits, start=1):\n    print(f'{i}. {fruit}')\n# 1. apple\n# 2. banana\n# 3. cherry\n```\n\n## Practical Patterns\n\n```python\n# Build dict from two lists\nkeys = ['name', 'age', 'city']\nvalues = ['Alice', 25, 'NYC']\nperson = dict(zip(keys, values))\n# {'name': 'Alice', 'age': 25, 'city': 'NYC'}\n\n# Parallel iteration with index\nnames = ['a', 'b', 'c']\nscores = [10, 20, 30]\nfor i, (name, score) in enumerate(zip(names, scores)):\n    print(f'#{i+1} {name}: {score}')\n\n# Create indexed dict\nindexed = {i: val for i, val in enumerate(fruits)}\n# {0: 'apple', 1: 'banana', 2: 'cherry'}\n```",
+    "keyRules": [
+      "zip() stops at the SHORTEST iterable — silent data loss if lengths differ!",
+      "Use itertools.zip_longest() when you need ALL elements from the longest iterable",
+      "Unzip with zip(*pairs) — the * unpacks the list of tuples into separate arguments",
+      "enumerate() returns (index, value) pairs — much cleaner than manual counter variables",
+      "enumerate(iterable, start=N) begins counting from N instead of 0",
+      "zip() returns an iterator in Python 3 — wrap in list() to materialize"
+    ],
+    "task": "Given two lists `students = ['Alice', 'Bob', 'Charlie', 'Diana']` and `grades = [95, 87, 92]`, do the following: 1) Use zip to pair them (show truncation). 2) Use zip_longest with fillvalue='N/A' to pair all. 3) Build a dict using dict(zip()). 4) Unzip a list of pairs back into two tuples. 5) Use enumerate with start=1 to number the students. 6) Transpose a 3x4 matrix using zip(*matrix).",
+    "hint": "zip_longest: `from itertools import zip_longest`. Unzip: `a, b = zip(*pairs)`. Transpose: `list(zip(*matrix))`.",
+    "learnings": [
+      { "title": "zip() function", "desc": "Pairing elements from multiple iterables into tuples on a position-by-position basis." },
+      { "title": "zip() with unequal lengths", "desc": "Understanding how zip truncates to the shortest iterable and using itertools.zip_longest." },
+      { "title": "Unzipping", "desc": "Separating zipped tuples back into individual sequences using the * unpacking operator." },
+      { "title": "enumerate() function", "desc": "Wrapping any iterable to produce (index, element) pairs for indexed iteration." },
+      { "title": "Custom start index", "desc": "Passing a start parameter to enumerate to begin counting from any integer." },
+      { "title": "Practical patterns", "desc": "Building dictionaries from pairs, parallel iteration, and indexed data processing." }
+    ],
+    "starterCode": "# Task: Zip & Enumerate Utilities\n\nstudents = ['Alice', 'Bob', 'Charlie', 'Diana']\ngrades = [95, 87, 92]\nmatrix = [[1,2,3,4], [5,6,7,8], [9,10,11,12]]\npairs = [('x', 1), ('y', 2), ('z', 3)]\n\n# 1. zip students and grades (show truncation)\n\n# 2. zip_longest with fillvalue='N/A'\n\n# 3. dict(zip(students, grades))\n\n# 4. Unzip pairs into two tuples\n\n# 5. enumerate students with start=1\n\n# 6. Transpose matrix with zip(*)",
+    "solutionCode": "# Task: Zip & Enumerate Utilities\n\nfrom itertools import zip_longest\n\nstudents = ['Alice', 'Bob', 'Charlie', 'Diana']\ngrades = [95, 87, 92]\nmatrix = [[1,2,3,4], [5,6,7,8], [9,10,11,12]]\npairs = [('x', 1), ('y', 2), ('z', 3)]\n\n# 1. zip — truncates to shortest\nprint('1. zip (truncated):')\nprint(list(zip(students, grades)))\n# [('Alice', 95), ('Bob', 87), ('Charlie', 92)] — Diana lost!\n\n# 2. zip_longest — fills missing\nprint('\\n2. zip_longest:')\nprint(list(zip_longest(students, grades, fillvalue='N/A')))\n# [('Alice', 95), ('Bob', 87), ('Charlie', 92), ('Diana', 'N/A')]\n\n# 3. Build dict from zip\nprint('\\n3. dict from zip:')\ngrade_map = dict(zip(students, grades))\nprint(grade_map)\n# {'Alice': 95, 'Bob': 87, 'Charlie': 92}\n\n# 4. Unzip\nprint('\\n4. Unzip:')\nletters, numbers = zip(*pairs)\nprint(f'Letters: {letters}')   # ('x', 'y', 'z')\nprint(f'Numbers: {numbers}')   # (1, 2, 3)\n\n# 5. enumerate with start=1\nprint('\\n5. Enumerate:')\nfor i, student in enumerate(students, start=1):\n    print(f'  {i}. {student}')\n\n# 6. Transpose matrix\nprint('\\n6. Transpose:')\nprint('Original:')\nfor row in matrix:\n    print(f'  {row}')\n\ntransposed = list(zip(*matrix))\nprint('Transposed:')\nfor row in transposed:\n    print(f'  {row}')\n# (1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)",
+    "exampleCode": "# 🧠 Advanced Zip & Enumerate Patterns\n\n# Zip with enumerate combined\ndata = ['apple', 'banana', 'cherry']\nprices = [1.2, 0.8, 2.5]\n\nfor idx, (item, price) in enumerate(zip(data, prices), 1):\n    print(f'{idx}. {item}: ${price:.2f}')\n\n# Chunking a list with zip\nlst = [1, 2, 3, 4, 5, 6, 7, 8]\nn = 3\nchunks = list(zip(*[iter(lst)] * n))\n# [(1, 2, 3), (4, 5, 6)]  — note: 7,8 lost!\n\n# Better chunking\ndef chunk(lst, n):\n    return [lst[i:i+n] for i in range(0, len(lst), n)]\n\nprint(chunk(lst, 3))  # [[1,2,3], [4,5,6], [7,8]]\n\n# Enumerate for finding indices\nwords = ['hello', 'world', 'hello', 'python']\nhello_indices = [i for i, w in enumerate(words) if w == 'hello']\nprint(hello_indices)  # [0, 2]\n\n# Zip to create lookup dict\nkeys = ['a', 'b', 'c']\nvals = [1, 2, 3]\nlookup = dict(zip(keys, vals))\nprint(lookup['b'])  # 2\n\n# Parallel update\ncounts = {'a': 0, 'b': 0, 'c': 0}\ndeltas = [5, -2, 8]\nfor key, delta in zip(counts, deltas):\n    counts[key] += delta\nprint(counts)  # {'a': 5, 'b': -2, 'c': 8}",
+    "tests": [
+      { "id": "t1", "description": "Should use zip() with students and grades", "check": "code => /zip\\s*\\(\\s*students\\s*,\\s*grades\\s*\\)/.test(code)" },
+      { "id": "t2", "description": "Should import and use zip_longest", "check": "code => /zip_longest.*fillvalue/.test(code)" },
+      { "id": "t3", "description": "Should use dict(zip()) to build dictionary", "check": "code => /dict\\s*\\(\\s*zip\\s*\\(/.test(code)" },
+      { "id": "t4", "description": "Should unzip using zip(*pairs)", "check": "code => /zip\\s*\\(\\s*\\*\\s*pairs\\s*\\)/.test(code)" },
+      { "id": "t5", "description": "Should use enumerate with start=1", "check": "code => /enumerate\\s*\\(.*start\\s*=\\s*1\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "Should transpose matrix with zip(*matrix)", "check": "code => /zip\\s*\\(\\s*\\*\\s*matrix\\s*\\)/.test(code)" }
+    ]
+  },
+  {
+    "id": "43",
+    "slug": "python-walrus-operator",
+    "title": "Walrus Operator (:=)",
+    "icon": "Target",
+    "overview": "Assign values within expressions using the assignment expression operator introduced in Python 3.8.",
+    "explanation": "## Basic Syntax\n\n```python\n# Without walrus\nname = input('Name: ')\nif name:\n    print(f'Hello, {name}')\n\n# With walrus\nif (name := input('Name: ')):\n    print(f'Hello, {name}')\n```\n\n## While Loop Patterns\n\n```python\n# Without walrus — duplicated input() call\nwhile True:\n    line = input('> ')\n    if line == 'quit':\n        break\n    print(f'You said: {line}')\n\n# With walrus — cleaner\nwhile (line := input('> ')) != 'quit':\n    print(f'You said: {line}')\n```\n\n## List Comprehension Reuse\n\n```python\nimport re\n\ntext = 'foo123bar456baz789'\n\n# Without walrus — calls int() twice!\nbig = [int(m) for m in re.findall(r'\\d+', text) if int(m) > 200]\n\n# With walrus — int() called once\nbig = [n for m in re.findall(r'\\d+', text) if (n := int(m)) > 200]\n# [456, 789]\n```\n\n## if-else Chains\n\n```python\nimport json\n\n# Without walrus — parse twice or use temp var\ndata = None\nraw = get_response()\nif raw:\n    data = json.loads(raw)\n    if data and 'name' in data:\n        print(data['name'])\n\n# With walrus\nif (raw := get_response()) and (data := json.loads(raw)) and 'name' in data:\n    print(data['name'])\n```\n\n## Processing Streams\n\n```python\n# Filter and transform in one pass\ndef get_values():\n    yield 5\n    yield 15\n    yield 3\n    yield 25\n    yield 8\n\n# Without walrus — need helper function or two passes\nresult = [processed for v in get_values()\n          if (processed := v * 2) > 10]\n# [30, 50, 16]\n```\n\n## Readability Considerations\n\n```python\n# GOOD: Reduces duplication\nif (match := pattern.search(text)):\n    print(match.group())\n\n# BAD: Overly complex, hard to read\nif (a := foo()) and (b := bar(a)) and (c := baz(b)):\n    process(c)\n\n# BETTER: Split into clear steps\na = foo()\nif not a:\n    return\nb = bar(a)\nif not b:\n    return\nc = baz(b)\nif c:\n    process(c)\n```",
+    "keyRules": [
+      "Walrus operator (:=) assigns a value AND returns it in the same expression",
+      "Best use case: assigning AND checking in a single expression to avoid duplication",
+      "In comprehensions, walrus avoids calling the same function/expression twice",
+      "The walrus expression MUST be in parentheses when used in if/while conditions",
+      "Don't chain walrus operators — it hurts readability more than it helps",
+      "Walrus creates a REGULAR variable, accessible outside the comprehension too"
+    ],
+    "task": "Create a function `process_data(data)` that: 1) Uses walrus in a while loop to process user input until 'done'. 2) Uses walrus in a list comprehension to filter and transform numbers (double them, keep only > 10). 3) Uses walrus in an if chain to check if a string matches a pattern and extract the match. 4) Uses walrus to find the first even number in a list and print it, without a separate variable declaration.",
+    "hint": "While loop: `while (cmd := input('> ')) != 'done':`. List comp: `[doubled for x in data if (doubled := x*2) > 10]`. If chain: `if (m := re.search(pattern, s)):`. First even: `if any((first := x) % 2 == 0 for x in nums): print(first)`.",
+    "learnings": [
+      { "title": "Basic syntax", "desc": "Using := to assign a value to a variable while simultaneously evaluating an expression." },
+      { "title": "While loop patterns", "desc": "Simplifying input loops by combining reading and checking in a single condition." },
+      { "title": "List comprehension reuse", "desc": "Computing expensive values once inside a comprehension and referencing the variable." },
+      { "title": "if-else chains", "desc": "Reducing redundant function calls by capturing results with walrus in conditional blocks." },
+      { "title": "Readability considerations", "desc": "Understanding when walrus improves clarity versus when it obscures intent." }
+    ],
+    "starterCode": "# Task: Walrus Operator (:=)\n\nimport re\n\nnumbers = [3, 7, 12, 5, 18, 9, 22]\ntext = 'Error: file_not_found at line 42'\npattern = r'Error: (\\w+)'\n\n# 1. While loop with walrus (simulate with a list)\n\n# 2. List comprehension: double numbers, keep > 10\n\n# 3. If chain: match pattern, extract group\n\n# 4. Find first even number using any() + walrus",
+    "solutionCode": "# Task: Walrus Operator (:=)\n\nimport re\n\nnumbers = [3, 7, 12, 5, 18, 9, 22]\ntext = 'Error: file_not_found at line 42'\npattern = r'Error: (\\w+)'\n\n# 1. While loop pattern (simulated with list)\nprint('=== While Loop Pattern ===')\ncommands = ['start', 'process', 'stop', 'done']\ncmd_iter = iter(commands)\nwhile (cmd := next(cmd_iter, 'done')) != 'done':\n    print(f'  Processing: {cmd}')\n\n# 2. List comprehension with walrus\nprint('\\n=== Comprehension Reuse ===')\ndoubled_gt_10 = [doubled for x in numbers if (doubled := x * 2) > 10]\nprint(f'Doubled > 10: {doubled_gt_10}')\n# [24, 36, 44]\n\n# Without walrus (double computation):\n# doubled_gt_10 = [x*2 for x in numbers if x*2 > 10]\n\n# 3. If chain with walrus\nprint('\\n=== If Chain ===')\nif (match := re.search(pattern, text)):\n    error_code = match.group(1)\n    print(f'  Found error: {error_code}')\nelse:\n    print('  No error found')\n\n# 4. First even number with any() + walrus\nprint('\\n=== First Even ===')\nif any((first_even := x) % 2 == 0 for x in numbers):\n    print(f'  First even: {first_even}')  # 12\n\n# Note: first_even is accessible here too!\nprint(f'  Variable exists outside: {first_even}')\n\n# Bonus: walrus in dict comprehension\nprint('\\n=== Dict Comprehension ===')\nwords = ['hello', 'hi', 'hey', 'howdy']\nshort_words = {w: length for w in words if (length := len(w)) < 4}\nprint(f'Short words: {short_words}')  # {'hi': 2}",
+    "exampleCode": "# 🧠 Advanced Walrus Patterns\n\n# Processing nested structures\ndata = [{'name': 'Alice', 'scores': [95, 87]}, {'name': 'Bob', 'scores': []}]\n\nresults = []\nfor entry in data:\n    if (scores := entry.get('scores')) and (avg := sum(scores) / len(scores)):\n        results.append((entry['name'], avg))\nprint(results)  # [('Alice', 91.0)]\n\n# Walrus in generator expression\nimport math\nvalues = [1, 4, 9, 16, 25, 30, 36]\nperfect_squares = [\n    n for n in values\n    if (root := math.isqrt(n)) ** 2 == n and root > 4\n]\nprint(perfect_squares)  # [9, 16, 25, 36]\n\n# Caching in loop\nimport re\nlogs = [\n    'ERROR: disk full',\n    'INFO: started',\n    'ERROR: network timeout',\n    'WARNING: memory low'\n]\nerror_pattern = r'ERROR: (.+)'\nerrors = [\n    msg for log in logs\n    if (msg := re.search(error_pattern, log))\n]\nfor e in errors:\n    print(f'  Error: {e.group(1)}')\n\n# Walrus with list processing\nitems = [None, [], [1, 2], None, [3], []]\nvalid = [result for item in items if (result := item) and isinstance(result, list) and result]\nprint(valid)  # [[1, 2], [3]]",
+    "tests": [
+      { "id": "t1", "description": "Should use walrus in while loop condition", "check": "code => /while\\s*\\(\\s*\\w+\\s*:=/.test(code)" },
+      { "id": "t2", "description": "Should use walrus in list comprehension", "check": "code => /\\[.*:=.*for\\s+\\w+\\s+in/.test(code)" },
+      { "id": "t3", "description": "Should use walrus with re.search in if", "check": "code => /if\\s*\\(.*:=.*re\\.search/.test(code)" },
+      { "id": "t4", "description": "Should use any() with walrus for first even", "check": "code => /any\\s*\\(\\s*\\(.*:=/.test(code)" },
+      { "id": "t5", "description": "Should import re module", "check": "code => /import\\s+re/.test(code)" },
+      { "id": "t6", "description": "Should have parentheses around walrus in conditions", "check": "code => /\\(\\s*\\w+\\s*:=.*\\)/.test(code)" }
+    ]
+  },
+  {
+    "id": "44",
+    "slug": "python-type-hinting-annotations",
+    "title": "Type Hinting & Annotations",
+    "icon": "Tag",
+    "overview": "Add static type metadata to function signatures and variables for improved tooling and documentation.",
+    "explanation": "## Basic Type Hints\n\n```python\n# Variable annotations\nname: str = 'Alice'\nage: int = 25\nheight: float = 5.9\nis_active: bool = True\n\n# These are ANNOTATIONS — Python doesn't enforce them!\nname: str = 123  # No error at runtime!\n```\n\n## Function Signatures\n\n```python\ndef greet(name: str) -> str:\n    return f'Hello, {name}'\n\ndef add(a: int, b: int) -> int:\n    return a + b\n\ndef process(items: list, threshold: float) -> bool:\n    return any(x > threshold for x in items)\n\n# None return type for side-effect functions\ndef log(message: str) -> None:\n    print(f'[LOG] {message}')\n```\n\n## Complex Types from typing\n\n```python\nfrom typing import List, Dict, Tuple, Set, Optional\n\n# List of strings\ndef get_names() -> List[str]:\n    return ['Alice', 'Bob']\n\n# Dict with string keys and int values\ndef word_count(text: str) -> Dict[str, int]:\n    return {w: text.count(w) for w in set(text.split())}\n\n# Tuple with specific types\ndef get_bounds() -> Tuple[float, float]:\n    return (0.0, 100.0)\n\n# Optional — can be None\ndef find_user(user_id: int) -> Optional[str]:\n    if user_id == 1:\n        return 'Alice'\n    return None  # Valid!\n```\n\n## Union & Literal Types\n\n```python\nfrom typing import Union, Literal\n\n# Multiple possible types\ndef process_id(id_val: Union[int, str]) -> str:\n    return str(id_val)\n\n# Python 3.10+ syntax\ndef process_id(id_val: int | str) -> str:\n    return str(id_val)\n\n# Exact values\ndef set_mode(mode: Literal['dev', 'prod', 'test']) -> None:\n    print(f'Mode: {mode}')\n\n# set_mode('staging')  # mypy would catch this!\n```\n\n## Type Aliases\n\n```python\nfrom typing import Dict, List, Tuple\n\n# Complex type given a readable name\nUserData = Dict[str, Union[str, int, List[str]]]\nCoordinate = Tuple[float, float]\nMatrix = List[List[float]]\n\ndef process_user(data: UserData) -> None:\n    pass\n\ndef distance(p1: Coordinate, p2: Coordinate) -> float:\n    return ((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2) ** 0.5\n```\n\n## mypy Tool\n\n```bash\n# Install: pip install mypy\n# Run: mypy script.py\n\n# script.py:\ndef add(a: int, b: int) -> int:\n    return a + b\n\nadd('hello', 'world')  # mypy: error: Argument 1 has incompatible type \"str\"\n```",
+    "keyRules": [
+      "Type hints are ANNOTATIONS only — Python runtime ignores them completely, no enforcement",
+      "Use -> None for functions that don't return a value (side effects only)",
+      "Optional[X] is shorthand for Union[X, None] — means the value CAN be None",
+      "Type aliases improve readability for complex nested types like Dict[str, List[Tuple[int, ...]]]",
+      "Use mypy for static type checking BEFORE runtime — catches type errors early",
+      "Python 3.10+ supports X | Y syntax instead of Union[X, Y] — use it when available"
+    ],
+    "task": "Create a function `analyze_data(numbers: List[int]) -> Dict[str, Union[int, float, List[int]]]` that returns a dict with keys: 'count' (int), 'mean' (float), 'max' (int), 'min' (int), 'above_mean' (List[int]). Create type aliases `NumberList` and `AnalysisResult`. Create a function `search(items: List[str], query: str) -> Optional[int]` that returns the index or None. Add proper type hints to everything.",
+    "hint": "Type aliases: `NumberList = List[int]`, `AnalysisResult = Dict[str, Union[int, float, List[int]]]`. mean: `sum(numbers) / len(numbers)` (handle empty list). above_mean: list comprehension filtering > mean.",
+    "learnings": [
+      { "title": "Basic type hints", "desc": "Annotating variables and parameters with types like int, str, float, and bool." },
+      { "title": "Function signatures", "desc": "Adding parameter types and return type annotations using -> arrow syntax." },
+      { "title": "Complex types", "desc": "Using List[], Dict[], Tuple[], Set[], and Optional[] from the typing module." },
+      { "title": "Union & Literal types", "desc": "Specifying multiple allowed types with Union[] and exact values with Literal[]." },
+      { "title": "Type aliases", "desc": "Creating readable names for complex type expressions using variable assignments." },
+      { "title": "mypy tool", "desc": "Running static type checking with mypy to catch type errors before runtime." }
+    ],
+    "starterCode": "# Task: Type Hinting & Annotations\n\nfrom typing import List, Dict, Union, Optional\n\n# 1. Define type aliases\n#    NumberList = ...\n#    AnalysisResult = ...\n\n# 2. analyze_data function with full type hints\n\n# 3. search function returning Optional[int]\n\n# 4. Demonstrate with proper typed calls",
+    "solutionCode": "# Task: Type Hinting & Annotations\n\nfrom typing import List, Dict, Union, Optional\n\n# 1. Type aliases\nNumberList = List[int]\nAnalysisResult = Dict[str, Union[int, float, List[int]]]\n\n# 2. analyze_data with full type hints\ndef analyze_data(numbers: NumberList) -> AnalysisResult:\n    if not numbers:\n        return {\n            'count': 0,\n            'mean': 0.0,\n            'max': 0,\n            'min': 0,\n            'above_mean': []\n        }\n\n    count: int = len(numbers)\n    mean: float = sum(numbers) / count\n    max_val: int = max(numbers)\n    min_val: int = min(numbers)\n    above_mean: List[int] = [n for n in numbers if n > mean]\n\n    return {\n        'count': count,\n        'mean': mean,\n        'max': max_val,\n        'min': min_val,\n        'above_mean': above_mean\n    }\n\n# 3. search function\ndef search(items: List[str], query: str) -> Optional[int]:\n    \"\"\"Return index of query in items, or None if not found.\"\"\"\n    for i, item in enumerate(items):\n        if item == query:\n            return i\n    return None\n\n# 4. Demonstrate\ndata: NumberList = [10, 20, 30, 40, 50, 15, 25]\nresult: AnalysisResult = analyze_data(data)\n\nprint('Analysis Result:')\nfor key, value in result.items():\n    print(f'  {key}: {value} (type: {type(value).__name__})')\n\nprint('\\nSearch:')\nfruits: List[str] = ['apple', 'banana', 'cherry']\nidx1: Optional[int] = search(fruits, 'banana')\nidx2: Optional[int] = search(fruits, 'grape')\n\nprint(f'  banana at index: {idx1}')  # 1\nprint(f'  grape at index: {idx2}')   # None\n\n# Empty data\nprint(f'\\nEmpty analysis: {analyze_data([])}')",
+    "exampleCode": "# 🧠 Advanced Type Hints\n\nfrom typing import Callable, TypeVar, Generic, Any\n\n# Callable type hints\ndef apply(\n    func: Callable[[int, int], int],\n    a: int,\n    b: int\n) -> int:\n    return func(a, b)\n\nprint(apply(lambda x, y: x + y, 3, 4))  # 7\n\n# TypeVar for generic functions\nT = TypeVar('T')\n\ndef first(items: list[T]) -> T | None:\n    return items[0] if items else None\n\nprint(first([1, 2, 3]))  # 1\nprint(first(['a', 'b']))  # 'a'\n\n# Generic classes\nclass Stack(Generic[T]):\n    def __init__(self) -> None:\n        self._items: list[T] = []\n\n    def push(self, item: T) -> None:\n        self._items.append(item)\n\n    def pop(self) -> T | None:\n        return self._items.pop() if self._items else None\n\ns: Stack[int] = Stack()\ns.push(1)\ns.push(2)\nprint(s.pop())  # 2\n\n# Protocols (structural typing, Python 3.8+)\nfrom typing import Protocol\n\nclass HasName(Protocol):\n    name: str\n\ndef greet(obj: HasName) -> str:\n    return f'Hello, {obj.name}'\n\nclass Person:\n    def __init__(self, name: str):\n        self.name = name\n\nprint(greet(Person('Alice')))  # Works! No inheritance needed",
+    "tests": [
+      { "id": "t1", "description": "Should import from typing module", "check": "code => /from\\s+typing\\s+import/.test(code)" },
+      { "id": "t2", "description": "Should define NumberList type alias", "check": "code => /NumberList\\s*=\\s*List\\s*\\[\\s*int\\s*\\]/.test(code)" },
+      { "id": "t3", "description": "Should define AnalysisResult with Union", "check": "code => /AnalysisResult\\s*=\\s*Dict.*Union/.test(code)" },
+      { "id": "t4", "description": "analyze_data should have parameter and return type hints", "check": "code => /def\\s+analyze_data\\s*\\(.*:.*\\)\\s*->\\s*AnalysisResult/.test(code)" },
+      { "id": "t5", "description": "search should return Optional[int]", "check": "code => /def\\s+search.*->\\s*Optional\\s*\\[\\s*int\\s*\\]/.test(code)" },
+      { "id": "t6", "description": "Should have local variable type annotations", "check": "code => /\\w+\\s*:\\s*(int|float|str|List|Dict)\\s*=/.test(code)" }
+    ]
+  },
+  {
+    "id": "45",
+    "slug": "python-dataclasses",
+    "title": "Dataclasses",
+    "icon": "Database",
+    "overview": "Reduce boilerplate in class definitions using the @dataclass decorator for data-heavy objects.",
+    "explanation": "## @dataclass Decorator\n\n```python\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n\n# Auto-generates: __init__, __repr__, __eq__\np1 = Point(3.0, 4.0)\np2 = Point(3.0, 4.0)\n\nprint(p1)          # Point(x=3.0, y=4.0)\nprint(p1 == p2)    # True (auto __eq__!)\nprint(p1.x)        # 3.0\n```\n\n## Field Types & Defaults\n\n```python\nfrom dataclasses import dataclass, field\n\n@dataclass\nclass User:\n    name: str\n    age: int = 0           # Default value\n    active: bool = True    # Default value\n    # tags: list = []       # ❌ MUTABLE DEFAULT BUG!\n    tags: list = field(default_factory=list)  # ✅ Safe!\n\nu1 = User('Alice')\nprint(u1)  # User(name='Alice', age=0, active=True, tags=[])\n\nu2 = User('Bob', age=30, tags=['admin'])\nprint(u2)  # User(name='Bob', age=30, active=True, tags=['admin'])\n```\n\n## field() Function\n\n```python\nfrom dataclasses import dataclass, field\n\n@dataclass\nclass Product:\n    name: str\n    price: float\n    tags: list = field(default_factory=list)\n    internal_id: int = field(default=-1, repr=False)  # Hidden from repr\n    description: str = field(default='', compare=False)  # Excluded from __eq__\n\np = Product('Laptop', 999, tags=['tech'], internal_id=42, description='A laptop')\nprint(p)\n# Product(name='Laptop', price=999, tags=['tech'], description='A laptop')\n# internal_id NOT in repr!\n```\n\n## Frozen Dataclasses\n\n```python\n@dataclass(frozen=True)\nclass ImmutablePoint:\n    x: float\n    y: float\n\np = ImmutablePoint(1, 2)\n# p.x = 10  # FrozenInstanceError!\nprint(p)  # ImmutablePoint(x=1.0, y=2.0)\n\n# Frozen dataclasses are hashable — can be dict keys / set members\npoints = {ImmutablePoint(0,0), ImmutablePoint(1,1), ImmutablePoint(0,0)}\nprint(len(points))  # 2 (deduplicated!)\n```\n\n## __post_init__\n\n```python\n@dataclass\nclass Circle:\n    radius: float\n    area: float = field(init=False)  # NOT set in __init__\n\n    def __post_init__(self):\n        self.area = 3.14159 * self.radius ** 2\n\nc = Circle(5)\nprint(c)  # Circle(radius=5, area=78.53975)\n```\n\n## Dataclass Inheritance\n\n```python\n@dataclass\nclass Animal:\n    name: str\n    age: int\n\n@dataclass\nclass Dog(Animal):\n    breed: str\n\n# Fields are ordered: name, age (from Animal), then breed (from Dog)\nd = Dog('Rex', 5, 'Labrador')\nprint(d)  # Dog(name='Rex', age=5, breed='Labrador')\n```",
+    "keyRules": [
+      "@dataclass auto-generates __init__, __repr__, and __eq__ — massive boilerplate reduction",
+      "NEVER use mutable defaults (lists, dicts) directly — use field(default_factory=list/dict)",
+      "field(repr=False) hides a field from __repr__, field(compare=False) excludes from __eq__",
+      "frozen=True makes instances immutable AND hashable — required for use as dict keys or set members",
+      "__post_init__() runs AFTER __init__ — use it for validation and computed fields",
+      "Fields with defaults must come AFTER fields without defaults in the class definition"
+    ],
+    "task": "Create a `Student` dataclass with `name: str`, `gpa: float`, `courses: list` (use default_factory). Add a `@property gpa_letter` that returns 'A' if gpa >= 3.7, 'B' if >= 3.0, 'C' if >= 2.0, else 'F'. Create a `GradStudent(Student)` dataclass adding `thesis: str`. Create a frozen `Config` dataclass with `debug: bool = False`, `max_retries: int = 3`. Demonstrate all features including hashability of Config.",
+    "hint": "Student: `courses: list = field(default_factory=list)`. GradStudent inherits all fields. Config: `@dataclass(frozen=True)`. Test hashability: `config_set = {Config(), Config(debug=True)}`.",
+    "learnings": [
+      { "title": "@dataclass decorator", "desc": "Automatically generating __init__, __repr__, and __eq__ from field definitions." },
+      { "title": "Field types & defaults", "desc": "Defining typed fields with default values and understanding required vs optional fields." },
+      { "title": "field() function", "desc": "Customizing individual field behavior with default_factory, repr, and compare parameters." },
+      { "title": "Frozen dataclasses", "desc": "Making dataclass instances immutable by passing frozen=True to the decorator." },
+      { "title": "Post-init processing", "desc": "Implementing __post_init__() for validation and computed fields after auto-initialization." },
+      { "title": "Dataclass inheritance", "desc": "Extending dataclasses and understanding field ordering and override rules." }
+    ],
+    "starterCode": "# Task: Dataclasses\n\nfrom dataclasses import dataclass, field\n\n# 1. Create Student dataclass\n#    name, gpa, courses (default_factory)\n#    @property gpa_letter\n\n# 2. Create GradStudent(Student) dataclass\n#    Add thesis field\n\n# 3. Create frozen Config dataclass\n#    debug=False, max_retries=3\n\n# 4. Demonstrate all features",
+    "solutionCode": "# Task: Dataclasses\n\nfrom dataclasses import dataclass, field\n\n# 1. Student dataclass\n@dataclass\nclass Student:\n    name: str\n    gpa: float\n    courses: list = field(default_factory=list)\n\n    @property\n    def gpa_letter(self) -> str:\n        if self.gpa >= 3.7:\n            return 'A'\n        elif self.gpa >= 3.0:\n            return 'B'\n        elif self.gpa >= 2.0:\n            return 'C'\n        return 'F'\n\n# 2. GradStudent inherits from Student\n@dataclass\nclass GradStudent(Student):\n    thesis: str = ''\n\n# 3. Frozen Config dataclass\n@dataclass(frozen=True)\nclass Config:\n    debug: bool = False\n    max_retries: int = 3\n\n# 4. Demonstrate\nprint('=== Student ===')\ns1 = Student('Alice', 3.8, ['Math', 'CS'])\ns2 = Student('Bob', 2.5)\nprint(s1)\nprint(f'{s1.name} GPA letter: {s1.gpa_letter}')  # A\nprint(f'{s2.name} GPA letter: {s2.gpa_letter}')  # C\nprint(f'Equal? {s1 == Student(\"Alice\", 3.8, [\"Math\", \"CS\"])}')  # True\n\nprint('\\n=== GradStudent ===')\ngs = GradStudent('Carol', 3.9, ['AI', 'ML'], thesis='Deep Learning')\nprint(gs)\nprint(f'{gs.name} GPA letter: {gs.gpa_letter}')  # A\n\nprint('\\n=== Frozen Config ===')\nc1 = Config()\nc2 = Config(debug=True)\nc3 = Config()  # Same as c1\n\nprint(c1)\nprint(f'c1 == c3: {c1 == c3}')  # True\nprint(f'hash(c1) == hash(c3): {hash(c1) == hash(c3)}')  # True\n\n# Hashable — can be in sets\ncfg_set = {c1, c2, c3}\nprint(f'Unique configs: {len(cfg_set)}')  # 2\n\n# Immutable\ntry:\n    c1.debug = True  # FrozenInstanceError!\nexcept Exception as e:\n    print(f'Cannot modify frozen: {type(e).__name__}')",
+    "exampleCode": "# 🧠 Advanced Dataclass Patterns\n\nfrom dataclasses import dataclass, field, fields, asdict, astuple\n\n# Conversion utilities\n@dataclass\nclass Person:\n    name: str\n    age: int\n    city: str = 'Unknown'\n\np = Person('Alice', 30, 'NYC')\nprint(asdict(p))   # {'name': 'Alice', 'age': 30, 'city': 'NYC'}\nprint(astuple(p))  # ('Alice', 30, 'NYC')\n\n# Introspection\nfor f in fields(Person):\n    print(f'{f.name}: {f.type}, default={f.default}')\n\n# Validation in __post_init__\n@dataclass\nclass ValidatedUser:\n    name: str\n    age: int\n    email: str\n\n    def __post_init__(self):\n        if self.age < 0:\n            raise ValueError('Age cannot be negative')\n        if '@' not in self.email:\n            raise ValueError('Invalid email')\n\n# ValidatedUser('Test', -1, 'bad')  # ValueError!\n\n# Computed fields with init=False\n@dataclass\nclass Rectangle:\n    width: float\n    height: float\n    area: float = field(init=False)\n    perimeter: float = field(init=False)\n\n    def __post_init__(self):\n        self.area = self.width * self.height\n        self.perimeter = 2 * (self.width + self.height)\n\nr = Rectangle(4, 5)\nprint(r)  # Rectangle(width=4.0, height=5.0, area=20.0, perimeter=18.0)\n\n# kw_only parameter (Python 3.10+)\n@dataclass(kw_only=True)\nclass Strict:\n    name: str\n    value: int\n\n# s = Strict('test', 42)  # TypeError! Must use keywords\n# s = Strict(name='test', value=42)  # ✅",
+    "tests": [
+      { "id": "t1", "description": "Should define Student with @dataclass", "check": "code => /@dataclass\\s*\\n\\s*class\\s+Student/.test(code)" },
+      { "id": "t2", "description": "Should use field(default_factory=list) for courses", "check": "code => /courses\\s*:\\s*list\\s*=\\s*field\\s*\\(\\s*default_factory\\s*=\\s*list\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "Should have @property gpa_letter", "check": "code => /@property\\s*\\n\\s*def\\s+gpa_letter/.test(code)" },
+      { "id": "t4", "description": "Should define GradStudent inheriting from Student", "check": "code => /class\\s+GradStudent\\s*\\(\\s*Student\\s*\\)/.test(code)" },
+      { "id": "t5", "description": "Should define Config with frozen=True", "check": "code => /@dataclass\\s*\\(\\s*frozen\\s*=\\s*True\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "Should demonstrate hashability of Config", "check": "code => /hash\\s*\\(/.test(code)" }
+    ]
+  },
+  {
+    "id": "46",
+    "slug": "python-memory-management-gc",
+    "title": "Memory Management & GC",
+    "icon": "HardDrive",
+    "overview": "Understand Python's memory allocation, reference counting, and garbage collection mechanisms.",
+    "explanation": "## Reference Counting\n\n```python\nimport sys\n\na = [1, 2, 3]\nprint(sys.getrefcount(a))  # 2 (a + temporary arg)\n\nb = a\nprint(sys.getrefcount(a))  # 3 (a, b, temporary)\n\ndel b\nprint(sys.getrefcount(a))  # 2\n\ndel a  # refcount → 0, memory freed immediately\n```\n\n## Garbage Collector for Cycles\n\n```python\nimport gc\nimport sys\n\nclass Node:\n    def __init__(self, name):\n        self.name = name\n        self.ref = None\n    def __repr__(self):\n        return f'Node({self.name})'\n\n# Create a reference cycle\na = Node('A')\nb = Node('B')\na.ref = b\nb.ref = a\n\nprint(sys.getrefcount(a))  # Still referenced!\ndel a\ndel b\n# Refcount never reaches 0 — cycle!\n\n# But GC handles it\ncollected = gc.collect()\nprint(f'Collected {collected} objects')  # 2\n```\n\n## gc Module\n\n```python\nimport gc\n\nprint(f'GC enabled: {gc.isenabled()}')\ngc.disable()\nprint(f'GC enabled: {gc.isenabled()}')\ngc.enable()\n\n# Force collection\ngc.collect()\n\n# Get garbage objects (unreachable with cycles)\nprint(f'Garbage count: {len(gc.garbage)}')\n\n# Set debug flags\ngc.set_debug(gc.DEBUG_STATS)\n```\n\n## Memory Profiling\n\n```python\nimport sys\n\n# Object sizes\nprint(sys.getsizeof(0))        # 28 bytes\nprint(sys.getsizeof('hello'))  # 54 bytes\nprint(sys.getsizeof([1,2,3])) # 88 bytes\nprint(sys.getsizeof({}))      # 64 bytes\nprint(sys.getsizeof(()))      # 40 bytes (tuple is smaller than list!)\n\n# Tracing memory allocations\nimport tracemalloc\n\ntracemalloc.start()\n\n# Allocate memory\ndata = [list(range(1000)) for _ in range(100)]\n\n# Get current memory snapshot\nsnapshot = tracemalloc.take_snapshot()\nfor stat in snapshot.statistics('lineno')[:3]:\n    print(stat)\n\ntracemalloc.stop()\n```\n\n## __del__ Method\n\n```python\nclass Resource:\n    def __init__(self, name):\n        self.name = name\n        print(f'{self.name} created')\n\n    def __del__(self):\n        print(f'{self.name} destroyed')\n\nr = Resource('MyResource')\n# 'MyResource created'\ndel r\n# 'MyResource destroyed'\n\n# Warning: __del__ not guaranteed to run!\n# Use context managers instead for reliable cleanup\n```\n\n## Object Interning\n\n```python\n# Small integers are interned (-5 to 256)\na = 100\nb = 100\nprint(a is b)  # True (same object!)\n\na = 300\nb = 300\nprint(a is b)  # False (different objects!)\n\n# Short strings may be interned\na = 'hello'\nb = 'hello'\nprint(a is b)  # True (implementation detail, don't rely on it!)\n\n# Force interning\nimport sys\na = sys.intern('a_very_long_string_that_wouldnt_normally_be_interned')\nb = sys.intern('a_very_long_string_that_wouldnt_normally_be_interned')\nprint(a is b)  # True\n```",
+    "keyRules": [
+      "Python uses reference counting as PRIMARY memory management — objects are freed immediately when refcount hits 0",
+      "Reference cycles (A→B→A) are handled by the cyclic garbage collector — runs periodically, not immediately",
+      "Use sys.getrefcount(obj) to check reference count (note: the call itself adds 1 temporary reference)",
+      "sys.getsizeof() returns the size of the CONTAINER, not including referenced objects recursively",
+      "Avoid __del__ for cleanup — it's unreliable (may not run, can create uncollectable cycles). Use context managers.",
+      "Small integers (-5 to 256) and some strings are interned (cached/reused) — don't rely on 'is' for value equality"
+    ],
+    "task": "Create a `Node` class with `name` and `ref` attributes. Create a reference cycle (A.ref = B, B.ref = A), delete both variables, then use `gc.collect()` to clean up and print how many objects were collected. Use `sys.getrefcount()` to demonstrate refcount changes when creating and deleting references. Use `sys.getsizeof()` to compare sizes of list vs tuple vs set with the same elements. Use `tracemalloc` to measure memory before and after creating a large list.",
+    "hint": "After creating cycle and deleting vars: `collected = gc.collect(); print(f'Collected: {collected}')`. getrefcount: create variable, check, assign to another, check, del, check.",
+    "learnings": [
+      { "title": "Reference counting", "desc": "How Python tracks object references and immediately reclaims memory when count reaches zero." },
+      { "title": "Garbage collector", "desc": "Understanding the cyclic GC that detects and breaks reference cycles." },
+      { "title": "gc module", "desc": "Controlling garbage collection manually using gc.enable(), gc.disable(), and gc.collect()." },
+      { "title": "Memory profiling", "desc": "Using sys.getsizeof(), tracemalloc, and memory_profiler to inspect memory usage." },
+      { "title": "__del__ method", "desc": "Implementing destructors that run when an object is about to be garbage collected." },
+      { "title": "Object interning", "desc": "Understanding how Python caches small integers and short strings for memory efficiency." }
+    ],
+    "starterCode": "# Task: Memory Management & GC\n\nimport sys\nimport gc\nimport tracemalloc\n\n# 1. Create Node class\n\n# 2. Demonstrate reference counting\n\n# 3. Create and clean up reference cycle\n\n# 4. Compare sizes: list vs tuple vs set\n\n# 5. Measure memory with tracemalloc",
+    "solutionCode": "# Task: Memory Management & GC\n\nimport sys\nimport gc\nimport tracemalloc\n\n# 1. Node class\nclass Node:\n    def __init__(self, name):\n        self.name = name\n        self.ref = None\n    def __repr__(self):\n        return f'Node({self.name})'\n\n# 2. Reference counting demo\nprint('=== Reference Counting ===')\ndata = [1, 2, 3]\nprint(f'After creation: {sys.getrefcount(data)}')  # 2\n\nalias = data\nprint(f'After alias: {sys.getrefcount(data)}')     # 3\n\ndel alias\nprint(f'After del alias: {sys.getrefcount(data)}') # 2\n\n# 3. Reference cycle\ndel data\nprint('\\n=== Reference Cycle ===')\na = Node('A')\nb = Node('B')\na.ref = b\nb.ref = a\n\nprint(f'Before del: refcount(a) = {sys.getrefcount(a)}')\ndel a\ndel b\nprint('Deleted a and b (but cycle keeps them alive)')\n\ncollected = gc.collect()\nprint(f'GC collected {collected} objects')\n\n# 4. Size comparison\nprint('\\n=== Size Comparison ===')\nelements = [1, 2, 3, 4, 5]\nprint(f'list:  {sys.getsizeof(list(elements))} bytes')\nprint(f'tuple: {sys.getsizeof(tuple(elements))} bytes')\nprint(f'set:   {sys.getsizeof(set(elements))} bytes')\nprint(f'frozenset: {sys.getsizeof(frozenset(elements))} bytes')\n\n# 5. Memory tracing\nprint('\\n=== Memory Tracing ===')\ntracemalloc.start()\n\nbaseline = tracemalloc.get_traced_memory()[0]\nprint(f'Baseline: {baseline:,} bytes')\n\nbig_data = [list(range(10000)) for _ in range(100)]\ncurrent = tracemalloc.get_traced_memory()[0]\nprint(f'After allocation: {current:,} bytes')\nprint(f'Used: {current - baseline:,} bytes')\n\ndel big_data\ngc.collect()\ncurrent = tracemalloc.get_traced_memory()[0]\nprint(f'After cleanup: {current:,} bytes')\n\ntracemalloc.stop()",
+    "exampleCode": "# 🧠 Advanced Memory Patterns\n\n# Weak references — don't increase refcount\nimport weakref\n\nclass BigObject:\n    def __init__(self, data):\n        self.data = data\n\ndef callback(ref):\n    print('Object was garbage collected!')\n\nobj = BigObject(list(range(1000)))\nweak_ref = weakref.ref(obj, callback)\n\nprint(weak_ref())  # <BigObject object>\ndel obj\ngc.collect()\nprint(weak_ref())  # None (object gone!)\n# 'Object was garbage collected!' printed\n\n# Memory view — zero-copy slicing\nimport array\narr = array.array('i', range(1000000))\nprint(f'Full array: {arr.itemsize * len(arr):,} bytes')\n\n# No copy!\nview = memoryview(arr)[1000:2000]\nprint(f'Memory view: {sys.getsizeof(view)} bytes')  # Tiny!\nprint(f'Sum of view: {sum(view)}')\n\n# __slots__ for memory efficiency\nclass Normal:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\nclass Slotted:\n    __slots__ = ['x', 'y']\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\nn = Normal(1, 2)\ns = Slotted(1, 2)\nprint(f'Normal: {sys.getsizeof(n)} bytes')\nprint(f'Slotted: {sys.getsizeof(s)} bytes')\n# Slotted is smaller (no __dict__)\n\n# __slots__ also prevents dynamic attributes\n# s.z = 3  # AttributeError!",
+    "tests": [
+      { "id": "t1", "description": "Should define Node class with name and ref", "check": "code => /class\\s+Node.*self\\.name.*self\\.ref/.test(code)" },
+      { "id": "t2", "description": "Should use sys.getrefcount()", "check": "code => /sys\\.getrefcount\\s*\\(/.test(code)" },
+      { "id": "t3", "description": "Should create reference cycle and use gc.collect()", "check": "code => /gc\\.collect\\s*\\(\\s*\\)/.test(code)" },
+      { "id": "t4", "description": "Should compare sizes with sys.getsizeof", "check": "code => /sys\\.getsizeof\\s*\\(\\s*list/.test(code) && /sys\\.getsizeof\\s*\\(\\s*tuple/.test(code)" },
+      { "id": "t5", "description": "Should use tracemalloc.start() and stop()", "check": "code => /tracemalloc\\.start\\s*\\(\\s*\\)/.test(code) && /tracemalloc\\.stop\\s*\\(\\s*\\)/.test(code)" },
+      { "id": "t6", "description": "Should import sys, gc, and tracemalloc", "check": "code => /import\\s+sys/.test(code) && /import\\s+gc/.test(code) && /import\\s+tracemalloc/.test(code)" }
+    ]
+  },
+   {
+    "id": "47",
+    "slug": "python-time-space-complexity",
+    "title": "Time & Space Complexity",
+    "icon": "Clock",
+    "overview": "Analyze algorithm efficiency using Big-O notation to compare scaling behavior of solutions.",
+    "explanation": "## Big-O Notation\n\n```python\n# O(1) — Constant time\ndef get_first(lst):\n    return lst[0]  # Always one operation\n\n# O(n) — Linear time\ndef find_max(lst):\n    max_val = lst[0]\n    for x in lst:       # n iterations\n        if x > max_val:\n            max_val = x\n    return max_val\n\n# O(n²) — Quadratic time\ndef has_duplicates(lst):\n    for i in range(len(lst)):       # n iterations\n        for j in range(i+1, len(lst)):  # ~n/2 iterations\n            if lst[i] == lst[j]:\n                return True\n    return False\n\n# O(log n) — Logarithmic time\ndef binary_search(lst, target):\n    low, high = 0, len(lst) - 1\n    while low <= high:        # Halves each time\n        mid = (low + high) // 2\n        if lst[mid] == target:\n            return mid\n        elif lst[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1\n```\n\n## Time Complexity Classes\n\n```python\n# O(2^n) — Exponential (terrible!)\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)  # Two recursive calls!\n\n# O(n log n) — Linearithmic (good for sorting)\ndef merge_sort(lst):\n    if len(lst) <= 1:\n        return lst\n    mid = len(lst) // 2\n    left = merge_sort(lst[:mid])\n    right = merge_sort(lst[mid:])\n    return merge(left, right)\n```\n\n## Space Complexity\n\n```python\n# O(1) space — in-place\ndef reverse_in_place(lst):\n    left, right = 0, len(lst) - 1\n    while left < right:\n        lst[left], lst[right] = lst[right], lst[left]\n        left += 1\n        right -= 1\n\n# O(n) space — creates new list\ndef reversed_copy(lst):\n    return lst[::-1]  # New list of size n\n\n# O(n²) space — nested structures\ndef all_pairs(lst):\n",
+    "keyRules": [
+      "Big-O describes the UPPER BOUND of growth as input size approaches infinity — drop constants and lower-order terms",
+      "O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ) — know this ordering",
+      "Space complexity measures EXTRA memory used beyond input — O(1) means in-place, O(n) means proportional to input",
+      "Amortized O(1) means individual operations may be O(n) occasionally, but averaged over many calls it's O(1)",
+      "Always measure empirically with timeit — Big-O is theoretical; constants matter for small inputs",
+      "Nested loops = O(n²), halving = O(log n), single pass = O(n), hash lookup = O(1) average"
+    ],
+    "task": "Implement three versions of finding if a list has duplicates: 1) `has_dup_quadratic` — nested loops O(n²). 2) `has_dup_sort` — sort then check adjacent O(n log n). 3) `has_dup_set` — use set O(n). Write a `benchmark(func, data, label)` function using `time.perf_counter()` that times one call. Test all three with a list of 5000 elements (last element duplicates first). Print results with their Big-O labels.",
+    "hint": "Quadratic: double for loop. Sort: `sorted(lst)` then check `lst[i] == lst[i-1]`. Set: `len(set(lst)) != len(lst)`. Benchmark: `start = time.perf_counter(); func(data); return time.perf_counter() - start`.",
+    "learnings": [
+      { "title": "Big-O notation", "desc": "Expressing the upper bound of algorithm growth as input size approaches infinity." },
+      { "title": "Time complexity classes", "desc": "Categorizing algorithms into O(1), O(log n), O(n), O(n log n), O(n²), and O(2ⁿ)." },
+      { "title": "Space complexity", "desc": "Measuring additional memory consumption relative to input size during execution." },
+      { "title": "Best/Average/Worst case", "desc": "Analyzing algorithm performance across different input distributions and edge cases." },
+      { "title": "Amortized analysis", "desc": "Understanding operations like list.append() that are O(1) on average despite occasional O(n) resizes." },
+      { "title": "Practical measurement", "desc": "Using timeit module and time.perf_counter() for empirical performance benchmarking." }
+    ],
+    "starterCode": "# Task: Time & Space Complexity\n\nimport time\n\n# 1. has_dup_quadratic — O(n²)\n\n# 2. has_dup_sort — O(n log n)\n\n# 3. has_dup_set — O(n)\n\n# 4. benchmark(func, data, label) function\n\n# 5. Test all three with 5000 elements",
+    "solutionCode": "# Task: Time & Space Complexity\n\nimport time\n\ndef has_dup_quadratic(lst):\n    for i in range(len(lst)):\n        for j in range(i + 1, len(lst)):\n            if lst[i] == lst[j]:\n                return True\n    return False\n\ndef has_dup_sort(lst):\n    sorted_lst = sorted(lst)\n    for i in range(1, len(sorted_lst)):\n        if sorted_lst[i] == sorted_lst[i - 1]:\n            return True\n    return False\n\ndef has_dup_set(lst):\n    return len(lst) != len(set(lst))\n\ndef benchmark(func, data, label):\n    start = time.perf_counter()\n    result = func(data)\n    elapsed = time.perf_counter() - start\n    print(f'{label:20s}: {elapsed:.6f}s — Result: {result}')\n    return elapsed\n\n# Test data: 5000 unique + 1 duplicate\nn = 5000\ndata = list(range(n)) + [0]\n\nprint(f'Data size: {len(data)} elements (1 duplicate)')\nprint('-' * 55)\n\nt1 = benchmark(has_dup_quadratic, data, 'O(n²)  nested loops')\nt2 = benchmark(has_dup_sort, data, 'O(n log n)  sort')\nt3 = benchmark(has_dup_set, data, 'O(n)   set')\n\nprint('-' * 55)\nprint(f'Set is {t1/t3:.0f}x faster than nested loops')\nprint(f'Set is {t2/t3:.1f}x faster than sort')\n\n# Space complexity notes\nprint(f'\\nSpace complexity:')\nprint(f'  Quadratic: O(1) — no extra space')\nprint(f'  Sort:      O(n) — sorted() creates copy')\nprint(f'  Set:       O(n) — set stores n elements')",
+    "exampleCode": "# 🧠 Advanced Complexity Analysis\n\n# Measuring scaling behavior\ndef measure_scaling():\n    sizes = [100, 500, 1000, 2000, 5000, 10000]\n    results = []\n    for n in sizes:\n        data = list(range(n)) + [n-1]\n        start = time.perf_counter()\n        has_dup_quadratic(data)\n        elapsed = time.perf_counter() - start\n        results.append((n, elapsed))\n        print(f'n={n:>5}: {elapsed:.6f}s')\n\n    # Verify O(n²): doubling n should ~4x time\n    print('\\nRatio check (should be ~4 for O(n²)):')\n    for i in range(1, len(results)):\n        n_prev, t_prev = results[i-1]\n        n_curr, t_curr = results[i]\n        if n_curr == 2 * n_prev:\n            print(f'  {n_prev}→{n_curr}: {t_curr/t_prev:.2f}x')\n\n# Recursive complexity with recursion tree\ndef count_calls(n):\n    calls = 0\n    def fib(x):\n        nonlocal calls\n        calls += 1\n        if x <= 1:\n            return x\n        return fib(x-1) + fib(x-2)\n    fib(n)\n    return calls\n\nfor n in range(5, 30, 5):\n    c = count_calls(n)\n    print(f'fib({n}): {c:,} calls (expected ~2^{n} = {2**n:,})')\n\n# Time complexity of common operations\nops = {\n    'list[index]': 'O(1)',\n    'list.append': 'O(1) amortized',\n    'list.insert(0)': 'O(n)',\n    'list.pop()': 'O(1)',\n    'list.pop(0)': 'O(n)',\n    'dict[key]': 'O(1) avg',\n    'set.add': 'O(1) avg',\n    'set.intersection': 'O(min(len(a), len(b)))',\n    'sorted()': 'O(n log n)',\n    'list.sort()': 'O(n log n)',\n    'in list': 'O(n)',\n    'in set': 'O(1) avg',\n}\nfor op, complexity in ops.items():\n    print(f'  {op:25s}: {complexity}')",
+    "tests": [
+      { "id": "t1", "description": "Should define has_dup_quadratic with nested loops", "check": "code => /def\\s+has_dup_quadratic.*for\\s+i.*for\\s+j/.test(code)" },
+      { "id": "t2", "description": "Should define has_dup_sort using sorted()", "check": "code => /def\\s+has_dup_sort.*sorted/.test(code)" },
+      { "id": "t3", "description": "Should define has_dup_set using set", "check": "code => /def\\s+has_dup_set.*len\\s*\\(\\s*set/.test(code)" },
+      { "id": "t4", "description": "Should define benchmark function with time.perf_counter", "check": "code => /def\\s+benchmark.*time\\.perf_counter/.test(code)" },
+      { "id": "t5", "description": "Should test with 5000 elements", "check": "code => /5000/.test(code)" },
+      { "id": "t6", "description": "Should print Big-O labels in output", "check": "code => /O\\(n²\\)/.test(code) && /O\\(n\\s*log/.test(code) && /O\\(n\\)/.test(code)" }
+    ]
+  },
+  {
+    "id": "48",
+    "slug": "python-arrays-dynamic-arrays",
+    "title": "Arrays & Dynamic Arrays",
+    "icon": "LayoutGrid",
+    "overview": "Implement and work with contiguous memory structures including static arrays and dynamic arrays.",
+    "explanation": "## Static Arrays (Concept)\n\n```python\n# Python doesn't have true static arrays, but array module is close\nimport array\n\n# Type-coded homogeneous array (compact storage)\narr = array.array('i', [1, 2, 3, 4, 5])  # 'i' = signed int\nprint(arr[0])          # 1\nprint(arr.buffer_info())  # (memory address, length)\n\n# Compared to list (which stores PyObject pointers)\nimport sys\npy_list = [1, 2, 3, 4, 5]\nprint(f'array: {sys.getsizeof(arr)} bytes')\nprint(f'list:  {sys.getsizeof(py_list)} bytes')\n# array is more compact for numeric data!\n```\n\n## Python List Internals (Dynamic Array)\n\n```python\n# CPython list is a dynamic array with over-allocation\nlst = []\nprint(f'Empty list: {sys.getsizeof(lst)} bytes')  # 56 bytes\n\nfor i in range(20):\n    lst.append(i)\n    size = sys.getsizeof(lst)\n    if i < 5 or size != sys.getsizeof(lst[:-1]):\n        print(f'len={i+1}: {size} bytes')\n\n# Notice: size jumps — over-allocation for amortized O(1) append\n# Growth pattern: ~0, 4, 8, 16, 25, 35, 46, 58, 72, 88...\n```\n\n## Array Module Operations\n\n```python\nimport array\n\narr = array.array('d', [1.0, 2.0, 3.0])  # 'd' = double\n\n# Append and extend\narr.append(4.0)\narr.extend([5.0, 6.0])\nprint(arr)  # array('d', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0])\n\n# Insert and delete\narr.insert(0, 0.0)\narr.remove(3.0)\n\n# Slice\nprint(arr[1:4])  # array('d', [1.0, 2.0, 4.0])\n\n# Type codes: 'b'=signed char, 'i'=int, 'f'=float, 'd'=double, 'u'=unicode\n```\n\n## Common Operations Implementation\n\n```python\nclass SimpleArray:\n    def __init__(self, capacity=10):\n        self.data = [None] * capacity\n        self.size = 0\n        self.capacity = capacity\n\n    def append(self, value):\n        if self.size >= self.capacity:\n            self._resize(self.capacity * 2)\n        self.data[self.size] = value\n        self.size += 1\n\n    def _resize(self, new_capacity):\n        new_data = [None] * new_capacity\n        for i in range(self.size):\n            new_data[i] = self.data[i]\n        self.data = new_data\n        self.capacity = new_capacity\n\n    def insert(self, index, value):\n        if self.size >= self.capacity:\n            self._resize(self.capacity * 2)\n        for i in range(self.size, index, -1):\n            self.data[i] = self.data[i-1]\n        self.data[index] = value\n        self.size += 1\n\n    def delete(self, index):\n        for i in range(index, self.size - 1):\n            self.data[i] = self.data[i+1]\n        self.data[self.size-1] = None\n        self.size -= 1\n\n    def __str__(self):\n        return f'[{\", \".join(str(self.data[i]) for i in range(self.size))}]'\n```\n\n## Two-Pointer Technique\n\n```python\ndef two_sum_sorted(arr, target):\n    left, right = 0, len(arr) - 1\n    while left < right:\n        current = arr[left] + arr[right]\n        if current == target:\n            return (left, right)\n        elif current < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n\nprint(two_sum_sorted([1, 3, 5, 7, 9], 12))  # (1, 4)\n```\n\n## Remove Duplicates (Two Pointer)\n\n```python\ndef remove_duplicates_sorted(arr):\n    if not arr:\n        return 0\n    write = 1\n    for read in range(1, len(arr)):\n        if arr[read] != arr[read-1]:\n            arr[write] = arr[read]\n            write += 1\n    return write\n\narr = [1, 1, 2, 2, 2, 3, 4, 4, 5]\nnew_len = remove_duplicates_sorted(arr)\nprint(arr[:new_len])  # [1, 2, 3, 4, 5]\n```",
+    "keyRules": [
+      "Python's list is a DYNAMIC ARRAY — contiguous memory with over-allocation strategy for O(1) amortized append",
+      "array module stores typed values directly (compact), while list stores PyObject pointers (flexible but larger)",
+      "list.append() is O(1) amortized, list.insert(0, x) is O(n) — shifts all elements",
+      "list.pop() is O(1), list.pop(0) is O(n) — shifts all remaining elements",
+      "Two-pointer technique solves many array problems in O(n) time and O(1) space",
+      "When resizing, dynamic arrays typically grow by 1.5x-2x to keep amortized cost low"
+    ],
+    "task": "Implement a `DynamicArray` class with `data` list, `size`, and `capacity`. Implement `append(value)` with auto-resize at 2x when full, `_resize(new_cap)` that creates new list and copies, `insert(index, value)` with shifting, `delete(index)` with shifting, `__getitem__`, `__len__`, and `__str__`. Then implement `remove_duplicates(arr)` using two-pointer technique for a sorted list. Demonstrate all operations.",
+    "hint": "append: check `self.size >= self.capacity`, if so call `_resize`. insert: loop from `self.size` down to `index+1`, shifting right. delete: loop from `index` to `self.size-2`, shifting left.",
+    "learnings": [
+      { "title": "Static arrays", "desc": "Understanding fixed-size contiguous memory blocks with constant-time index access." },
+      { "title": "Python list internals", "desc": "How CPython's list uses a dynamic array with over-allocation strategy." },
+      { "title": "Array module", "desc": "Using Python's array module for typed homogeneous sequences with compact storage." },
+      { "title": "NumPy arrays", "desc": "Leveraging NumPy's ndarray for high-performance multi-dimensional numerical computing." },
+      { "title": "Common operations", "desc": "Implementing insertion, deletion, search, and rotation on array structures." },
+      { "title": "Two-pointer technique", "desc": "Solving array problems efficiently using left and right pointer patterns." }
+    ],
+    "starterCode": "# Task: Arrays & Dynamic Arrays\n\n# 1. Create DynamicArray class\n#    __init__, append, _resize, insert, delete\n#    __getitem__, __len__, __str__\n\n# 2. Implement remove_duplicates (two-pointer)\n\n# 3. Demonstrate all operations",
+    "solutionCode": "# Task: Arrays & Dynamic Arrays\n\nclass DynamicArray:\n    def __init__(self, capacity=4):\n        self.data = [None] * capacity\n        self.size = 0\n        self.capacity = capacity\n\n    def append(self, value):\n        if self.size >= self.capacity:\n            self._resize(self.capacity * 2)\n        self.data[self.size] = value\n        self.size += 1\n\n    def _resize(self, new_cap):\n        new_data = [None] * new_cap\n        for i in range(self.size):\n            new_data[i] = self.data[i]\n        self.data = new_data\n        self.capacity = new_cap\n\n    def insert(self, index, value):\n        if index < 0 or index > self.size:\n            raise IndexError('Index out of range')\n        if self.size >= self.capacity:\n            self._resize(self.capacity * 2)\n        for i in range(self.size, index, -1):\n            self.data[i] = self.data[i - 1]\n        self.data[index] = value\n        self.size += 1\n\n    def delete(self, index):\n        if index < 0 or index >= self.size:\n            raise IndexError('Index out of range')\n        for i in range(index, self.size - 1):\n            self.data[i] = self.data[i + 1]\n        self.data[self.size - 1] = None\n        self.size -= 1\n\n    def __getitem__(self, index):\n        if index < 0 or index >= self.size:\n            raise IndexError('Index out of range')\n        return self.data[index]\n\n    def __len__(self):\n        return self.size\n\n    def __str__(self):\n        items = ', '.join(str(self.data[i]) for i in range(self.size))\n        return f'[{items}] (cap={self.capacity}, size={self.size})'\n\n# Two-pointer remove duplicates\ndef remove_duplicates(arr):\n    if not arr:\n        return []\n    write = 1\n    for read in range(1, len(arr)):\n        if arr[read] != arr[read - 1]:\n            arr[write] = arr[read]\n            write += 1\n    return arr[:write]\n\n# Demonstrate\nprint('=== DynamicArray ===')\nda = DynamicArray(capacity=2)\nprint(f'Created: {da}')\n\nda.append(10)\nda.append(20)\nprint(f'After 2 appends: {da}')\n\nda.append(30)  # Triggers resize\nprint(f'After 3rd append (resize!): {da}')\n\nda.insert(1, 15)\nprint(f'After insert(1, 15): {da}')\n\nda.delete(0)\nprint(f'After delete(0): {da}')\n\nprint(f'len: {len(da)}, da[1]: {da[1]}')\n\nprint('\\n=== Remove Duplicates (Two-Pointer) ===')\narr = [1, 1, 1, 2, 2, 3, 3, 3, 3, 4, 5, 5]\nprint(f'Before: {arr}')\nresult = remove_duplicates(arr)\nprint(f'After:  {result}')",
+    "exampleCode": "# 🧠 Advanced Array Patterns\n\n# Rotate array in-place\ndef rotate_right(arr, k):\n    n = len(arr)\n    k = k % n\n    arr.reverse()\n    arr[:k] = reversed(arr[:k])\n    arr[k:] = reversed(arr[k:])\n\narr = [1, 2, 3, 4, 5, 6, 7]\nrotate_right(arr, 3)\nprint(arr)  # [5, 6, 7, 1, 2, 3, 4]\n\n# Sliding window maximum\ndef max_sliding_window(arr, k):\n    from collections import deque\n    result = []\n    window = deque()\n    for i, val in enumerate(arr):\n        while window and arr[window[-1]] <= val:\n            window.pop()\n        window.append(i)\n        if window[0] <= i - k:\n            window.popleft()\n        if i >= k - 1:\n            result.append(arr[window[0]])\n    return result\n\nprint(max_sliding_window([1,3,-1,-3,5,3,6,7], 3))\n# [3, 3, 5, 5, 6, 7]\n\n# array module for memory efficiency\nimport array\nimport sys\n\n# Compare memory\npy_list = list(range(100000))\narr_i = array.array('i', range(100000))\narr_f = array.array('f', [float(x) for x in range(100000)])\n\nprint(f'list:     {sys.getsizeof(py_list):,} bytes')\nprint(f'array(i): {sys.getsizeof(arr_i):,} bytes')\nprint(f'array(f): {sys.getsizeof(arr_f):,} bytes')\n\n# Byteswap for endianness\narr = array.array('i', [1, 2, 3])\narr.byteswap()\nprint(f'Byteswapped: {list(arr)}')",
+    "tests": [
+      { "id": "t1", "description": "Should define DynamicArray class", "check": "code => /class\\s+DynamicArray/.test(code)" },
+      { "id": "t2", "description": "Should have _resize method", "check": "code => /def\\s+_resize/.test(code)" },
+      { "id": "t3", "description": "Should have insert with shifting loop", "check": "code => /def\\s+insert.*for\\s+i\\s+in\\s+range\\s*\\(\\s*self\\.size.*index/.test(code)" },
+      { "id": "t4", "description": "Should have delete with shifting loop", "check": "code => /def\\s+delete.*for\\s+i\\s+in\\s+range\\s*\\(\\s*index/.test(code)" },
+      { "id": "t5", "description": "Should implement remove_duplicates with two pointers", "check": "code => /def\\s+remove_duplicates.*write\\s*=\\s*1/.test(code)" },
+      { "id": "t6", "description": "Should implement __len__ and __getitem__", "check": "code => /def\\s+__len__/.test(code) && /def\\s+__getitem__/.test(code)" }
+    ]
+  },
+  {
+    "id": "49",
+    "slug": "python-linked-lists",
+    "title": "Linked Lists",
+    "icon": "Link",
+    "overview": "Build and manipulate node-based sequential data structures with dynamic memory allocation.",
+    "explanation": "## Singly Linked List\n\n```python\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        current = self.head\n        while current.next:\n            current = current.next\n        current.next = new_node\n\n    def prepend(self, data):\n        new_node = Node(data)\n        new_node.next = self.head\n        self.head = new_node\n\n    def delete(self, data):\n        if not self.head:\n            return\n        if self.head.data == data:\n            self.head = self.head.next\n            return\n        current = self.head\n        while current.next:\n            if current.next.data == data:\n                current.next = current.next.next\n                return\n            current = current.next\n\n    def __str__(self):\n        nodes = []\n        current = self.head\n        while current:\n            nodes.append(str(current.data))\n            current = current.next\n        return ' -> '.join(nodes) + ' -> None'\n\nll = LinkedList()\nll.append(1)\nll.append(2)\nll.prepend(0)\nprint(ll)  # 0 -> 1 -> 2 -> None\nll.delete(1)\nprint(ll)  # 0 -> 2 -> None\n```\n\n## Fast & Slow Pointers (Cycle Detection)\n\n```python\ndef has_cycle(head):\n    if not head:\n        return False\n    slow = fast = head\n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n        if slow is fast:\n            return True\n    return False\n\n# Create cycle\nn1 = Node(1)\nn2 = Node(2)\nn3 = Node(3)\nn1.next = n2\nn2.next = n3\nn3.next = n1  # Cycle!\nprint(has_cycle(n1))  # True\n```\n\n## Reverse Linked List\n\n```python\ndef reverse(head):\n    prev = None\n    current = head\n    while current:\n        next_node = current.next\n        current.next = prev\n        prev = current\n        current = next_node\n    return prev\n```\n\n## Dummy Head Technique\n\n```python\ndef delete_all(head, val):\n    dummy = Node(0)  # Sentinel node\n    dummy.next = head\n    current = dummy\n    while current.next:\n        if current.next.data == val:\n            current.next = current.next.next\n        else:\n            current = current.next\n    return dummy.next\n```\n\n## Find Middle Element\n\n```python\ndef find_middle(head):\n    slow = fast = head\n    while fast and fast.next:\n        slow = slow.next\n        fast = fast.next.next\n    return slow.data\n```",
+    "keyRules": [
+      "Linked list nodes have data + next pointer — no random access, must traverse from head",
+      "Singly linked list: O(1) insert at head, O(n) insert at tail (unless you keep a tail pointer)",
+      "Dummy head (sentinel node) eliminates edge cases for head deletion/insertion",
+      "Fast & slow pointers: fast moves 2 steps, slow moves 1 — finds middle or detects cycles in O(n)",
+      "Reverse: iteratively swap next direction using 3 pointers (prev, current, next)",
+      "Linked lists have O(n) access time but O(1) insertion/deletion at known positions (no shifting!)"
+    ],
+    "task": "Implement a `SinglyLinkedList` class with `Node` inner class. Methods: `append(data)`, `prepend(data)`, `delete(data)` (first occurrence), `reverse()`, `find_middle()`, `has_cycle()`, `__str__`, and `to_list()`. Also implement `merge_sorted(l1, l2)` that merges two sorted linked lists into a new sorted list. Demonstrate: build list, reverse it, find middle, detect cycle (create one), and merge two sorted lists.",
+    "hint": "reverse: use prev/current/next pattern. find_middle: fast/slow pointers. has_cycle: fast moves 2x, check `slow is fast`. merge_sorted: compare l1.data and l2.data, advance the smaller one's pointer.",
+    "learnings": [
+      { "title": "Singly linked list", "desc": "Creating nodes with data and next pointer, building traversal, insertion, and deletion operations." },
+      { "title": "Doubly linked list", "desc": "Adding prev pointers for bidirectional traversal and O(1) tail operations." },
+      { "title": "Circular linked list", "desc": "Connecting the last node back to the head for round-robin and circular buffer patterns." },
+      { "title": "Fast & slow pointers", "desc": "Detecting cycles and finding middle elements using the tortoise-hare algorithm." },
+      { "title": "Dummy head technique", "desc": "Simplifying edge cases in insertion and deletion by using a sentinel node." },
+      { "title": "Common problems", "desc": "Solving reverse, merge, partition, and palindrome linked list challenges." }
+    ],
+    "starterCode": "# Task: Linked Lists\n\n# 1. Node class\n\n# 2. SinglyLinkedList class\n#    append, prepend, delete, reverse\n#    find_middle, has_cycle, __str__, to_list\n\n# 3. merge_sorted(l1, l2) function\n\n# 4. Demonstrate all features",
+    "solutionCode": "# Task: Linked Lists\n\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass SinglyLinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        current = self.head\n        while current.next:\n            current = current.next\n        current.next = new_node\n\n    def prepend(self, data):\n        new_node = Node(data)\n        new_node.next = self.head\n        self.head = new_node\n\n    def delete(self, data):\n        dummy = Node(0)\n        dummy.next = self.head\n        current = dummy\n        while current.next:\n            if current.next.data == data:\n                current.next = current.next.next\n                break\n            current = current.next\n        self.head = dummy.next\n\n    def reverse(self):\n        prev = None\n        current = self.head\n        while current:\n            next_node = current.next\n            current.next = prev\n            prev = current\n            current = next_node\n        self.head = prev\n\n    def find_middle(self):\n        slow = fast = self.head\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n        return slow.data if slow else None\n\n    def has_cycle(self):\n        slow = fast = self.head\n        while fast and fast.next:\n            slow = slow.next\n            fast = fast.next.next\n            if slow is fast:\n                return True\n        return False\n\n    def to_list(self):\n        result = []\n        current = self.head\n        while current:\n            result.append(current.data)\n            current = current.next\n        return result\n\n    def __str__(self):\n        return ' -> '.join(str(x) for x in self.to_list()) + ' -> None'\n\ndef merge_sorted(l1_head, l2_head):\n    dummy = Node(0)\n    current = dummy\n    while l1_head and l2_head:\n        if l1_head.data <= l2_head.data:\n            current.next = l1_head\n            l1_head = l1_head.next\n        else:\n            current.next = l2_head\n            l2_head = l2_head.next\n        current = current.next\n    current.next = l1_head or l2_head\n    return dummy.next\n\n# Demonstrate\nprint('=== Build & Display ===')\nll = SinglyLinkedList()\nfor x in [1, 2, 3, 4, 5]:\n    ll.append(x)\nll.prepend(0)\nprint(f'List: {ll}')\n\nprint('\\n=== Reverse ===')\nll.reverse()\nprint(f'Reversed: {ll}')\n\nprint('\\n=== Find Middle ===')\nprint(f'Middle: {ll.find_middle()}')  # 2\n\nprint('\\n=== Delete ===')\nll.delete(4)\nprint(f'After delete(4): {ll}')\n\nprint('\\n=== Cycle Detection ===')\nprint(f'Has cycle: {ll.has_cycle()}')  # False\nll.head.next.next.next.next.next = ll.head.next.next  # Create cycle\nprint(f'After adding cycle: {ll.has_cycle()}')  # True\n\nprint('\\n=== Merge Sorted ===')\na = SinglyLinkedList()\nfor x in [1, 3, 5, 7]: a.append(x)\nb = SinglyLinkedList()\nfor x in [2, 4, 6, 8]: b.append(x)\n\nmerged_head = merge_sorted(a.head, b.head)\nmerged_list = SinglyLinkedList()\nmerged_list.head = merged_head\nprint(f'Merged: {merged_list}')",
+    "exampleCode": "# 🧠 Advanced Linked List Patterns\n\n# Doubly linked list\nclass DNode:\n    def __init__(self, data):\n        self.data = data\n        self.prev = None\n        self.next = None\n\nclass DoublyLinkedList:\n    def __init__(self):\n        self.head = None\n        self.tail = None\n\n    def append(self, data):\n        node = DNode(data)\n        if not self.head:\n            self.head = self.tail = node\n        else:\n            self.tail.next = node\n            node.prev = self.tail\n            self.tail = node\n\n    def __str__(self):\n        nodes = []\n        current = self.head\n        while current:\n            nodes.append(str(current.data))\n            current = current.next\n        return ' <-> '.join(nodes)\n\ndll = DoublyLinkedList()\nfor x in [1, 2, 3]: dll.append(x)\nprint(dll)  # 1 <-> 2 <-> 3\nprint(f'Backward: ', end='')\ncurr = dll.tail\nwhile curr:\n    print(curr.data, end=' ')\n    curr = curr.prev\n\n# Palindrome check\ndef is_palindrome(head):\n    if not head or not head.next:\n        return True\n    # Find middle\n    slow = fast = head\n    while fast.next and fast.next.next:\n        slow = slow.next\n        fast = fast.next.next\n    # Reverse second half\n    second = reverse(slow.next)\n    # Compare\n    first = head\n    result = True\n    while second:\n        if first.data != second.data:\n            result = False\n            break\n        first = first.next\n        second = second.next\n    return result\n\n# Partition list\ndef partition(head, x):\n    dummy_less = Node(0)\n    dummy_more = Node(0)\n    less = dummy_less\n    more = dummy_more\n    current = head\n    while current:\n        if current.data < x:\n            less.next = current\n            less = less.next\n        else:\n            more.next = current\n            more = more.next\n        current = current.next\n    more.next = None\n    less.next = dummy_more.next\n    return dummy_less.next",
+    "tests": [
+      { "id": "t1", "description": "Should define Node class with data and next", "check": "code => /class\\s+Node.*self\\.data.*self\\.next/.test(code)" },
+      { "id": "t2", "description": "Should define SinglyLinkedList class", "check": "code => /class\\s+SinglyLinkedList/.test(code)" },
+      { "id": "t3", "description": "Should implement reverse method", "check": "code => /def\\s+reverse\\s*\\(\\s*self\\s*\\)/.test(code)" },
+      { "id": "t4", "description": "Should implement find_middle with fast/slow", "check": "code => /def\\s+find_middle.*slow\\s*=\\s*fast\\s*=/.test(code)" },
+      { "id": "t5", "description": "Should implement has_cycle", "check": "code => /def\\s+has_cycle.*slow\\s+is\\s+fast/.test(code)" },
+            { "title": "Applications", "desc": "Expression evaluation, bracket matching, BFS traversal, and task scheduling." }
+    ],
+    "starterCode": "# Task: Stacks & Queues\n\nfrom collections import deque\n\n# 1. Stack class using list\n\n# 2. Queue class using deque\n\n# 3. next_greater_element(nums) — monotonic stack\n\n# 4. is_balanced(expression) — bracket matching\n\n# 5. Demonstrate all four",
+    "solutionCode": "# Task: Stacks & Queues\n\nfrom collections import deque\n\n# 1. Stack\nclass Stack:\n    def __init__(self):\n        self._items = []\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if self.is_empty():\n            raise IndexError('Stack empty')\n        return self._items.pop()\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError('Stack empty')\n        return self._items[-1]\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def __len__(self):\n        return len(self._items)\n\n    def __str__(self):\n        return f'Stack([{\", \".join(str(x) for x in reversed(self._items))}])'\n\n# 2. Queue\nclass Queue:\n    def __init__(self):\n        self._items = deque()\n\n    def enqueue(self, item):\n        self._items.append(item)\n\n    def dequeue(self):\n        if self.is_empty():\n            raise IndexError('Queue empty')\n        return self._items.popleft()\n\n    def peek(self):\n        if self.is_empty():\n            raise IndexError('Queue empty')\n        return self._items[0]\n\n    def is_empty(self):\n        return len(self._items) == 0\n\n    def __len__(self):\n        return len(self._items)\n\n    def __str__(self):\n        return f'Queue([{\", \".join(str(x) for x in self._items)}])'\n\n# 3. Next Greater Element\ndef next_greater_element(nums):\n    result = [-1] * len(nums)\n    stack = []\n    for i, num in enumerate(nums):\n        while stack and nums[stack[-1]] < num:\n            idx = stack.pop()\n            result[idx] = num\n        stack.append(i)\n    return result\n\n# 4. Bracket Matching\ndef is_balanced(expression):\n    pairs = {')': '(', ']': '[', '}': '{'}\n    stack = []\n    for ch in expression:\n        if ch in '({[':\n            stack.append(ch)\n        elif ch in ')}]':\n            if not stack or stack.pop() != pairs[ch]:\n                return False\n    return not stack\n\n# Demonstrate\nprint('=== Stack (LIFO) ===')\ns = Stack()\nfor x in [10, 20, 30]:\n    s.push(x)\nprint(s)\nprint(f'Pop: {s.pop()}')  # 30\nprint(f'Peek: {s.peek()}') # 20\nprint(f'Len: {len(s)}')    # 2\n\nprint('\\n=== Queue (FIFO) ===')\nq = Queue()\nfor x in [10, 20, 30]:\n    q.enqueue(x)\nprint(q)\nprint(f'Dequeue: {q.dequeue()}')  # 10\nprint(f'Peek: {q.peek()}')         # 20\n\nprint('\\n=== Next Greater Element ===')\nnums = [4, 5, 2, 25, 7, 8]\nprint(f'Input:  {nums}')\nprint(f'Result: {next_greater_element(nums)}')\n# [5, 25, 25, -1, 8, -1]\n\nprint('\\n=== Bracket Matching ===')\ntests = ['({[]})', '({[})', '((()))', '([)]', '{[]}']\nfor expr in tests:\n    print(f'  {expr:10s} -> {is_balanced(expr)}')",
+    "exampleCode": "# 🧠 Advanced Stack & Queue Patterns\n\n# Expression evaluation with stack\ndef evaluate(expression):\n    def apply(op, b, a):\n        if op == '+': return a + b\n        if op == '-': return a - b\n        if op == '*': return a * b\n        if op == '/': return a // b\n\n    tokens = expression.split()\n    stack = []\n    for t in tokens:\n        if t.isdigit():\n            stack.append(int(t))\n        else:\n            stack.append(apply(t, stack.pop(), stack.pop()))\n    return stack[0]\n\nprint(evaluate('3 4 + 2 *'))  # 14\nprint(evaluate('5 1 2 + 4 * + 3 -'))  # 14\n\n# Stack-based queue (amortized O(1))\nclass StackQueue:\n    def __init__(self):\n        self.in_stack = []\n        self.out_stack = []\n\n    def enqueue(self, x):\n        self.in_stack.append(x)\n\n    def dequeue(self):\n        if not self.out_stack:\n            while self.in_stack:\n                self.out_stack.append(self.in_stack.pop())\n        return self.out_stack.pop()\n\nsq = StackQueue()\nfor x in [1,2,3,4,5]: sq.enqueue(x)\nprint([sq.dequeue() for _ in range(5)])  # [1,2,3,4,5]\n\n# Sliding window maximum with deque\nfrom collections import deque\ndef max_sliding_window(nums, k):\n    dq = deque()\n    result = []\n    for i, n in enumerate(nums):\n        while dq and nums[dq[-1]] <= n:\n            dq.pop()\n        dq.append(i)\n        if dq[0] <= i - k:\n            dq.popleft()\n        if i >= k - 1:\n            result.append(nums[dq[0]])\n    return result\n\nprint(max_sliding_window([1,3,-1,-3,5,3,6,7], 3))\n# [3, 3, 5, 5, 6, 7]\n\n# Min stack (O(1) get_min)\nclass MinStack:\n    def __init__(self):\n        self.stack = []\n        self.mins = []\n\n    def push(self, x):\n        self.stack.append(x)\n        self.mins.append(min(x, self.mins[-1]) if self.mins else x)\n\n    def pop(self):\n        self.mins.pop()\n        return self.stack.pop()\n\n    def get_min(self):\n        return self.mins[-1]\n\nms = MinStack()\nms.push(5); ms.push(3); ms.push(7); ms.push(1)\nprint(ms.get_min())  # 1\nms.pop()\nprint(ms.get_min())  # 3",
+    "tests": [
+      { "id": "t1", "description": "Should define Stack class with push and pop", "check": "code => /class\\s+Stack.*def\\s+push.*def\\s+pop/.test(code)" },
+      { "id": "t2", "description": "Should define Queue class using deque", "check": "code => /class\\s+Queue.*deque/.test(code)" },
+      { "id": "t3", "description": "Queue should use popleft for dequeue", "check": "code => /popleft\\s*\\(\\s*\\)/.test(code)" },
+      { "id": "t4", "description": "Should implement next_greater_element with stack", "check": "code => /def\\s+next_greater_element.*stack/.test(code)" },
+      { "id": "t5", "description": "Should implement is_balanced with stack", "check": "code => /def\\s+is_balanced.*stack/.test(code)" },
+      { "id": "t6", "description": "Should import deque from collections", "check": "code => /from\\s+collections\\s+import\\s+deque/.test(code)" }
+    ]
+  },
+  {
+    "id": "51",
+    "slug": "python-trees-tree-algorithms",
+    "title": "Trees & Tree Algorithms",
+    "icon": "GitFork",
+    "overview": "Master hierarchical data structures including binary trees, BSTs, and advanced tree types.",
+    "explanation": "## Binary Tree Implementation\n\n```python\nclass TreeNode:\n    def __init__(self, val=0):\n        self.val = val\n        self.left = None\n        self.right = None\n\n# Build a tree:\n#       1\n#      / \\\n#     2   3\n#    / \\\n#   4   5\nroot = TreeNode(1)\nroot.left = TreeNode(2)\nroot.right = TreeNode(3)\nroot.left.left = TreeNode(4)\nroot.left.right = TreeNode(5)\n```\n\n## Tree Traversals\n\n```python\n# Inorder: Left, Root, Right\ndef inorder(node):\n    if node:\n        inorder(node.left)\n        print(node.val, end=' ')\n        inorder(node.right)\n# Output: 4 2 5 1 3\n\n# Preorder: Root, Left, Right\ndef preorder(node):\n    if node:\n        print(node.val, end=' ')\n        preorder(node.left)\n        preorder(node.right)\n# Output: 1 2 4 5 3\n\n# Postorder: Left, Right, Root\ndef postorder(node):\n    if node:\n        postorder(node.left)\n        postorder(node.right)\n        print(node.val, end=' ')\n# Output: 4 5 2 3 1\n\n# Level-order (BFS)\nfrom collections import deque\ndef level_order(root):\n    if not root:\n        return []\n    result = []\n    queue = deque([root])\n    while queue:\n        level = []\n        for _ in range(len(queue)):\n            node = queue.popleft()\n            level.append(node.val)\n            if node.left:\n                queue.append(node.left)\n            if node.right:\n                queue.append(node.right)\n        result.append(level)\n    return result\n# [[1], [2, 3], [4, 5]]\n```\n\n## Binary Search Tree\n\n```python\nclass BST:\n    def __init__(self):\n        self.root = None\n\n    def insert(self, val):\n        if not self.root:\n            self.root = TreeNode(val)\n            return\n        self._insert(self.root, val)\n\n    def _insert(self, node, val):\n        if val < node.val:\n            if node.left:\n                self._insert(node.left, val)\n            else:\n                node.left = TreeNode(val)\n        else:\n            if node.right:\n                self._insert(node.right, val)\n            else:\n                node.right = TreeNode(val)\n\n    def search(self, val):\n        return self._search(self.root, val)\n\n    def _search(self, node, val):\n        if not node or node.val == val:\n            return node\n        return self._search(node.left if val < node.val else node.right, val)\n\n    def inorder(self):\n        result = []\n        self._inorder(self.root, result)\n        return result\n\n    def _inorder(self, node, result):\n        if node:\n            self._inorder(node.left, result)\n            result.append(node.val)\n            self._inorder(node.right, result)\n\nbst = BST()\nfor x in [5, 3, 7, 1, 4, 6, 8]:\n    bst.insert(x)\nprint(bst.inorder())  # [1, 3, 4, 5, 6, 7, 8] — sorted!\n```\n\n## Max Depth\n\n```python\ndef max_depth(node):\n    if not node:\n        return 0\n    return 1 + max(max_depth(node.left), max_depth(node.right))\n```\n\n## Trie (Prefix Tree)\n\n```python\nclass TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end = False\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word):\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n        node.is_end = True\n\n    def search(self, word):\n        node = self._find(word)\n        return node is not None and node.is_end\n\n    def starts_with(self, prefix):\n        return self._find(prefix) is not None\n\n    def _find(self, prefix):\n        node = self.root\n        for ch in prefix:\n            if ch not in node.children:\n                return None\n            node = node.children[ch]\n        return node\n\nt = Trie()\nt.insert('hello')\nt.insert('hey')\nprint(t.search('hello'))       # True\nprint(t.search('hell'))        # False\nprint(t.starts_with('he'))     # True\nprint(t.starts_with('hi'))     # False\n```",
+    "keyRules": [
+      "Binary tree: each node has at most 2 children (left, right) — no ordering constraint",
+      "BST property: left subtree < node < right subtree — inorder traversal gives sorted order",
+      "Inorder: L-R-R, Preorder: R-L-R, Postorder: L-R-R, Level-order: BFS with queue",
+      "BST search/insert: O(log n) average, O(n) worst (skewed tree) — use balanced trees for guarantee",
+      "Trie: each edge represents a character — O(m) search/insert where m = word length",
+      "Max depth = height of tree = longest root-to-leaf path length"
+    ],
+    "task": "Create a `TreeNode` class. Implement `build_tree()` that returns the example tree (1→2,3; 2→4,5). Implement `inorder`, `preorder`, `postorder` (all returning lists), and `level_order` (returning list of lists). Implement `max_depth`. Create a `BST` class with `insert`, `search`, and `inorder`. Create a `Trie` class with `insert`, `search`, and `starts_with`. Demonstrate all with clear output.",
+    "hint": "level_order: use deque, process level by level by checking `len(queue)` at start of each iteration. BST.insert: compare val with node.val, go left or right recursively. Trie: use dict for children.",
+    "learnings": [
+      { "title": "Tree terminology", "desc": "Understanding root, leaf, depth, height, level, subtree, and degree concepts." },
+      { "title": "Binary tree implementation", "desc": "Building tree nodes with left/right children and constructing tree structures." },
+      { "title": "Tree traversals", "desc": "Implementing inorder, preorder, postorder, and level-order (BFS) traversal algorithms." },
+      { "title": "Binary Search Tree", "desc": "Building BSTs with ordered insertion and O(log n) average search performance." },
+      { "title": "BST operations", "desc": "Implementing search, insert, delete, and finding min/max in BST structures." },
+      { "title": "Balanced trees", "desc": "Understanding AVL trees and Red-Black trees with self-balancing rotation mechanisms." },
+      { "title": "Trie (Prefix Tree)", "desc": "Implementing trie nodes for efficient string prefix search and autocomplete." },
+      { "title": "Common problems", "desc": "Solving max depth, path sum, lowest common ancestor, and tree serialization." }
+    ],
+    "starterCode": "# Task: Trees & Tree Algorithms\n\nfrom collections import deque\n\n# 1. TreeNode class\n\n# 2. Build example tree\n\n# 3. Implement all 4 traversals (return lists)\n\n# 4. Implement max_depth\n\n# 5. BST class with insert, search, inorder\n\n# 6. Trie class with insert, search, starts_with\n\n# 7. Demonstrate all",
+    "solutionCode": "# Task: Trees & Tree Algorithms\n\nfrom collections import deque\n\n# 1. TreeNode\nclass TreeNode:\n    def __init__(self, val=0):\n        self.val = val\n        self.left = None\n        self.right = None\n\n# 2. Build tree:    1\n#                  / \\\n#                 2   3\n#                / \\\n#               4   5\ndef build_tree():\n    root = TreeNode(1)\n    root.left = TreeNode(2)\n    root.right = TreeNode(3)\n    root.left.left = TreeNode(4)\n    root.left.right = TreeNode(5)\n    return root\n\n# 3. Traversals\ndef inorder(node):\n    if not node: return []\n    return inorder(node.left) + [node.val] + inorder(node.right)\n\ndef preorder(node):\n    if not node: return []\n    return [node.val] + preorder(node.left) + preorder(node.right)\n\ndef postorder(node):\n    if not node: return []\n    return postorder(node.left) + postorder(node.right) + [node.val]\n\ndef level_order(root):\n    if not root: return []\n    result = []\n    queue = deque([root])\n    while queue:\n        level = []\n        for _ in range(len(queue)):\n            node = queue.popleft()\n            level.append(node.val)\n            if node.left: queue.append(node.left)\n            if node.right: queue.append(node.right)\n        result.append(level)\n    return result\n\n# 4. Max depth\ndef max_depth(node):\n    if not node: return 0\n    return 1 + max(max_depth(node.left), max_depth(node.right))\n\n# 5. BST\nclass BST:\n    def __init__(self):\n        self.root = None\n\n    def insert(self, val):\n        if not self.root:\n            self.root = TreeNode(val)\n            return\n        self._insert(self.root, val)\n\n    def _insert(self, node, val):\n        if val < node.val:\n            if node.left: self._insert(node.left, val)\n            else: node.left = TreeNode(val)\n        else:\n            if node.right: self._insert(node.right, val)\n            else: node.right = TreeNode(val)\n\n    def search(self, val):\n        return self._search(self.root, val)\n\n    def _search(self, node, val):\n        if not node or node.val == val: return node\n        return self._search(node.left if val < node.val else node.right, val)\n\n    def inorder(self):\n        result = []\n        self._inorder(self.root, result)\n        return result\n\n    def _inorder(self, node, result):\n        if node:\n            self._inorder(node.left, result)\n            result.append(node.val)\n            self._inorder(node.right, result)\n\n# 6. Trie\nclass TrieNode:\n    def __init__(self):\n        self.children = {}\n        self.is_end = False\n\nclass Trie:\n    def __init__(self):\n        self.root = TrieNode()\n\n    def insert(self, word):\n        node = self.root\n        for ch in word:\n            if ch not in node.children:\n                node.children[ch] = TrieNode()\n            node = node.children[ch]\n        node.is_end = True\n\n    def search(self, word):\n        node = self._find(word)\n        return node is not None and node.is_end\n\n    def starts_with(self, prefix):\n        return self._find(prefix) is not None\n\n    def _find(self, prefix):\n        node = self.root\n        for ch in prefix:\n            if ch not in node.children: return None\n            node = node.children[ch]\n        return node\n\n# Demonstrate\nroot = build_tree()\nprint('=== Traversals ===')\nprint(f'Inorder:    {inorder(root)}')\nprint(f'Preorder:   {preorder(root)}')\nprint(f'Postorder:  {postorder(root)}')\nprint(f'Level-order: {level_order(root)}')\nprint(f'Max depth:  {max_depth(root)}')\n\nprint('\\n=== BST ===')\nbst = BST()\nfor x in [5, 3, 7, 1, 4, 6, 8]: bst.insert(x)\nprint(f'Inorder (sorted): {bst.inorder()}')\nprint(f'Search 4: {bst.search(4) is not None}')\nprint(f'Search 9: {bst.search(9) is not None}')\n\nprint('\\n=== Trie ===')\ntrie = Trie()\nfor w in ['hello', 'hey', 'python', 'pytorch']:\n    trie.insert(w)\nprint(f'search(\"hello\"): {trie.search(\"hello\")}')\nprint(f'search(\"hell\"):  {trie.search(\"hell\")}')\nprint(f'starts_with(\"he\"): {trie.starts_with(\"he\")}')\nprint(f'starts_with(\"py\"): {trie.starts_with(\"py\")}')\nprint(f'starts_with(\"ja\"): {trie.starts_with(\"ja\")}')",
+    "exampleCode": "# 🧠 Advanced Tree Patterns\n\n# Lowest Common Ancestor (BST)\ndef lca_bst(root, p, q):\n    if not root: return None\n    if p < root.val and q < root.val:\n        return lca_bst(root.left, p, q)\n    if p > root.val and q > root.val:\n        return lca_bst(root.right, p, q)\n    return root.val\n\n# Path sum\ndef has_path_sum(root, target):\n    if not root: return False\n    if not root.left and not root.right:\n        return root.val == target\n    return (has_path_sum(root.left, target - root.val) or\n            has_path_sum(root.right, target - root.val))\n\n# Serialize / Deserialize tree\ndef serialize(root):\n    if not root: return 'null'\n    return f'{root.val},{serialize(root.left)},{serialize(root.right)}'\n\ndef deserialize(data):\n    values = iter(data.split(','))\n    def build():\n        val = next(values)\n        if val == 'null': return None\n        node = TreeNode(int(val))\n        node.left = build()\n        node.right = build()\n        return node\n    return build()\n\nroot = build_tree()\ns = serialize(root)\nprint(f'Serialized: {s}')\nrestored = deserialize(s)\nprint(f'Restored inorder: {inorder(restored)}')\n\n# Trie with autocomplete\nclass AutoComplete(Trie):\n    def autocomplete(self, prefix):\n        node = self._find(prefix)\n        if not node: return []\n        results = []\n        self._dfs(node, prefix, results)\n        return results\n\n    def _dfs(self, node, prefix, results):\n        if node.is_end:\n            results.append(prefix)\n        for ch, child in node.children.items():\n            self._dfs(child, prefix + ch, results)\n\nac = AutoComplete()\nfor w in ['apple', 'app', 'application', 'apt', 'bat']:\n    ac.insert(w)\nprint(ac.autocomplete('app'))  # ['app', 'apple', 'application']\nprint(ac.autocomplete('ap'))   # ['app', 'apple', 'application', 'apt']",
+    "tests": [
+      { "id": "t1", "description": "Should define TreeNode class with left and right", "check": "code => /class\\s+TreeNode.*self\\.left.*self\\.right/.test(code)" },
+      { "id": "t2", "description": "Should implement inorder traversal", "check": "code => /def\\s+inorder\\s*\\(\\s*node\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "Should implement level_order with deque", "check": "code => /def\\s+level_order.*deque/.test(code)" },
+      { "id": "t4", "description": "Should implement max_depth", "check": "code => /def\\s+max_depth.*1\\s*\\+\\s*max/.test(code)" },
+      { "id": "t5", "description": "Should define BST class with insert and search", "check": "code => /class\\s+BST.*def\\s+insert.*def\\s+search/.test(code)" },
+      { "id": "t6", "description": "Should define Trie class with starts_with", "check": "code => /class\\s+Trie.*def\\s+starts_with/.test(code)" }
+    ]
+  },
+  {
+    "id": "52",
+    "slug": "python-graphs-graph-algorithms",
+    "title": "Graphs & Graph Algorithms",
+    "icon": "Network",
+    "overview": "Model and traverse interconnected data using adjacency structures and graph algorithms.",
+    "explanation": "## Graph Representations\n\n```python\n# Adjacency List (most common)\ngraph = {\n    'A': ['B', 'C'],\n    'B': ['A', 'D'],\n    'C': ['A', 'D'],\n    'D': ['B', 'C', 'E'],\n    'E': ['D']\n}\n\n# Adjacency Matrix\nnodes = ['A', 'B', 'C', 'D', 'E']\nmatrix = [[0]*5 for _ in range(5)]\nedges = [('A','B'), ('A','C'), ('B','D'), ('C','D'), ('D','E')]\nfor u, v in edges:\n    i, j = nodes.index(u), nodes.index(v)\n    matrix[i][j] = matrix[j][i] = 1\n```\n\n## BFS Traversal\n\n```python\nfrom collections import deque\n\ndef bfs(graph, start):\n    visited = set()\n    queue = deque([start])\n    visited.add(start)\n    result = []\n    while queue:\n        node = queue.popleft()\n        result.append(node)\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append(neighbor)\n    return result\n\nprint(bfs(graph, 'A'))  # ['A', 'B', 'C', 'D', 'E']\n```\n\n## DFS Traversal\n\n```python\ndef dfs(graph, start):\n    visited = set()\n    result = []\n    def _dfs(node):\n        visited.add(node)\n        result.append(node)\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                _dfs(neighbor)\n    _dfs(start)\n    return result\n\nprint(dfs(graph, 'A'))  # ['A', 'B', 'D', 'C', 'E'] (order varies)\n```\n\n## Shortest Path (BFS for unweighted)\n\n```python\ndef shortest_path(graph, start, end):\n    queue = deque([(start, [start])])\n    visited = {start}\n    while queue:\n        node, path = queue.popleft()\n        if node == end:\n            return path\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append((neighbor, path + [neighbor]))\n    return None\n\nprint(shortest_path(graph, 'A', 'E'))  # ['A', 'B', 'D', 'E'] or ['A', 'C', 'D', 'E']\n```\n\n## Dijkstra's Algorithm (weighted)\n\n```python\nimport heapq\n\ndef dijkstra(graph, start):\n    distances = {node: float('inf') for node in graph}\n    distances[start] = 0\n    heap = [(0, start)]\n    while heap:\n        dist, node = heapq.heappop(heap)\n        if dist > distances[node]:\n            continue\n        for neighbor, weight in graph[node]:\n            new_dist = dist + weight\n            if new_dist < distances[neighbor]:\n                distances[neighbor] = new_dist\n                heapq.heappush(heap, (new_dist, neighbor))\n    return distances\n\n# Weighted graph: {node: [(neighbor, weight), ...]}\nweighted = {\n    'A': [('B', 1), ('C', 4)],\n    'B': [('C', 2), ('D', 5)],\n    'C': [('D', 1)],\n    'D': []\n}\nprint(dijkstra(weighted, 'A'))\n# {'A': 0, 'B': 1, 'C': 3, 'D': 4}\n```\n\n## Topological Sort\n\n```python\ndef topological_sort(graph):\n    in_degree = {node: 0 for node in graph}\n    for node in graph:\n        for neighbor in graph[node]:\n            in_degree[neighbor] += 1\n\n    queue = deque([n for n in in_degree if in_degree[n] == 0])\n    result = []\n    while queue:\n        node = queue.popleft()\n        result.append(node)\n        for neighbor in graph[node]:\n            in_degree[neighbor] -= 1\n            if in_degree[neighbor] == 0:\n                queue.append(neighbor)\n    return result if len(result) == len(graph) else None\n\n# DAG\n DAG = {\n    'A': ['B', 'C'],\n    'B': ['D'],\n    'C': ['D'],\n    'D': []\n}\nprint(topological_sort(DAG))  # ['A', 'B', 'C', 'D'] or ['A', 'C', 'B', 'D']\n```\n\n## Cycle Detection (DFS)\n\n```python\ndef has_cycle(graph):\n    visited = set()\n    rec_stack = set()\n\n    def _dfs(node):\n        visited.add(node)\n        rec_stack.add(node)\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                if _dfs(neighbor):\n                    return True\n            elif neighbor in rec_stack:\n                return True\n        rec_stack.remove(node)\n        return False\n\n    for node in graph:\n        if node not in visited:\n            if _dfs(node):\n                return True\n    return False\n```",
+    "keyRules": [
+      "Adjacency list: O(V+E) space, efficient for sparse graphs. Adjacency matrix: O(V²) space, efficient for dense graphs",
+      "BFS uses queue, explores level-by-level — finds shortest path in unweighted graphs",
+      "DFS uses stack/recursion, explores depth-first — useful for topological sort, cycle detection, path finding",
+      "Dijkstra's: O((V+E) log V) with min-heap — works for non-negative weights only",
+      "Topological sort only works on DAGs (Directed Acyclic Graphs) — uses Kahn's algorithm (BFS) or DFS",
+      "Cycle detection in directed graphs: use recursion stack. In undirected graphs: check if neighbor is visited and not parent"
+    ],
+    "task": "Implement: 1) `bfs(graph, start)` returning traversal list. 2) `dfs(graph, start)` returning traversal list. 3) `shortest_path(graph, start, end)` returning path list. 4) `dijkstra(graph, start)` returning distance dict (weighted graph with (neighbor, weight) tuples). 5) `topological_sort(graph)` for a DAG. 6) `has_cycle(graph)` for directed graphs. Create example graphs for each and demonstrate.",
+    "hint": "BFS: deque with visited set. DFS: recursive with visited set. Shortest path: BFS storing path in queue. Dijkstra: heapq with distance dict, skip if dist > distances[node]. Topo: compute in-degrees, BFS from 0-in-degree nodes. Cycle: DFS with recursion stack set.",
+    "learnings": [
+      { "title": "Graph representations", "desc": "Implementing graphs using adjacency matrix, adjacency list, and edge list formats." },
+      { "title": "Directed vs Undirected", "desc": "Distinguishing between graphs with one-way edges and bidirectional connections." },
+      { "title": "Weighted graphs", "desc": "Storing cost/distance values on edges for shortest path and minimum spanning tree problems." },
+      { "title": "BFS traversal", "desc": "Exploring graphs level-by-level using queues for shortest unweighted path discovery." },
+      { "title": "DFS traversal", "desc": "Exploring graphs depth-first using recursion or explicit stacks for path finding." },
+      { "title": "Dijkstra's algorithm", "desc": "Finding shortest paths from a source to all nodes in weighted graphs with non-negative edges." },
+      { "title": "Topological sort", "desc": "Ordering directed acyclic graph nodes respecting dependency constraints." },
+      { "title": "Cycle detection", "desc": "Identifying cycles using DFS with visited/recursion stacks or Union-Find." }
+    ],
+    "starterCode": "# Task: Graphs & Graph Algorithms\n\nfrom collections import deque\nimport heapq\n\n# 1. bfs(graph, start)\n# 2. dfs(graph, start)\n# 3. shortest_path(graph, start, end)\n# 4. dijkstra(weighted_graph, start)\n# 5. topological_sort(dag)\n# 6. has_cycle(directed_graph)\n\n# 7. Demonstrate all with example graphs",
+    "solutionCode": "# Task: Graphs & Graph Algorithms\n\nfrom collections import deque\nimport heapq\n\n# Unweighted graph\ngraph = {\n    'A': ['B', 'C'],\n    'B': ['A', 'D', 'E'],\n    'C': ['A', 'F'],\n    'D': ['B'],\n    'E': ['B', 'F'],\n    'F': ['C', 'E']\n}\n\n# Weighted graph\nweighted = {\n    'A': [('B', 1), ('C', 4)],\n    'B': [('C', 2), ('D', 5)],\n    'C': [('D', 1)],\n    'D': []\n}\n\n# DAG\ndag = {\n    'CS101': ['CS201', 'CS202'],\n    'CS201': ['CS301'],\n    'CS202': ['CS301', 'CS302'],\n    'CS301': [],\n    'CS302': []\n}\n\n# Graph with cycle\ncyclic = {\n    'A': ['B'],\n    'B': ['C'],\n    'C': ['A', 'D'],\n    'D': []\n}\n\ndef bfs(graph, start):\n    visited = {start}\n    queue = deque([start])\n    result = []\n    while queue:\n        node = queue.popleft()\n        result.append(node)\n        for n in graph[node]:\n            if n not in visited:\n                visited.add(n)\n                queue.append(n)\n    return result\n\ndef dfs(graph, start):\n    visited = set()\n    result = []\n    def _dfs(node):\n        visited.add(node)\n        result.append(node)\n        for n in graph[node]:\n            if n not in visited:\n                _dfs(n)\n    _dfs(start)\n    return result\n\ndef shortest_path(graph, start, end):\n    queue = deque([(start, [start])])\n    visited = {start}\n    while queue:\n        node, path = queue.popleft()\n        if node == end:\n            return path\n        for n in graph[node]:\n            if n not in visited:\n                visited.add(n)\n                queue.append((n, path + [n]))\n    return None\n\ndef dijkstra(graph, start):\n    dist = {node: float('inf') for node in graph}\n    dist[start] = 0\n    heap = [(0, start)]\n    while heap:\n        d, node = heapq.heappop(heap)\n        if d > dist[node]:\n            continue\n        for neighbor, weight in graph[node]:\n            new_d = d + weight\n            if new_d < dist[neighbor]:\n                dist[neighbor] = new_d\n                heapq.heappush(heap, (new_d, neighbor))\n    return dist\n\ndef topological_sort(graph):\n    in_deg = {n: 0 for n in graph}\n    for n in graph:\n        for neighbor in graph[n]:\n            in_deg[neighbor] += 1\n    queue = deque([n for n in in_deg if in_deg[n] == 0])\n    result = []\n    while queue:\n        node = queue.popleft()\n        result.append(node)\n        for n in graph[node]:\n            in_deg[n] -= 1\n            if in_deg[n] == 0:\n                queue.append(n)\n    return result if len(result) == len(graph) else None\n\ndef has_cycle(graph):\n    visited = set()\n    rec_stack = set()\n    def _dfs(node):\n        visited.add(node)\n        rec_stack.add(node)\n        for n in graph[node]:\n            if n not in visited:\n                if _dfs(n): return True\n            elif n in rec_stack:\n                return True\n        rec_stack.remove(node)\n        return False\n    for n in graph:\n        if n not in visited:\n            if _dfs(n): return True\n    return False\n\n# Demonstrate\nprint('=== BFS ===')\nprint(bfs(graph, 'A'))\n\nprint('\\n=== DFS ===')\nprint(dfs(graph, 'A'))\n\nprint('\\n=== Shortest Path ===')\nprint(f'A to F: {shortest_path(graph, \"A\", \"F\")}')\n\nprint('\\n=== Dijkstra ===')\nprint(dijkstra(weighted, 'A'))\n\nprint('\\n=== Topological Sort ===')\nprint(f'Course order: {topological_sort(dag)}')\n\nprint('\\n=== Cycle Detection ===')\nprint(f'DAG has cycle: {has_cycle(dag)}')\nprint(f'Cyclic graph has cycle: {has_cycle(cyclic)}')",
+    "exampleCode": "# 🧠 Advanced Graph Patterns\n\n# Union-Find for cycle detection in undirected graphs\nclass UnionFind:\n    def __init__(self, n):\n        self.parent = list(range(n))\n        self.rank = [0] * n\n\n    def find(self, x):\n        if self.parent[x] != x:\n            self.parent[x] = self.find(self.parent[x])\n        return self.parent[x]\n\n    def union(self, x, y):\n        px, py = self.find(x), self.find(y)\n        if px == py: return False\n        if self.rank[px] < self.rank[py]: px, py = py, px\n        self.parent[py] = px\n        if self.rank[px] == self.rank[py]: self.rank[px] += 1\n        return True\n\ndef detect_cycle_uf(edges, n):\n    uf = UnionFind(n)\n    for u, v in edges:\n        if not uf.union(u, v):\n            return True\n    return False\n\nprint(detect_cycle_uf([(0,1),(1,2),(2,0)], 3))  # True\nprint(detect_cycle_uf([(0,1),(1,2),(2,3)], 4))  # False\n\n# Connected components\ndef connected_components(graph):\n    visited = set()\n    components = []\n    for node in graph:\n        if node not in visited:\n            comp = []\n            queue = deque([node])\n            visited.add(node)\n            while queue:\n                n = queue.popleft()\n                comp.append(n)\n                for neighbor in graph[n]:\n                    if neighbor not in visited:\n                        visited.add(neighbor)\n                        queue.append(neighbor)\n            components.append(comp)\n    return components\n\n# Graph class\nclass Graph:\n    def __init__(self, directed=False):\n        self.adj = {}\n        self.directed = directed\n\n    def add_edge(self, u, v, weight=None):\n        if u not in self.adj: self.adj[u] = []\n        if v not in self.adj: self.adj[v] = []\n        self.adj[u].append((v, weight) if weight else v)\n        if not self.directed:\n            self.adj[v].append((u, weight) if weight else u)\n\n    def __str__(self):\n        return str(self.adj)\n\ng = Graph(directed=True)\ng.add_edge('A', 'B', 1)\ng.add_edge('B', 'C', 2)\nprint(g)",
+    "tests": [
+      { "id": "t1", "description": "Should implement bfs with deque", "check": "code => /def\\s+bfs.*deque/.test(code)" },
+      { "id": "t2", "description": "Should implement dfs recursively", "check": "code => /def\\s+dfs.*def\\s+_dfs/.test(code)" },
+      { "id": "t3", "description": "Should implement shortest_path returning path", "check": "code => /def\\s+shortest_path.*path.*return\\s+path/.test(code)" },
+      { "id": "t4", "description": "Should implement dijkstra with heapq", "check": "code => /def\\s+dijkstra.*heapq/.test(code)" },
+      { "id": "t5", "description": "Should implement topological_sort with in-degree", "check": "code => /def\\s+topological_sort.*in_deg/.test(code)" },
+      { "id": "t6", "description": "Should implement has_cycle with rec_stack", "check": "code => /def\\s+has_cycle.*rec_stack/.test(code)" }
+    ]
+  },
+  {
+    "id": "53",
+    "slug": "python-hashing-hash-tables",
+    "title": "Hashing & Hash Tables",
+    "icon": "Hash",
+    "overview": "Understand hash function design, collision resolution, and Python's dictionary internals.",
+    "explanation": "## Hash Functions\n\n```python\n# Built-in hash()\nprint(hash(42))        # Integer hash\nprint(hash('hello'))   # String hash\nprint(hash((1, 2)))    # Tuple hash\n# print(hash([1, 2])) # TypeError! Lists are unhashable\n\n# Hash is consistent within a process\nprint(hash('test') == hash('test'))  # True\n\n# Hash of integers is often the integer itself\nprint(hash(100))  # 100\n```\n\n## Simple Hash Table (Chaining)\n\n```python\nclass HashTable:\n    def __init__(self, size=10):\n        self.size = size\n        self.buckets = [[] for _ in range(size)]\n\n    def _hash(self, key):\n        return hash(key) % self.size\n\n    def put(self, key, value):\n        idx = self._hash(key)\n        bucket = self.buckets[idx]\n        for i, (k, v) in enumerate(bucket):\n            if k == key:\n                bucket[i] = (key, value)\n                return\n        bucket.append((key, value))\n\n    def get(self, key):\n        idx = self._hash(key)\n        bucket = self.buckets[idx]\n        for k, v in bucket:\n            if k == key:\n                return v\n        raise KeyError(key)\n\n    def __setitem__(self, key, value):\n        self.put(key, value)\n\n    def __getitem__(self, key):\n        return self.get(key)\n\n    def __str__(self):\n        items = []\n        for i, bucket in enumerate(self.buckets):\n            if bucket:\n                items.append(f'{i}: {bucket}')\n        return '{' + ', '.join(items) + '}'\n\nht = HashTable(5)\nht['name'] = 'Alice'\nht['age'] = 25\nht['city'] = 'NYC'\nprint(ht)\nprint(ht['name'])  # 'Alice'\n```\n\n## Open Addressing (Linear Probing)\n\n```python\nclass OpenAddressHT:\n    def __init__(self, size=10):\n        self.size = size\n        self.keys = [None] * size\n        self.values = [None] * size\n\n    def _hash(self, key):\n        return hash(key) % self.size\n\n    def put(self, key, value):\n        idx = self._hash(key)\n        while self.keys[idx] is not None:\n            if self.keys[idx] == key:\n                self.values[idx] = value\n                return\n            idx = (idx + 1) % self.size\n        self.keys[idx] = key\n        self.values[idx] = value\n\n    def get(self, key):\n        idx = self._hash(key)\n        while self.keys[idx] is not None:\n            if self.keys[idx] == key:\n                return self.values[idx]\n            idx = (idx + 1) % self.size\n        raise KeyError(key)\n```\n\n## Load Factor & Resizing\n\n```python\nclass ResizableHT:\n    def __init__(self, initial_size=8, load_factor=0.75):\n        self.size = initial_size\n        self.load_factor = load_factor\n        self.count = 0\n        self.buckets = [[] for _ in range(self.size)]\n\n    def put(self, key, value):\n        if self.count / self.size >= self.load_factor:\n            self._resize()\n        idx = hash(key) % self.size\n        for i, (k, v) in enumerate(self.buckets[idx]):\n            if k == key:\n                self.buckets[idx][i] = (key, value)\n                return\n        self.buckets[idx].append((key, value))\n        self.count += 1\n\n    def _resize(self):\n        old = self.buckets\n        self.size *= 2\n        self.buckets = [[] for _ in range(self.size)]\n        self.count = 0\n        for bucket in old:\n            for k, v in bucket:\n                self.put(k, v)\n```\n\n## Hashable Requirements\n\n```python\nclass Point:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __eq__(self, other):\n        return self.x == other.x and self.y == other.y\n\n    def __hash__(self):\n        return hash((self.x, self.y))\n\n# Now usable as dict key!\npoints = {}\np = Point(1, 2)\npoints[p] = 'origin'\nprint(points[Point(1, 2)])  # 'origin'\n```\n\n## Two-Sum Problem\n\n```python\ndef two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return None\n\nprint(two_sum([2, 7, 11, 15], 9))  # [0, 1]\n```",
+    "keyRules": [
+      "hash() must return the same value for equal objects — if you override __eq__, you MUST override __hash__",
+      "Mutable objects (list, dict, set) are unhashable — can't be used as dict keys or set members",
+      "Chaining: each bucket is a list — O(1) average, degrades with many collisions",
+      "Open addressing: probe next slot — better cache performance but degrades badly at high load",
+      "Load factor = items/buckets — Python dicts resize at ~2/3 load factor for O(1) average",
+      "Hash tables give O(1) average for insert, delete, lookup — the backbone of Python dicts and sets"
+    ],
+    "task": "Implement a `HashTable` class using chaining with: `__init__(size=8)`, `_hash(key)`, `put(key, value)`, `get(key)`, `delete(key)`, `__setitem__`, `__getitem__`, `__contains__`, `__len__`, and `__str__`. Add auto-resizing when load factor exceeds 0.75. Implement `two_sum(nums, target)` using a hash map. Implement `frequency_count(items)` returning a dict of item counts. Demonstrate all with clear output.",
+    "hint": "Chaining: buckets is list of lists. put: find bucket, update if key exists, else append. Resize: double size, rehash all entries. two_sum: store complement in dict. frequency: iterate and count with dict.",
+    "learnings": [
+      { "title": "Hash functions", "desc": "Mapping arbitrary data to fixed-size integer indices for constant-time lookup." },
+      { "title": "Collision resolution", "desc": "Handling index conflicts using chaining (linked lists) and open addressing (probing)." },
+      { "title": "Python dict internals", "desc": "Understanding CPython's hash table implementation with sparse and compact arrays." },
+      { "title": "Load factor & resizing", "desc": "How dictionaries grow their backing array when the load factor threshold is reached." },
+      { "title": "Hashable requirements", "desc": "Understanding why objects need __hash__ and __eq__ to be used as dictionary keys." },
+      { "title": "Applications", "desc": "Two-sum problem, frequency counting, caching, and deduplication patterns." }
+    ],
+    "starterCode": "# Task: Hashing & Hash Tables\n\n# 1. HashTable class (chaining, auto-resize)\n#    __init__, _hash, put, get, delete\n#    __setitem__, __getitem__, __contains__, __len__, __str__\n\n# 2. two_sum(nums, target)\n\n# 3. frequency_count(items)\n\n# 4. Demonstrate all",
+    "solutionCode": "# Task: Hashing & Hash Tables\n\nclass HashTable:\n    def __init__(self, size=8, load_factor=0.75):\n        self.size = size\n        self.load_factor = load_factor\n        self.count = 0\n        self.buckets = [[] for _ in range(size)]\n\n    def _hash(self, key):\n        return hash(key) % self.size\n\n    def _resize(self):\n        old = self.buckets\n        self.size *= 2\n        self.buckets = [[] for _ in range(self.size)]\n        self.count = 0\n        for bucket in old:\n            for k, v in bucket:\n                self.put(k, v)\n\n    def put(self, key, value):\n        if self.count / self.size >= self.load_factor:\n            self._resize()\n        idx = self._hash(key)\n        for i, (k, v) in enumerate(self.buckets[idx]):\n            if k == key:\n                self.buckets[idx][i] = (key, value)\n                return\n        self.buckets[idx].append((key, value))\n        self.count += 1\n\n    def get(self, key):\n        idx = self._hash(key)\n        for k, v in self.buckets[idx]:\n            if k == key:\n                return v\n        raise KeyError(key)\n\n    def delete(self, key):\n        idx = self._hash(key)\n        for i, (k, v) in enumerate(self.buckets[idx]):\n            if k == key:\n                del self.buckets[idx][i]\n                self.count -= 1\n                return\n        raise KeyError(key)\n\n    def __setitem__(self, key, value):\n        self.put(key, value)\n\n    def __getitem__(self, key):\n        return self.get(key)\n\n    def __contains__(self, key):\n        idx = self._hash(key)\n        return any(k == key for k, v in self.buckets[idx])\n\n    def __len__(self):\n        return self.count\n\n    def __str__(self):\n        items = [f'{k}: {v}' for bucket in self.buckets for k, v in bucket]\n        return '{' + ', '.join(items) + '}'\n\n# Two Sum\ndef two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in seen:\n            return [seen[complement], i]\n        seen[num] = i\n    return None\n\n# Frequency Count\ndef frequency_count(items):\n    freq = {}\n    for item in items:\n        freq[item] = freq.get(item, 0) + 1\n    return freq\n\n# Demonstrate\nprint('=== HashTable ===')\nht = HashTable(size=4)\nfor k, v in [('name', 'Alice'), ('age', 25), ('city', 'NYC'), ('score', 95), ('level', 5)]:\n    ht[k] = v\n    print(f'  After put({k!r}, {v!r}): len={len(ht)}, size={ht.size}')\n\nprint(f'\\n{ht}')\nprint(f'ht[\"name\"]: {ht[\"name\"]}')\nprint(f'\"age\" in ht: {\"age\" in ht}')\nprint(f'\"xyz\" in ht: {\"xyz\" in ht}')\n\nht.delete('age')\nprint(f'After delete(\"age\"): {ht}')\n\nprint('\\n=== Two Sum ===')\nprint(two_sum([2, 7, 11, 15], 9))   # [0, 1]\nprint(two_sum([3, 2, 4], 6))         # [1, 2]\nprint(two_sum([3, 3], 6))            # [0, 1]\n\nprint('\\n=== Frequency Count ===')\nwords = ['apple', 'banana', 'apple', 'cherry', 'banana', 'apple']\nprint(frequency_count(words))",
+    "exampleCode": "# 🧠 Advanced Hashing Patterns\n\n# LRU Cache using OrderedDict\nfrom collections import OrderedDict\n\nclass LRUCache:\n    def __init__(self, capacity):\n        self.capacity = capacity\n        self.cache = OrderedDict()\n\n    def get(self, key):\n        if key not in self.cache:\n            return -1\n        self.cache.move_to_end(key)\n        return self.cache[key]\n\n    def put(self, key, value):\n        if key in self.cache:\n            self.cache.move_to_end(key)\n        self.cache[key] = value\n        if len(self.cache) > self.capacity:\n            self.cache.popitem(last=False)\n\ncache = LRUCache(3)\ncache.put('a', 1)\ncache.put('b', 2)\ncache.put('c', 3)\ncache.get('a')  # 'a' is now most recent\ncache.put('d', 4)  # Evicts 'b'\nprint(list(cache.cache.keys()))  # ['c', 'a', 'd']\n\n# Custom hashable object\nclass Vector:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n\n    def __eq__(self, other):\n        return isinstance(other, Vector) and self.x == other.x and self.y == other.y\n\n    def __hash__(self):\n        return hash((self.x, self.y))\n\n    def __repr__(self):\n        return f'Vector({self.x}, {self.y})'\n\nvectors = {Vector(0,0): 'origin', Vector(1,0): 'right'}\nprint(vectors[Vector(0,0)])  # 'origin'\n\n# Group anagrams\nfrom collections import defaultdict\ndef group_anagrams(words):\n    groups = defaultdict(list)\n    for w in words:\n        key = ''.join(sorted(w))\n        groups[key].append(w)\n    return list(groups.values())\n\nprint(group_anagrams(['eat','tea','tan','ate','nat','bat']))\n# [['eat','tea','ate'], ['tan','nat'], ['bat']]\n\n# Consistent hashing simulation\ndef consistent_hash(key, ring_size=100):\n    return hash(key) % ring_size\n\nfor key in ['node1', 'node2', 'node3']:\n    print(f'{key} -> slot {consistent_hash(key)}')",
+    "tests": [
+      { "id": "t1", "description": "Should define HashTable class with buckets", "check": "code => /class\\s+HashTable.*buckets\\s*=\\s*\\[/.test(code)" },
+      { "id": "t2", "description": "Should implement _hash method", "check": "code => /def\\s+_hash.*hash\\s*\\(\\s*key\\s*\\)/.test(code)" },
+      { "id": "t3", "description": "Should implement auto-resize based on load_factor", "check": "code => /load_factor.*_resize/.test(code)" },
+      { "id": "t4", "description": "Should implement __contains__", "check": "code => /def\\s+__contains__/.test(code)" },
+      { "id": "t5", "description": "Should implement two_sum with hash map", "check": "code => /def\\s+two_sum.*seen\\s*=\\s*\\{/.test(code)" },
+      { "id": "t6", "description": "Should implement frequency_count", "check": "code => /def\\s+frequency_count/.test(code)" }
+    ]
+  },
+  {
+    "id": "54",
+    "slug": "python-searching-algorithms",
+    "title": "Searching Algorithms",
+    "icon": "Search",
+    "overview": "Implement and analyze algorithms for finding target elements within data collections.",
+    "explanation": "## Linear Search\n\n```python\ndef linear_search(arr, target):\n    for i, val in enumerate(arr):\n        if val == target:\n            return i\n    return -1\n\nprint(linear_search([5, 3, 8, 1, 9], 8))  # 2\n```\n\n## Binary Search (Iterative)\n\n```python\ndef binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\nprint(binary_search([1, 3, 5, 7, 9, 11], 7))  # 3\n```\n\n## Binary Search (Recursive)\n\n```python\ndef binary_search_rec(arr, target, left=0, right=None):\n    if right is None:\n        right = len(arr) - 1\n    if left > right:\n        return -1\n    mid = (left + right) // 2\n    if arr[mid] == target:\n        return mid\n    elif arr[mid] < target:\n        return binary_search_rec(arr, target, mid + 1, right)\n    else:\n        return binary_search_rec(arr, target, left, mid - 1)\n```\n\n## Binary Search Variants\n\n```python\n# Lower bound: first index >= target\ndef lower_bound(arr, target):\n    left, right = 0, len(arr)\n    while left < right:\n        mid = (left + right) // 2\n        if arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n\n# Upper bound: first index > target\ndef upper_bound(arr, target):\n    left, right = 0, len(arr)\n    while left < right:\n        mid = (left + right) // 2\n        if arr[mid] <= target:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n\narr = [1, 2, 4, 4, 4, 6, 7]\nprint(lower_bound(arr, 4))  # 2 (first 4)\nprint(upper_bound(arr, 4))  # 5 (first > 4)\nprint(f'Count of 4s: {upper_bound(arr, 4) - lower_bound(arr, 4)}')  # 3\n```\n\n## Search in Rotated Sorted Array\n\n```python\ndef search_rotated(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        if arr[left] <= arr[mid]:  # Left half is sorted\n            if arr[left] <= target < arr[mid]:\n                right = mid - 1\n            else:\n                left = mid + 1\n        else:  # Right half is sorted\n            if arr[mid] < target <= arr[right]:\n                left = mid + 1\n            else:\n                right = mid - 1\n    return -1\n\nprint(search_rotated([4, 5, 6, 7, 0, 1, 2], 0))  # 4\n```\n\n## Jump Search\n\n```python\nimport math\n\ndef jump_search(arr, target):\n    n = len(arr)\n    step = int(math.sqrt(n))\n    prev = 0\n    while arr[min(step, n) - 1] < target:\n        prev = step\n        step += int(math.sqrt(n))\n        if prev >= n:\n            return -1\n    for i in range(prev, min(step, n)):\n        if arr[i] == target:\n            return i\n    return -1\n```\n\n## Interpolation Search\n\n```python\ndef interpolation_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right and arr[left] <= target <= arr[right]:\n        if left == right:\n            return left if arr[left] == target else -1\n        pos = left + (target - arr[left]) * (right - left) // (arr[right] - arr[left])\n        if arr[pos] == target:\n            return pos\n        if arr[pos] < target:\n            left = pos + 1\n        else:\n            right = pos - 1\n    return -1\n```",
+    "keyRules": [
+      "Linear search: O(n) — only option for unsorted data, but simple and no preprocessing needed",
+      "Binary search: O(log n) — REQUIRES sorted array; uses divide-and-conquer halving",
+      "Use `left + (right - left) // 2` instead of `(left + right) // 2` to avoid integer overflow",
+      "Lower bound = first index where arr[i] >= target; Upper bound = first index where arr[i] > target",
+      "Rotated array binary search: determine which half is sorted, then check if target is in that half",
+      "Jump search: O(√n) — jump by √n steps then linear search backwards; better than linear, worse than binary"
+    ],
+    "task": "Implement: 1) `linear_search(arr, target)`. 2) `binary_search(arr, target)` iterative. 3) `binary_search_rec(arr, target)` recursive. 4) `lower_bound(arr, target)` and `upper_bound(arr, target)`. 5) `search_rotated(arr, target)`. 6) `count_occurrences(arr, target)` using lower/upper bound. Demonstrate all with clear test cases showing return values.",
+    "hint": "lower_bound: use `left < right` (not <=), move left=mid+1 when arr[mid] < target, else right=mid. upper_bound: same but move left=mid+1 when arr[mid] <= target. count_occurrences: return upper_bound - lower_bound.",
+    "learnings": [
+      { "title": "Linear search", "desc": "Scanning through elements sequentially with O(n) time complexity for unsorted data." },
+      { "title": "Binary search", "desc": "Dividing sorted arrays in half repeatedly for O(log n) target location." },
+      { "title": "Binary search variants", "desc": "Implementing lower bound, upper bound, and first/last occurrence finding." },
+      { "title": "Recursive binary search", "desc": "Writing binary search using recursive divide-and-conquer approach." },
+      { "title": "Search in rotated array", "desc": "Finding targets in circularly shifted sorted arrays using modified binary search." },
+      { "title": "Jump search", "desc": "Jumping ahead by fixed steps then linear searching backwards in sorted arrays." },
+      { "title": "Interpolation search", "desc": "Estimating target position based on value distribution for uniformly sorted data." }
+    ],
+    "starterCode": "# Task: Searching Algorithms\n\nimport math\n\n# 1. linear_search(arr, target)\n# 2. binary_search(arr, target) — iterative\n# 3. binary_search_rec(arr, target) — recursive\n# 4. lower_bound(arr, target)\n# 5. upper_bound(arr, target)\n# 6. search_rotated(arr, target)\n# 7. count_occurrences(arr, target)\n\n# 8. Demonstrate all",
+    "solutionCode": "# Task: Searching Algorithms\n\ndef linear_search(arr, target):\n    for i, val in enumerate(arr):\n        if val == target:\n            return i\n    return -1\n\ndef binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\ndef binary_search_rec(arr, target, left=0, right=None):\n    if right is None:\n        right = len(arr) - 1\n    if left > right:\n        return -1\n    mid = left + (right - left) // 2\n    if arr[mid] == target:\n        return mid\n    elif arr[mid] < target:\n        return binary_search_rec(arr, target, mid + 1, right)\n    else:\n        return binary_search_rec(arr, target, left, mid - 1)\n\ndef lower_bound(arr, target):\n    left, right = 0, len(arr)\n    while left < right:\n        mid = left + (right - left) // 2\n        if arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n\ndef upper_bound(arr, target):\n    left, right = 0, len(arr)\n    while left < right:\n        mid = left + (right - left) // 2\n        if arr[mid] <= target:\n            left = mid + 1\n        else:\n            right = mid\n    return left\n\ndef search_rotated(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            return mid\n        if arr[left] <= arr[mid]:\n            if arr[left] <= target < arr[mid]:\n                right = mid - 1\n            else:\n                left = mid + 1\n        else:\n            if arr[mid] < target <= arr[right]:\n                left = mid + 1\n            else:\n                right = mid - 1\n    return -1\n\ndef count_occurrences(arr, target):\n    lb = lower_bound(arr, target)\n    ub = upper_bound(arr, target)\n    return ub - lb\n\n# Demonstrate\narr = [1, 2, 4, 4, 4, 6, 7, 9, 11]\nrotated = [6, 7, 9, 11, 1, 2, 4]\n\nprint('=== Linear Search ===')\nprint(f'Find 4: index {linear_search(arr, 4)}')  # 2\nprint(f'Find 5: index {linear_search(arr, 5)}')  # -1\n\nprint('\\n=== Binary Search (Iterative) ===')\nprint(f'Find 7: index {binary_search(arr, 7)}')   # 6\nprint(f'Find 5: index {binary_search(arr, 5)}')   # -1\n\nprint('\\n=== Binary Search (Recursive) ===')\nprint(f'Find 9: index {binary_search_rec(arr, 9)}') # 7\n\nprint('\\n=== Lower/Upper Bound ===')\nprint(f'Lower bound of 4: {lower_bound(arr, 4)}')  # 2\nprint(f'Upper bound of 4: {upper_bound(arr, 4)}')  # 5\nprint(f'Count of 4s: {count_occurrences(arr, 4)}') # 3\nprint(f'Count of 5s: {count_occurrences(arr, 5)}') # 0\n\nprint('\\n=== Search in Rotated Array ===')\nprint(f'Rotated: {rotated}')\nprint(f'Find 1: index {search_rotated(rotated, 1)}')  # 4\nprint(f'Find 9: index {search_rotated(rotated, 9)}')  # 2\nprint(f'Find 5: index {search_rotated(rotated, 5)}')  # -1",
+    "exampleCode": "# 🧠 Advanced Search Patterns\n\n# First and last occurrence\ndef first_occurrence(arr, target):\n    left, right = 0, len(arr) - 1\n    result = -1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            result = mid\n            right = mid - 1  # Keep searching left\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return result\n\ndef last_occurrence(arr, target):\n    left, right = 0, len(arr) - 1\n    result = -1\n    while left <= right:\n        mid = left + (right - left) // 2\n        if arr[mid] == target:\n            result = mid\n            left = mid + 1  # Keep searching right\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return result\n\narr = [1, 2, 2, 2, 3, 4, 5]\nprint(f'First 2: {first_occurrence(arr, 2)}')  # 1\nprint(f'Last 2: {last_occurrence(arr, 2)}')    # 3\n\n# Search in 2D matrix\ndef search_matrix(matrix, target):\n    if not matrix: return False\n    rows, cols = len(matrix), len(matrix[0])\n    left, right = 0, rows * cols - 1\n    while left <= right:\n        mid = left + (right - left) // 2\n        r, c = mid // cols, mid % cols\n        if matrix[r][c] == target:\n            return (r, c)\n        elif matrix[r][c] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return None\n\nmatrix = [\n    [1, 3, 5, 7],\n    [10, 11, 16, 20],\n    [23, 30, 34, 60]\n]\nprint(search_matrix(matrix, 3))   # (0, 1)\nprint(search_matrix(matrix, 13))  # None\n\n# Find peak element\ndef find_peak(arr):\n    left, right = 0, len(arr) - 1\n    while left < right:\n        mid = left + (right - left) // 2\n        if arr[mid] > arr[mid + 1]:\n            right = mid\n        else:\n            left = mid + 1\n    return left\n\nprint(f'Peak at index {find_peak([1,2,1,3,5,6,4])}')  # 5 (value 6)",
+    "tests": [
+      { "id": "t1", "description": "Should implement linear_search with enumerate", "check": "code => /def\\s+linear_search.*enumerate/.test(code)" },
+      { "id": "t2", "description": "Should implement iterative binary_search", "check": "code => /def\\s+binary_search\\s*\\(\\s*arr\\s*,\\s*target\\s*\\).*while\\s+left\\s*<=\\s*right/.test(code)" },
+      { "id": "t3", "description": "Should implement recursive binary_search_rec", "check": "code => /def\\s+binary_search_rec.*return\\s+binary_search_rec/.test(code)" },
+      { "id": "t4", "description": "Should implement lower_bound and upper_bound", "check": "code => /def\\s+lower_bound/.test(code) && /def\\s+upper_bound/.test(code)" },
+      { "id": "t5", "description": "Should implement search_rotated", "check": "code => /def\\s+search_rotated/.test(code)" },
+      { "id": "t6", "description": "Should implement count_occurrences using bounds", "check": "code => /def\\s+count_occurrences.*upper_bound.*lower_bound/.test(code)" }
+    ]
+  },
+  {
+    "id": "55",
+    "slug": "python-sorting-algorithms",
+    "title": "Sorting Algorithms",
+    "icon": "ArrowUpDown",
+    "overview": "Implement, analyze, and compare fundamental sorting algorithms by time and space complexity.",
+    "explanation": "## Bubble Sort\n\n```python\ndef bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        swapped = False\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr\n# O(n²) time, O(1) space, stable\n```\n\n## Selection Sort\n\n```python\ndef selection_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        min_idx = i\n        for j in range(i + 1, n):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n# O(n²) time, O(1) space, NOT stable\n```\n\n## Insertion Sort\n\n```python\ndef insertion_sort(arr):\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n# O(n²) time, O(1) space, stable, fast for nearly sorted!\n```\n\n## Merge Sort\n\n```python\ndef merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n# O(n log n) time, O(n) space, stable\n```\n\n## Quick Sort\n\n```python\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n# O(n log n) avg, O(n²) worst, O(n) space (not in-place here)\n```\n\n## Heap Sort\n\n```python\ndef heap_sort(arr):\n    import heapq\n    heapq.heapify(arr)\n    return [heapq.heappop(arr) for _ in range(len(arr))]\n# O(n log n) time, O(1) space, NOT stable\n```\n\n## Counting Sort\n\n```python\ndef counting_sort(arr):\n    if not arr: return []\n    min_val, max_val = min(arr), max(arr)\n    count = [0] * (max_val - min_val + 1)\n    for x in arr:\n        count[x - min_val] += 1\n    result = []\n    for i, c in enumerate(count):\n        result.extend([i + min_val] * c)\n    return result\n# O(n + k) time, O(k) space, where k = range of values\n```\n\n## Python's sorted() & .sort() — Timsort\n\n```python\n# Timsort = Merge Sort + Insertion Sort\n# O(n log n) worst case\n# O(n) best case (already sorted!)\n# Stable\n# In-place (.sort()) or new list (sorted())\n\narr = [5, 2, 8, 1, 9, 3]\nprint(sorted(arr))        # [1, 2, 3, 5, 8, 9]\nprint(arr)                # [5, 2, 8, 1, 9, 3] (unchanged)\n\narr.sort()\nprint(arr)                # [1, 2, 3, 5, 8, 9] (modified)\n\n# Custom key\nstudents = [('Alice', 85), ('Bob', 92), ('Charlie', 85)]\nprint(sorted(students, key=lambda x: (-x[1], x[0])))\n# [('Bob', 92), ('Alice', 85), ('Charlie', 85)]\n```",
+    "keyRules": [
+      "Bubble/Selection/Insertion sort: O(n²) — only useful for tiny arrays or educational purposes",
+      "Merge sort: O(n log n) guaranteed, stable, but uses O(n) extra space",
+      "Quick sort: O(n log n) average, O(n²) worst (bad pivots), but fast in practice with good pivot selection",
+      "Heap sort: O(n log n) guaranteed, O(1) space, but NOT stable and slower constant factors",
+      "Counting sort: O(n+k) for integers with small range k — not comparison-based",
+      "Python's Timsort: hybrid merge+insertion, O(n log n) worst, O(n) best (already sorted), stable — use it in production!"
+    ],
+    "task": "Implement: `bubble_sort`, `selection_sort`, `insertion_sort`, `merge_sort` (with helper `merge`), `quick_sort`, and `counting_sort`. All should return a NEW sorted list (don't modify input, make copies first). Write a `benchmark_sorts()` function that times each sort on a list of 1000 random integers using `time.perf_counter()`. Print results sorted by speed.",
+    "hint": "Make copies: `arr_copy = list(arr)`. merge_sort: split, recurse, merge two sorted halves. quick_sort: pick pivot, partition into left/middle/right lists, recurse. counting_sort: find min/max, create count array, reconstruct.",
+    "learnings": [
+      { "title": "Bubble sort", "desc": "Repeatedly swapping adjacent out-of-order elements with O(n²) worst-case performance." },
+      { "title": "Selection sort", "desc": "Finding minimum elements and placing them in position with O(n²) comparisons." },
+      { "title": "Insertion sort", "desc": "Building sorted array one element at a time, efficient for nearly-sorted data." },
+      { "title": "Merge sort", "desc": "Divide-and-conquer O(n log n) algorithm with stable sorting and O(n) space." },
+      { "title": "Quick sort", "desc": "Partitioning around a pivot element with O(n log n) average and O(n²) worst case." },
+      { "title": "Heap sort", "desc": "Building a max-heap and extracting elements for O(n log n) in-place sorting." },
+      { "title": "Counting sort", "desc": "Non-comparison integer sorting achieving O(n+k) time for bounded value ranges." },
+      { "title": "Radix sort", "desc": "Sorting integers digit-by-digit from least to most significant position." },
+      { "title": "Python's sorted() & .sort()", "desc": "Understanding Timsort—Python's hybrid merge+insertion sort with O(n log n) guarantee." }
+    ],
+    "starterCode": "# Task: Sorting Algorithms\n\nimport time\nimport random\n\n# 1. bubble_sort(arr)\n# 2. selection_sort(arr)\n# 3. insertion_sort(arr)\n# 4. merge_sort(arr) with merge helper\n# 5. quick_sort(arr)\n# 6. counting_sort(arr)\n\n# 7. benchmark_sorts() function\n\n# 8. Run benchmark",
+    "solutionCode": "# Task: Sorting Algorithms\n\nimport time\nimport random\n\ndef bubble_sort(arr):\n    arr = list(arr)\n    n = len(arr)\n    for i in range(n):\n        swapped = False\n        for j in range(n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n                swapped = True\n        if not swapped:\n            break\n    return arr\n\ndef selection_sort(arr):\n    arr = list(arr)\n    n = len(arr)\n    for i in range(n):\n        min_idx = i\n        for j in range(i + 1, n):\n            if arr[j] < arr[min_idx]:\n                min_idx = j\n        arr[i], arr[min_idx] = arr[min_idx], arr[i]\n    return arr\n\ndef insertion_sort(arr):\n    arr = list(arr)\n    for i in range(1, len(arr)):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j + 1] = arr[j]\n            j -= 1\n        arr[j + 1] = key\n    return arr\n\ndef merge_sort(arr):\n    if len(arr) <= 1:\n        return list(arr)\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return _merge(left, right)\n\ndef _merge(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i]); i += 1\n        else:\n            result.append(right[j]); j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n\ndef quick_sort(arr):\n    if len(arr) <= 1:\n        return list(arr)\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\ndef counting_sort(arr):\n    if not arr: return []\n    arr = list(arr)\n    min_v, max_v = min(arr), max(arr)\n    count = [0] * (max_v - min_v + 1)\n    for x in arr:\n        count[x - min_v] += 1\n    result = []\n    for i, c in enumerate(count):\n        result.extend([i + min_v] * c)\n    return result\n\ndef benchmark_sorts():\n    random.seed(42)\n    data = [random.randint(0, 500) for _ in range(1000)]\n\n    sorts = [\n        ('Bubble O(n²)', bubble_sort),\n        ('Selection O(n²)', selection_sort),\n        ('Insertion O(n²)', insertion_sort),\n        ('Merge O(n log n)', merge_sort),\n        ('Quick O(n log n)', quick_sort),\n        ('Counting O(n+k)', counting_sort),\n        ('Python sorted()', sorted),\n    ]\n\n    results = []\n    for name, func in sorts:\n        start = time.perf_counter()\n        sorted_data = func(data)\n        elapsed = time.perf_counter() - start\n        is_correct = sorted_data == sorted(data)\n        results.append((elapsed, name, is_correct))\n\n    results.sort()\n    print(f'Sorting {len(data)} integers:')\n    print(f'{\"Algorithm\":<22s} {\"Time\":>10s}  Correct')\n    print('-' * 48)\n    for elapsed, name, correct in results:\n        print(f'{name:<22s} {elapsed:>10.6f}s  {\"✅\" if correct else \"❌\"}')\n\nbenchmark_sorts()",
+    "exampleCode": "# 🧠 Advanced Sorting Patterns\n\n# In-place quick sort\ndef quick_sort_inplace(arr, low=0, high=None):\n    if high is None:\n        high = len(arr) - 1\n    if low < high:\n        pi = partition(arr, low, high)\n        quick_sort_inplace(arr, low, pi - 1)\n        quick_sort_inplace(arr, pi + 1, high)\n\ndef partition(arr, low, high):\n    pivot = arr[high]\n    i = low - 1\n    for j in range(low, high):\n        if arr[j] <= pivot:\n            i += 1\n            arr[i], arr[j] = arr[j], arr[i]\n    arr[i + 1], arr[high] = arr[high], arr[i + 1]\n    return i + 1\n\n# Radix sort\ndef radix_sort(arr):\n    if not arr: return []\n    max_val = max(arr)\n    exp = 1\n    while max_val // exp > 0:\n        arr = counting_sort_by_digit(arr, exp)\n        exp *= 10\n    return arr\n\ndef counting_sort_by_digit(arr, exp):\n    output = [0] * len(arr)\n    count = [0] * 10\n    for x in arr:\n        digit = (x // exp) % 10\n        count[digit] += 1\n    for i in range(1, 10):\n        count[i] += count[i - 1]\n    for x in reversed(arr):\n        digit = (x // exp) % 10\n        count[digit] -= 1\n        output[count[digit]] = x\n    return output\n\nprint(radix_sort([170, 45, 75, 90, 802, 24, 2, 66]))\n# [2, 24, 45, 66, 75, 90, 170, 802]\n\n# Custom sort with key\nclass Student:\n    def __init__(self, name, grade, age):\n        self.name, self.grade, self.age = name, grade, age\n    def __repr__(self):\n        return f'{self.name}({self.grade},{self.age})'\n\nstudents = [\n    Student('Alice', 'A', 20),\n    Student('Bob', 'B', 19),\n    Student('Charlie', 'A', 21),\n]\n# Sort by grade desc, then age asc\nprint(sorted(students, key=lambda s: (s.grade, s.age), reverse=True))\n\n# Stable sort demonstration\npairs = [(3, 'a'), (1, 'b'), (3, 'c'), (1, 'd')]\nby_first = sorted(pairs, key=lambda x: x[0])\nprint(by_first)  # [(1,'b'), (1,'d'), (3,'a'), (3,'c')] — 'b' before 'd' preserved!",
+    "tests": [
+      { "id": "t1", "description": "Should implement bubble_sort", "check": "code => /def\\s+bubble_sort/.test(code)" },
+      { "id": "t2", "description": "Should implement merge_sort with merge helper", "check": "code => /def\\s+merge_sort/.test(code) && /def\\s+_merge/.test(code)" },
+      { "id": "t3", "description": "Should implement quick_sort", "check": "code => /def\\s+quick_sort/.test(code)" },
+      { "id": "t4", "description": "Should implement counting_sort", "check": "code => /def\\s+counting_sort/.test(code)" },
+      { "id": "t5", "description": "Should implement selection_sort", "check": "code => /def\\s+selection_sort/.test(code)" },
+      { "id": "t6", "description": "Should have benchmark function with time.perf_counter", "check": "code => /def\\s+benchmark.*time\\.perf_counter/.test(code)" }
+    ]
+  },
+  {
+    "id": "56",
+    "slug": "python-recursion-backtracking",
+    "title": "Recursion & Backtracking",
+    "icon": "RotateCcw",
+    "overview": "Solve complex problems by decomposing them into self-similar subproblems with systematic exploration.",
+    "explanation": "## Recursion Fundamentals\n\n```python\n# Factorial\ndef factorial(n):\n    if n <= 1:     # Base case\n        return 1\n    return n * factorial(n - 1)  # Recursive case\n\n# Power\ndef power(base, exp):\n    if exp == 0:\n        return 1\n    return base * power(base, exp - 1)\n\n# Sum of digits\ndef sum_digits(n):\n    if n == 0:\n        return 0\n    return n % 10 + sum_digits(n // 10)\n\nprint(sum_digits(12345))  # 15\n```\n\n## Recursion Tree Analysis\n\n```python\n# Fibonacci — O(2^n) due to redundant calls\ndef fib(n):\n    if n <= 1:\n        return n\n    return fib(n-1) + fib(n-2)\n\n# Tree for fib(5):\n#                 fib(5)\n#               /        \\\n#           fib(4)      fib(3)\n#          /     \\      /     \\\n#      fib(3)  fib(2) fib(2) fib(1)\n#      /   \\    / \\    / \\\n#   fib(2) fib(1) ...   ...\n```\n\n## Backtracking Pattern\n\n```python\ndef backtrack(choices, state, results):\n    if is_complete(state):\n        results.append(copy(state))\n        return\n    for choice in choices:\n        if is_valid(choice, state):\n            make_choice(state, choice)\n            backtrack(choices, state, results)\n            undo_choice(state, choice)  # BACKTRACK!\n```\n\n## Generate All Subsets\n\n```python\ndef subsets(nums):\n    result = []\n    def backtrack(start, current):\n        result.append(list(current))\n        for i in range(start, len(nums)):\n            current.append(nums[i])\n            backtrack(i + 1, current)\n            current.pop()  # Backtrack\n    backtrack(0, [])\n    return result\n\nprint(subsets([1, 2, 3]))\n# [[], [1], [1,2], [1,2,3], [1,3], [2], [2,3], [3]]\n```\n\n## Generate All Permutations\n\n```python\ndef permutations(nums):\n    result = []\n    def backtrack(current, remaining):\n        if not remaining:\n            result.append(list(current))\n            return\n        for i in range(len(remaining)):\n            current.append(remaining[i])\n            backtrack(current, remaining[:i] + remaining[i+1:])\n            current.pop()  # Backtrack\n    backtrack([], nums)\n    return result\n\nprint(permutations([1, 2, 3]))\n# 6 permutations\n```\n\n## N-Queens Problem\n\n```python\ndef solve_n_queens(n):\n    result = []\n    board = ['.'] * n\n\n    def is_safe(row, col, queens):\n        for r, c in queens:\n            if c == col or abs(r - row) == abs(c - col):\n                return False\n        return True\n\n    def place_queen(row, queens):\n        if row == n:\n            result.append([''.join(board[:c] + ['Q'] + board[c+1:])\n                          for c in queens] if queens else [])\n            return\n        for col in range(n):\n            if is_safe(row, col, queens):\n                place_queen(row + 1, queens + [(row, col)])\n\n    place_queen(0, [])\n    return result\n\nsolutions = solve_n_queens(4)\nprint(f'4-Queens: {len(solutions)} solutions')\nfor sol in solutions:\n    for row in sol:\n        print(f'  {row}')\n    print()\n```\n\n## Sudoku Solver\n\n```python\ndef solve_sudoku(board):\n    def find_empty():\n        for i in range(9):\n            for j in range(9):\n                if board[i][j] == 0:\n                    return (i, j)\n        return None\n\n    def is_valid(num, row, col):\n        if num in board[row]: return False\n        if num in [board[r][col] for r in range(9)]: return False\n        box_r, box_c = 3 * (row // 3), 3 * (col // 3)\n        for r in range(box_r, box_r + 3):\n            for c in range(box_c, box_c + 3):\n                if board[r][c] == num: return False\n        return True\n\n    empty = find_empty()\n    if not empty: return True\n    row, col = empty\n\n    for num in range(1, 10):\n        if is_valid(num, row, col):\n            board[row][col] = num\n            if solve_sudoku(board):\n                return True\n            board[row][col] = 0  # Backtrack!\n    return False\n```",
+    "keyRules": [
+      "EVERY recursive function needs a BASE CASE that stops recursion — otherwise infinite recursion → stack overflow",
+      "Backtracking = make a choice → recurse → UNDO the choice (backtrack) — explores all possibilities",
+      "Subset generation: at each element, choose to INCLUDE or EXCLUDE — 2^n subsets",
+      "Permutation generation: at each position, try each remaining element — n! permutations",
+      "N-Queens: place queens row by row, check column and diagonal conflicts, backtrack if stuck",
+      "Python's default recursion limit is ~1000 — use sys.setrecursionlimit() for deeper recursion (but beware!)"
+    ],
+    "task": "Implement: 1) `factorial(n)` recursive. 2) `subsets(nums)` returning all subsets. 3) `permutations(nums)` returning all permutations. 4) `solve_n_queens(n)` returning board configurations. 5) `combination_sum(candidates, target)` finding all unique combinations that sum to target (candidates can be reused). Demonstrate all with small inputs and print results clearly.",
+    "hint": "subsets: backtrack with start index, append copy of current at each step. permutations: track remaining elements. combination_sum: sort candidates, backtrack with index (not i+1 since reuse allowed), skip duplicates, stop if sum > target.",
+    "learnings": [
+      { "title": "Recursion fundamentals", "desc": "Understanding base cases, recursive cases, and the call stack mechanism." },
+      { "title": "Recursion tree analysis", "desc": "Drawing recursion trees to calculate time complexity and identify redundant work." },
+      { "title": "Tail recursion", "desc": "Optimizing recursive calls at the end of functions—note Python's lack of TCO." },
+      { "title": "Backtracking pattern", "desc": "Exploring all possibilities by making choices, recursing, and undoing choices." },
+      { "title": "N-Queens problem", "desc": "Placing N queens on an NxN board without mutual attacks using backtracking." },
+      { "title": "Subset & permutation generation", "desc": "Generating all subsets, permutations, and combinations using backtracking." },
+      { "title": "Sudoku solver", "desc": "Filling a 9x9 grid satisfying row, column, and 3x3 box constraints." },
+      { "title": "Maze solving", "desc": "Finding paths through grids with obstacles using recursive backtracking." }
+    ],
+    "starterCode": "# Task: Recursion & Backtracking\n\n# 1. factorial(n)\n# 2. subsets(nums) — all subsets\n# 3. permutations(nums) — all permutations\n# 4. solve_n_queens(n) — return board configs\n# 5. combination_sum(candidates, target)\n\n# 6. Demonstrate all",
+    "solutionCode": "# Task: Recursion & Backtracking\n\ndef factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\n\ndef subsets(nums):\n    result = []\n    def backtrack(start, current):\n        result.append(list(current))\n        for i in range(start, len(nums)):\n            current.append(nums[i])\n            backtrack(i + 1, current)\n            current.pop()\n    backtrack(0, [])\n    return result\n\ndef permutations(nums):\n    result = []\n    def backtrack(current, remaining):\n        if not remaining:\n            result.append(list(current))\n            return\n        for i in range(len(remaining)):\n            current.append(remaining[i])\n            backtrack(current, remaining[:i] + remaining[i+1:])\n            current.pop()\n    backtrack([], nums)\n    return result\n\ndef solve_n_queens(n):\n    result = []\n    def is_safe(row, col, queens):\n        for r, c in queens:\n            if c == col or abs(r - row) == abs(c - col):\n                return False\n        return True\n\n    def place(row, queens):\n        if row == n:\n            board = [['.' for _ in range(n)] for _ in range(n)]\n            for r, c in queens:\n                board[r][c] = 'Q'\n            result.append([''.join(row) for row in board])\n            return\n        for col in range(n):\n            if is_safe(row, col, queens):\n                place(row + 1, queens + [(row, col)])\n\n    place(0, [])\n    return result\n\ndef combination_sum(candidates, target):\n    candidates.sort()\n    result = []\n    def backtrack(start, current, remaining):\n        if remaining == 0:\n            result.append(list(current))\n            return\n        for i in range(start, len(candidates)):\n            if candidates[i] > remaining:\n                break\n            current.append(candidates[i])\n            backtrack(i, current, remaining - candidates[i])  # i, not i+1 (reuse!)\n            current.pop()\n    backtrack(0, [], target)\n    return result\n\n# Demonstrate\nprint('=== Factorial ===')\nfor n in range(1, 8):\n    print(f'  {n}! = {factorial(n)}')\n\nprint('\\n=== Subsets of [1, 2, 3] ===')\nfor s in subsets([1, 2, 3]):\n    print(f'  {s}')\n\nprint('\\n=== Permutations of [1, 2, 3] ===')\nfor p in permutations([1, 2, 3]):\n    print(f'  {p}')\n\nprint('\\n=== 4-Queens ===')\nsolutions = solve_n_queens(4)\nprint(f'Solutions: {len(solutions)}')\nfor sol in solutions:\n    for row in sol:\n        print(f'  {row}')\n    print()\n\nprint('\\n=== Combination Sum ===')\ncombos = combination_sum([2, 3, 6, 7], 7)\nfor c in combos:\n    print(f'  {c}')  # [[2,2,3], [7]]",
+    "exampleCode": "# 🧠 Advanced Backtracking Patterns\n\n# Maze solving\ndef solve_maze(maze, start, end):\n    rows, cols = len(maze), len(maze[0])\n    path = []\n\n    def dfs(r, c):\n        if (r, c) == end:\n            path.append((r, c))\n            return True\n        if r < 0 or r >= rows or c < 0 or c >= cols:\n            return False\n        if maze[r][c] == '#':\n            return False\n        maze[r][c] = '#'  # Mark visited\n        path.append((r, c))\n        for dr, dc in [(0,1),(1,0),(0,-1),(-1,0)]:\n            if dfs(r + dr, c + dc):\n                return True\n        path.pop()  # Backtrack\n        maze[r][c] = '.'  # Unmark\n        return False\n\n    dfs(*start)\n    return path\n\nmaze = [\n    ['.', '.', '.', '#'],\n    ['.', '#', '.', '.'],\n    ['.', '#', '#', '.'],\n    ['.', '.', '.', '.']\n]\npath = solve_maze([r[:] for r in maze], (0,0), (3,3))\nprint(f'Path: {path}')\n\n# Letter combinations of phone number\ndef letter_combinations(digits):\n    if not digits: return []\n    mapping = {'2':'abc','3':'def','4':'ghi','5':'jkl',\n               '6':'mno','7':'pqrs','8':'tuv','9':'wxyz'}\n    result = []\n    def backtrack(idx, current):\n        if idx == len(digits):\n            result.append(''.join(current))\n            return\n        for ch in mapping[digits[idx]]:\n            current.append(ch)\n            backtrack(idx + 1, current)\n            current.pop()\n    backtrack(0, [])\n    return result\n\nprint(letter_combinations('23'))\n# ['ad','ae','af','bd','be','bf','cd','ce','cf']\n\n# Partition into palindromes\ndef partition_palindrome(s):\n    result = []\n    def is_pal(sub):\n        return sub == sub[::-1]\n    def backtrack(start, current):\n        if start == len(s):\n            result.append(list(current))\n            return\n        for end in range(start + 1, len(s) + 1):\n            sub = s[start:end]\n            if is_pal(sub):\n                current.append(sub)\n                backtrack(end, current)\n                current.pop()\n    backtrack(0, [])\n    return result\n\nprint(partition_palindrome('aab'))\n# [['a','a','b'], ['aa','b']]",
+    "tests": [
+      { "id": "t1", "description": "Should implement factorial with base case", "check": "code => /def\\s+factorial.*if\\s+n\\s*<=\\s*1.*return\\s+1/.test(code)" },
+      { "id": "t2", "description": "Should implement subsets with backtracking", "check": "code => /def\\s+subsets.*backtrack.*current\\.pop/.test(code)" },
+      { "id": "t3", "description": "Should implement permutations with backtracking", "check": "code => /def\\s+permutations.*backtrack/.test(code)" },
+      { "id": "t4", "description": "Should implement solve_n_queens", "check": "code => /def\\s+solve_n_queens.*is_safe/.test(code)" },
+      { "id": "t5", "description": "Should implement combination_sum", "check": "code => /def\\s+combination_sum.*backtrack/.test(code)" },
+      { "id": "t6", "description": "combination_sum should allow reuse (pass i not i+1)", "check": "code => /backtrack\\s*\\(\\s*i\\s*,/.test(code)" }
+    ]
+  },
+  {
+    "id": "57",
+    "slug": "python-dynamic-programming",
+    "title": "Dynamic Programming",
+    "icon": "Puzzle",
+    "overview": "Optimize recursive solutions by caching overlapping subproblems using memoization and tabulation.",
+    "explanation": "## Overlapping Subproblems\n\n```python\n# Naive Fibonacci — recomputes same subproblems!\ndef fib_naive(n):\n    if n <= 1: return n\n    return fib_naive(n-1) + fib_naive(n-2)\n# fib(5) calls fib(3) twice, fib(2) three times!\n```\n\n## Memoization (Top-Down)\n\n```python\ndef fib_memo(n, memo=None):\n    if memo is None: memo = {}\n    if n in memo: return memo[n]\n    if n <= 1: return n\n    memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)\n    return memo[n]\n# O(n) time, O(n) space\n```\n\n## Tabulation (Bottom-Up)\n\n```python\ndef fib_tab(n):\n    if n <= 1: return n\n    dp = [0] * (n + 1)\n    dp[1] = 1\n    for i in range(2, n + 1):\n        dp[i] = dp[i-1] + dp[i-2]\n    return dp[n]\n# O(n) time, O(n) space\n\n# Space-optimized: O(1) space\ndef fib_optimized(n):\n    if n <= 1: return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n# O(n) time, O(1) space\n```\n\n## 0/1 Knapsack\n\n```python\ndef knapsack(weights, values, capacity):\n    n = len(weights)\n    dp = [[0] * (capacity + 1) for _ in range(n + 1)]\n\n    for i in range(1, n + 1):\n        for w in range(capacity + 1):\n            if weights[i-1] <= w:\n                dp[i][w] = max(\n                    dp[i-1][w],\n                    dp[i-1][w - weights[i-1]] + values[i-1]\n                )\n            else:\n                dp[i][w] = dp[i-1][w]\n\n    return dp[n][capacity]\n\nprint(knapsack([1,3,4,5], [1,4,5,7], 7))  # 9\n```\n\n## Longest Common Subsequence\n\n```python\ndef lcs(text1, text2):\n    m, n = len(text1), len(text2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if text1[i-1] == text2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n\n    return dp[m][n]\n\nprint(lcs('abcde', 'ace'))  # 3 ('ace')\n```\n\n## Coin Change\n\n```python\ndef coin_change(coins, amount):\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0\n\n    for a in range(1, amount + 1):\n        for coin in coins:\n            if coin <= a:\n                dp[a] = min(dp[a], dp[a - coin] + 1)\n\n    return dp[amount] if dp[amount] != float('inf') else -1\n\nprint(coin_change([1, 2, 5], 11))  # 3 (5+5+1)\n```\n\n## State Space Optimization\n\n```python\n# Knapsack: 2D → 1D\ndef knapsack_1d(weights, values, capacity):\n    n = len(weights)\n    dp = [0] * (capacity + 1)\n\n    for i in range(n):\n        for w in range(capacity, weights[i] - 1, -1):  # Reverse!\n            dp[w] = max(dp[w], dp[w - weights[i]] + values[i])\n\n    return dp[capacity]\n\n# LCS: 2D → 2 rows\ndef lcs_optimized(text1, text2):\n    m, n = len(text1), len(text2)\n    prev = [0] * (n + 1)\n    for i in range(1, m + 1):\n        curr = [0] * (n + 1)\n        for j in range(1, n + 1):\n            if text1[i-1] == text2[j-1]:\n                curr[j] = prev[j-1] + 1\n            else:\n                curr[j] = max(prev[j], curr[j-1])\n        prev = curr\n    return prev[n]\n```",
+    "keyRules": [
+      "DP applies when: (1) overlapping subproblems, (2) optimal substructure — optimal solution contains optimal sub-solutions",
+      "Memoization (top-down): recursive + cache — easier to think about, may have stack overflow for deep recursion",
+      "Tabulation (bottom-up): iterative table filling — no recursion limit, usually slightly faster",
+      "0/1 Knapsack: dp[i][w] = max(not take item i, take item i) — each item used at most once",
+      "Coin Change: dp[a] = min coins to make amount a — unbounded (each coin can be reused)",
+      "2D → 1D optimization: iterate backwards for 0/1 knapsack (prevent using same item twice), forwards for unbounded"
+    ],
+    "task": "Implement: 1) `fib_memo(n)` with memoization. 2) `fib_tab(n)` with tabulation and O(1) space variant. 3) `knapsack(weights, values, capacity)` with 2D DP. 4) `lcs(text1, text2)`. 5) `coin_change(coins, amount)`. 6) `climbing_stairs(n)` — count ways to reach top (1 or 2 steps at a time). Demonstrate all with clear input/output showing results.",
+    "hint": "fib_memo: use dict or lru_cache. knapsack: dp[i][w] table, iterate items then weights. lcs: dp[i][j], if chars match dp[i-1][j-1]+1 else max(dp[i-1][j], dp[i][j-1]). coin_change: dp[amount] = min(dp[a-coin]+1). climbing_stairs: dp[n] = dp[n-1] + dp[n-2].",
+    "learnings": [
+      { "title": "Overlapping subproblems", "desc": "Identifying when a recursive solution re-computes the same subproblems repeatedly." },
+      { "title": "Optimal substructure", "desc": "Recognizing when an optimal solution contains optimal solutions to subproblems." },
+      { "title": "Memoization (Top-Down)", "desc": "Caching computed results in a dictionary/array to avoid redundant recursive calls." },
+      { "title": "Tabulation (Bottom-Up)", "desc": "Building solutions iteratively from smallest subproblems up to the target." },
+      { "title": "Fibonacci DP", "desc": "Solving the classic Fibonacci sequence in O(n) time and O(1) space." },
+      { "title": "0/1 Knapsack", "desc": "Maximizing value within weight capacity using 2D and 1D DP table approaches." },
+      { "title": "Longest Common Subsequence", "desc": "Finding the longest shared subsequence between two strings using DP matrix." },
+      { "title": "Coin Change", "desc": "Finding minimum coins to make a target amount using bottom-up DP table filling." },
+      { "title": "DP on strings", "desc": "Solving edit distance, palindrome subsequence, and string matching with DP." },
+      { "title": "State space optimization", "desc": "Reducing 2D DP tables to 1D arrays by recognizing dependency patterns." }
+    ],
+    "starterCode": "# Task: Dynamic Programming\n\nfrom functools import lru_cache\n\n# 1. fib_memo(n) — memoized\n# 2. fib_tab(n) — tabulation + O(1) space variant\n# 3. knapsack(weights, values, capacity)\n# 4. lcs(text1, text2)\n# 5. coin_change(coins, amount)\n# 6. climbing_stairs(n)\n\n# 7. Demonstrate all",
+    "solutionCode": "# Task: Dynamic Programming\n\nfrom functools import lru_cache\n\n# 1. Fibonacci - Memoization\n@lru_cache(maxsize=None)\ndef fib_memo(n):\n    if n <= 1:\n        return n\n    return fib_memo(n - 1) + fib_memo(n - 2)\n\n# 2. Fibonacci - Tabulation\ndef fib_tab(n):\n    if n <= 1: return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n\n# 3. 0/1 Knapsack\ndef knapsack(weights, values, capacity):\n    n = len(weights)\n    dp = [[0] * (capacity + 1) for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        for w in range(capacity + 1):\n            if weights[i-1] <= w:\n                dp[i][w] = max(dp[i-1][w], dp[i-1][w-weights[i-1]] + values[i-1])\n            else:\n                dp[i][w] = dp[i-1][w]\n    return dp[n][capacity]\n\n# 4. Longest Common Subsequence\ndef lcs(text1, text2):\n    m, n = len(text1), len(text2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if text1[i-1] == text2[j-1]:\n                dp[i][j] = dp[i-1][j-1] + 1\n            else:\n                dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n    return dp[m][n]\n\n# 5. Coin Change\ndef coin_change(coins, amount):\n    dp = [float('inf')] * (amount + 1)\n    dp[0] = 0\n    for a in range(1, amount + 1):\n        for coin in coins:\n            if coin <= a:\n                dp[a] = min(dp[a], dp[a - coin] + 1)\n    return dp[amount] if dp[amount] != float('inf') else -1\n\n# 6. Climbing Stairs\ndef climbing_stairs(n):\n    if n <= 2: return n\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b\n\n# Demonstrate\nprint('=== Fibonacci ===')\nfor n in [10, 20, 30, 50]:\n    print(f'  fib({n}) memo={fib_memo(n)}, tab={fib_tab(n)}')\n\nprint('\\n=== 0/1 Knapsack ===')\nw = [1, 3, 4, 5]\nv = [1, 4, 5, 7]\ncap = 7\nprint(f'  Weights: {w}')\nprint(f'  Values:  {v}')\nprint(f'  Capacity: {cap}')\nprint(f'  Max value: {knapsack(w, v, cap)}')  # 9\n\nprint('\\n=== LCS ===')\nprint(f'  LCS(\"abcde\", \"ace\"): {lcs(\"abcde\", \"ace\")}')  # 3\nprint(f'  LCS(\"AGGTAB\", \"GXTXAYB\"): {lcs(\"AGGTAB\", \"GXTXAYB\")}')  # 4\n\nprint('\\n=== Coin Change ===')\nprint(f'  coins=[1,2,5], amount=11: {coin_change([1,2,5], 11)} coins')  # 3\nprint(f'  coins=[2], amount=3: {coin_change([2], 3)}')  # -1\n\nprint('\\n=== Climbing Stairs ===')\nfor n in range(1, 8):\n    print(f'  {n} steps: {climbing_stairs(n)} ways')",
+    "exampleCode": "# 🧠 Advanced DP Patterns\n\n# Edit Distance (Levenshtein)\ndef edit_distance(s1, s2):\n    m, n = len(s1), len(s2)\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n    for i in range(m + 1): dp[i][0] = i\n    for j in range(n + 1): dp[0][j] = j\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if s1[i-1] == s2[j-1]:\n                dp[i][j] = dp[i-1][j-1]\n            else:\n                dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])\n    return dp[m][n]\n\nprint(edit_distance('kitten', 'sitting'))  # 3\nprint(edit_distance('sunday', 'saturday'))  # 3\n\n# Longest Palindromic Subsequence\ndef longest_palindrome_subseq(s):\n    n = len(s)\n    dp = [[0] * n for _ in range(n)]\n    for i in range(n): dp[i][i] = 1\n    for length in range(2, n + 1):\n        for i in range(n - length + 1):\n            j = i + length - 1\n            if s[i] == s[j]:\n                dp[i][j] = 2 + (dp[i+1][j-1] if length > 2 else 0)\n            else:\n                dp[i][j] = max(dp[i+1][j], dp[i][j-1])\n    return dp[0][n-1]\n\nprint(longest_palindrome_subseq('bbbab'))  # 4 ('bbbb')\n\n# Word Break\ndef word_break(s, word_dict):\n    n = len(s)\n    dp = [False] * (n + 1)\n    dp[0] = True\n    for i in range(1, n + 1):\n        for j in range(i):\n            if dp[j] and s[j:i] in word_dict:\n                dp[i] = True\n                break\n    return dp[n]\n\nprint(word_break('leetcode', {'leet', 'code'}))  # True\nprint(word_break('applepenapple', {'apple', 'pen'}))  # True\n\n# Maximum Subarray (Kadane's algorithm)\ndef max_subarray(nums):\n    max_sum = curr = nums[0]\n    for x in nums[1:]:\n        curr = max(x, curr + x)\n        max_sum = max(max_sum, curr)\n    return max_sum\n\nprint(max_subarray([-2,1,-3,4,-1,2,1,-5,4]))  # 6\n\n# Unbounded Knapsack (coin change variant)\ndef unbounded_knapsack(weights, values, capacity):\n    dp = [0] * (capacity + 1)\n    for w in range(1, capacity + 1):\n        for i in range(len(weights)):\n            if weights[i] <= w:\n                dp[w] = max(dp[w], dp[w - weights[i]] + values[i])\n    return dp[capacity]\n\nprint(unbounded_knapsack([1,3,4,5], [1,4,5,7], 7))  # 9 (can reuse items!)",
+    "tests": [
+      { "id": "t1", "description": "Should implement fib_memo with lru_cache or manual memo", "check": "code => /@lru_cache|memo\\[/.test(code)" },
+      { "id": "t2", "description": "Should implement fib_tab iteratively", "check": "code => /def\\s+fib_tab.*for\\s+_\\s+in\\s+range/.test(code)" },
+      { "id": "t3", "description": "Should implement knapsack with 2D DP table", "check": "code => /def\\s+knapsack.*dp\\s*=\\s*\\[\\s*\\[\\s*0/.test(code)" },
+      { "id": "t4", "description": "Should implement lcs with DP matrix", "check": "code => /def\\s+lcs.*dp\\s*=\\s*\\[\\s*\\[\\s*0/.test(code)" },
+      { "id": "t5", "description": "Should implement coin_change with DP", "check": "code => /def\\s+coin_change.*dp\\s*=\\s*\\[/.test(code)" },
+      { "id": "t6", "description": "Should implement climbing_stairs", "check": "code => /def\\s+climbing_stairs/.test(code)" }
+    ]
+  }
 ]
 
 // ═══════════════════════════════════════════════════════════════
@@ -1326,457 +2108,423 @@ export const learningTopics = [
 export const bugChallenges = [
   {
     id: "bug-01",
-    slug: "bug-hoisting-tdz",
-    title: "The Temporal Dead Zone",
-    difficulty: "Easy",
+    slug: "py-bug-mutable-default-arg",
+    title: "The Sticky Default",
+    difficulty: "Medium",
     icon: "Bug",
-    bugReport: "A script tries to print a user's role, but throws a ReferenceError: Cannot access 'role' before initialization, even though the variable is declared right below the console.log.",
-    description: "Variables declared with 'let' and 'const' are hoisted to the top of their block but remain in a 'Temporal Dead Zone' (TDZ) until the line of declaration is executed. Accessing them before that line throws an error, unlike 'var' which would just return 'undefined'.",
-    tags: ["Hoisting", "Temporal Dead Zone", "let/const"],
-    buggyCode: `function showUser() {
-  console.log("User Role:", role);
-  let role = "Admin";
-}
+    bugReport: "A function is supposed to add an item to a fresh shopping cart every time it's called without an explicit list. Instead, items from previous calls keep showing up in the 'new' cart.",
+    description: "In Python, default argument values are evaluated only ONCE, when the function is defined — not every time it's called. If you use a mutable object (like a list or dict) as a default value, that SAME object is reused and mutated across every call that relies on the default.",
+    tags: ["Mutable Defaults", "Function Arguments", "Common Gotcha"],
+    buggyCode: `def add_to_cart(item, cart=[]):
+    cart.append(item)
+    return cart
 
-showUser();`,
-    solutionCode: `function showUser() {
-  let role = "Admin";
-  console.log("User Role:", role);
-}
+cart1 = add_to_cart("Apple")
+print("Cart 1:", cart1)
 
-showUser();`,
+cart2 = add_to_cart("Banana")
+print("Cart 2:", cart2)
+
+if len(cart2) == 1:
+    print("SAFE: Each call got a fresh cart.")
+else:
+    print("BUG: Old items leaked into the new cart!")`,
+    solutionCode: `def add_to_cart(item, cart=None):
+    # Fix: Use None as the default, create a new list inside the function
+    if cart is None:
+        cart = []
+    cart.append(item)
+    return cart
+
+cart1 = add_to_cart("Apple")
+print("Cart 1:", cart1)
+
+cart2 = add_to_cart("Banana")
+print("Cart 2:", cart2)
+
+if len(cart2) == 1:
+    print("SAFE: Each call got a fresh cart.")
+else:
+    print("BUG: Old items leaked into the new cart!")`,
     tests: [
-      { id: "bt1", description: "Should declare 'let role' before using it", check: "code => /let\\s+role\\s*=/.test(code) && !/console\\.log[\\s\\S]*?let\\s+role/.test(code)" },
-      { id: "bt2", description: "Should still use 'let' or 'const'", check: "code => /let\\s+role|const\\s+role/.test(code)" },
-      { id: "bt3", description: "Should NOT use 'var' as a lazy fix", check: "code => !/var\\s+role/.test(code)" },
+      { id: "bt1", description: "Should use 'cart=None' as the default parameter", check: "code => /def\\s+add_to_cart\\s*\\(\\s*item\\s*,\\s*cart\\s*=\\s*None\\s*\\)/.test(code)" },
+      { id: "bt2", description: "Should check 'if cart is None' and create a new list", check: "code => /if\\s+cart\\s+is\\s+None\\s*:/.test(code) && /cart\\s*=\\s*\\[\\]/.test(code)" },
+      { id: "bt3", description: "Should NOT use a mutable list literal as the default", check: "code => !/cart\\s*=\\s*\\[\\]\\s*\\)/.test(code)" },
     ],
   },
   {
     id: "bug-02",
-    slug: "bug-var-block-scope",
-    title: "The Leaky Loop Variable",
-    difficulty: "Easy",
+    slug: "py-bug-late-binding-closure",
+    title: "The Lazy Lambda",
+    difficulty: "Medium",
     icon: "Bug",
-    bugReport: "A function processes an array of items and is supposed to return the total count. Instead, it also unexpectedly returns the loop counter variable, polluting the outer scope.",
-    description: "The 'var' keyword is function-scoped, not block-scoped. When you declare 'var i' inside a for-loop, it leaks out of the loop block and becomes accessible in the entire function. This can accidentally overwrite outer variables or return unintended data.",
-    tags: ["Scope", "Block Scope", "var vs let"],
-    buggyCode: `function processItems() {
-  const items = ["Apple", "Banana", "Cherry"];
-  let count = 0;
+    bugReport: "A list of lambda functions is created in a loop, each one meant to return its own loop index (0, 1, 2). But when called, every single one returns 2.",
+    description: "Python closures capture variables by reference, not by value, and lambdas don't evaluate the variable until they are CALLED (late binding). By the time all the lambdas run, the loop has already finished, so they all see the loop variable's final value.",
+    tags: ["Closures", "Loops", "Late Binding"],
+    buggyCode: `def create_multipliers():
+    multipliers = []
+    for i in range(3):
+        multipliers.append(lambda x: x * i)
+    return multipliers
 
-  for (var i = 0; i < items.length; i++) {
-    count++;
-  }
+funcs = create_multipliers()
+results = [f(10) for f in funcs]
 
-  const result = { total: count, lastIndex: i };
-  return result;
-}
+print("Results:", results)  # Expects [0, 10, 20]
+if results[0] == 0 and results[1] == 10:
+    print("SAFE: Each lambda captured its own i.")
+else:
+    print("BUG: All lambdas used the final value of i:", results)`,
+    solutionCode: `def create_multipliers():
+    multipliers = []
+    for i in range(3):
+        # Fix: Bind the current value of i as a default argument
+        multipliers.append(lambda x, i=i: x * i)
+    return multipliers
 
-const data = processItems();
-console.log("Total Items:", data.total);
-console.log("Expected lastIndex to be undefined, got:", data.lastIndex);
-if (data.lastIndex !== undefined) {
-  console.log("BUG: Loop variable leaked out of the block!");
-} else {
-  console.log("SAFE: Scope is contained.");
-}`,
-    solutionCode: `function processItems() {
-  const items = ["Apple", "Banana", "Cherry"];
-  let count = 0;
+funcs = create_multipliers()
+results = [f(10) for f in funcs]
 
-  for (let i = 0; i < items.length; i++) {
-    count++;
-  }
-
-  // If we try to access 'i' here, it would throw a ReferenceError
-  const result = { total: count };
-  return result;
-}
-
-const data = processItems();
-console.log("Total Items:", data.total);
-if (data.lastIndex !== undefined) {
-  console.log("BUG: Loop variable leaked out of the block!");
-} else {
-  console.log("SAFE: Scope is contained.");
-}`,
+print("Results:", results)  # Expects [0, 10, 20]
+if results[0] == 0 and results[1] == 10:
+    print("SAFE: Each lambda captured its own i.")
+else:
+    print("BUG: All lambdas used the final value of i:", results)`,
     tests: [
-      { id: "bt1", description: "Should use 'let' inside the for loop", check: "code => /for\\s*\\(\\s*let\\s+/.test(code)" },
-      { id: "bt2", description: "Should NOT use 'var' inside the for loop", check: "code => !/for\\s*\\(\\s*var\\s+/.test(code)" },
-      { id: "bt3", description: "Should remove the leaked 'i' from the returned object", check: "code => !/lastIndex\\s*:\\s*i/.test(code)" },
+      { id: "bt1", description: "Should bind 'i' as a default argument inside the lambda", check: "code => /lambda\\s+x\\s*,\\s*i\\s*=\\s*i\\s*:/.test(code)" },
+      { id: "bt2", description: "Should keep the loop structure using range(3)", check: "code => /for\\s+i\\s+in\\s+range\\s*\\(\\s*3\\s*\\)/.test(code)" },
+      { id: "bt3", description: "Should NOT leave the lambda capturing 'i' without a default", check: "code => !/lambda\\s+x\\s*:\\s*x\\s*\\*\\s*i\\)/.test(code)" },
     ],
   },
   {
     id: "bug-03",
-    slug: "bug-closure-loop-sync",
-    title: "The Synchronous Snapshot Failure",
-    difficulty: "Medium",
+    slug: "py-bug-str-int-concat",
+    title: "The Type Mismatch Crash",
+    difficulty: "Easy",
     icon: "Bug",
-    bugReport: "An array of 3 functions is created in a loop. Each function is supposed to return its loop index (0, 1, 2). But when executed, they all return 3.",
-    description: "Using 'var' in a loop creates a single variable in the function scope. All closures created in the loop share the exact same reference to 'i'. By the time the functions are called, the loop has finished, and 'i' is left at its final value (3).",
-    tags: ["Closures", "Loops", "var vs let"],
-    buggyCode: `function createCounters() {
-  const counters = [];
+    bugReport: "A function tries to build a receipt message by adding a price (a number) directly to a string. Instead of a nice message, it crashes with a TypeError.",
+    description: "Unlike JavaScript, Python does NOT automatically convert numbers to strings (or vice versa) with the '+' operator. Mixing a str and an int with '+' raises a TypeError because Python refuses to silently coerce types — you must convert explicitly.",
+    tags: ["Type Coercion", "Strings", "TypeError"],
+    buggyCode: `def build_receipt(item_name, price):
+    message = "Total for " + item_name + ": $" + price
+    return message
 
-  for (var i = 0; i < 3; i++) {
-    counters.push(function() {
-      return i;
-    });
-  }
+try:
+    receipt = build_receipt("Coffee", 4)
+    print(receipt)
+except TypeError as e:
+    print("BUG CRASHED:", e)`,
+    solutionCode: `def build_receipt(item_name, price):
+    # Fix: Explicitly convert the number to a string
+    message = "Total for " + item_name + ": $" + str(price)
+    return message
 
-  return counters;
-}
-
-const myCounters = createCounters();
-const results = myCounters.map(fn => fn());
-
-console.log("Results:", results); // Expects [0, 1, 2]
-if (results[0] === 0 && results[1] === 1) {
-  console.log("SAFE: Counters work correctly.");
-} else {
-  console.log("BUG: All counters returned", results);
-}`,
-    solutionCode: `function createCounters() {
-  const counters = [];
-
-  for (let i = 0; i < 3; i++) {
-    counters.push(function() {
-      return i;
-    });
-  }
-
-  return counters;
-}
-
-const myCounters = createCounters();
-const results = myCounters.map(fn => fn());
-
-console.log("Results:", results); // Expects [0, 1, 2]
-if (results[0] === 0 && results[1] === 1) {
-  console.log("SAFE: Counters work correctly.");
-} else {
-  console.log("BUG: All counters returned", results);
-}`,
+try:
+    receipt = build_receipt("Coffee", 4)
+    print(receipt)
+except TypeError as e:
+    print("BUG CRASHED:", e)`,
     tests: [
-      { id: "bt1", description: "Should change loop variable to 'let'", check: "code => /for\\s*\\(\\s*let\\s+/.test(code)" },
-      { id: "bt2", description: "Should keep the closure structure returning 'i'", check: "code => /return\\s+i;/.test(code)" },
-      { id: "bt3", description: "Should NOT use 'var'", check: "code => !/var\\s+i/.test(code)" },
+      { id: "bt1", description: "Should explicitly convert price using str()", check: "code => /str\\s*\\(\\s*price\\s*\\)/.test(code)" },
+      { id: "bt2", description: "Should NOT concatenate price directly without conversion", check: "code => !/\\$\\\"\\s*\\+\\s*price(?!\\s*\\))/.test(code) || /str\\s*\\(\\s*price\\s*\\)/.test(code)" },
+      { id: "bt3", description: "Should keep the same function signature", check: "code => /def\\s+build_receipt\\s*\\(\\s*item_name\\s*,\\s*price\\s*\\)/.test(code)" },
     ],
   },
   {
     id: "bug-04",
-    slug: "bug-arrow-this",
-    title: "The Vanishing Context",
+    slug: "py-bug-unbound-local",
+    title: "The Confused Local",
     difficulty: "Medium",
     icon: "Bug",
-    bugReport: "An object has a method that calls an inner arrow function to update a status. But 'this' is undefined inside the arrow function, causing a crash.",
-    description: "Arrow functions do not have their own 'this' context; they inherit it from the lexical scope where they are written. When an object method itself is an arrow function, 'this' does not bind to the object, but to the surrounding scope (global/undefined in modules).",
-    tags: ["this Context", "Arrow Functions", "Objects"],
-    buggyCode: `const server = {
-  status: "offline",
-  start: () => {
-    this.status = "online"; // Bug: 'this' is undefined here
-    console.log("Server status:", this.status);
-  }
-};
+    bugReport: "A function tries to increment a global counter, but instead of updating it, Python throws an UnboundLocalError saying the variable is referenced before assignment.",
+    description: "If you assign to a variable ANYWHERE inside a function, Python treats it as a local variable for the ENTIRE function body — even on lines before the assignment. So trying to read a global variable and then reassign it in the same function without declaring 'global' first causes this error.",
+    tags: ["Scope", "global keyword", "UnboundLocalError"],
+    buggyCode: `counter = 0
 
-try {
-  server.start();
-} catch (e) {
-  console.log("BUG CRASHED:", e.message);
-}`,
-    solutionCode: `const server = {
-  status: "offline",
-  start() { // Fix: Use regular method shorthand to bind 'this' to 'server'
-    this.status = "online";
-    console.log("Server status:", this.status);
-  }
-};
+def increment_counter():
+    counter = counter + 1
+    return counter
 
-try {
-  server.start();
-} catch (e) {
-  console.log("BUG CRASHED:", e.message);
-}`,
+try:
+    result = increment_counter()
+    print("Counter:", result)
+except UnboundLocalError as e:
+    print("BUG CRASHED:", e)`,
+    solutionCode: `counter = 0
+
+def increment_counter():
+    global counter  # Fix: Tell Python we mean the global variable
+    counter = counter + 1
+    return counter
+
+try:
+    result = increment_counter()
+    print("Counter:", result)
+except UnboundLocalError as e:
+    print("BUG CRASHED:", e)`,
     tests: [
-      { id: "bt1", description: "Should use a regular function or method shorthand", check: "code => /start\\s*\\(\\s*\\)\\s*\\{/.test(code)" },
-      { id: "bt2", description: "Should NOT define 'start' as an arrow function", check: "code => !/start\\s*:\\s*\\(\\s*\\)\\s*=>/.test(code) && !/start\\s*\\(\\s*\\)\\s*=>/.test(code)" },
-      { id: "bt3", description: "Should still use 'this.status'", check: "code => /this\\.status/.test(code)" },
+      { id: "bt1", description: "Should declare 'global counter' inside the function", check: "code => /def\\s+increment_counter[\\s\\S]*?global\\s+counter/.test(code)" },
+      { id: "bt2", description: "Should still increment counter by 1", check: "code => /counter\\s*=\\s*counter\\s*\\+\\s*1/.test(code)" },
+      { id: "bt3", description: "Should keep the function name the same", check: "code => /def\\s+increment_counter\\s*\\(\\s*\\)/.test(code)" },
     ],
   },
   {
     id: "bug-05",
-    slug: "bug-type-coercion-math",
-    title: "The Invisible String",
-    difficulty: "Easy",
+    slug: "py-bug-reassign-vs-mutate",
+    title: "The Broken Reset Link",
+    difficulty: "Medium",
     icon: "Bug",
-    bugReport: "A cart calculator adds a price string (50) and a tax number (5). Instead of 55, it returns 505 because of silent string concatenation.",
-    description: "The '+' operator in JavaScript is overloaded for both addition and string concatenation. If either operand is a string, JavaScript implicitly coerces the other operand to a string and concatenates them instead of doing math.",
-    tags: ["Type Coercion", "Operators", "Strings"],
-    buggyCode: `function calculateTotal(priceStr, taxNum) {
-  const total = priceStr + taxNum;
-  return total;
-}
+    bugReport: "A function is supposed to completely reset a user's profile dictionary to default values. But after calling the function, the original dictionary remains totally unchanged.",
+    description: "Python passes references to objects by value — the reference itself is copied. Reassigning the parameter name inside the function only points that LOCAL name to a new dict; it does not affect the object the caller's variable still points to. To actually reset it, you must mutate the existing dict's keys.",
+    tags: ["References", "Dictionaries", "Mutation"],
+    buggyCode: `def reset_profile(profile):
+    profile = {"name": "Guest", "role": "viewer", "active": False}
 
-const finalPrice = calculateTotal("50", 5);
-console.log("Total Price:", finalPrice);
+user = {"name": "Ali", "role": "admin", "active": True}
+reset_profile(user)
 
-if (finalPrice === 55) {
-  console.log("SAFE: Math is correct.");
-} else {
-  console.log("BUG: Got string concatenation instead of addition.");
-}`,
-    solutionCode: `function calculateTotal(priceStr, taxNum) {
-  // Fix: Explicitly convert string to number using Number()
-  const total = Number(priceStr) + taxNum;
-  return total;
-}
+print("User after reset:", user)
+if user["name"] == "Guest":
+    print("SAFE: Profile was reset.")
+else:
+    print("BUG: Reassignment inside function did not affect outer dict.")`,
+    solutionCode: `def reset_profile(profile):
+    # Fix: Mutate the existing dict's keys instead of reassigning the parameter
+    profile["name"] = "Guest"
+    profile["role"] = "viewer"
+    profile["active"] = False
 
-const finalPrice = calculateTotal("50", 5);
-console.log("Total Price:", finalPrice);
+user = {"name": "Ali", "role": "admin", "active": True}
+reset_profile(user)
 
-if (finalPrice === 55) {
-  console.log("SAFE: Math is correct.");
-} else {
-  console.log("BUG: Got string concatenation instead of addition.");
-}`,
+print("User after reset:", user)
+if user["name"] == "Guest":
+    print("SAFE: Profile was reset.")
+else:
+    print("BUG: Reassignment inside function did not affect outer dict.")`,
     tests: [
-      { id: "bt1", description: "Should explicitly convert string to number", check: "code => /Number\\s*\\(\\s*priceStr\\s*\\)/.test(code) || /parseInt\\s*\\(\\s*priceStr/.test(code) || /\\+priceStr/.test(code)" },
-      { id: "bt2", description: "Should NOT just add them directly", check: "code => !/total\\s*=\\s*priceStr\\s*\\+\\s*taxNum/.test(code)" },
-      { id: "bt3", description: "Should keep the function parameters the same", check: "code => /calculateTotal\\s*\\(\\s*priceStr\\s*,\\s*taxNum/.test(code)" },
+      { id: "bt1", description: "Should mutate keys directly (e.g., profile[\"name\"] = ...)", check: "code => /profile\\[\\s*[\"']name[\"']\\s*\\]\\s*=/.test(code) && /profile\\[\\s*[\"']role[\"']\\s*\\]\\s*=/.test(code)" },
+      { id: "bt2", description: "Should NOT reassign the 'profile' parameter to a new dict", check: "code => !/profile\\s*=\\s*\\{/.test(code)" },
+      { id: "bt3", description: "Should still take profile as the argument", check: "code => /def\\s+reset_profile\\s*\\(\\s*profile\\s*\\)/.test(code)" },
     ],
   },
   {
     id: "bug-06",
-    slug: "bug-pass-by-reference",
-    title: "The Severed Connection",
+    slug: "py-bug-is-vs-equals",
+    title: "The Identity Trap",
     difficulty: "Medium",
     icon: "Bug",
-    bugReport: "A function is supposed to completely replace a user's profile object with a default one. But after calling the function, the original object remains unchanged.",
-    description: "JavaScript passes objects by reference, but the reference itself is passed by value. If you reassign the parameter variable to a completely new object inside the function, you only break the link to the original object. You must mutate the existing object's properties instead of reassigning the variable.",
-    tags: ["References", "Objects", "Mutation"],
-    buggyCode: `function resetProfile(profile) {
-  profile = { name: "Guest", role: "viewer", active: false };
-}
+    bugReport: "A function compares two lists with the same values using 'is' to check if they match. Even though both lists look identical, the check fails and triggers an unnecessary reset.",
+    description: "The 'is' operator checks object IDENTITY (same memory location), not equality of values. Two separately created lists (or dicts) with identical contents are still different objects in memory, so 'is' returns False even when '==' would return True.",
+    tags: ["is vs ==", "Identity", "Comparison"],
+    buggyCode: `def check_settings(current, defaults):
+    if current is defaults:
+        return "Match! Keeping current settings."
+    return "Mismatch! Resetting to defaults..."
 
-let user = { name: "Ali", role: "admin", active: true };
-resetProfile(user);
+default_settings = {"theme": "dark", "font_size": 14}
+user_settings = {"theme": "dark", "font_size": 14}
 
-console.log("User after reset:", user);
-if (user.name === "Guest") {
-  console.log("SAFE: Profile was reset.");
-} else {
-  console.log("BUG: Reassignment inside function did not affect outer object.");
-}`,
-    solutionCode: `function resetProfile(profile) {
-  // Fix: Mutate the existing object properties instead of reassigning the variable
-  profile.name = "Guest";
-  profile.role = "viewer";
-  profile.active = false;
-}
+result = check_settings(user_settings, default_settings)
+print("Result:", result)
 
-let user = { name: "Ali", role: "admin", active: true };
-resetProfile(user);
+if "Mismatch" in result:
+    print("BUG: Dicts have same values but identity check failed.")
+else:
+    print("SAFE: Dicts matched correctly.")`,
+    solutionCode: `def check_settings(current, defaults):
+    # Fix: Use '==' to compare values, not 'is' which checks identity
+    if current == defaults:
+        return "Match! Keeping current settings."
+    return "Mismatch! Resetting to defaults..."
 
-console.log("User after reset:", user);
-if (user.name === "Guest") {
-  console.log("SAFE: Profile was reset.");
-} else {
-  console.log("BUG: Reassignment inside function did not affect outer object.");
-}`,
+default_settings = {"theme": "dark", "font_size": 14}
+user_settings = {"theme": "dark", "font_size": 14}
+
+result = check_settings(user_settings, default_settings)
+print("Result:", result)
+
+if "Mismatch" in result:
+    print("BUG: Dicts have same values but identity check failed.")
+else:
+    print("SAFE: Dicts matched correctly.")`,
     tests: [
-      { id: "bt1", description: "Should mutate properties directly (e.g., profile.name = ...)", check: "code => /profile\\.name\\s*=/.test(code) && /profile\\.role\\s*=/.test(code)" },
-      { id: "bt2", description: "Should NOT reassign the 'profile' parameter to a new object", check: "code => !/profile\\s*=\\s*\\{/.test(code)" },
-      { id: "bt3", description: "Should still take profile as argument", check: "code => /resetProfile\\s*\\(\\s*profile\\s*\\)/.test(code)" },
+      { id: "bt1", description: "Should use '==' to compare current and defaults", check: "code => /current\\s*==\\s*defaults/.test(code)" },
+      { id: "bt2", description: "Should NOT use 'is' for value comparison", check: "code => !/current\\s+is\\s+defaults/.test(code)" },
+      { id: "bt3", description: "Should keep the same function signature", check: "code => /def\\s+check_settings\\s*\\(\\s*current\\s*,\\s*defaults\\s*\\)/.test(code)" },
     ],
   },
   {
     id: "bug-07",
-    slug: "bug-foreach-return",
-    title: "The Undefined Chain",
+    slug: "py-bug-sort-returns-none",
+    title: "The Vanishing List",
     difficulty: "Easy",
     icon: "Bug",
-    bugReport: "An array of numbers is doubled using .forEach(). When trying to log the first element of the new array, it throws 'TypeError: Cannot read properties of undefined'.",
-    description: "Array.prototype.forEach() always returns 'undefined'. It is meant for side effects (like logging), not for creating new arrays. When you try to chain methods or assign the result of forEach to a variable, you get undefined instead of the mapped array.",
-    tags: ["Array Methods", "forEach vs map", "Return Values"],
-    buggyCode: `function getDoubled(numbers) {
-  const doubled = numbers.forEach(num => num * 2);
-  return doubled;
-}
+    bugReport: "A list of scores is sorted and assigned to a new variable. When trying to print the first (lowest) score, it crashes with 'TypeError: NoneType object is not subscriptable'.",
+    description: "The list.sort() method sorts a list IN PLACE and always returns None — it's meant for side effects, not for producing a new value. Assigning its result to a variable gives you None instead of the sorted list. Use sorted() instead if you want a new sorted list returned.",
+    tags: ["List Methods", "sort vs sorted", "Return Values"],
+    buggyCode: `def get_sorted_scores(scores):
+    sorted_scores = scores.sort()
+    return sorted_scores
 
-const nums = [1, 2, 3];
-const result = getDoubled(nums);
+nums = [42, 17, 8, 99]
+result = get_sorted_scores(nums)
 
-try {
-  console.log("First doubled number:", result[0]);
-} catch (e) {
-  console.log("BUG CRASHED:", e.message);
-}`,
-    solutionCode: `function getDoubled(numbers) {
-  // Fix: Use .map() which returns a new array
-  const doubled = numbers.map(num => num * 2);
-  return doubled;
-}
+try:
+    print("Lowest score:", result[0])
+except TypeError as e:
+    print("BUG CRASHED:", e)`,
+    solutionCode: `def get_sorted_scores(scores):
+    # Fix: Use sorted() which returns a new sorted list
+    sorted_scores = sorted(scores)
+    return sorted_scores
 
-const nums = [1, 2, 3];
-const result = getDoubled(nums);
+nums = [42, 17, 8, 99]
+result = get_sorted_scores(nums)
 
-try {
-  console.log("First doubled number:", result[0]);
-} catch (e) {
-  console.log("BUG CRASHED:", e.message);
-}`,
+try:
+    print("Lowest score:", result[0])
+except TypeError as e:
+    print("BUG CRASHED:", e)`,
     tests: [
-      { id: "bt1", description: "Should use .map() instead of .forEach()", check: "code => /\\.map\\s*\\(/.test(code)" },
-      { id: "bt2", description: "Should NOT use .forEach() for returning data", check: "code => !/\\.forEach\\s*\\(/.test(code)" },
-      { id: "bt3", description: "Should return the new array", check: "code => /return\\s+doubled/.test(code)" },
+      { id: "bt1", description: "Should use sorted() instead of .sort()", check: "code => /sorted\\s*\\(\\s*scores\\s*\\)/.test(code)" },
+      { id: "bt2", description: "Should NOT rely on the return value of .sort()", check: "code => !/=\\s*scores\\.sort\\s*\\(\\s*\\)/.test(code)" },
+      { id: "bt3", description: "Should return the sorted list", check: "code => /return\\s+sorted_scores/.test(code)" },
     ],
   },
   {
     id: "bug-08",
-    slug: "bug-destructure-defaults",
-    title: "The Collapsed Config",
+    slug: "py-bug-nested-dict-get",
+    title: "The Missing Key Crash",
     difficulty: "Medium",
     icon: "Bug",
-    bugReport: "A function tries to extract a nested 'timeout' value from a config object. If the config is missing the 'network' key, the app crashes with 'Cannot destructure property 'timeout' of undefined'.",
-    description: "When destructuring deeply nested objects, if an intermediate property is missing or undefined, JavaScript throws a TypeError. You must provide default values (like `= {}`) at each nesting level to prevent the crash.",
-    tags: ["Destructuring", "Defaults", "Nested Objects"],
-    buggyCode: `function startService(config) {
-  const { network: { timeout, retries } } = config;
+    bugReport: "A function tries to read a nested 'timeout' value from a config dict. If the config is missing the 'network' key entirely, the app crashes with a KeyError.",
+    description: "Directly indexing nested dictionaries with square brackets assumes every intermediate key exists. If any key along the path is missing, Python raises a KeyError. Using .get() with default fallback values at each level avoids the crash.",
+    tags: ["Dictionaries", "KeyError", "Defaults"],
+    buggyCode: `def start_service(config):
+    timeout = config["network"]["timeout"]
+    retries = config["network"]["retries"]
+    print(f"Starting with timeout: {timeout}, retries: {retries}")
 
-  console.log(\`Starting with timeout: \${timeout}, retries: \${retries}\`);
-}
+prod_config = {"network": {"timeout": 5000, "retries": 3}}
+dev_config = {"debug": True}  # Missing 'network' key
 
-const prodConfig = { network: { timeout: 5000, retries: 3 } };
-const devConfig = { debug: true }; // Missing 'network' key
+print("--- Prod ---")
+start_service(prod_config)
 
-console.log("--- Prod ---");
-startService(prodConfig);
+print("--- Dev ---")
+try:
+    start_service(dev_config)
+except KeyError as e:
+    print("BUG CRASHED:", e)`,
+    solutionCode: `def start_service(config):
+    # Fix: Use .get() with defaults at each nesting level
+    network = config.get("network", {})
+    timeout = network.get("timeout", 1000)
+    retries = network.get("retries", 0)
+    print(f"Starting with timeout: {timeout}, retries: {retries}")
 
-console.log("--- Dev ---");
-try {
-  startService(devConfig);
-} catch (e) {
-  console.log("BUG CRASHED:", e.message);
-}`,
-    solutionCode: `function startService(config) {
-  // Fix: Add default empty objects at each nesting level
-  const { network: { timeout = 1000, retries = 0 } = {} } = config;
+prod_config = {"network": {"timeout": 5000, "retries": 3}}
+dev_config = {"debug": True}  # Missing 'network' key
 
-  console.log(\`Starting with timeout: \${timeout}, retries: \${retries}\`);
-}
+print("--- Prod ---")
+start_service(prod_config)
 
-const prodConfig = { network: { timeout: 5000, retries: 3 } };
-const devConfig = { debug: true }; // Missing 'network' key
-
-console.log("--- Prod ---");
-startService(prodConfig);
-
-console.log("--- Dev ---");
-try {
-  startService(devConfig);
-} catch (e) {
-  console.log("BUG CRASHED:", e.message);
-}`,
+print("--- Dev ---")
+try:
+    start_service(dev_config)
+except KeyError as e:
+    print("BUG CRASHED:", e)`,
     tests: [
-      { id: "bt1", description: "Should use default empty object assignment in destructuring", check: "code => /=\\s*\\{\\s*\\}/.test(code)" },
-      { id: "bt2", description: "Should keep the nested destructuring syntax", check: "code => /network\\s*:\\s*\\{/.test(code)" },
-      { id: "bt3", description: "Should NOT destructure without defaults", check: "code => !/network\\s*:\\s*\\{[^}]*\\}\\s*\\)/.test(code) || /=\\s*\\{\\s*\\}/.test(code)" },
+      { id: "bt1", description: "Should use .get() with a default for the 'network' key", check: "code => /config\\.get\\s*\\(\\s*[\"']network[\"']\\s*,\\s*\\{\\s*\\}\\s*\\)/.test(code)" },
+      { id: "bt2", description: "Should use .get() for 'timeout' and 'retries' too", check: "code => /\\.get\\s*\\(\\s*[\"']timeout[\"']/.test(code) && /\\.get\\s*\\(\\s*[\"']retries[\"']/.test(code)" },
+      { id: "bt3", description: "Should NOT directly index config[\"network\"][\"timeout\"] without .get()", check: "code => !/config\\[\\s*[\"']network[\"']\\s*\\]\\[\\s*[\"']timeout[\"']\\s*\\]/.test(code)" },
     ],
   },
   {
     id: "bug-09",
-    slug: "bug-async-try-catch",
-    title: "The Escaped Rejection",
+    slug: "py-bug-async-missing-await",
+    title: "The Ignored Coroutine",
     difficulty: "Hard",
     icon: "Bug",
-    bugReport: "An async function wraps a Promise inside a try...catch block. But when the Promise rejects, the catch block is completely ignored, and Node.js throws an UnhandledPromiseRejection warning/crash.",
-    description: "If you call an async function without the 'await' keyword inside a try...catch block, the execution moves to the next line immediately. The rejected Promise floats away unhandled. The catch block only catches synchronous errors or errors from awaited Promises.",
-    tags: ["Async/Await", "Error Handling", "Promises"],
-    buggyCode: `const riskyTask = () => Promise.reject(new Error("Database connection failed"));
+    bugReport: "An async function wraps a risky async call inside a try/except block. But when the call fails, the except block never runs, and Python warns about a coroutine that was never awaited.",
+    description: "Calling an async function without 'await' does NOT run it — it just creates a coroutine object that sits there unexecuted. The exception inside it never actually gets raised, so try/except has nothing to catch, and Python prints a 'coroutine was never awaited' warning.",
+    tags: ["async/await", "Error Handling", "asyncio"],
+    buggyCode: `import asyncio
 
-async function runPipeline() {
-  try {
-    console.log("Starting pipeline...");
-    riskyTask(); // Bug: Missing 'await'
-    console.log("Pipeline finished successfully!");
-  } catch (err) {
-    console.log("CAUGHT ERROR:", err.message);
-  }
-}
+async def risky_task():
+    raise ValueError("Database connection failed")
 
-runPipeline();`,
-    solutionCode: `const riskyTask = () => Promise.reject(new Error("Database connection failed"));
+async def run_pipeline():
+    try:
+        print("Starting pipeline...")
+        risky_task()  # Bug: Missing 'await'
+        print("Pipeline finished successfully!")
+    except ValueError as e:
+        print("CAUGHT ERROR:", e)
 
-async function runPipeline() {
-  try {
-    console.log("Starting pipeline...");
-    await riskyTask(); // Fix: Added 'await'
-    console.log("Pipeline finished successfully!");
-  } catch (err) {
-    console.log("CAUGHT ERROR:", err.message);
-  }
-}
+asyncio.run(run_pipeline())`,
+    solutionCode: `import asyncio
 
-runPipeline();`,
+async def risky_task():
+    raise ValueError("Database connection failed")
+
+async def run_pipeline():
+    try:
+        print("Starting pipeline...")
+        await risky_task()  # Fix: Added 'await'
+        print("Pipeline finished successfully!")
+    except ValueError as e:
+        print("CAUGHT ERROR:", e)
+
+asyncio.run(run_pipeline())`,
     tests: [
-      { id: "bt1", description: "Must use 'await' before riskyTask()", check: "code => /await\\s+riskyTask/.test(code)" },
-      { id: "bt2", description: "Should keep the try...catch structure", check: "code => /try\\s*\\{/.test(code) && /catch\\s*\\(/.test(code)" },
-      { id: "bt3", description: "Should NOT call riskyTask without await inside try", check: "code => !/riskyTask\\s*\\(\\s*\\)\\s*;/.test(code) || /await\\s+riskyTask/.test(code)" },
+      { id: "bt1", description: "Must use 'await' before risky_task()", check: "code => /await\\s+risky_task\\s*\\(\\s*\\)/.test(code)" },
+      { id: "bt2", description: "Should keep the try/except structure", check: "code => /try\\s*:/.test(code) && /except\\s+ValueError/.test(code)" },
+      { id: "bt3", description: "Should NOT call risky_task() without await", check: "code => !/(?<!await\\s)risky_task\\s*\\(\\s*\\)\\s*(?:#.*)?\\n/.test(code) || /await\\s+risky_task/.test(code)" },
     ],
   },
   {
     id: "bug-10",
-    slug: "bug-object-reference-equality",
-    title: "The Identity Crisis",
-    difficulty: "Medium",
+    slug: "py-bug-shallow-copy",
+    title: "The Shared Nested List",
+    difficulty: "Hard",
     icon: "Bug",
-    bugReport: "A function compares a user's current settings against default settings to check if they are identical. Even though both objects have the exact same keys and values, the check fails and resets the user's settings unnecessarily.",
-    description: "In JavaScript, objects are compared by reference, not by value. Even if two objects look identical, `{ a: 1 } === { a: 1 }` is false because they live in different memory locations. To compare object values, you must compare their stringified versions or write a deep comparison.",
-    tags: ["Object Equality", "References", "Comparison"],
-    buggyCode: `function checkSettings(current, defaults) {
-  if (current === defaults) {
-    return "Match! Keeping current settings.";
-  }
-  return "Mismatch! Resetting to defaults...";
-}
+    bugReport: "A function duplicates a seating chart (a list of rows, each row a list of seats) so it can be modified independently. But editing the 'copy' also changes the original chart.",
+    description: "list.copy() (and slicing with [:]) only creates a SHALLOW copy — it duplicates the outer list, but the inner lists (or dicts/objects) inside are still shared references. Modifying a nested element affects both the original and the 'copy'. A true independent copy needs copy.deepcopy().",
+    tags: ["Shallow vs Deep Copy", "Nested Lists", "copy module"],
+    buggyCode: `original_chart = [["A1", "A2"], ["B1", "B2"]]
+new_chart = original_chart.copy()
 
-const defaultSettings = { theme: "dark", fontSize: 14 };
-const userSettings = { theme: "dark", fontSize: 14 };
+new_chart[0][0] = "RESERVED"
 
-const result = checkSettings(userSettings, defaultSettings);
-console.log("Result:", result);
+print("Original:", original_chart)
+print("New:", new_chart)
 
-if (result.includes("Mismatch")) {
-  console.log("BUG: Objects have same values but reference check failed.");
-} else {
-  console.log("SAFE: Objects matched correctly.");
-}`,
-    solutionCode: `function checkSettings(current, defaults) {
-  // Fix: Compare stringified objects to compare by value
-  if (JSON.stringify(current) === JSON.stringify(defaults)) {
-    return "Match! Keeping current settings.";
-  }
-  return "Mismatch! Resetting to defaults...";
-}
+if original_chart[0][0] == "RESERVED":
+    print("BUG: Editing the copy changed the original chart!")
+else:
+    print("SAFE: Charts are fully independent.")`,
+    solutionCode: `import copy
 
-const defaultSettings = { theme: "dark", fontSize: 14 };
-const userSettings = { theme: "dark", fontSize: 14 };
+original_chart = [["A1", "A2"], ["B1", "B2"]]
+new_chart = copy.deepcopy(original_chart)  # Fix: Use deepcopy for full independence
 
-const result = checkSettings(userSettings, defaultSettings);
-console.log("Result:", result);
+new_chart[0][0] = "RESERVED"
 
-if (result.includes("Mismatch")) {
-  console.log("BUG: Objects have same values but reference check failed.");
-} else {
-  console.log("SAFE: Objects matched correctly.");
-}`,
+print("Original:", original_chart)
+print("New:", new_chart)
+
+if original_chart[0][0] == "RESERVED":
+    print("BUG: Editing the copy changed the original chart!")
+else:
+    print("SAFE: Charts are fully independent.")`,
     tests: [
-      { id: "bt1", description: "Should use JSON.stringify for comparison", check: "code => /JSON\\.stringify\\s*\\(\\s*current\\s*\\)\\s*===\\s*JSON\\.stringify\\s*\\(\\s*defaults/.test(code)" },
-      { id: "bt2", description: "Should NOT use strict equality (===) directly on objects", check: "code => !/current\\s*===\\s*defaults/.test(code)" },
-      { id: "bt3", description: "Should keep the same function signature", check: "code => /checkSettings\\s*\\(\\s*current\\s*,\\s*defaults\\s*\\)/.test(code)" },
+      { id: "bt1", description: "Should import the copy module", check: "code => /import\\s+copy/.test(code)" },
+      { id: "bt2", description: "Should use copy.deepcopy() to duplicate the chart", check: "code => /copy\\.deepcopy\\s*\\(\\s*original_chart\\s*\\)/.test(code)" },
+      { id: "bt3", description: "Should NOT use the shallow .copy() method for this", check: "code => !/original_chart\\.copy\\s*\\(\\s*\\)/.test(code)" },
     ],
-  }
+  },
 ]
 
 // ═══════════════════════════════════════════════════════════════
@@ -1784,386 +2532,117 @@ if (result.includes("Mismatch")) {
 // ═══════════════════════════════════════════════════════════════
 export const miniProjects = [
   {
-    id: "proj-01",
-    slug: "student-grade-analyzer",
-    title: "Student Grade Analyzer",
-    difficulty: "Beginner",
-    description: "Build a student performance analyzer that processes a hardcoded dataset of 8 students. Calculate averages, find the topper, count pass/fail ratios, filter by attendance, and rank students — all using core array methods. Learn map, reduce, filter, sort, find, and template literals.",
-    tags: ["Array Methods", "Objects", "Conditions", "Template Literals", "Destructuring"],
-    hint: "Use .map() to add computed fields like average and passed status. Use .reduce() to find the topper by comparing averages. Use .filter() for pass/fail counting and low attendance. Finally use .sort() to rank.",
-    starterCode: `// Task: Build a Student Grade Analyzer\n\n// 1. Define an array of 8 student objects\n//    Each student: { name, math, science, english, attendance }\n\n// 2. Use .map() to add average, passed (all scores >= 50), eligible (passed + attendance >= 75)\n\n// 3. Use .reduce() to find the class topper (highest average)\n\n// 4. Calculate subject-wise class averages using .reduce()\n\n// 5. Use .filter() to count passed vs failed students\n\n// 6. Use .filter() to find students with attendance below 75%\n\n// 7. Use [...array].sort() to rank students by average (descending)\n\n// 8. Log everything with formatted output`,
-    solutionCode: `const analyzeStudents = () => {
-  const students = [
-    { name: "Aarav", math: 92, science: 85, english: 78, attendance: 95 },
-    { name: "Priya", math: 76, science: 91, english: 88, attendance: 88 },
-    { name: "Rohan", math: 45, science: 52, english: 60, attendance: 72 },
-    { name: "Sneha", math: 98, science: 95, english: 92, attendance: 98 },
-    { name: "Vikram", math: 67, science: 70, english: 65, attendance: 80 },
-    { name: "Ananya", math: 55, science: 48, english: 62, attendance: 68 },
-    { name: "Arjun", math: 88, science: 82, english: 90, attendance: 92 },
-    { name: "Kavya", math: 73, science: 77, english: 80, attendance: 85 }
-  ];
-
-  const PASS_THRESHOLD = 50;
-  const MIN_ATTENDANCE = 75;
-
-  // 1. Add computed fields using .map()
-  const withAverage = students.map(s => {
-    const total = s.math + s.science + s.english;
-    const average = Number((total / 3).toFixed(1));
-    const passed = s.math >= PASS_THRESHOLD && s.science >= PASS_THRESHOLD && s.english >= PASS_THRESHOLD;
-    const eligible = passed && s.attendance >= MIN_ATTENDANCE;
-    return { ...s, average, passed, eligible };
-  });
-
-  // 2. Find topper using .reduce()
-  const topper = withAverage.reduce((best, s) => s.average > best.average ? s : best);
-
-  // 3. Subject averages using .reduce()
-  const mathAvg = Number((students.reduce((sum, s) => sum + s.math, 0) / students.length).toFixed(1));
-  const scienceAvg = Number((students.reduce((sum, s) => sum + s.science, 0) / students.length).toFixed(1));
-  const englishAvg = Number((students.reduce((sum, s) => sum + s.english, 0) / students.length).toFixed(1));
-
-  // 4. Pass/Fail count using .filter()
-  const passedCount = withAverage.filter(s => s.passed).length;
-  const failedCount = withAverage.length - passedCount;
-
-  // 5. Low attendance using .filter()
-  const lowAttendance = withAverage.filter(s => s.attendance < MIN_ATTENDANCE);
-
-  // 6. Rank students using .sort()
-  const ranked = [...withAverage].sort((a, b) => b.average - a.average);
-
-  // Output
-  console.log("========================================");
-  console.log("    STUDENT PERFORMANCE ANALYSIS");
-  console.log("========================================\\n");
-
-  console.log("--- Ranked Students ---");
-  ranked.forEach((s, i) => {
-    const status = s.passed ? "PASS" : "FAIL";
-    const elig = s.eligible ? "ELIGIBLE" : "NOT ELIGIBLE";
-    console.log(\`#\${i + 1} \${s.name} | Avg: \${s.average}% | \${status} | Attendance: \${s.attendance}% | \${elig}\`);
-  });
-
-  console.log(\`\\n--- Class Topper ---\`);
-  console.log(\`\${topper.name} with \${topper.average}% average\`);
-
-  console.log(\`\\n--- Subject Averages ---\`);
-  console.log(\`Math: \${mathAvg}% | Science: \${scienceAvg}% | English: \${englishAvg}%\`);
-
-  console.log(\`\\n--- Pass/Fail Ratio ---\`);
-  console.log(\`Passed: \${passedCount} | Failed: \${failedCount} | Pass Rate: \${((passedCount / students.length) * 100).toFixed(0)}%\`);
-
-  console.log(\`\\n--- Low Attendance Warning (<\${MIN_ATTENDANCE}%) ---\`);
-  if (lowAttendance.length === 0) {
-    console.log("All students meet attendance requirements.");
-  } else {
-    lowAttendance.forEach(s => {
-      console.log(\`Warning: \${s.name} - \${s.attendance}% attendance\`);
-    });
-  }
-};
-
-analyzeStudents();`,
-    tests: [
-      { id: "pa-1", description: "Should define a students array with objects", check: "code => /const\\s+students\\s*=\\s*\\[/.test(code)" },
-      { id: "pa-2", description: "Should use .map() to add computed fields", check: "code => /\\.map\\s*\\(/.test(code)" },
-      { id: "pa-3", description: "Should use .reduce() to find topper or calculate sums", check: "code => /\\.reduce\\s*\\(/.test(code)" },
-      { id: "pa-4", description: "Should use .filter() for pass/fail or attendance", check: "code => /\\.filter\\s*\\(/.test(code)" },
-      { id: "pa-5", description: "Should use .sort() to rank students", check: "code => /\\.sort\\s*\\(/.test(code)" },
-      { id: "pa-6", description: "Should use spread operator to copy array before sort", check: "code => /\\[\\s*\\.\\.\\./.test(code)" },
-      { id: "pa-7", description: "Should use template literals for output", check: "code => /console\\.log\\s*\\(\\s*\`/.test(code)" },
-      { id: "pa-8", description: "Should use conditional logic (ternary or if)", check: "code => /\\?.*:/g.test(code) || /if\\s*\\(/g.test(code)" },
+    "id": "proj-01",
+    "slug": "student-grade-analyzer",
+    "title": "Student Grade Analyzer",
+    "difficulty": "Beginner",
+    "description": "Build a student performance analyzer that processes a hardcoded dataset of 8 students. Calculate averages, find the topper, count pass/fail ratios, filter by attendance, and rank students — all using core Python data structures and functional tools. Learn list comprehensions, sorted(), filter(), map(), reduce(), and f-string formatting.",
+    "tags": ["List Comprehensions", "Dicts", "filter/map/reduce", "f-strings", "sorted()", "lambda"],
+    "hint": "Use list comprehension to add computed fields like average and passed status. Use max() with key to find topper. Use filter() or list comp for pass/fail counting and low attendance. Use sorted() with key lambda to rank.",
+    "starterCode": "# Task: Build a Student Grade Analyzer\n\n# 1. Define a list of 8 student dicts\n#    Each student: { 'name', 'math', 'science', 'english', 'attendance' }\n\n# 2. Use list comprehension to add 'average', 'passed' (all >= 50), 'eligible' (passed + attendance >= 75)\n\n# 3. Use max() with key to find class topper (highest average)\n\n# 4. Calculate subject-wise class averages\n\n# 5. Use filter/sum to count passed vs failed students\n\n# 6. Use list comprehension to find students with attendance below 75%\n\n# 7. Use sorted() to rank students by average (descending)\n\n# 8. Print everything with formatted f-string output",
+    "solutionCode": "def analyze_students():\n    students = [\n        {\"name\": \"Aarav\", \"math\": 92, \"science\": 85, \"english\": 78, \"attendance\": 95},\n        {\"name\": \"Priya\", \"math\": 76, \"science\": 91, \"english\": 88, \"attendance\": 88},\n        {\"name\": \"Rohan\", \"math\": 45, \"science\": 52, \"english\": 60, \"attendance\": 72},\n        {\"name\": \"Sneha\", \"math\": 98, \"science\": 95, \"english\": 92, \"attendance\": 98},\n        {\"name\": \"Vikram\", \"math\": 67, \"science\": 70, \"english\": 65, \"attendance\": 80},\n        {\"name\": \"Ananya\", \"math\": 55, \"science\": 48, \"english\": 62, \"attendance\": 68},\n        {\"name\": \"Arjun\", \"math\": 88, \"science\": 82, \"english\": 90, \"attendance\": 92},\n        {\"name\": \"Kavya\", \"math\": 73, \"science\": 77, \"english\": 80, \"attendance\": 85},\n    ]\n\n    PASS_THRESHOLD = 50\n    MIN_ATTENDANCE = 75\n\n    # 1. Add computed fields using list comprehension\n    enriched = [\n        {**s, \"average\": round((s[\"math\"] + s[\"science\"] + s[\"english\"]) / 3, 1),\n         \"passed\": all(s[subj] >= PASS_THRESHOLD for subj in (\"math\", \"science\", \"english\")),\n         \"eligible\": None}  # placeholder\n        for s in students\n    ]\n    for s in enriched:\n        s[\"eligible\"] = s[\"passed\"] and s[\"attendance\"] >= MIN_ATTENDANCE\n\n    # 2. Find topper using max() with key\n    topper = max(enriched, key=lambda s: s[\"average\"])\n\n    # 3. Subject averages\n    n = len(students)\n    math_avg = round(sum(s[\"math\"] for s in students) / n, 1)\n    science_avg = round(sum(s[\"science\"] for s in students) / n, 1)\n    english_avg = round(sum(s[\"english\"] for s in students) / n, 1)\n\n    # 4. Pass/Fail count\n    passed_count = sum(1 for s in enriched if s[\"passed\"])\n    failed_count = len(enriched) - passed_count\n\n    # 5. Low attendance\n    low_attendance = [s for s in enriched if s[\"attendance\"] < MIN_ATTENDANCE]\n\n    # 6. Rank students\n    ranked = sorted(enriched, key=lambda s: s[\"average\"], reverse=True)\n\n    # Output\n    print(\"=\" * 55)\n    print(\"       STUDENT PERFORMANCE ANALYSIS\")\n    print(\"=\" * 55)\n\n    print(\"\\n--- Ranked Students ---\")\n    for i, s in enumerate(ranked, 1):\n        status = \"PASS\" if s[\"passed\"] else \"FAIL\"\n        elig = \"ELIGIBLE\" if s[\"eligible\"] else \"NOT ELIGIBLE\"\n        print(f\"  #{i} {s['name']:8s} | Avg: {s['average']:5.1f}% | {status:4s} | Att: {s['attendance']}% | {elig}\")\n\n    print(f\"\\n--- Class Topper ---\")\n    print(f\"  {topper['name']} with {topper['average']}% average\")\n\n    print(f\"\\n--- Subject Averages ---\")\n    print(f\"  Math: {math_avg}% | Science: {science_avg}% | English: {english_avg}%\")\n\n    print(f\"\\n--- Pass/Fail Ratio ---\")\n    print(f\"  Passed: {passed_count} | Failed: {failed_count} | Pass Rate: {passed_count / n * 100:.0f}%\")\n\n    print(f\"\\n--- Low Attendance Warning (<{MIN_ATTENDANCE}%) ---\")\n    if not low_attendance:\n        print(\"  All students meet attendance requirements.\")\n    else:\n        for s in low_attendance:\n            print(f\"  Warning: {s['name']} - {s['attendance']}% attendance\")\n\n\nanalyze_students()",
+    "tests": [
+      { "id": "pa-1", "description": "Should define a students list with dicts", "check": "code => /students\\s*=\\s*\\[/.test(code)" },
+      { "id": "pa-2", "description": "Should use list comprehension to add computed fields", "check": "code => /\\[.*for\\s+s\\s+in\\s+students/.test(code)" },
+      { "id": "pa-3", "description": "Should use max() with key lambda to find topper", "check": "code => /max\\s*\\(.*key\\s*=\\s*lambda/.test(code)" },
+      { "id": "pa-4", "description": "Should use sum() with generator for subject averages", "check": "code => /sum\\s*\\(.*for\\s+\\w+\\s+in\\s+students/.test(code)" },
+      { "id": "pa-5", "description": "Should use list comprehension for filtering", "check": "code => /\\[.*for\\s+\\w+\\s+in\\s+enriched.*if/.test(code)" },
+      { "id": "pa-6", "description": "Should use sorted() with key lambda to rank", "check": "code => /sorted\\s*\\(.*key\\s*=\\s*lambda/.test(code)" },
+      { "id": "pa-7", "description": "Should use f-string formatting for output", "check": "code => /f['\"].*\\{.*\\}.*/.test(code)" },
+      { "id": "pa-8", "description": "Should use dict merge {**s, ...} or dict update", "check": "code => /\\{\\*\\*\\s*\\w+/.test(code) || /\\.update\\s*\\(/.test(code)" }
     ],
-    steps: [],
+    "steps": []
   },
   {
-    id: "proj-02",
-    slug: "secure-password-generator",
-    title: "Secure Password Generator",
-    difficulty: "Intermediate",
-    description: "Build a password generator that creates multiple passwords from different configurations (strong, medium, simple). It must use character sets, enforce constraints, guarantee at least one number/symbol when enabled, and shuffle using the Fisher-Yates algorithm. Learn string manipulation, Math.random, array splicing, and algorithm implementation.",
-    tags: ["Math.random", "Fisher-Yates Shuffle", "String Manipulation", "Array Splice", "Validation"],
-    hint: "Build charset by concatenating strings based on options. Pick required chars first, fill the rest, insert required chars at random positions with .splice(), then Fisher-Yates shuffle the entire array. Finally .join('') it.",
-    starterCode: `// Task: Build a Secure Password Generator\n\n// 1. Define CHARSETS object: { lower, upper, numbers, symbols }\n\n// 2. Create generatePassword(length, options) function\n//    options: { useSymbols: true/false, useNumbers: true/false }\n\n// 3. Build charset string by concatenating based on options\n\n// 4. Pick 1 required char from each enabled type (number, symbol)\n\n// 5. Fill remaining length with random chars from charset\n\n// 6. Insert required chars at random positions using .splice()\n\n// 7. Implement Fisher-Yates shuffle on the full array\n\n// 8. Return .join('') result\n\n// 9. Create 3 configs (strong/medium/simple) and generate 3 passwords each`,
-    solutionCode: `const initPasswordGenerator = () => {
-  const configs = [
-    { length: 16, useSymbols: true, useNumbers: true, count: 3, label: "Strong (16 chars, all types)" },
-    { length: 12, useSymbols: false, useNumbers: true, count: 3, label: "Medium (12 chars, no symbols)" },
-    { length: 8, useSymbols: false, useNumbers: false, count: 3, label: "Simple (8 chars, letters only)" }
-  ];
-
-  const CHARSETS = {
-    lower: "abcdefghijklmnopqrstuvwxyz",
-    upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    numbers: "0123456789",
-    symbols: "!@#$%^&*()_+~\`|}{[]:;?><,./-="
-  };
-
-  const generatePassword = (length, options) => {
-    let charset = CHARSETS.lower + CHARSETS.upper;
-    let requiredChars = [];
-
-    if (options.useNumbers) {
-      charset += CHARSETS.numbers;
-      requiredChars.push(CHARSETS.numbers[Math.floor(Math.random() * CHARSETS.numbers.length)]);
-    }
-    if (options.useSymbols) {
-      charset += CHARSETS.symbols;
-      requiredChars.push(CHARSETS.symbols[Math.floor(Math.random() * CHARSETS.symbols.length)]);
-    }
-
-    if (length < requiredChars.length) {
-      console.error("Error: Password length too short for required character types.");
-      return null;
-    }
-
-    let passwordArray = [];
-    for (let i = 0; i < length - requiredChars.length; i++) {
-      passwordArray.push(charset[Math.floor(Math.random() * charset.length)]);
-    }
-
-    requiredChars.forEach(char => {
-      const randomIndex = Math.floor(Math.random() * (passwordArray.length + 1));
-      passwordArray.splice(randomIndex, 0, char);
-    });
-
-    // Fisher-Yates Shuffle
-    for (let i = passwordArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [passwordArray[i], passwordArray[j]] = [passwordArray[j], passwordArray[i]];
-    }
-
-    return passwordArray.join("");
-  };
-
-  configs.forEach(config => {
-    console.log(\`\\n[ \${config.label} ]\`);
-    console.log("-".repeat(42));
-    for (let i = 0; i < config.count; i++) {
-      const pwd = generatePassword(config.length, config);
-      if (pwd) {
-        const strength = pwd.length >= 16 && config.useSymbols ? "STRONG" : pwd.length >= 12 ? "MEDIUM" : "WEAK";
-        console.log(\`  [\${i + 1}] \${pwd}  (\${strength})\`);
-      }
-    }
-  });
-
-  const totalGenerated = configs.reduce((sum, c) => sum + c.count, 0);
-  console.log("\\n" + "=".repeat(42));
-  console.log(\`Generated \${totalGenerated} passwords across 3 configurations.\`);
-};
-
-initPasswordGenerator();`,
-    tests: [
-      { id: "pc-1", description: "Should define CHARSETS object with lower, upper, numbers, symbols", check: "code => /CHARSETS/.test(code) && /lower/.test(code) && /symbols/.test(code)" },
-      { id: "pc-2", description: "Should use Math.random and Math.floor to pick chars", check: "code => /Math\\.random/.test(code) && /Math\\.floor/.test(code)" },
-      { id: "pc-3", description: "Should implement Fisher-Yates shuffle algorithm", check: "code => /passwordArray\\.length\\s*-\\s*1/.test(code) && /\\[passwordArray\\[i\\],\\s*passwordArray\\[j\\]\\]\\s*=\\s*\\[passwordArray\\[j\\],\\s*passwordArray\\[i\\]\\]/.test(code)" },
-      { id: "pc-4", description: "Should use .splice() to insert required characters", check: "code => /\\.splice\\s*\\(/.test(code)" },
-      { id: "pc-5", description: "Should have input validation (length check)", check: "code => /length\\s*<\\s*requiredChars/.test(code) || /length\\s*<\\s*\\d/.test(code)" },
-      { id: "pc-6", description: "Should join array into final string password", check: "code => /\\.join\\s*\\(\\s*['\"]['\"]\\s*\\)/.test(code)" },
-      { id: "pc-7", description: "Should use .forEach() to iterate over configs", check: "code => /configs\\.forEach/.test(code) || /\\.forEach\\s*\\(\\s*config/.test(code)" },
-      { id: "pc-8", description: "Should use .reduce() to count total passwords", check: "code => /\\.reduce\\s*\\(/.test(code)" },
+    "id": "proj-02",
+    "slug": "secure-password-generator",
+    "title": "Secure Password Generator",
+    "difficulty": "Intermediate",
+    "description": "Build a password generator that creates multiple passwords from different configurations (strong, medium, simple). It must use character sets, enforce constraints, guarantee at least one number/symbol when enabled, and shuffle using the Fisher-Yates algorithm. Learn string manipulation, random module, list splicing, and algorithm implementation.",
+    "tags": ["random module", "Fisher-Yates Shuffle", "String Manipulation", "List Insert", "Validation", "dataclass"],
+    "hint": "Build charset by concatenating strings based on options. Pick required chars first, fill the rest with random choices from charset, insert required chars at random positions with list.insert(), then Fisher-Yates shuffle the entire list. Finally ''.join() it.",
+    "starterCode": "# Task: Build a Secure Password Generator\n\n# 1. Define CHARSETS dict: { 'lower', 'upper', 'numbers', 'symbols' }\n\n# 2. Create generate_password(length, use_symbols, use_numbers) function\n\n# 3. Build charset string by concatenating based on options\n\n# 4. Pick 1 required char from each enabled type (number, symbol)\n\n# 5. Fill remaining length with random choices from charset\n\n# 6. Insert required chars at random positions using list.insert()\n\n# 7. Implement Fisher-Yates shuffle on the full list\n\n# 8. Return ''.join() result\n\n# 9. Create 3 configs (strong/medium/simple) and generate 3 passwords each",
+    "solutionCode": "import random\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass PasswordConfig:\n    length: int\n    use_symbols: bool\n    use_numbers: bool\n    count: int\n    label: str\n\n\nCHARSETS = {\n    \"lower\": \"abcdefghijklmnopqrstuvwxyz\",\n    \"upper\": \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\",\n    \"numbers\": \"0123456789\",\n    \"symbols\": \"!@#$%^&*()_+~|}{[]:;?><,./-=\",\n}\n\n\ndef generate_password(length: int, use_symbols: bool = True, use_numbers: bool = True) -> str | None:\n    charset = CHARSETS[\"lower\"] + CHARSETS[\"upper\"]\n    required_chars = []\n\n    if use_numbers:\n        charset += CHARSETS[\"numbers\"]\n        required_chars.append(random.choice(CHARSETS[\"numbers\"]))\n    if use_symbols:\n        charset += CHARSETS[\"symbols\"]\n        required_chars.append(random.choice(CHARSETS[\"symbols\"]))\n\n    if length < len(required_chars):\n        print(f\"  Error: length {length} too short for {len(required_chars)} required types\")\n        return None\n\n    # Fill remaining slots with random chars\n    password_list = [random.choice(charset) for _ in range(length - len(required_chars))]\n\n    # Insert required chars at random positions\n    for ch in required_chars:\n        pos = random.randint(0, len(password_list))\n        password_list.insert(pos, ch)\n\n    # Fisher-Yates Shuffle\n    for i in range(len(password_list) - 1, 0, -1):\n        j = random.randint(0, i)\n        password_list[i], password_list[j] = password_list[j], password_list[i]\n\n    return ''.join(password_list)\n\n\ndef main():\n    configs = [\n        PasswordConfig(16, True, True, 3, \"Strong (16 chars, all types)\"),\n        PasswordConfig(12, False, True, 3, \"Medium (12 chars, no symbols)\"),\n        PasswordConfig(8, False, False, 3, \"Simple (8 chars, letters only)\"),\n    ]\n\n    for config in configs:\n        print(f\"\\n[ {config.label} ]\")\n        print(\"-\" * 45)\n        for i in range(config.count):\n            pwd = generate_password(config.length, config.use_symbols, config.use_numbers)\n            if pwd:\n                strength = \"STRONG\" if config.length >= 16 and config.use_symbols else (\n                    \"MEDIUM\" if config.length >= 12 else \"WEAK\")\n                print(f\"  [{i + 1}] {pwd}  ({strength})\")\n\n    total = sum(c.count for c in configs)\n    print(\"\\n\" + \"=\" * 45)\n    print(f\"  Generated {total} passwords across 3 configurations.\")\n\n\nmain()",
+    "tests": [
+      { "id": "pc-1", "description": "Should define CHARSETS dict with lower, upper, numbers, symbols", "check": "code => /CHARSETS/.test(code) && /['\"]lower['\"]/.test(code) && /['\"]symbols['\"]/.test(code)" },
+      { "id": "pc-2", "description": "Should use random.choice or random.randint", "check": "code => /random\\.choice/.test(code) || /random\\.randint/.test(code)" },
+      { "id": "pc-3", "description": "Should implement Fisher-Yates shuffle", "check": "code => /range\\s*\\(\\s*len\\s*\\(.*\\)\\s*-\\s*1\\s*,\\s*0\\s*,\\s*-1\\s*\\)/.test(code) && /password_list\\[\\s*i\\s*\\]\\s*,\\s*password_list\\[\\s*j\\s*\\]\\s*=\\s*password_list\\[\\s*j\\s*\\]\\s*,\\s*password_list\\[\\s*i\\s*\\]/.test(code)" },
+      { "id": "pc-4", "description": "Should use list.insert() to insert required characters", "check": "code => /\\.insert\\s*\\(/.test(code)" },
+      { "id": "pc-5", "description": "Should have input validation (length check)", "check": "code => /length\\s*<\\s*len\\s*\\(\\s*required/.test(code)" },
+      { "id": "pc-6", "description": "Should join list into final string password", "check": "code => /['\"]\\.join\\s*\\(\\s*password_list\\s*\\)/.test(code) || /['\"]\\.join\\s*\\(/.test(code)" },
+      { "id": "pc-7", "description": "Should use for loop or list comp for configs", "check": "code => /for\\s+config\\s+in\\s+configs/.test(code)" },
+      { "id": "pc-8", "description": "Should use sum() with generator to count total", "check": "code => /sum\\s*\\(.*for\\s+\\w+\\s+in/.test(code)" }
     ],
-    steps: [],
+    "steps": []
   },
   {
-    id: "proj-03",
-    slug: "library-management-system",
-    title: "Library Management System",
-    difficulty: "Advanced",
-    description: "Build a full OOP-based library system with Book, Member, and Library classes. Support book issuance with validation (max limit per member type, duplicate issue prevention), returns, availability checks, genre filtering, and a transaction log. Demonstrate with 7 books and 3 members. Learn classes, encapsulation, method chaining, and complex state management.",
-    tags: ["Classes", "OOP", "Encapsulation", "Method Chaining", "Array Methods", "State Management"],
-    hint: "Book class tracks isIssued/issuedTo. Member class tracks issuedBooks array and maxBooks based on type. Library class holds all arrays and methods. In issueBook(), validate everything before mutating state. Use return this for chaining in addBook/registerMember.",
-    starterCode: `// Task: Build a Library Management System\n\n// 1. Create Book class\n//    Props: id, title, author, genre, year, isIssued, issuedTo\n//    Method: getInfo() returns formatted string\n\n// 2. Create Member class\n//    Props: id, name, type ("student"/"faculty"), maxBooks, issuedBooks[]\n//    Method: canIssue() checks if under limit\n\n// 3. Create Library class\n//    Props: name, books[], members[], transactions[]\n//    Methods: addBook(), registerMember(), issueBook(), returnBook(),\n//            getAvailableBooks(), getBooksByGenre(), getStats()\n\n// 4. issueBook(bookId, memberId) must validate:\n//    - Book exists and is not already issued\n//    - Member exists and hasn't reached maxBooks\n//    - Then update book status, member's issuedBooks, and transactions log\n\n// 5. returnBook(bookId) must:\n//    - Remove bookId from member's issuedBooks using .filter()\n//    - Reset book's issued status\n//    - Add to transactions log\n\n// 6. Add 7 books, 3 members, run issue/return operations, log results`,
-    solutionCode: `class Book {
-  constructor(id, title, author, genre, year) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-    this.year = year;
-    this.isIssued = false;
-    this.issuedTo = null;
-  }
-
-  getInfo() {
-    const status = this.isIssued ? "Issued to " + this.issuedTo : "Available";
-    return "[" + this.id + "] \\"" + this.title + "\\" by " + this.author + " (" + this.year + ") - " + status;
-  }
-}
-
-class Member {
-  constructor(id, name, type) {
-    this.id = id;
-    this.name = name;
-    this.type = type;
-    this.maxBooks = type === "faculty" ? 5 : 3;
-    this.issuedBooks = [];
-  }
-
-  canIssue() {
-    return this.issuedBooks.length < this.maxBooks;
-  }
-}
-
-class Library {
-  constructor(name) {
-    this.name = name;
-    this.books = [];
-    this.members = [];
-    this.transactions = [];
-  }
-
-  addBook(book) {
-    this.books.push(book);
-    return this;
-  }
-
-  registerMember(member) {
-    this.members.push(member);
-    return this;
-  }
-
-  findBookById(id) {
-    return this.books.find(b => b.id === id);
-  }
-
-  findMemberById(id) {
-    return this.members.find(m => m.id === id);
-  }
-
-  issueBook(bookId, memberId) {
-    const book = this.findBookById(bookId);
-    const member = this.findMemberById(memberId);
-
-    if (!book) return { success: false, msg: "Book #" + bookId + " not found." };
-    if (!member) return { success: false, msg: "Member #" + memberId + " not found." };
-    if (book.isIssued) return { success: false, msg: "\\"" + book.title + "\\" is already issued." };
-    if (!member.canIssue()) return { success: false, msg: member.name + " has reached max limit (" + member.maxBooks + ")." };
-
-    book.isIssued = true;
-    book.issuedTo = member.name;
-    member.issuedBooks.push(book.id);
-    this.transactions.push({ type: "issue", bookId: bookId, memberId: memberId, date: "2025-01-15" });
-
-    return { success: true, msg: "Issued \\"" + book.title + "\\" to " + member.name };
-  }
-
-  returnBook(bookId) {
-    const book = this.findBookById(bookId);
-    if (!book) return { success: false, msg: "Book #" + bookId + " not found." };
-    if (!book.isIssued) return { success: false, msg: "\\"" + book.title + "\\" is not issued." };
-
-    const member = this.members.find(m => m.issuedBooks.includes(bookId));
-    if (member) {
-      member.issuedBooks = member.issuedBooks.filter(id => id !== bookId);
-    }
-
-    book.isIssued = false;
-    book.issuedTo = null;
-    this.transactions.push({ type: "return", bookId: bookId, date: "2025-01-15" });
-
-    return { success: true, msg: "Returned \\"" + book.title + "\\"" };
-  }
-
-  getAvailableBooks() {
-    return this.books.filter(b => !b.isIssued);
-  }
-
-  getBooksByGenre(genre) {
-    return this.books.filter(b => b.genre.toLowerCase() === genre.toLowerCase());
-  }
-
-  getStats() {
-    const available = this.getAvailableBooks().length;
-    const issued = this.books.length - available;
-    const genres = [...new Set(this.books.map(b => b.genre))];
-    return {
-      total: this.books.length,
-      available: available,
-      issued: issued,
-      genres: genres,
-      members: this.members.length,
-      transactions: this.transactions.length
-    };
-  }
-}
-
-// --- Demo ---
-const runDemo = () => {
-  const lib = new Library("Central JS Library");
-
-  lib.addBook(new Book("B001", "Eloquent JavaScript", "Marijn Haverbeke", "Programming", 2018));
-  lib.addBook(new Book("B002", "You Don't Know JS", "Kyle Simpson", "Programming", 2015));
-  lib.addBook(new Book("B003", "Clean Code", "Robert C. Martin", "Engineering", 2008));
-  lib.addBook(new Book("B004", "The Pragmatic Programmer", "Andrew Hunt", "Engineering", 2019));
-  lib.addBook(new Book("B005", "Design Patterns", "Gang of Four", "Programming", 1994));
-  lib.addBook(new Book("B006", "JS: The Good Parts", "Douglas Crockford", "Programming", 2008));
-  lib.addBook(new Book("B007", "Refactoring", "Martin Fowler", "Engineering", 2018));
-
-  lib.registerMember(new Member("M001", "Arjun", "student"));
-  lib.registerMember(new Member("M002", "Dr. Sharma", "faculty"));
-  lib.registerMember(new Member("M003", "Priya", "student"));
-
-  console.log("=== ISSUING BOOKS ===\\n");
-  const ops = [
-    lib.issueBook("B001", "M001"),
-    lib.issueBook("B002", "M001"),
-    lib.issueBook("B003", "M001"),
-    lib.issueBook("B004", "M002"),
-    lib.issueBook("B005", "M002"),
-    lib.issueBook("B001", "M003"),
-    lib.issueBook("B006", "M001"),
-  ];
-  ops.forEach(op => {
-    console.log("  [" + (op.success ? "OK" : "X") + "] " + op.msg);
-  });
-
-  console.log("\\n=== RETURNING BOOK ===\\n");
-  const ret = lib.returnBook("B001");
-  console.log("  [" + (ret.success ? "OK" : "X") + "] " + ret.msg);
-
-  console.log("\\n=== RE-ISSUE AFTER RETURN ===\\n");
-  const reissue = lib.issueBook("B001", "M003");
-  console.log("  [" + (reissue.success ? "OK" : "X") + "] " + reissue.msg);
-
-  console.log("\\n=== AVAILABLE BOOKS ===\\n");
-  lib.getAvailableBooks().forEach(b => console.log("  " + b.getInfo()));
-
-  console.log("\\n=== BOOKS: PROGRAMMING ===\\n");
-  lib.getBooksByGenre("Programming").forEach(b => console.log("  " + b.getInfo()));
-
-  console.log("\\n=== TRANSACTION LOG ===\\n");
-  lib.transactions.forEach((t, i) => {
-    console.log("  " + (i + 1) + ". " + t.type.toUpperCase() + " Book#" + t.bookId + " on " + t.date);
-  });
-
-  console.log("\\n=== LIBRARY STATS ===\\n");
-  const s = lib.getStats();
-  console.log("  Total Books: " + s.total);
-  console.log("  Available: " + s.available + " | Issued: " + s.issued);
-  console.log("  Genres: " + s.genres.join(", "));
-  console.log("  Members: " + s.members);
-  console.log("  Transactions: " + s.transactions);
-};
-
-runDemo();`,
-    tests: [
-      { id: "pl-1", description: "Should define a Book class", check: "code => /class\\s+Book\\s*\\{/.test(code)" },
-      { id: "pl-2", description: "Should define a Member class", check: "code => /class\\s+Member\\s*\\{/.test(code)" },
-      { id: "pl-3", description: "Should define a Library class", check: "code => /class\\s+Library\\s*\\{/.test(code)" },
-      { id: "pl-4", description: "Book should have isIssued property initialized to false", check: "code => /this\\.isIssued\\s*=\\s*false/.test(code)" },
-      { id: "pl-5", description: "Should use .find() to locate books or members by id", check: "code => /\\.find\\s*\\(\\s*\\w+\\s*=>/.test(code)" },
-      { id: "pl-6", description: "Should use .filter() to get available books or remove from issuedBooks", check: "code => /\\.filter\\s*\\(/.test(code)" },
-      { id: "pl-7", description: "Should use .push() to add items to arrays", check: "code => /\\.push\\s*\\(/.test(code)" },
-      { id: "pl-8", description: "Should use .includes() to check if member has a book", check: "code => /\\.includes\\s*\\(/.test(code)" },
-      { id: "pl-9", description: "Should use .map() with Set to get unique genres", check: "code => /new\\s+Set/.test(code) && /\\.map\\s*\\(/.test(code)" },
-      { id: "pl-10", description: "Should return 'this' for method chaining", check: "code => /return\\s+this;/.test(code)" },
-      { id: "pl-11", description: "Should have conditional validation in issueBook", check: "code => /if\\s*\\(!book\\)/.test(code) || /if\\s*\\(book\\.isIssued\\)/.test(code)" },
-      { id: "pl-12", description: "Should use .forEach() to log operations or books", check: "code => /\\.forEach\\s*\\(/.test(code)" },
+    "id": "proj-03",
+    "slug": "library-management-system",
+    "title": "Library Management System",
+    "difficulty": "Advanced",
+    "description": "Build a full OOP-based library system with Book, Member, and Library classes. Support book issuance with validation (max limit per member type, duplicate issue prevention), returns, availability checks, genre filtering, and a transaction log. Demonstrate with 7 books and 3 members. Learn classes, encapsulation, method chaining, and complex state management.",
+    "tags": ["Classes", "OOP", "Encapsulation", "Method Chaining", "List Methods", "State Management", "@dataclass"],
+    "hint": "Book class tracks is_issued/issued_to. Member class tracks issued_books list and max_books based on type. Library class holds all lists and methods. In issue_book(), validate everything before mutating state. Return self for chaining in add_book/register_member.",
+    "starterCode": "# Task: Build a Library Management System\n\n# 1. Create Book class\n#    Props: id, title, author, genre, year, is_issued, issued_to\n#    Method: get_info() returns formatted string\n\n# 2. Create Member class\n#    Props: id, name, type (\"student\"/\"faculty\"), max_books, issued_books[]\n#    Method: can_issue() checks if under limit\n\n# 3. Create Library class\n#    Props: name, books[], members[], transactions[]\n#    Methods: add_book(), register_member(), issue_book(), return_book(),\n#            get_available_books(), get_books_by_genre(), get_stats()\n\n# 4. issue_book(book_id, member_id) must validate:\n#    - Book exists and is not already issued\n#    - Member exists and hasn't reached max_books\n#    - Then update book status, member's issued_books, and transactions log\n\n# 5. return_book(book_id) must:\n#    - Remove book_id from member's issued_books using list comprehension\n#    - Reset book's issued status\n#    - Add to transactions log\n\n# 6. Add 7 books, 3 members, run issue/return operations, print results",
+    "solutionCode": "class Book:\n    def __init__(self, book_id, title, author, genre, year):\n        self.id = book_id\n        self.title = title\n        self.author = author\n        self.genre = genre\n        self.year = year\n        self.is_issued = False\n        self.issued_to = None\n\n    def get_info(self):\n        status = f\"Issued to {self.issued_to}\" if self.is_issued else \"Available\"\n        return f\"[{self.id}] \\\"{self.title}\\\" by {self.author} ({self.year}) - {status}\"\n\n\nclass Member:\n    def __init__(self, member_id, name, mtype):\n        self.id = member_id\n        self.name = name\n        self.type = mtype\n        self.max_books = 5 if mtype == \"faculty\" else 3\n        self.issued_books = []\n\n    def can_issue(self):\n        return len(self.issued_books) < self.max_books\n\n\nclass Library:\n    def __init__(self, name):\n        self.name = name\n        self.books = []\n        self.members = []\n        self.transactions = []\n\n    def add_book(self, book):\n        self.books.append(book)\n        return self\n\n    def register_member(self, member):\n        self.members.append(member)\n        return self\n\n    def _find_book(self, book_id):\n        return next((b for b in self.books if b.id == book_id), None)\n\n    def _find_member(self, member_id):\n        return next((m for m in self.members if m.id == member_id), None)\n\n    def issue_book(self, book_id, member_id):\n        book = self._find_book(book_id)\n        member = self._find_member(member_id)\n\n        if not book:\n            return {\"success\": False, \"msg\": f\"Book #{book_id} not found.\"}\n        if not member:\n            return {\"success\": False, \"msg\": f\"Member #{member_id} not found.\"}\n        if book.is_issued:\n            return {\"success\": False, \"msg\": f'\\\"{book.title}\\\" is already issued.'}\n        if not member.can_issue():\n            return {\"success\": False, \"msg\": f\"{member.name} has reached max limit ({member.max_books}).\"}\n\n        book.is_issued = True\n        book.issued_to = member.name\n        member.issued_books.append(book_id)\n        self.transactions.append({\"type\": \"issue\", \"book_id\": book_id, \"member_id\": member_id})\n        return {\"success\": True, \"msg\": f'Issued \\\"{book.title}\\\" to {member.name}'}\n\n    def return_book(self, book_id):\n        book = self._find_book(book_id)\n        if not book:\n            return {\"success\": False, \"msg\": f\"Book #{book_id} not found.\"}\n        if not book.is_issued:\n            return {\"success\": False, \"msg\": f'\\\"{book.title}\\\" is not issued.'}\n\n        member = next((m for m in self.members if book_id in m.issued_books), None)\n        if member:\n            member.issued_books = [bid for bid in member.issued_books if bid != book_id]\n\n        book.is_issued = False\n        book.issued_to = None\n        self.transactions.append({\"type\": \"return\", \"book_id\": book_id})\n        return {\"success\": True, \"msg\": f'Returned \\\"{book.title}\\\"'}\n\n    def get_available_books(self):\n        return [b for b in self.books if not b.is_issued]\n\n    def get_books_by_genre(self, genre):\n        return [b for b in self.books if b.genre.lower() == genre.lower()]\n\n    def get_stats(self):\n        available = len(self.get_available_books())\n        genres = list({b.genre for b in self.books})\n        return {\n            \"total\": len(self.books),\n            \"available\": available,\n            \"issued\": len(self.books) - available,\n            \"genres\": genres,\n            \"members\": len(self.members),\n            \"transactions\": len(self.transactions),\n        }\n\n\ndef run_demo():\n    lib = Library(\"Central Python Library\")\n\n    lib.add_book(Book(\"B001\", \"Fluent Python\", \"Luciano Ramalho\", \"Programming\", 2015))\n    lib.add_book(Book(\"B002\", \"Clean Code\", \"Robert C. Martin\", \"Engineering\", 2008))\n    lib.add_book(Book(\"B003\", \"The Pragmatic Programmer\", \"Andrew Hunt\", \"Engineering\", 2019))\n    lib.add_book(Book(\"B004\", \"Design Patterns\", \"Gang of Four\", \"Programming\", 1994))\n    lib.add_book(Book(\"B005\", \"Python Cookbook\", \"David Beazley\", \"Programming\", 2013))\n    lib.add_book(Book(\"B006\", \"Refactoring\", \"Martin Fowler\", \"Engineering\", 2018))\n    lib.add_book(Book(\"B007\", \"Automate the Boring Stuff\", \"Al Sweigart\", \"Programming\", 2015))\n\n    lib.register_member(Member(\"M001\", \"Arjun\", \"student\"))\n    lib.register_member(Member(\"M002\", \"Dr. Sharma\", \"faculty\"))\n    lib.register_member(Member(\"M003\", \"Priya\", \"student\"))\n\n    print(\"=== ISSUING BOOKS ===\\n\")\n    ops = [\n        lib.issue_book(\"B001\", \"M001\"),\n        lib.issue_book(\"B002\", \"M001\"),\n        lib.issue_book(\"B003\", \"M001\"),\n        lib.issue_book(\"B004\", \"M002\"),\n        lib.issue_book(\"B005\", \"M002\"),\n        lib.issue_book(\"B001\", \"M003\"),  # Should fail — already issued\n        lib.issue_book(\"B006\", \"M001\"),  # Should fail — max limit\n    ]\n    for op in ops:\n        tag = \"OK\" if op[\"success\"] else \"X\"\n        print(f\"  [{tag}] {op['msg']}\")\n\n    print(\"\\n=== RETURNING BOOK ===\\n\")\n    ret = lib.return_book(\"B001\")\n    print(f\"  [{'OK' if ret['success'] else 'X'}] {ret['msg']}\")\n\n    print(\"\\n=== RE-ISSUE AFTER RETURN ===\\n\")\n    reissue = lib.issue_book(\"B001\", \"M003\")\n    print(f\"  [{'OK' if reissue['success'] else 'X'}] {reissue['msg']}\")\n\n    print(\"\\n=== AVAILABLE BOOKS ===\\n\")\n    for b in lib.get_available_books():\n        print(f\"  {b.get_info()}\")\n\n    print(\"\\n=== BOOKS: PROGRAMMING ===\\n\")\n    for b in lib.get_books_by_genre(\"Programming\"):\n        print(f\"  {b.get_info()}\")\n\n    print(\"\\n=== TRANSACTION LOG ===\\n\")\n    for i, t in enumerate(self.transactions, 1):\n        print(f\"  {i}. {t['type'].upper()} Book#{t['book_id']}\")\n\n    print(\"\\n=== LIBRARY STATS ===\\n\")\n    s = lib.get_stats()\n    print(f\"  Total Books: {s['total']}\")\n    print(f\"  Available: {s['available']} | Issued: {s['issued']}\")\n    print(f\"  Genres: {', '.join(s['genres'])}\")\n    print(f\"  Members: {s['members']}\")\n    print(f\"  Transactions: {s['transactions']}\")\n\n\nrun_demo()",
+    "tests": [
+      { "id": "pl-1", "description": "Should define a Book class", "check": "code => /class\\s+Book\\s*:/.test(code)" },
+      { "id": "pl-2", "description": "Should define a Member class", "check": "code => /class\\s+Member\\s*:/.test(code)" },
+      { "id": "pl-3", "description": "Should define a Library class", "check": "code => /class\\s+Library\\s*:/.test(code)" },
+      { "id": "pl-4", "description": "Book should have is_issued initialized to False", "check": "code => /self\\.is_issued\\s*=\\s*False/.test(code)" },
+      { "id": "pl-5", "description": "Should use next() with generator to find books/members", "check": "code => /next\\s*\\(\\s*\\(.+for\\s+\\w+\\s+in/.test(code)" },
+      { "id": "pl-6", "description": "Should use list comprehension to filter available books or remove from issued_books", "check": "code => /\\[.*for.*if.*not.*is_issued/.test(code) || /\\[.*for.*if.*!=/.test(code)" },
+      { "id": "pl-7", "description": "Should use .append() to add items to lists", "check": "code => /\\.append\\s*\\(/.test(code)" },
+      { "id": "pl-8", "description": "Should use 'in' to check if member has a book", "check": "code => /\\s+in\\s+\\w+\\.issued_books/.test(code)" },
+      { "id": "pl-9", "description": "Should use set comprehension to get unique genres", "check": "code => /\\{.*for\\s+\\w+\\s+in/.test(code)" },
+      { "id": "pl-10", "description": "Should return 'self' for method chaining", "check": "code => /return\\s+self/.test(code)" },
+      { "id": "pl-11", "description": "Should have conditional validation in issue_book", "check": "code => /if\\s+not\\s+book/.test(code) && /if\\s+book\\.is_issued/.test(code)" },
+      { "id": "pl-12", "description": "Should use for loop to log operations or books", "check": "code => /for\\s+\\w+\\s+in\\s+(ops|lib|self\\.get_available|self\\.get_books)/.test(code)" }
     ],
-    steps: [],
-  }
+    "steps": []
+  },
+  {
+    "id": "proj-04",
+    "slug": "api-response-analyzer",
+    "title": "API Response Analyzer",
+    "difficulty": "Intermediate",
+    "description": "Simulate analyzing paginated API responses containing user records with nested addresses, order histories, and metadata. Build tools to flatten nested structures, filter by multiple criteria, aggregate statistics, handle missing keys safely, and transform data shapes. Learn dict operations, defaultdict, nested data traversal, error handling, and data pipeline patterns.",
+    "tags": ["Dict Operations", "defaultdict", "Nested Data", "Error Handling", "Data Pipeline", "get() method"],
+    "hint": "Use dict.get() with default values to avoid KeyError on missing fields. Use defaultdict for grouping. Build a pipeline: raw → flatten → filter → aggregate. Use list/dict comprehensions heavily for transformations.",
+    "starterCode": "# Task: Build an API Response Analyzer\n\n# 1. Create mock API responses (3 pages) with nested user data\n#    Each user: { id, name, email, address: {city, country}, orders: [{id, amount, status}], active }\n#    Include some users with missing fields to test safe access\n\n# 2. flatten_users(pages) — merge all pages into one list\n\n# 3. safe_get(data, *keys, default=None) — safely traverse nested dicts\n\n# 4. filter_users(users, **criteria) — filter by any combination of country, active, min_orders\n\n# 5. aggregate_stats(users) — return dict with:\n#    total_users, active_count, countries breakdown, total_revenue, avg_order_value\n\n# 6. top_spenders(users, n=5) — return top n users by total spend\n\n# 7. group_by_city(users) — return {city: [user_names]}\n\n# 8. Run pipeline and print formatted results",
+    "solutionCode": "from collections import defaultdict\n\n\n# 1. Mock paginated API responses\nPAGES = [\n    {\n        \"page\": 1, \"total\": 8,\n        \"data\": [\n            {\"id\": 1, \"name\": \"Aarav\", \"email\": \"aarav@mail.com\", \"address\": {\"city\": \"Mumbai\", \"country\": \"India\"}, \"orders\": [{\"id\": 101, \"amount\": 2500, \"status\": \"delivered\"}, {\"id\": 102, \"amount\": 1800, \"status\": \"shipped\"}], \"active\": True},\n            {\"id\": 2, \"name\": \"Priya\", \"email\": \"priya@mail.com\", \"address\": {\"city\": \"Delhi\", \"country\": \"India\"}, \"orders\": [{\"id\": 103, \"amount\": 950, \"status\": \"delivered\"}], \"active\": True},\n            {\"id\": 3, \"name\": \"John\", \"address\": {\"city\": \"London\", \"country\": \"UK\"}, \"orders\": [], \"active\": False},  # Missing email\n        ]\n    },\n    {\n        \"page\": 2, \"total\": 8,\n        \"data\": [\n            {\"id\": 4, \"name\": \"Yuki\", \"email\": \"yuki@mail.com\", \"address\": {\"city\": \"Tokyo\", \"country\": \"Japan\"}, \"orders\": [{\"id\": 104, \"amount\": 5200, \"status\": \"delivered\"}, {\"id\": 105, \"amount\": 3100, \"status\": \"delivered\"}, {\"id\": 106, \"amount\": 1500, \"status\": \"cancelled\"}], \"active\": True},\n            {\"id\": 5, \"name\": \"Carlos\", \"email\": \"carlos@mail.com\", \"address\": {\"city\": \"Sao Paulo\", \"country\": \"Brazil\"}, \"orders\": [{\"id\": 107, \"amount\": 4200, \"status\": \"shipped\"}], \"active\": True},\n        ]\n    },\n    {\n        \"page\": 3, \"total\": 8,\n        \"data\": [\n            {\"id\": 6, \"name\": \"Fatima\", \"email\": \"fatima@mail.com\", \"address\": {\"city\": \"Dubai\", \"country\": \"UAE\"}, \"orders\": [{\"id\": 108, \"amount\": 7800, \"status\": \"delivered\"}], \"active\": True},\n            {\"id\": 7, \"name\": \"Liam\", \"email\": \"liam@mail.com\", \"address\": {\"city\": \"London\", \"country\": \"UK\"}, \"orders\": [{\"id\": 109, \"amount\": 600, \"status\": \"delivered\"}, {\"id\": 110, \"amount\": 2200, \"status\": \"delivered\"}], \"active\": False},\n            {\"id\": 8, \"name\": \"Sneha\", \"email\": \"sneha@mail.com\", \"address\": {\"city\": \"Mumbai\", \"country\": \"India\"}, \"active\": True},  # No orders key\n        ]\n    }\n]\n\n\ndef flatten_users(pages):\n    \"\"\"Merge all pages into a single user list.\"\"\"\n    return [user for page in pages for user in page[\"data\"]]\n\n\ndef safe_get(data, *keys, default=None):\n    \"\"\"Safely traverse nested dicts without KeyError.\"\"\"\n    current = data\n    for key in keys:\n        if isinstance(current, dict):\n            current = current.get(key, default)\n        else:\n            return default\n        if current is None:\n            return default\n    return current\n\n\ndef filter_users(users, country=None, active=None, min_orders=0):\n    \"\"\"Filter users by multiple criteria.\"\"\"\n    result = users\n    if country is not None:\n        result = [u for u in result if safe_get(u, \"address\", \"country\") == country]\n    if active is not None:\n        result = [u for u in result if u.get(\"active\") == active]\n    if min_orders > 0:\n        result = [u for u in result if len(u.get(\"orders\", [])) >= min_orders]\n    return result\n\n\ndef aggregate_stats(users):\n    \"\"\"Compute overall statistics from user data.\"\"\"\n    total_users = len(users)\n    active_count = sum(1 for u in users if u.get(\"active\"))\n\n    countries = defaultdict(int)\n    total_revenue = 0\n    total_orders = 0\n\n    for u in users:\n        country = safe_get(u, \"address\", \"country\", \"Unknown\")\n        countries[country] += 1\n        for order in u.get(\"orders\", []):\n            if order.get(\"status\") != \"cancelled\":\n                total_revenue += order[\"amount\"]\n                total_orders += 1\n\n    avg_order = round(total_revenue / total_orders, 2) if total_orders else 0\n\n    return {\n        \"total_users\": total_users,\n        \"active_count\": active_count,\n        \"inactive_count\": total_users - active_count,\n        \"countries\": dict(countries),\n        \"total_revenue\": total_revenue,\n        \"total_orders\": total_orders,\n        \"avg_order_value\": avg_order,\n    }\n\n\ndef top_spenders(users, n=5):\n    \"\"\"Return top n users by total spend (excl. cancelled).\"\"\"\n    spend_map = []\n    for u in users:\n        total = sum(o[\"amount\"] for o in u.get(\"orders\", []) if o.get(\"status\") != \"cancelled\")\n        spend_map.append((u[\"name\"], total))\n    spend_map.sort(key=lambda x: x[1], reverse=True)\n    return spend_map[:n]\n\n\ndef group_by_city(users):\n    \"\"\"Group user names by city using defaultdict.\"\"\"\n    groups = defaultdict(list)\n    for u in users:\n        city = safe_get(u, \"address\", \"city\", \"Unknown\")\n        groups[city].append(u[\"name\"])\n    return dict(groups)\n\n\ndef main():\n    users = flatten_users(PAGES)\n\n    print(\"=\" * 55)\n    print(\"      API RESPONSE ANALYSIS REPORT\")\n    print(\"=\" * 55)\n\n    # Stats\n    stats = aggregate_stats(users)\n    print(f\"\\n--- Overview ---\")\n    print(f\"  Total Users: {stats['total_users']}\")\n    print(f\"  Active: {stats['active_count']} | Inactive: {stats['inactive_count']}\")\n    print(f\"  Total Revenue: ${stats['total_revenue']:,}\")\n    print(f\"  Total Orders: {stats['total_orders']}\")\n    print(f\"  Avg Order Value: ${stats['avg_order_value']:.2f}\")\n\n    # Country breakdown\n    print(f\"\\n--- Users by Country ---\")\n    for country, count in sorted(stats[\"countries\"].items(), key=lambda x: x[1], reverse=True):\n        print(f\"  {country}: {count}\")\n\n    # Top spenders\n    print(f\"\\n--- Top 5 Spenders ---\")\n    for name, total in top_spenders(users, 5):\n        print(f\"  {name:10s} ${total:>7,.2f}\")\n\n    # Grouped by city\n    print(f\"\\n--- Users by City ---\")\n    for city, names in sorted(group_by_city(users).items()):\n        print(f\"  {city:12s}: {', '.join(names)}\")\n\n    # Filtered views\n    print(f\"\\n--- Active Users in India ---\")\n    india_active = filter_users(users, country=\"India\", active=True)\n    for u in india_active:\n        order_count = len(u.get(\"orders\", []))\n        print(f\"  {u['name']} — {order_count} orders\")\n\n    print(f\"\\n--- Users with 2+ Orders ---\")\n    multi = filter_users(users, min_orders=2)\n    for u in multi:\n        print(f\"  {u['name']} — {len(u['orders'])} orders\")\n\n    # Safe access demo\n    print(f\"\\n--- Safe Access Demo ---\")\n    print(f\"  John's email: {safe_get(users[2], 'email', 'N/A')}\")  # N/A\n    print(f\"  Sneha's orders: {safe_get(users[7], 'orders', '[]')}\")  # []\n    print(f\"  Yuki's city: {safe_get(users[3], 'address', 'city')}\")  # Tokyo\n\n\nmain()",
+    "tests": [
+      { "id": "pi-1", "description": "Should define PAGES list with nested dict data", "check": "code => /PAGES\\s*=\\s*\\[/.test(code)" },
+      { "id": "pi-2", "description": "Should implement safe_get with *keys and default", "check": "code => /def\\s+safe_get.*\\*\\s*keys.*default/.test(code)" },
+      { "id": "pi-3", "description": "Should use .get() method for safe dict access", "check": "code => /\\.get\\s*\\(/.test(code)" },
+      { "id": "pi-4", "description": "Should use defaultdict for grouping", "check": "code => /from\\s+collections\\s+import\\s+defaultdict/.test(code) && /defaultdict/.test(code)" },
+      { "id": "pi-5", "description": "Should use nested list comprehension to flatten", "check": "code => /\\[.*for.*page.*for.*user/.test(code)" },
+      { "id": "pi-6", "description": "Should use sorted() with key lambda", "check": "code => /sorted\\s*\\(.*key\\s*=\\s*lambda/.test(code)" },
+      { "id": "pi-7", "description": "Should filter with list comprehension and if", "check": "code => /\\[.*for.*if.*==/.test(code)" },
+      { "id": "pi-8", "description": "Should handle missing keys gracefully (no uncaught KeyError)", "check": "code => /default\\s*=/.test(code) || /safe_get/.test(code)" }
+    ],
+    "steps": []
+  },
+  {
+    "id": "proj-05",
+    "slug": "expense-tracker-with-reports",
+    "title": "Expense Tracker with Reports",
+    "difficulty": "Intermediate",
+    "description": "Build a CLI expense tracker that logs transactions, categorizes spending, and generates multiple report views. Support adding expenses/income, monthly summaries, category breakdowns, top expense detection, and balance tracking. Use dataclasses for models, datetime for date handling, and dict-based aggregation. Learn dataclasses, datetime, enum, type hints, and report generation.",
+    "tags": ["dataclasses", "datetime", "Enum", "Type Hints", "Dict Aggregation", "f-strings"],
+    "hint": "Define Transaction dataclass with type (EXPENSE/INCOME), category, amount, date. Use Enum for transaction types and categories. Store transactions in a list. Build separate report methods that filter and aggregate using dict comprehensions and groupby patterns.",
+    "starterCode": "# Task: Build an Expense Tracker with Reports\n\n# 1. Create TransactionType enum (INCOME, EXPENSE)\n# 2. Create Category enum (FOOD, TRANSPORT, SALARY, ENTERTAINMENT, UTILITIES, OTHER)\n# 3. Create Transaction dataclass (type, category, amount, description, date)\n\n# 4. Create ExpenseTracker class\n#    - transactions: list[Transaction]\n#    - add_transaction(type, category, amount, description, date_str)\n#    - get_balance() -> total income - total expenses\n#    - monthly_summary(year, month) -> dict with income, expenses, balance, by_category\n#    - category_breakdown() -> {category: total_amount} for expenses only\n#    - top_expenses(n=5) -> list of top n expense transactions\n#    - daily_spending(year, month) -> {day: total}\n\n# 5. Add ~15 sample transactions across 2 months\n\n# 6. Generate and print all reports",
+    "solutionCode": "from dataclasses import dataclass\nfrom datetime import datetime, date\nfrom enum import Enum\nfrom collections import defaultdict\n\n\nclass TransactionType(Enum):\n    INCOME = \"INCOME\"\n    EXPENSE = \"EXPENSE\"\n\n\nclass Category(Enum):\n    FOOD = \"Food\"\n    TRANSPORT = \"Transport\"\n    SALARY = \"Salary\"\n    ENTERTAINMENT = \"Entertainment\"\n    UTILITIES = \"Utilities\"\n    SHOPPING = \"Shopping\"\n    OTHER = \"Other\"\n\n\n@dataclass\nclass Transaction:\n    type: TransactionType\n    category: Category\n    amount: float\n    description: str\n    date: date\n\n    def __str__(self):\n        sign = \"+\" if self.type == TransactionType.INCOME else \"-\"\n        return f\"{self.date} | {self.type.value:7s} | {self.category.value:15s} | {sign}${self.amount:,.2f} | {self.description}\"\n\n\nclass ExpenseTracker:\n    def __init__(self):\n        self.transactions: list[Transaction] = []\n\n    def add_transaction(self, ttype: TransactionType, category: Category,\n                       amount: float, description: str, date_str: str):\n        d = datetime.strptime(date_str, \"%Y-%m-%d\").date()\n        self.transactions.append(Transaction(ttype, category, amount, description, d))\n\n    def get_balance(self) -> float:\n        income = sum(t.amount for t in self.transactions if t.type == TransactionType.INCOME)\n        expenses = sum(t.amount for t in self.transactions if t.type == TransactionType.EXPENSE)\n        return income - expenses\n\n    def monthly_summary(self, year: int, month: int) -> dict:\n        filtered = [t for t in self.transactions if t.date.year == year and t.date.month == month]\n        income = sum(t.amount for t in filtered if t.type == TransactionType.INCOME)\n        expenses = sum(t.amount for t in filtered if t.type == TransactionType.EXPENSE)\n        by_cat = defaultdict(float)\n        for t in filtered:\n            by_cat[t.category.value] += t.amount\n        return {\n            \"income\": income, \"expenses\": expenses, \"balance\": income - expenses,\n            \"by_category\": dict(by_cat), \"count\": len(filtered)\n        }\n\n    def category_breakdown(self) -> dict[str, float]:\n        breakdown = defaultdict(float)\n        for t in self.transactions:\n            if t.type == TransactionType.EXPENSE:\n                breakdown[t.category.value] += t.amount\n        return dict(sorted(breakdown.items(), key=lambda x: x[1], reverse=True))\n\n    def top_expenses(self, n: int = 5) -> list[Transaction]:\n        expenses = [t for t in self.transactions if t.type == TransactionType.EXPENSE]\n        return sorted(expenses, key=lambda t: t.amount, reverse=True)[:n]\n\n    def daily_spending(self, year: int, month: int) -> dict[int, float]:\n        daily = defaultdict(float)\n        for t in self.transactions:\n            if t.date.year == year and t.date.month == month and t.type == TransactionType.EXPENSE:\n                daily[t.date.day] += t.amount\n        return dict(sorted(daily.items()))\n\n\ndef main():\n    tracker = ExpenseTracker()\n\n    # Sample transactions\n    data = [\n        (TransactionType.INCOME, Category.SALARY, 5000, \"Monthly Salary\", \"2025-01-01\"),\n        (TransactionType.EXPENSE, Category.FOOD, 320, \"Groceries\", \"2025-01-03\"),\n        (TransactionType.EXPENSE, Category.TRANSPORT, 85, \"Metro pass\", \"2025-01-05\"),\n        (TransactionType.EXPENSE, Category.UTILITIES, 150, \"Electricity bill\", \"2025-01-07\"),\n        (TransactionType.EXPENSE, Category.ENTERTAINMENT, 250, \"Movie + dinner\", \"2025-01-10\"),\n        (TransactionType.EXPENSE, Category.FOOD, 180, \"Restaurant\", \"2025-01-15\"),\n        (TransactionType.EXPENSE, Category.SHOPPING, 450, \"Winter jacket\", \"2025-01-20\"),\n        (TransactionType.INCOME, Category.SALARY, 5000, \"Monthly Salary\", \"2025-02-01\"),\n        (TransactionType.EXPENSE, Category.FOOD, 290, \"Groceries\", \"2025-02-03\"),\n        (TransactionType.EXPENSE, Category.TRANSPORT, 85, \"Metro pass\", \"2025-02-05\"),\n        (TransactionType.EXPENSE, Category.UTILITIES, 140, \"Internet bill\", \"2025-02-07\"),\n        (TransactionType.EXPENSE, Category.ENTERTAINMENT, 500, \"Concert tickets\", \"2025-02-12\"),\n        (TransactionType.EXPENSE, Category.FOOD, 220, \"Dinner out\", \"2025-02-14\"),\n        (TransactionType.EXPENSE, Category.SHOPPING, 180, \"Books\", \"2025-02-18\"),\n        (TransactionType.INCOME, Category.OTHER, 800, \"Freelance project\", \"2025-02-25\"),\n    ]\n    for ttype, cat, amt, desc, dstr in data:\n        tracker.add_transaction(ttype, cat, amt, desc, dstr)\n\n    print(\"=\" * 60)\n    print(\"         EXPENSE TRACKER REPORT\")\n    print(\"=\" * 60)\n\n    print(f\"\\n--- Overall Balance ---\")\n    balance = tracker.get_balance()\n    status = \"SURPLUS\" if balance >= 0 else \"DEFICIT\"\n    print(f\"  Net Balance: ${balance:,.2f} ({status})\")\n\n    for month_num, month_name in [(1, \"January\"), (2, \"February\")]:\n        print(f\"\\n--- {month_name} 2025 Summary ---\")\n        s = tracker.monthly_summary(2025, month_num)\n        print(f\"  Income:   ${s['income']:,.2f}\")\n        print(f\"  Expenses: ${s['expenses']:,.2f}\")\n        print(f\"  Balance:  ${s['balance']:,.2f}\")\n        print(f\"  Transactions: {s['count']}\")\n        print(f\"  Breakdown:\")\n        for cat, amt in sorted(s[\"by_category\"].items(), key=lambda x: x[1], reverse=True):\n            print(f\"    {cat:15s}: ${amt:>8,.2f}\")\n\n    print(f\"\\n--- Category Breakdown (All Time) ---\")\n    for cat, total in tracker.category_breakdown().items():\n        print(f\"  {cat:15s}: ${total:>8,.2f}\")\n\n    print(f\"\\n--- Top 5 Expenses ---\")\n    for t in tracker.top_expenses(5):\n        print(f\"  {t}\")\n\n    print(f\"\\n--- Daily Spending (Feb 2025) ---\")\n    for day, total in tracker.daily_spending(2025, 2).items():\n        bar = \"#\" * int(total / 20)\n        print(f\"  Feb {day:2d}: ${total:>7,.2f} {bar}\")\n\n\nmain()",
+    "tests": [
+      { "id": "pe-1", "description": "Should import and use Enum", "check": "code => /from\\s+enum\\s+import\\s+Enum/.test(code) && /class\\s+\\w+\\s*\\(\\s*Enum\\s*\\)/.test(code)" },
+      { "id": "pe-2", "description": "Should define Transaction dataclass", "check": "code => /@dataclass\\s*\\n\\s*class\\s+Transaction/.test(code)" },
+      { "id": "pe-3", "description": "Should use datetime for date parsing", "check": "code => /from\\s+datetime\\s+import/.test(code) && /strptime/.test(code)" },
+      { "id": "pe-4", "description": "Should use type hints in function signatures", "check": "code => /->\\s*(float|dict|int|list|str)/.test(code)" },
+      { "id": "pe-5", "description": "Should use defaultdict for aggregation", "check": "code => /defaultdict\\s*\\(\\s*float\\s*\\)/.test(code)" },
+      { "id": "pe-6", "description": "Should use list comprehension with condition for filtering", "check": "code => /\\[.*for.*if.*==/.test(code)" },
+      { "id": "pe-7", "description": "Should use sorted() with key lambda for ranking", "check": "code => /sorted\\s*\\(.*key\\s*=\\s*lambda/.test(code)" },
+      { "id": "pe-8", "description": "Should use sum() with generator for totals", "check": "code => /sum\\s*\\(.*for\\s+\\w+\\s+in/.test(code)" }
+    ],
+    "steps": []
+  },
 ]

@@ -2,6 +2,9 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RotateCcw,
@@ -172,23 +175,101 @@ function renderMarkdown(text) {
   });
 }
 
+function SafeMarkdown({ content }) {
+  return (
+    <ReactMarkdown
+      components={{
+        // 1. Clean paragraph rendering
+        p: ({ children }) => <p className="text-zinc-300 text-sm leading-relaxed mb-3">{children}</p>,
+        
+        // 2. Headings
+        h2: ({ children }) => <h3 className="text-lg font-semibold text-white mt-4 mb-2">{children}</h3>,
+        
+        // 3. Unwraps default markdown <pre> wrapper to prevent nested block errors
+        pre: ({ children }) => <>{children}</>,
+
+        // 4. Smart Code component (Handles Block vs Inline correctly)
+        code({ node, className, children, ...props }) {
+          const match = /language-(\w+)/.exec(className || '');
+          const language = match ? match[1] : 'python';
+          
+          // Check if it's a true multi-line block code or has a language tag
+          const isBlockCode = match || String(children).includes('\n');
+
+          if (isBlockCode) {
+            // MULTI-LINE CODE BLOCK: Renders inside a safe <div> container
+            return (
+              <div className="my-4 overflow-hidden rounded-xl border border-zinc-700/50 bg-zinc-900/40 shadow-xl">
+                {/* Editor Top Bar */}
+                <div className="flex items-center justify-between px-4 py-2 border-b border-white/20 bg-zinc-900/60">
+                  <span className="text-xs text-slate-400 font-mono uppercase tracking-wider">
+                    {language}
+                  </span>
+                  {/* Window Controls Dots */}
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+                  </div>
+                </div>
+                
+                {/* Syntax Highlighter */}
+                <SyntaxHighlighter
+                  style={coldarkDark}
+                  language={language}
+                  PreTag="div"
+                  customStyle={{
+                    margin: 0,
+                    padding: '1rem',
+                    background: 'transparent',
+                    fontSize: '0.875rem',
+                    lineHeight: '1.5',
+                  }}
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              </div>
+            );
+          }
+
+          // INLINE CODE: Returns standard <code> element (Safe inside <p> or <strong>)
+          return (
+            <code 
+              className="px-1.5 py-0.5 rounded bg-slate-800 text-amber-400 font-mono text-xs border border-slate-700/60" 
+              {...props}
+            >
+              {children}
+            </code>
+          );
+        }
+      }}
+    >
+      {content}
+    </ReactMarkdown>
+  );
+}
+
 // ══════════════════════════════════════════════════════════════════
 // INFO PANELS
 // ══════════════════════════════════════════════════════════════════
 
 function LearningInfoPanel({ question, showHint }) {
   return (
-    <div className="px-5 py-4 space-y-4">
+    <div className="px-5 py-4 space-y-4 bg-zinc-950 min-h-screen text-slate-100">
+      {/* Title */}
       <h2 className="text-xl font-bold text-white leading-tight">
         {question.title}
       </h2>
 
+      {/* Explanation Section with Syntax Highlighting */}
       {question.explanation && (
         <div className="space-y-1">
-          {renderMarkdown(question.explanation)}
+          <SafeMarkdown content={question.explanation} />
         </div>
       )}
 
+      {/* Key Rules Section */}
       {question.keyRules?.length > 0 && (
         <div className="rounded-xl border border-orange-500/25 bg-orange-500/5 overflow-hidden">
           <div className="flex items-center gap-2 px-3 py-2 border-b border-orange-500/20 bg-orange-500/10">
@@ -211,6 +292,7 @@ function LearningInfoPanel({ question, showHint }) {
         </div>
       )}
 
+      {/* Task Section */}
       {question.task && (
         <div className="rounded-xl border border-yellow-500/25 bg-yellow-500/5 overflow-hidden">
           <div className="flex items-center gap-2 px-3 py-2 border-b border-yellow-500/20 bg-yellow-500/10">
@@ -225,6 +307,7 @@ function LearningInfoPanel({ question, showHint }) {
         </div>
       )}
 
+      {/* Hint Section */}
       <AnimatePresence>
         {showHint && question.hint && (
           <motion.div
@@ -441,7 +524,7 @@ function TestPanel({ tests, results, allPassed, onCheck }) {
       <div className="px-4 py-3 border-t border-slate-800/50 flex-shrink-0">
         <button
           onClick={onCheck}
-          className="w-full py-2.5 cursor-pointer rounded-lg font-semibold text-sm transition-all duration-150 active:scale-[0.98] bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-500 hover:to-orange-500 text-white shadow-lg shadow-yellow-900/30"
+          className="w-full py-2.5 cursor-pointer rounded-lg font-semibold text-sm transition-all duration-150 active:scale-[0.98] bg-white/80 hover:bg-white text-black shadow-lg shadow-yellow/30"
         >
           Run Tests
         </button>
@@ -475,7 +558,7 @@ function TopBar({
 
   const sectionIcon =
     type === "learning" ? (
-      <BookOpen size={16} className="text-orange-400" />
+      <BookOpen size={16} className="text-gray-400" />
     ) : type === "bug" ? (
       <Bug size={16} className="text-red-400" />
     ) : (
@@ -517,7 +600,7 @@ function TopBar({
                 key={i}
                 onClick={() => onGoToStep(i)}
                 className={`min-w-[22px] h-[22px] flex items-center justify-center rounded-full text-[10px] font-bold border transition-all duration-300 ${i === currentIdx
-                  ? "bg-yellow-600 border-yellow-500 text-white scale-110 shadow-lg shadow-yellow-900/50"
+                  ? "bg-white border-yellow-500 text-white scale-110 shadow-lg shadow-yellow-900/50"
                   : i < currentIdx
                     ? "bg-slate-700 border-slate-600 text-slate-300"
                     : "bg-transparent border-slate-700 text-slate-500"
@@ -583,7 +666,7 @@ function TopBar({
           {allPassed && (
             <button
               onClick={onNext}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-500 hover:to-orange-500 text-white transition-all active:scale-95 shadow-lg shadow-yellow-900/30"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg  bg-white text-black cursor-pointer hover:bg-gray-200 transition-all active:scale-95 shadow-lg shadow-yellow-900/30"
             >
               {isLast ? "Finish" : (
                 <>
@@ -620,7 +703,7 @@ function NotFound({ onBack }) {
       </p>
       <button
         onClick={onBack}
-        className="mt-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-gradient-to-r from-yellow-600 to-orange-600 text-white hover:from-yellow-500 hover:to-orange-500 transition-all"
+        className="mt-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-white text-white"
       >
         Back to Learning
       </button>
@@ -905,9 +988,9 @@ export default function LearnDetailPage() {
               <div
                 onMouseDown={createDragHandler("leftVertical")}
                 onTouchStart={createDragHandler("leftVertical")}
-                className="h-[4px] w-full bg-slate-800/80 hover:bg-yellow-600/60 active:bg-yellow-500 transition-colors duration-150 cursor-row-resize items-center justify-center relative group z-50 flex-shrink-0 flex"
+                className="h-[4px] w-full bg-slate-800/80 hover:bg-white/60 active:bg-white transition-colors duration-150 cursor-row-resize items-center justify-center relative group z-50 flex-shrink-0 flex"
               >
-                <div className="absolute z-50 rounded-full flex flex-row gap-[4px] px-2.5 py-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-yellow-600/40 shadow-xl pointer-events-none">
+                <div className="absolute z-50 rounded-full flex flex-row gap-[4px] px-2.5 py-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-white/40 shadow-xl pointer-events-none">
                   {[0, 1, 2, 3].map((i) => (
                     <span
                       key={i}
@@ -933,7 +1016,7 @@ export default function LearnDetailPage() {
                   Editor
                 </span>
                 <span className="text-slate-700 text-[10px] font-mono">
-                  JavaScript · JSX
+                  Python · JSX
                 </span>
               </div>
               <div className="flex-1 min-h-0">
@@ -947,9 +1030,9 @@ export default function LearnDetailPage() {
             <div
               onMouseDown={createDragHandler("horizontal")}
               onTouchStart={createDragHandler("horizontal")}
-              className="w-[4px] h-full bg-slate-800/80 hover:bg-yellow-600/60 active:bg-yellow-500 transition-colors duration-150 cursor-col-resize items-center justify-center relative group z-50 flex-shrink-0 flex"
+              className="w-[4px] h-full bg-slate-800/80 hover:bg-white/60 active:bg-white transition-colors duration-150 cursor-col-resize items-center justify-center relative group z-50 flex-shrink-0 flex"
             >
-              <div className="absolute z-50 rounded-full flex flex-col gap-[4px] py-2.5 px-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-yellow-600/40 shadow-xl pointer-events-none">
+              <div className="absolute z-50 rounded-full flex flex-col gap-[4px] py-2.5 px-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-white/40 shadow-xl pointer-events-none">
                 {[0, 1, 2, 3].map((i) => (
                   <span
                     key={i}
@@ -1010,9 +1093,9 @@ export default function LearnDetailPage() {
               <div
                 onMouseDown={createDragHandler("rightVertical")}
                 onTouchStart={createDragHandler("rightVertical")}
-                className="h-[4px] w-full bg-slate-800/80 hover:bg-yellow-600/60 active:bg-yellow-500 transition-colors duration-150 cursor-row-resize items-center justify-center relative group z-50 flex-shrink-0 flex"
+                className="h-[4px] w-full bg-slate-800/80 hover:bg-white/60 active:bg-white transition-colors duration-150 cursor-row-resize items-center justify-center relative group z-50 flex-shrink-0 flex"
               >
-                <div className="absolute z-50 rounded-full flex flex-row gap-[4px] px-2.5 py-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-yellow-600/40 shadow-xl pointer-events-none">
+                <div className="absolute z-50 rounded-full flex flex-row gap-[4px] px-2.5 py-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-white/40 shadow-xl pointer-events-none">
                   {[0, 1, 2, 3].map((i) => (
                     <span
                       key={i}

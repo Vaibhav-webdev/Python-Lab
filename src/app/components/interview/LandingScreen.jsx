@@ -28,7 +28,7 @@ const RULES = [
 
 export default function LandingScreen({ onStart }) {
   return (
-    <div className="relative min-h-screen flex items-center justify-center bg-[#060608] overflow-hidden px-4 py-12">
+    <div className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden px-4 py-12">
       {/* ── Ambient glow (signature design element) ── */}
       <div
         aria-hidden
@@ -36,8 +36,7 @@ export default function LandingScreen({ onStart }) {
       >
         <div className="w-[520px] h-[520px] rounded-full opacity-30"
           style={{
-            background:
-              "radial-gradient(ellipse at center, #f59e0b 0%, #f97316 45%, transparent 72%)",
+            background: "radial-gradient(ellipse at center, #ffffff 0%, #ffffff 35%, transparent 72%)",
             filter: "blur(90px)",
           }}
         />
@@ -51,15 +50,15 @@ export default function LandingScreen({ onStart }) {
         className="relative z-10 w-full max-w-xl text-center"
       >
         {/* Icon */}
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 bg-gradient-to-br from-yellow-600/30 to-orange-600/40 border border-yellow-500/30 backdrop-blur-sm"
+        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 bg-gradient-to-br from-white/40 to-white/50 border border-white/40 backdrop-blur-sm"
         >
-          <Terminal size={36} className="text-purple-300" />
+          <Terminal size={36} className="text-white/70" />
         </div>
 
         {/* Title */}
         <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3 tracking-tight"
         >
-          Mock Next.js Interview
+          Mock Python Interview
         </h1>
 
         {/* Subtitle */}
@@ -82,8 +81,8 @@ export default function LandingScreen({ onStart }) {
           <ul className="space-y-3">
             {RULES.map(({ icon: Icon, text }, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center bg-orange-500/15 border border-yellow-500/25">
-                  <Icon size={11} className="text-yellow-400" />
+                <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-md flex items-center justify-center bg-gray-500/15 border border-white/25">
+                  <Icon size={11} className="text-white" />
                 </span>
                 <span className="text-slate-300 text-sm leading-relaxed">{text}</span>
               </li>
@@ -102,7 +101,7 @@ export default function LandingScreen({ onStart }) {
           <button
             onClick={onStart}
             // sm:w-48 ya sm:w-auto use kar sakte hain flex-1 ke sath consistent width ke liye
-            className="group relative inline-flex items-center justify-center gap-1 w-full sm:w-52 px-6 lg:px-8 py-3.5 rounded-xl font-semibold text-white text-sm lg:text-base overflow-hidden bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-500 hover:to-orange-500 cursor-pointer transition-all duration-200 active:scale-[0.97] shadow-lg shadow-yellow-900/40 white-space-nowrap"
+            className="group relative inline-flex items-center justify-center gap-1 w-full sm:w-52 px-6 lg:px-8 py-3.5 rounded-xl font-semibold text-sm lg:text-base overflow-hidden bg-white text-black cursor-pointer transition-all duration-200 active:scale-[0.97] shadow-lg shadow-white/10 white-space-nowrap"
           >
             <span className="truncate">Start the interview</span>
             <ChevronRight

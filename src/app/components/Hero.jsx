@@ -132,8 +132,8 @@ export default function Hero() {
             >
                 {[
                     // Saare stats Python aur B&W theme ke hisaab se update kiye gaye hain
-                    { icon: Terminal, metric: "30+", label: "PYTHON SCRIPTS", desc: "Build from scratch", color: "#e5e5e5", borderColor: "border-l-neutral-200" },
-                    { icon: Code, metric: "50+", label: "ALGORITHM CHALLENGES", desc: "Master logic & DS", color: "#a3a3a3", borderColor: "border-l-neutral-400" },
+                    { icon: Terminal, metric: "60+", label: "PYTHON SCRIPTS", desc: "Build from scratch", color: "#e5e5e5", borderColor: "border-l-neutral-200" },
+                    { icon: Code, metric: "50+", label: "PYTHON TOPICS", desc: "Master logic & DS", color: "#a3a3a3", borderColor: "border-l-neutral-400" },
                     { icon: Users, metric: "10K+", label: "HAPPY CODERS", desc: "Zero to Hero in Python", color: "#737373", borderColor: "border-l-neutral-500" },
                     { icon: CheckCircle, metric: "0", label: "SETUP REQUIRED", desc: "Code directly in browser", color: "#ffffff", borderColor: "border-l-white" }
                 ].map((stat, idx) => (

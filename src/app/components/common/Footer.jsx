@@ -22,7 +22,7 @@ const Footer = () => {
           >
             <Image
               src={logoImg}
-              alt="ScriptCrush - JavaScript Learning Platform"
+              alt="ScriptCrush - Python Learning Platform"
               priority
               className="h-8 w-auto md:h-12"
             />
@@ -31,7 +31,7 @@ const Footer = () => {
 
           {/* Mission Text - Margin top (mt-4) aur max-width di hai taaki text center me achha dikhe */}
           <p className="mt-4 text-gray-400 text-sm lg:text-lg leading-relaxed max-w-sm lg:max-w-xl mx-auto">
-            Master JavaScript through interactive tutorials, coding challenges, bug fixing, mini projects, mock interviews and an online code editor.
+            Master Python through interactive tutorials, coding challenges, bug fixing, mini projects, mock interviews and an online code editor.
           </p>
 
         </nav>
@@ -39,7 +39,7 @@ const Footer = () => {
         {/* Bottom Bar: Copyright and Divider */}
         <div className="mt-10 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500 text-center sm:text-left">
-            © {currentYear} ScriptCrush. All rights reserved. Built for JavaScript developers worldwide.
+            © {currentYear} ScriptCrush. All rights reserved. Built for Python developers worldwide.
           </p>
 
           <div className="flex gap-6 text-xs lg:text-sm text-gray-500">

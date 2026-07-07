@@ -115,7 +115,7 @@ export default function LearnPage() {
           <SectionHeader
             icon={BookOpen}
             title="Learning Phase"
-            subtitle="39 comprehensive topics covering every aspect of Next.js"
+            subtitle="57 comprehensive topics covering every aspect of Next.js"
             headingId="learning-heading"
           />
           <motion.div
@@ -142,7 +142,7 @@ export default function LearnPage() {
 
                         {/* Muted counter text that fits perfectly in a dark theme */}
                         <span className="text-zinc-500 text-[10px] font-bold tracking-wider">
-                          {topic.id.replace(/^\D+/g, "") || "1"}/39
+                          {topic.id.replace(/^\D+/g, "") || "1"}/57
                         </span>
                       </div>
                       <h3 className="text-[13px] font-semibold text-white group-hover:text-white transition-colors leading-snug mb-1.5">

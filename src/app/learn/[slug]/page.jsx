@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
     return {
       title: "Content Not Found | ScriptCrush",
       description:
-        "The requested JavaScript learning resource could not be found.",
+        "The requested Python learning resource could not be found.",
       robots: {
         index: false,
         follow: false,
@@ -25,26 +25,26 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const pageTitle = `${resource.title} | Learn JavaScript | ScriptCrush`;
+  const pageTitle = `${resource.title} | Learn Python | ScriptCrush`;
 
   const description =
     resource.description ||
-    `Learn ${resource.title} with detailed explanations, practical examples, coding exercises, debugging practice, interview tips, and real-world JavaScript examples on ScriptCrush.`;
+    `Learn ${resource.title} with detailed explanations, practical examples, coding exercises, debugging practice, interview tips, and real-world Python examples on ScriptCrush.`;
 
   const keywords = [
     resource.title,
-    "Learn JavaScript",
-    "JavaScript Tutorial",
-    "JavaScript Programming",
-    "JavaScript Examples",
-    "JavaScript Practice",
-    "JavaScript Course",
-    "JavaScript Guide",
-    "JavaScript Interview Questions",
-    "JavaScript Coding",
+    "Learn Python",
+    "Python Tutorial",
+    "Python Programming",
+    "Python Examples",
+    "Python Practice",
+    "Python Course",
+    "Python Guide",
+    "Python Interview Questions",
+    "Python Coding",
     "Frontend Development",
-    "JavaScript Debugging",
-    "JavaScript Projects",
+    "Python Debugging",
+    "Python Projects",
     "ScriptCrush",
   ];
 

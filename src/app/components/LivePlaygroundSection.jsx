@@ -139,10 +139,10 @@ print(f"Result: {active_users}")`;
             {/* CTA Button */}
             <motion.div variants={fadeInUp}>
                 <a
-                    href="/learn"
+                    href="/compailer"
                     className="inline-flex items-center space-x-2 bg-transparent border border-zinc-800 hover:border-zinc-700 bg-zinc-900/30 hover:bg-zinc-900/60 text-white font-medium px-5 py-2.5 rounded-lg transition-all duration-200 text-sm group"
                 >
-                    <span>Let's Start The Journey!</span>
+                    <span>Let's Code Your Thoughts!</span>
                     <ExternalLink className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" />
                 </a>
             </motion.div>

@@ -69,7 +69,7 @@ function QuestionInfo({ question }) {
           <span
             key={tag}
             className="text-xs px-2.5 py-0.5 rounded-full
-              bg-purple-500/12 text-purple-300 border border-purple-500/25"
+              bg-white/12 text-white border border-white/25"
           >
             {tag}
           </span>
@@ -283,7 +283,7 @@ export default function InterviewSession({
                 Editor
               </span>
               <span className="text-slate-700 text-[10px] font-mono">
-                JavaScript
+                Python
               </span>
             </div>
             <div className="flex-1 min-h-0">
@@ -296,11 +296,11 @@ export default function InterviewSession({
         <div
           onMouseDown={createDragHandler("horizontal")}
           onTouchStart={createDragHandler("horizontal")}
-          className="hidden md:flex w-[4px] h-full bg-slate-800/80 hover:bg-purple-600/60 active:bg-purple-500 transition-colors duration-150 cursor-col-resize items-center justify-center relative group z-50 flex-shrink-0"
+          className="hidden md:flex w-[4px] h-full bg-slate-800/80 hover:bg-white/60 active:bg-white transition-colors duration-150 cursor-col-resize items-center justify-center relative group z-50 flex-shrink-0"
         >
-          <div className="absolute z-50 rounded-full flex flex-col gap-[4px] py-2.5 px-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-purple-600/40 shadow-xl">
+          <div className="absolute z-50 rounded-full flex flex-col gap-[4px] py-2.5 px-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-white/40 shadow-xl">
             {[0, 1, 2, 3].map((i) => (
-              <span key={i} className="block w-[3px] h-[3px] rounded-full bg-purple-400/90" />
+              <span key={i} className="block w-[3px] h-[3px] rounded-full bg-white/90" />
             ))}
           </div>
         </div>
@@ -336,11 +336,11 @@ export default function InterviewSession({
           <div
             onMouseDown={createDragHandler("rightVertical")}
             onTouchStart={createDragHandler("rightVertical")}
-            className="hidden md:flex h-[4px] w-full bg-slate-800/80 hover:bg-purple-600/60 active:bg-purple-500 transition-colors duration-150 cursor-row-resize items-center justify-center relative group z-50 flex-shrink-0"
+            className="hidden md:flex h-[4px] w-full bg-slate-800/80 hover:bg-white/60 active:bg-white transition-colors duration-150 cursor-row-resize items-center justify-center relative group z-50 flex-shrink-0"
           >
-            <div className="absolute z-50 rounded-full flex flex-row gap-[4px] px-2.5 py-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-purple-600/40 shadow-xl">
+            <div className="absolute z-50 rounded-full flex flex-row gap-[4px] px-2.5 py-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#1a1a2e] border border-white/40 shadow-xl">
               {[0, 1, 2, 3].map((i) => (
-                <span key={i} className="block w-[3px] h-[3px] rounded-full bg-purple-400/90" />
+                <span key={i} className="block w-[3px] h-[3px] rounded-full bg-white/90" />
               ))}
             </div>
           </div>
@@ -364,28 +364,28 @@ export default function InterviewSession({
       <div className="md:hidden flex items-center justify-around bg-[#080808] border-t border-slate-800/70 p-2 pb-safe z-30 flex-shrink-0">
         <button
           onClick={() => setActiveTab('question')}
-          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'question' ? 'text-purple-400 bg-purple-500/15' : 'text-slate-500 hover:text-slate-300'}`}
+          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'question' ? 'text-white bg-white/35' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <AlignLeft size={20} />
           <span className="text-[10px] font-semibold">Task</span>
         </button>
         <button
           onClick={() => setActiveTab('editor')}
-          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'editor' ? 'text-purple-400 bg-purple-500/15' : 'text-slate-500 hover:text-slate-300'}`}
+          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'editor' ? 'text-white bg-white/15' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <Code size={20} />
           <span className="text-[10px] font-semibold">Code</span>
         </button>
         <button
           onClick={() => setActiveTab('preview')}
-          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'preview' ? 'text-purple-400 bg-purple-500/15' : 'text-slate-500 hover:text-slate-300'}`}
+          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'preview' ? 'text-white bg-white/15' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <LayoutTemplate size={20} />
           <span className="text-[10px] font-semibold">Preview</span>
         </button>
         <button
           onClick={() => setActiveTab('tests')}
-          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'tests' ? 'text-purple-400 bg-purple-500/15' : 'text-slate-500 hover:text-slate-300'}`}
+          className={`flex flex-col items-center gap-1 p-2 w-16 rounded-lg transition-colors ${activeTab === 'tests' ? 'text-white bg-white/15' : 'text-slate-500 hover:text-slate-300'}`}
         >
           <CheckCircle2 size={20} />
           <span className="text-[10px] font-semibold">Tests</span>
@@ -422,7 +422,7 @@ function TopBar({
               aria-label={`Question ${i + 1}`}
               className={`min-w-[26px] w-[26px] h-[26px] md:min-w-[30px] md:w-[30px] md:h-[30px] flex items-center justify-center rounded-full text-[11px] md:text-xs font-bold border transition-all duration-300 flex-shrink-0
                 ${i === currentIdx
-                  ? "bg-orange-500 border-amber-400 text-white scale-110 shadow-md shadow-orange-500/20"
+                  ? "bg-gray-400 border-white/30 text-white scale-110 shadow-md shadow-orange-500/20"
                   : i < currentIdx
                     ? "bg-slate-800 border-slate-700 text-slate-300"
                     : "bg-transparent border-slate-800 text-slate-600"
@@ -464,7 +464,7 @@ function TopBar({
         {allPassed ? (
           <button
             onClick={onNext}
-            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 text-xs font-semibold rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white transition-all duration-150 active:scale-95 shadow-sm shadow-orange-600/20"
+            className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 text-xs font-semibold rounded-lg bg-white text-black transition-all duration-150 active:scale-95 shadow-sm shadow-orange-600/20"
           >
             {isLastQuestion ? (
               <><Flag size={13} /> <span>Finish</span></>
