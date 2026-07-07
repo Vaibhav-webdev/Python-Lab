@@ -353,19 +353,19 @@ builtins.input = _input
   const renderStdinContent = (isMobile = false) => (
     <div className={`flex flex-col ${isMobile ? 'h-full' : ''} border-t border-white/[0.05]`}>
       <div className="flex items-center h-7 px-3 bg-[#040404] border-b border-white/[0.03] shrink-0">
-        <span className="text-[9px] uppercase tracking-[0.2em] text-white/15 font-medium">
+        <span className="text-[9px] uppercase tracking-[0.2em] text-white/45 font-medium">
           Standard Input
         </span>
-        <span className="ml-2 text-[9px] text-white/[0.07]">
-          — input() ke liye, ek line me ek value
+        <span className="ml-2 text-[9px] text-white/[0.3]">
+          — For input(), One value per line
         </span>
       </div>
       <textarea
         value={stdin}
         onChange={(e) => setStdin(e.target.value)}
-        placeholder={`Yahan input() ki values daalo\nEk value per line`}
+        placeholder={`Put the value of input()\nOne value for one line`}
         rows={isMobile ? undefined : 6}
-        className={`w-full bg-[#020202] text-white/45 px-4 py-2.5 text-[12px] font-mono resize-none outline-none placeholder:text-white/[0.06] leading-[1.8] ${isMobile ? 'flex-1' : ''}`}
+        className={`w-full bg-[#020202] text-white/45 px-4 py-2.5 text-[12px] font-mono resize-none outline-none placeholder:text-white/[0.2] leading-[1.8] ${isMobile ? 'flex-1' : ''}`}
       />
     </div>
   );
@@ -408,7 +408,7 @@ builtins.input = _input
             </span>
           </div>
           <div className="hidden sm:block w-px h-3.5 bg-white/[0.07]" />
-          <span className="hidden sm:block text-[11px] text-white/20 font-light tracking-wide">
+          <span className="hidden sm:block text-[11px] text-white/30 font-light tracking-wide">
             Python Compiler
           </span>
         </div>
@@ -504,8 +504,8 @@ builtins.input = _input
           {/* EDITOR (Desktop pe hamesha, Mobile pe jab tab 'code' ho) */}
           <div className={`${activeTab === 'code' ? 'flex' : 'hidden'} md:flex flex-col flex-1 min-h-0`}>
             <div className="flex items-center h-9 bg-[#040404] border-b border-white/[0.05] shrink-0 px-2">
-              <div className="flex items-center gap-1.5 px-3 h-full bg-black border border-white/[0.05] border-b-black text-[11px] text-white/40 -mb-px rounded-t-[3px]">
-                <svg className="w-3 h-3 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="flex items-center gap-1.5 px-3 h-full bg-black border border-white/[0.05] border-b-black text-[11px] text-white/45 -mb-px rounded-t-[3px]">
+                <svg className="w-3 h-3 text-white/35" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 main.py
@@ -542,7 +542,7 @@ builtins.input = _input
         <section className={`${activeTab === 'output' ? 'flex' : 'hidden'} md:flex flex-col w-full md:w-1/2 bg-[#010101]`}>
           <div className="flex items-center justify-between h-9 bg-[#040404] border-b border-white/[0.05] shrink-0 px-2">
             <div className="flex items-center gap-1.5 px-3 h-full bg-[#010101] border border-white/[0.05] border-b-[#010101] text-[11px] text-white/40 -mb-px rounded-t-[3px]">
-              <svg className="w-3 h-3 text-white/15" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-3 h-3 text-white/35" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               Output
@@ -563,14 +563,14 @@ builtins.input = _input
           <div className="flex-1 overflow-y-auto">
             {!stdout && !stderr && !isRunning && !hasRun && (
               <div className="flex flex-col items-center justify-center h-full select-none p-4 text-center">
-                <div className="w-16 h-16 rounded-2xl border border-white/[0.03] flex items-center justify-center mb-5 bg-white/[0.01]">
-                  <svg className="w-7 h-7 text-white/[0.05]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                <div className="w-16 h-16 rounded-2xl border border-white/[0.2] flex items-center justify-center mb-5 bg-white/[0.01]">
+                  <svg className="w-7 h-7 text-white/[0.4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-[12px] text-white/[0.07] mb-2">Output will show here!</p>
-                <div className="hidden md:flex items-center justify-center gap-1.5 text-[10px] text-white/[0.04]">
+                <p className="text-[12px] text-white/[0.3] mb-2">Output will show here!</p>
+                <div className="hidden md:flex items-center justify-center gap-1.5 text-[10px] text-white/[0.4]">
                   <kbd className="px-1.5 py-0.5 bg-white/[0.03] rounded-[3px] text-[9px] border border-white/[0.05] font-mono">Ctrl</kbd>
                   <span>+</span>
                   <kbd className="px-1.5 py-0.5 bg-white/[0.03] rounded-[3px] text-[9px] border border-white/[0.05] font-mono">Enter</kbd>
@@ -612,7 +612,7 @@ builtins.input = _input
 
       {/* FOOTER - ONLY DESKTOP (Taaki Mobile pe space bache) */}
       <footer className="hidden md:flex items-center justify-between h-6 px-4 bg-[#080808] border-t border-white/[0.05] shrink-0 select-none">
-        <div className="flex items-center gap-3 text-[10px] text-white/[0.12]">
+        <div className="flex items-center gap-3 text-[10px] text-white/[0.3]">
           <span className="flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
             Python 3.11
@@ -628,11 +628,11 @@ builtins.input = _input
             </>
           )}
         </div>
-        <div className="flex items-center gap-1 text-[10px] text-white/[0.12]">
+        <div className="flex items-center gap-1 text-[10px] text-white/[0.3]">
           <kbd className="px-1 py-px bg-white/[0.03] rounded-[2px] text-[9px] border border-white/[0.05] font-mono">Ctrl</kbd>
-          <span className="text-white/[0.06]">+</span>
+          <span className="text-white/[0.4]">+</span>
           <kbd className="px-1 py-px bg-white/[0.03] rounded-[2px] text-[9px] border border-white/[0.05] font-mono">Enter</kbd>
-          <span className="ml-0.5 text-white/[0.06]">run</span>
+          <span className="ml-0.5 text-white/[0.4]">run</span>
         </div>
       </footer>
 
