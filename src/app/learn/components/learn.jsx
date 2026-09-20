@@ -97,12 +97,12 @@ export default function LearnPage() {
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
               Learn{" "}
               <span className="bg-gradient-to-r from-neutral-200 to-neutral-600 bg-clip-text text-transparent">
-                Next.js
+                Python
               </span>
             </h1>
 
             <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              Master Next.js through interactive lessons, debug real-world bugs,
+              Master Python through interactive lessons, debug real-world bugs,
               and build hands-on mini projects — all in your browser.
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function LearnPage() {
           <SectionHeader
             icon={BookOpen}
             title="Learning Phase"
-            subtitle="57 comprehensive topics covering every aspect of Next.js"
+            subtitle="57 comprehensive topics covering every aspect of Python"
             headingId="learning-heading"
           />
           <motion.div
@@ -173,7 +173,7 @@ export default function LearnPage() {
           <SectionHeader
             icon={Bug}
             title="Fix the Bug"
-            subtitle="Debug real-world Next.js issues — from missing directives to hydration errors"
+            subtitle="Debug real-world Python issues — from missing directives to hydration errors"
             headingId="bug-heading"
           />
           <motion.div
@@ -243,7 +243,7 @@ export default function LearnPage() {
           <SectionHeader
             icon={FolderOpen}
             title="Mini Projects"
-            subtitle="Build real applications step-by-step to solidify your Next.js skills"
+            subtitle="Build real applications step-by-step to solidify your Python skills"
             headingId="projects-heading"
           />
           <motion.div
@@ -323,7 +323,7 @@ export default function LearnPage() {
       {/* Footer */}
       <footer className="border-t border-slate-800/30 py-8 text-center">
         <p className="text-slate-700 text-xs">
-          Built with Next.js — Learn, Debug, Build
+          Built with Python — Learn, Debug, Build
         </p>
       </footer>
     </div>

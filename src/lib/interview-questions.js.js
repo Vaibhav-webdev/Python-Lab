@@ -1,4 +1,4 @@
-// ─── 10 Next.js / React Fix-the-Bug Questions ────────────────────────────────
+// ─── 10 Python / React Fix-the-Bug Questions ────────────────────────────────
 // Difficulties: 3 EASY · 4 MEDIUM · 3 HARD
 // Each question's buggyCode is shown in the editor on start.
 // check() functions test the user's edited code as a string.

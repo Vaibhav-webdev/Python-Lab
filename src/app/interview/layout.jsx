@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "Mock Next.js Interview — Fix 3 Bugs in Real Time",
+  title: "Mock Python Interview — Fix 3 Bugs in Real Time",
   description:
-    "Practice a real-time Next.js, React, and Python mock interview with randomly generated bug-fixing challenges. Solve timed coding problems, improve debugging skills, and prepare for frontend developer interviews.",
+    "Practice a real-time Python, React, and Python mock interview with randomly generated bug-fixing challenges. Solve timed coding problems, improve debugging skills, and prepare for frontend developer interviews.",
   keywords: [
   "Python interview",
   "Python interview questions",
@@ -21,17 +21,17 @@ robots: {
     follow: true,
 },
   openGraph: {
-    title: "Mock Next.js Interview",
+    title: "Mock Python Interview",
     url: "/interview",
     description:
-      "Can you spot and fix 3 React/Next.js bugs before the timer runs out?",
+      "Can you spot and fix 3 React/Python bugs before the timer runs out?",
     type: "website",
     siteName: "PyXode",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mock Next.js Interview",
+    title: "Mock Python Interview",
     description: "3 random bugs. One combined timer. Fix them all.",
   },
 };
