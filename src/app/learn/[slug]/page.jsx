@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
 
   if (!resource) {
     return {
-      title: "Content Not Found | ScriptCrush",
+      title: "Content Not Found | PyXode",
       description:
         "The requested Python learning resource could not be found.",
       robots: {
@@ -25,11 +25,11 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const pageTitle = `${resource.title} | Learn Python | ScriptCrush`;
+  const pageTitle = `${resource.title} | Learn Python | PyXode`;
 
   const description =
     resource.description ||
-    `Learn ${resource.title} with detailed explanations, practical examples, coding exercises, debugging practice, interview tips, and real-world Python examples on ScriptCrush.`;
+    `Learn ${resource.title} with detailed explanations, practical examples, coding exercises, debugging practice, interview tips, and real-world Python examples on PyXode.`;
 
   const keywords = [
     resource.title,
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
     "Frontend Development",
     "Python Debugging",
     "Python Projects",
-    "ScriptCrush",
+    "PyXode",
   ];
 
   return {
@@ -71,17 +71,17 @@ export async function generateMetadata({ params }) {
       },
     },
 
-    applicationName: "ScriptCrush",
+    applicationName: "PyXode",
 
     authors: [
       {
-        name: "ScriptCrush",
+        name: "PyXode",
       },
     ],
 
-    creator: "ScriptCrush",
+    creator: "PyXode",
 
-    publisher: "ScriptCrush",
+    publisher: "PyXode",
 
     category: "Education",
 
@@ -96,7 +96,7 @@ export async function generateMetadata({ params }) {
 
       url: `/learn/${resource.slug}`,
 
-      siteName: "ScriptCrush",
+      siteName: "PyXode",
 
       locale: "en_US",
 
@@ -119,7 +119,7 @@ export async function generateMetadata({ params }) {
 
       description,
 
-      creator: "@scriptcrush",
+      creator: "@PyXode",
 
       images: ["/og/learn-topic.png"],
     },

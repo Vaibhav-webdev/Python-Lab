@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     // Semantic <footer> tag
     <footer className="bg-black border-t border-white/10 pt-10 pb-8" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">ScriptCrush Footer Navigation</h2>
+      <h2 id="footer-heading" className="sr-only">PyXode Footer Navigation</h2>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Layout - Flex use kiya hai elements ko center karne ke liye */}
@@ -22,11 +22,11 @@ const Footer = () => {
           >
             <Image
               src={logoImg}
-              alt="ScriptCrush - Python Learning Platform"
+              alt="PyXode - Python Learning Platform"
               priority
               className="h-8 w-auto md:h-12"
             />
-            <span className="text-white font-bold text-2xl lg:text-3xl tracking-wide">Script Crush</span>
+            <span className="text-white font-bold text-2xl lg:text-3xl tracking-wide">PyXode</span>
           </Link>
 
           {/* Mission Text - Margin top (mt-4) aur max-width di hai taaki text center me achha dikhe */}
@@ -39,7 +39,7 @@ const Footer = () => {
         {/* Bottom Bar: Copyright and Divider */}
         <div className="mt-10 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500 text-center sm:text-left">
-            © {currentYear} ScriptCrush. All rights reserved. Built for Python developers worldwide.
+            © {currentYear} PyXode. All rights reserved. Built for Python developers worldwide.
           </p>
 
           <div className="flex gap-6 text-xs lg:text-sm text-gray-500">

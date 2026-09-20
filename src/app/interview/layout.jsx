@@ -26,7 +26,7 @@ robots: {
     description:
       "Can you spot and fix 3 React/Next.js bugs before the timer runs out?",
     type: "website",
-    siteName: "ScriptCrush",
+    siteName: "PyXode",
     locale: "en_US",
   },
   twitter: {
