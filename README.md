@@ -1,8 +1,67 @@
-This is a [Python](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/Python/tree/canary/packages/create-next-app).
+# 🐍 Next.js Python Learning & Practice Platform
 
-## Getting Started
+An interactive, all-in-one Python learning workspace built with Next.js. Learn Python concepts, fix real-world code bugs, prepare for technical interviews, build mini-projects, and execute Python code live in your browser — all without needing to log in or create an account!
 
-First, run the development server:
+---
+
+## 🌟 Key Features
+
+*   **⚡ Zero-Friction Learning (No Login Required):** Jump straight into learning and practicing instantly without any registration barriers or login screens.
+*   **📚 Comprehensive Python Curriculum:** Detailed tutorials and interactive explanations covering every Python topic, from basic syntax to advanced concepts.
+*   **🐛 Bug Practice Challenges:** Solve real-world bug-fixing challenges to sharpen your debugging skills and improve code reading ability.
+*   **💼 Interview Mock Questions:** Dedicated section with curated coding and theoretical interview questions asked by top tech companies.
+*   **🛠️ Hands-on Mini Projects:** Build guided mini-projects step-by-step directly inside the browser.
+*   **💻 Built-in Live Code Editor:** Integrated code editor with instant, browser-based execution to write, run, and test Python code on the fly.
+
+---
+
+## 🛠️ Tech Stack
+
+*   **Framework:** [Next.js](https://nextjs.org/) (React Framework)
+*   **Styling:** Tailwind CSS
+*   **Code Editor:** Monaco Code Editor
+*   **Code Execution Engine:** Pyodide / Browser-based Python Runtime
+*   **Language:** JavaScript
+
+---
+
+## 🚀 Local Setup & Installation Instructions
+
+Follow these quick steps to set up and run the project locally on your machine.
+
+### Prerequisites
+
+Make sure you have the following installed:
+*   [Node.js](https://nodejs.org/) (v18.x or higher recommended)
+*   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) or [pnpm](https://pnpm.io/)
+*   [Git](https://git-scm.com/)
+
+---
+
+### Step 1: Clone the Repository
+
+```bash
+git clone [https://github.com/Vaibhav-webdev/Python-Lab.git]
+cd Python-Lab
+
+### Step 2: Install Dependencies
+
+Install all the required dependencies for the project:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+
+```
+
+---
+
+### Step 3: Run the Development Server
+
+Start the local development server:
 
 ```bash
 npm run dev
@@ -10,27 +69,22 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Step 4: Open in Browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open your browser and navigate to:
 
-## Learn More
+[http://localhost:3000]
 
-To learn more about Python, take a look at the following resources:
+Your Next.js Python Learning Platform is now running locally!
 
-- [Python Documentation](https://nextjs.org/docs) - learn about Python features and API.
-- [Learn Python](https://nextjs.org/learn) - an interactive Python tutorial.
 
-You can check out [the Python GitHub repository](https://github.com/vercel/Python) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📜 License
 
-The easiest way to deploy your Python app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=Python&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Python.
-
-Check out our [Python deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the [MIT License]
